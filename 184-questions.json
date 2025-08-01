@@ -1,0 +1,804 @@
+[
+  {
+    "question": "### Question 1\nWhat is the most accurate statement about Select AI RAG and vector stores?",
+    "selections": {
+      "A": "Select AI RAG uses vector stores to expand the size of LLM prompts by adding more contextual information, ensuring comprehensive responses.",
+      "B": "Select AI RAG eliminates the need for vector stores by relying solely on LLMs to process all available data within the prompt.",
+      "C": "Select AI RAG uses vector stores to reduce the size of LLM prompts by retrieving only the most relevant information."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：RAG 并非为了“扩大”prompt，而是为了“减少”无关信息。\n- B 错误：RAG 依赖向量存储，而不是完全依赖 LLM。\n- C 正确：RAG 通过向量检索精准内容，从而压缩 prompt，提高效率。\n\n考点总结:\n理解 RAG 的核心目的——通过向量检索减少 token 消耗、提升响应质量。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 RAG 的两大关键词：向量检索 + prompt 精简。\n- 理解 RAG 与纯 LLM 的差异：前者用向量库做“召回”，后者直接生成。"
+  },
+  {
+    "question": "### Question 2\nWhich vector index available in Oracle Database 23c is known for its speed and accuracy, making it a preferred choice for vector search?",
+    "selections": {
+      "A": "Inverted File Flat (IVF) index",
+      "B": "Hierarchical Navigable Small World (HNSW) index",
+      "C": "Binary Tree (BT) index",
+      "D": "Inverted File System (IFS) index"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A IVF：平衡型，但非“最快最准”。\n- B HNSW：官方推荐的高性能近似索引。\n- C BT：传统 B 树，不适用于向量。\n- D IFS：干扰项，不存在。\n\n考点总结:\n熟记 HNSW 在 Oracle 23c 的定位：高速近似搜索首选。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 HNSW 与“图结构 + 多层导航”联系起来记忆。\n- 对比 IVF 的“聚类 + 倒排”思路，加深理解。"
+  },
+  {
+    "question": "### Question 3\nYou need to prioritize accuracy over speed in a similarity search for a dataset of s. Which approach should you use?",
+    "selections": {
+      "A": "Exact similarity search using a full table scan",
+      "B": "Approximate similarity search with HNSW indexing and target accuracy of 70%",
+      "C": "Approximate similarity search with IVF indexing and target accuracy of 70%",
+      "D": "Multivector similarity search with partitioning"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：全表扫描的精确搜索，牺牲速度换最高精度。\n- B/C 70% 近似搜索，无法达到“优先精度”要求。\n- D 分区多向量，侧重场景复杂而非精度。\n\n考点总结:\n在“精度优先”场景下，只有全表精确搜索满足需求。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“accuracy over speed”直接锁定 exact search。\n- 记住近似搜索的 target accuracy 参数仅影响召回率，不保证 100% 精确。"
+  },
+  {
+    "question": "### Question 4\nWhich statement best describes the core functionality and benefit of Retrieval Augmented Generation (RAG) in Oracle Database 23c AI?",
+    "selections": {
+      "A": "It enables Large Language Models (LLMs) to access and process real-time data streams from diverse sources to generate the most up-to-date insights.",
+      "B": "It primarily aims to optimize the performance and efficiency of LLMs by using advanced data retrieval techniques, thus minimizing response times and reducing computational overhead.",
+      "C": "It empowers LLMs to interact with private enterprise data stored within the database, leading to more context-aware and precise responses.",
+      "D": "It allows users to train their own specialized LLMs directly within the Oracle Database environment using their internal data, thereby reducing the reliance on external AI providers."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 强调“实时流”，非 23c RAG 主要卖点。\n- B 聚焦“性能优化”，偏离 RAG 核心。\n- C 正确：RAG 让 LLM 访问私有数据，提升上下文精度。\n- D 描述“内部训练 LLM”，与 RAG 无关。\n\n考点总结:\nRAG 的核心价值在于打通 LLM 与私有数据，而非实时流或性能调优。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“private enterprise data”+“context-aware”即选。\n- 区分 RAG（检索增强）与 fine-tuning（再训练）。"
+  },
+  {
+    "question": "### Question 5\nWhich is NOT a valid distance metric for vector indexing in Oracle Database 23c AI?",
+    "selections": {
+      "A": "Cosine",
+      "B": "Hamming",
+      "C": "Binary Search",
+      "D": "Euclidean"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/B/D 均为官方支持的度量。\n- C “Binary Search” 是算法，不是距离度量。\n\n考点总结:\n熟记 Oracle 23c 支持的四大度量：cosine、euclidean、hamming、manhattan。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“Binary Search”直接排除，它属于搜索策略而非距离定义。"
+  },
+  {
+    "question": "### Question 6\nWhat is the DDL operation that is NOT permitted on a table containing a VECTOR column?",
+    "selections": {
+      "A": "Adding a new VECTOR column to the table.",
+      "B": "Modifying the data type of an existing VECTOR column to a non- VECTOR type.",
+      "C": "Dropping an existing VECTOR column from the table.",
+      "D": "Creating a new table using CTAS that includes the VECTOR column from the original table."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/C/D 都允许。\n- B 不允许：VECTOR 列不能改成非 VECTOR 类型。\n\n考点总结:\nVECTOR 列一旦创建，类型不可变；只能删或加。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“改类型”是红线，其他操作基本放行。"
+  },
+  {
+    "question": "### Question 7\nWhich Python library is used to vectorize text chunks and the user's question in the following example?",
+    "selections": {
+      "A": "numpy",
+      "B": "pandas",
+      "C": "oracle-database",
+      "D": "sentence-transformers"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/B 为通用数据处理库。\n- C 为 Oracle Python 驱动。\n- D sentence-transformers 是官方示例中用于文本向量化的库。\n\n考点总结:\nsentence-transformers 提供预训练句向量模型，是 RAG 教程首选。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 sentence-transformers 与 “Sentence-BERT” 绑定记忆。"
+  },
+  {
+    "question": "### Question 8\nWhat is the primary advantage of using Euclidean Squared Distance rather than Euclidean Distance in similarity search queries?",
+    "selections": {
+      "A": "It is simpler and faster because it avoids square-root calculations.",
+      "B": "It supports hierarchical partitioning of vectors.",
+      "C": "It guarantees higher accuracy than Euclidean Distance.",
+      "D": "It is the default distance metric for Oracle AI Vector Search."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：省掉 sqrt，计算量下降。\n- B/C/D 均与平方欧氏无关。\n\n考点总结:\n平方欧氏仅优化性能，不改变结果排序。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“平方省 sqrt”即可秒杀。"
+  },
+  {
+    "question": "### Question 9\nWhich PL/SQL function converts documents such as PDF, DOC, JSON, XML, or HTML to plain text?",
+    "selections": {
+      "A": "ODMS_VECTOR_CHAIN.UTIL_TO_TEXT",
+      "B": "ODMS_VECTOR_CHAIN.UTIL_TO_PLAIN",
+      "C": "ODMS_VECTOR.TEXT_TO_PLAIN",
+      "D": "ODMS_VECTOR.CONVERT_TO_TEXT"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/B 重复（我改了答案B），官方正确包名应为 DBMS_VECTOR_CHAIN.UTIL_TO_TEXT。\n- C/D 包/函数名错误。\n\n考点总结:\n文档转文字统一用 DBMS_VECTOR_CHAIN.UTIL_TO_TEXT。",
+    "suggestion": "### 应试技巧与学习建议\n- 认准 UTIL_TO_TEXT + DBMS_VECTOR_CHAIN 组合。"
+  },
+  {
+    "question": "### Question 10\nWhat is the advantage of using Euclidean Squared Distance rather than Euclidean Distance in similarity search queries?",
+    "selections": {
+      "A": "It is the default distance metric for Oracle AI Vector Search",
+      "B": "It guarantees higher accuracy than Euclidean Distance",
+      "C": "It is simpler and faster because it avoids square- root calculations.",
+      "D": "It supports hierarchical partitioning of vectors"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- C 与问题 8 同义，省 sqrt 即快。\n\n考点总结:\n平方欧氏仅性能优化，不改变排名。",
+    "suggestion": "### 应试技巧与学习建议\n- 直接定位“avoid sqrt”关键词。"
+  },
+  {
+    "question": "### Question 11\nWhich is a type of Neighbor Partition Vector Index supported in Oracle Database 23c?",
+    "selections": {
+      "A": "Binary Tree Index",
+      "B": "Neighbor Hash Table (NHT)",
+      "C": "Inverted File Flat (IVF)",
+      "D": "Hierarchical Navigable Small World (HNSW)"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- IVF 属于 Neighbor Partition Vector Index，通过聚类将向量分区后建立倒排索引。\n- HNSW 属于图索引，不采用分区策略。\n\n考点总结:\n熟记 IVF 的“分区 + 倒排”机制，与 HNSW 的图结构区分。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“Neighbor Partition”直接对应 IVF。"
+  },
+  {
+    "question": "### Question 12\nIf a query vector uses a different distance metric than the one used to create the index, what happens?",
+    "selections": {
+      "A": "The query uses a default distance metric.",
+      "B": "The query returns inaccurate results.",
+      "C": "The query fails.",
+      "D": "The query is automatically converted to use the correct distance metric."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- Oracle 要求查询与索引使用同一距离度量，否则直接报错。\n\n考点总结:\n距离度量不匹配 → 查询失败，而非降级或自动转换。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“metric mismatch = hard fail”。"
+  },
+  {
+    "question": "### Question 13\nYou are tasked with finding the closest matching sentences across books, where each book has multiple paragraphs and sentences. Which SQL structure should you use?",
+    "selections": {
+      "A": "GROUP BY with vector operations",
+      "B": "A nested query with ORDER BY",
+      "C": "Exact similarity search with a single query vector",
+      "D": "FETCH PARTITIONS BY clause"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 嵌套查询 + ORDER BY 可先按书过滤，再按向量距离排序取 Top-K。\n\n考点总结:\n复杂层级数据需用嵌套/子查询先过滤再排序。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“closest matching across books”→ 嵌套排序。"
+  },
+  {
+    "question": "### Question 14\nWhat is the primary purpose of the DBMS_VECTOR_CHAIN.UTIL_TO_CHUNKS package in a RAG application?",
+    "selections": {
+      "A": "To generate vector embeddings from a text document.",
+      "B": "To convert a document into a single, large text string",
+      "C": "To load a document into the database",
+      "D": "To split a large document into smaller chunks to improve vector quality by minimizing token truncation."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- UTIL_TO_CHUNKS 专用于“切块”，防止超长文本被截断，提升嵌入质量。\n\n考点总结:\nChunking 是 RAG 预处理关键步骤，确保每个向量对应语义完整片段。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“split”或“chunk”即锁定 D。"
+  },
+  {
+    "question": "### Question 15\nWhat is the primary reason for not defining a specific size (number of dimensions) and data type for a VECTOR column?",
+    "selections": {
+      "A": "It impacts the accuracy of similarity searches.",
+      "B": "It limits the length of text that can be vectorized.",
+      "C": "Different external embedding models produce vectors with varying dimensions and data types.",
+      "D": "It restricts the database to a single embedding model."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 外部模型维度/精度各异，Oracle 采用动态存储避免硬编码。\n\n考点总结:\nVECTOR 列的“无模式”设计兼容多模型输出。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“varying dimensions”对应 C。"
+  },
+  {
+    "question": "### Question 16\nWhich parameter is used to define the number of closest vector candidates considered during HNSW index creation?",
+    "selections": {
+      "A": "EFCONSTRUCTION",
+      "B": "NEIGHBORS",
+      "C": "VECTOR_MEMORY_SIZE",
+      "D": "TARGET_ACCURACY"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- EFCONSTRUCTION 控制构建阶段候选邻居数量，越大图质量越高。\n\n考点总结:\nHNSW 调优重点：ef_construction vs. 内存/构建时间权衡。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“EF”=“Expansion Factor”，与构建相关。"
+  },
+  {
+    "question": "### Question 17\nWhat is the purpose of the Vector Pool in Oracle Database 23c AI?",
+    "selections": {
+      "A": "To manage vector operations and computations.",
+      "B": "To store HNSW vector indexes and IVF index metadata.",
+      "C": "To store vector embeddings for similarity search.",
+      "D": "To cache vector data for faster query processing."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- Vector Pool 专用于索引元数据与缓存，非原始向量存储。\n\n考点总结:\n区分“向量池”(index cache) 与 表中的 VECTOR 列(raw data)。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“index metadata”锁定 B。"
+  },
+  {
+    "question": "### Question 18\nA retail company uses an Oracle Database 23c HNSW vector index to recommend products to customers based on their browsing history. After restarting the database, recommendations are slower. What steps should the administrator take?",
+    "selections": {
+      "A": "Modify the distance metric to DOT.",
+      "B": "Adjust the NEIGHBOR_PARTITION_PROBES parameter for improved accuracy.",
+      "C": "Rebuild the HNSW index or enable automatic reload.",
+      "D": "Decrease the VECTOR_MEMORY_SIZE parameter."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- HNSW 索引在重启后需重新加载到内存；自动 reload 或手动重建即可恢复性能。\n\n考点总结:\n重启导致内存索引丢失，需重建或启用 auto-reload。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“restart slower”即想“index not in memory”。"
+  },
+  {
+    "question": "### Question 19\nYou are tasked with creating a table to store vector embeddings with the following characteristics: Each vector must have exactly 512 dimensions. The dimensions should be stored as 32-bit floating-point numbers.",
+    "selections": {
+      "A": "CREATE TABLE vectors (id NUMBER, embedding VECTOR(512));",
+      "B": "CREATE TABLE vectors (id NUMBER, embedding VECTOR(512, FLOAT32));",
+      "C": "CREATE TABLE vectors (id NUMBER, embedding VECTOR(INT8));",
+      "D": "CREATE TABLE vectors (id NUMBER, embedding VECTOR);"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 必须显式指定维度数 512 和数据类型 FLOAT32；VECTOR(512, FLOAT32) 是唯一正确写法。\n\n**考点总结:**\n创建 VECTOR 列时，若需指定维度与精度，语法为 VECTOR(<dims>, <dtype>)。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住语法模板：VECTOR(维度, 数据类型)。"
+  },
+  {
+    "question": "### Question 20\nWhich statement best describes the capability of Oracle Data Pump for handling vector data in the context of vector search applications?",
+    "selections": {
+      "A": "Data Pump provides native support for exporting and importing tables containing vector data types, facilitating the transfer of vector data for vector search applications.",
+      "B": "Data Pump can only export and import vector data if the vector embeddings are stored as BLOB (Binary Large Object) data types in the database.",
+      "C": "Data Pump treats vector embeddings as regular text strings, which can lead to data corruption or loss of precision when transferring vector data for vector search.",
+      "D": "Because of the complexity of vector data, Data Pump requires a specialized plug-in to handle the export and import operations involving vector data types."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- Oracle Data Pump 原生支持 VECTOR 类型，无需转换或插件，可完整迁移向量表。\n\n**考点总结:**\nexpdp/impdp 直接识别 VECTOR 列，保持精度与性能。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“native support”直接锁定 A。"
+  },
+  {
+    "question": "### Question 21\nWhat is the SQL function that calculates the distance between two vectors using the Euclidean metric in Oracle Database 23ai?",
+    "selections": {
+      "A": "L2_DISTANCE",
+      "B": "HAMMING_DISTANCE",
+      "C": "COSINE_DISTANCE",
+      "D": "L1_DISTANCE"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- L2_DISTANCE 对应欧几里得距离，官方命名统一。\n\n考点总结:\n记住 Oracle 23ai 中 L2_DISTANCE = Euclidean 距离函数。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 L2 与 Euclidean 绑定记忆，排除其余距离函数。"
+  },
+  {
+    "question": "### Question 22\nWhat are the key advantages and considerations of using Retrieval Augmented Generation (RAG) in the context of Oracle Database 23c AI?",
+    "selections": {
+      "A": "It excels at optimizing LLM inference through caching and precomputation.",
+      "B": "It leverages existing database security and access controls.",
+      "C": "It focuses on training specialized LLMs within the database.",
+      "D": "It prioritizes real-time data extraction from various sources."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- RAG 复用数据库原有权限体系，确保数据安全。\n\n考点总结:\nRAG 不训练模型，也不做实时流，而是利用现有安全策略。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“security and access controls”直接对应 B。"
+  },
+  {
+    "question": "### Question 23\nWhat does the 'COSINE' parameter within the 'vector_distance' function indicate?",
+    "selections": {
+      "A": "Specifies vector encoding type.",
+      "B": "Converts vectors to SQL-compatible format.",
+      "C": "Filters vectors below a cosine similarity threshold.",
+      "D": "Uses cosine distance for similarity measurement."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- COSINE 指示函数使用余弦距离度量。\n\n考点总结:\nvector_distance 的第三个参数决定度量方式：COSINE|EUCLIDEAN|HAMMING。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住参数值直接对应度量名称，无额外转换。"
+  },
+  {
+    "question": "### Question 24\nWhich SQL operation is NOT supported when working with VECTOR columns in Oracle Database 23c?",
+    "selections": {
+      "A": "Loading data with SQLLoader",
+      "B": "JOIN conditions",
+      "C": "Distance computations using custom distance functions",
+      "D": "INSERT INTO statements"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 当前版本 VECTOR 列尚不支持 JOIN 谓词。\n\n考点总结:\n支持 INSERT、SQLLoader、内置距离函数；JOIN 待后续版本。",
+    "suggestion": "### 应试技巧与学习建议\n- 见到 JOIN 直接排除，其余操作均可行。"
+  },
+  {
+    "question": "### Question 25\nWhat is the most accurate interpretation of a target accuracy of 80% in an approximate similarity search?",
+    "selections": {
+      "A": "80% accuracy seen in the index calculated distances.",
+      "B": "The search will process 80% of the dataset.",
+      "C": "Only 80% of the indexed vectors are used.",
+      "D": "80% of the query results will match the exact search results."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- target accuracy 指近似距离与精确距离的误差在 80% 以内。\n\n考点总结:\n近似搜索的 accuracy 是“距离误差”而非“召回率”。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 accuracy 理解为“距离精度”即可，排除数据百分比选项。"
+  },
+  {
+    "question": "### Question 26\nWhen generating vector embeddings outside Oracle Database 23c, which factor is crucial for meaningful similarity search?",
+    "selections": {
+      "A": "Choice of programming language",
+      "B": "Storage format of the dataset",
+      "C": "Physical location of embeddings",
+      "D": "Using the same embedding model for data and query vectors"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- 同一模型确保向量空间一致，否则距离无意义。\n\n考点总结:\n跨系统必须复用模型，维度/度量一致。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“same embedding model”直接选 D。"
+  },
+  {
+    "question": "### Question 27\nWhat are the key advantages and considerations of using RAG in the context of databases?",
+    "selections": {
+      "A": "Storage requirements.",
+      "B": "Effort involved in training specialized LLMs.",
+      "C": "Leverages existing database security and access controls.",
+      "D": "Excels at optimizing LLM inference performance."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 与 Question 22 同义，强调复用数据库安全。\n\n考点总结:\nRAG 不训练模型，也不主打性能，而是利用现有权限体系。",
+    "suggestion": "### 应试技巧与学习建议\n- 同 22 题思路，关键词“security and access controls”。"
+  },
+  {
+    "question": "### Question 28\nIn the following Python code, what is the significance of prepending the source filename to each text chunk before storing it in the vector database?",
+    "selections": {
+      "A": "Improves LLM accuracy by providing additional training data.",
+      "B": "Speeds up vectorization with unique identifiers.",
+      "C": "Differentiates files but has no impact on vectorization.",
+      "D": "Preserves context and aids retrieval by linking chunks to their source."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- 文件名作为元数据，用于召回时追溯来源。\n\n考点总结:\nChunk 元数据帮助 RAG 定位原文，提高可解释性。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“context”或“source”即选 D。"
+  },
+  {
+    "question": "### Question 29\nIn Oracle Database 23c AI, which SQL function is used to split text into words, sentences, or paragraphs for vector embedding preparation?",
+    "selections": {
+      "A": "VECTOR_CHUNKS",
+      "B": "VECTOR_NORMAL",
+      "C": "VECTOR_DISTANCE",
+      "D": "VECTOR_EMBEDDING"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- VECTOR_CHUNKS 专用于文本分块，支持句子/段落级切分。\n\n考点总结:\n文本切块是 RAG 预处理第一步，函数名即功能。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“split text into chunks”对应 VECTOR_CHUNKS。"
+  },
+  {
+    "question": "### Question 30\nWhat is the significance of using local ONNX models for embedding within the database?",
+    "selections": {
+      "A": "Support for legacy SQL*Plus clients.",
+      "B": "Reduced embedding dimensions for faster processing.",
+      "C": "Enhanced security because data remains within the database.",
+      "D": "Improved accuracy compared to external models."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 本地 ONNX 模型避免数据外泄，满足合规。\n\n考点总结:\n本地化部署首要好处是数据不出库。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“security”或“data remains within”直接选 C。"
+  },
+  {
+    "question": "### Question 31\nWhat is the purpose of the VECTOR_DISTANCE function in Oracle Database 23c AI similarity search?",
+    "selections": {
+      "A": "To fetch rows that match exact vector embeddings",
+      "B": "To calculate the distance between vectors using a specified metric",
+      "C": "To group vectors by their exact scores",
+      "D": "To create vector indexes for efficient searches"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- VECTOR_DISTANCE 用于在查询时按指定度量计算两个向量的距离，是相似度排序的核心函数。\n\n考点总结:\n牢记：该函数仅计算距离，不建索引、不做聚合。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“calculate distance”直接选 B。"
+  },
+  {
+    "question": "### Question 32\nWhich PL/SQL package is primarily used for interacting with Generative AI services in Oracle Database 23c AI?",
+    "selections": {
+      "A": "ODMS_VECTOR_CHAIN",
+      "B": "ODMS_ML",
+      "C": "ODMS_AI",
+      "D": "ODMS_GENAI"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- ODMS_GENAI 是官方提供的 GenAI 调用接口包，封装了 LLM/Embedding 等功能。\n\n考点总结:\n“GENAI”=Generative AI，命名即功能。",
+    "suggestion": "### 应试技巧与学习建议\n- 记忆缩写：GENAI → Generative AI。"
+  },
+  {
+    "question": "### Question 33\nWhat is the PL/SQL function used to extract text content from various document formats like PDF, DOC, JSON, XML, and HTML for vector embedding preparation?",
+    "selections": {
+      "A": "UTL_FILE.GET_LINE",
+      "B": "DBMS_VECTOR_CHAIN.UTIL_TO_TEXT",
+      "C": "DBMS_LOB.READ"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- UTIL_TO_TEXT 支持多格式文档转纯文本，供后续切块和向量化。\n\n考点总结:\nUTIL_TO_TEXT 是文档→文本的桥梁。",
+    "suggestion": "### 应试技巧与学习建议\n- 文档转换场景固定选 UTIL_TO_TEXT。"
+  },
+  {
+    "question": "### Question 34\nWhich SQL statement will successfully insert a vector into a table named my_table with a single VECTOR column named v?",
+    "selections": {
+      "A": "INSERT INTO my_table (v) VALUES (1,1,2,2,3,3)",
+      "B": "INSERT INTO my_table VALUES ('{1,1,2,2,3,3}')",
+      "C": "INSERT INTO my_table (v) VALUES ('{1,1,2,2,3,3}')",
+      "D": "INSERT INTO my_table VALUES ((1,1,2,2,3,3))"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- VECTOR 字面量需用花括号字符串形式，且必须指定列名。\n\n考点总结:\n插入向量格式：'{...}' 字符串 + 显式列名。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住花括号+引号组合即可排除其余错误语法。"
+  },
+  {
+    "question": "### Question 35\nWhat happens when querying with an IVF index if you increase the value of the NEIGHBOR_PARTITION_PROBES parameter?",
+    "selections": {
+      "A": "More partitions are probed, improving accuracy, but also increasing query latency.",
+      "B": "The number of centroids decreases.",
+      "C": "Accuracy decreases.",
+      "D": "Index creation time is reduced."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- NEIGHBOR_PARTITION_PROBES 控制搜索时访问的分区数量，增大=更准但更慢。\n\n考点总结:\nIVF 调参：probes↑ → accuracy↑, latency↑。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“more partitions → accuracy vs latency”直接选 A。"
+  },
+  {
+    "question": "### Question 36\nIn Oracle Database 23c AI, which data type is used to store vector embeddings for similarity search?",
+    "selections": {
+      "A": "VECTOR2",
+      "B": "VECTOR",
+      "C": "BLOB",
+      "D": "VARCHAR2"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- VECTOR 是 23c 引入的专用数据类型，优化存储与运算。\n\n考点总结:\n向量列类型固定为 VECTOR，其余选项均不正确。",
+    "suggestion": "### 应试技巧与学习建议\n- 直接记忆：向量=VECTOR。"
+  },
+  {
+    "question": "### Question 37\nWhat does the VECTOR_NORM function return?",
+    "selections": {
+      "A": "The Euclidean norm or distance between the vector and the origin.",
+      "B": "The number of dimensions of a vector"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- VECTOR_NORM 返回向量的 L2 范数，即与原点的欧氏距离。\n\n考点总结:\nNorm 与维度无关，只与长度相关。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“norm”联想到“长度/距离”。"
+  },
+  {
+    "question": "### Question 38\nWhat is the crucial step in a vector search process that encodes the question and database chunks into vectors, finds the most similar using cosine similarity, and includes them in the LLM prompt?",
+    "selections": {
+      "A": "Encodes the question and database chunks into vectors, finds the most similar using cosine similarity, and includes them in the LLM prompt.",
+      "B": "Trains a separate LLM on the database and uses it to answer, ignoring the general LLM.",
+      "C": "Converts the question to keywords, searches for matches, and inserts the text into the response.",
+      "D": "Clusters similar text chunks and randomly selects one from the most relevant cluster."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- 描述即为 RAG 核心流程：向量化→相似度检索→增强提示。\n\n考点总结:\nRAG 的完整链路：Embed → Retrieve → Augment → Generate。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“encode → find similar → include in prompt”对应 A。"
+  },
+  {
+    "question": "### Question 39\nWhich Oracle Cloud Infrastructure (OCI) service is directly integrated with Select AI?",
+    "selections": {
+      "A": "OCI Language",
+      "B": "OCI Data Science",
+      "C": "OCI Generative AI",
+      "D": "OCI Vision"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- Select AI 后端即调用 OCI Generative AI 服务完成 LLM/Embedding 请求。\n\n考点总结:\nSelect AI ↔ OCI Generative AI 无缝集成。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“Select AI”直接关联 OCI Generative AI。"
+  },
+  {
+    "question": "### Question 40\nWhich SQL query would retrieve the top 10 vectors based on Euclidean distance using exact similarity search?",
+    "selections": {
+      "A": "SELECT docID FROM vector_tab ORDER BY VECTOR_DISTANCE(embedding, query_vector, EUCLIDEAN) FETCH EXACT FIRST 10 ROWS ONLY;",
+      "B": "SELECT docID FROM vector_tab WHERE VECTOR_DISTANCE(embedding, query_vector, EUCLIDEAN) < 10;",
+      "C": "SELECT docID FROM vector_tab ORDER BY VECTOR_DISTANCE(embedding, query_vector, COSINE) FETCH EXACT FIRST 10 ROWS ONLY;",
+      "D": "SELECT docID FROM vector_tab GROUP BY VECTOR_DISTANCE(embedding, query_vector, EUCLIDEAN) FETCH FIRST 10 ROWS ONLY;"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- FETCH EXACT FIRST N ROWS ONLY 触发全表精确搜索并返回 Top-N。\n\n考点总结:\n精确搜索语法：ORDER BY VECTOR_DISTANCE … FETCH EXACT FIRST …。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“EXACT”+“FIRST 10 ROWS”锁定 A。"
+  },
+  {
+    "question": "### Question 41\nWhich is NOT a feature or capability related to AI and Vector Search in Exadata?",
+    "selections": {
+      "A": "AI Smart Scan",
+      "B": "Loading Vector Data using SQLLoader",
+      "C": "Native Support for Vector Search Only within the Database Server",
+      "D": "Vector Replication with GoldenGate"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- Exadata 的 AI 功能覆盖存储层 Smart Scan、SQLLoader 加载向量化数据及 GoldenGate 复制向量；不存在“仅限库内”的限制。\n\n考点总结:\nExadata 提供端到端向量能力，不只限于数据库实例。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“only within”极端措辞，优先怀疑。"
+  },
+  {
+    "question": "### Question 42\nWhat is the primary function of an embedding model in the context of vector search?",
+    "selections": {
+      "A": "To transform text or data into numerical vector representations",
+      "B": "To execute similarity search operations within a database",
+      "C": "To define the schema for a vector database",
+      "D": "To store vectors in a structured format for efficient retrieval"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- 嵌入模型负责把文本/数据映射到向量空间，其余步骤由数据库完成。\n\n考点总结:\nEmbed → Store → Search 三步中，模型只负责第一步“Embed”。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“transform into numerical vector”直接锁定 A。"
+  },
+  {
+    "question": "### Question 43\nWhat is the correct SQL statement to add a new VECTOR column named \"v\" with 4 dimensions and FLOAT32 data type to a table named \"my_table\"?",
+    "selections": {
+      "A": "UPDATE my_table SET v = VECTOR(4, FLOAT32);",
+      "B": "ALTER TABLE my_table MODIFY v VECTOR(4, FLOAT32);",
+      "C": "ALTER TABLE my_table ADD v VECTOR(4, FLOAT32);",
+      "D": "ALTER TABLE my_table ADD (v VECTOR(4, FLOAT32));"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- ADD 子句可直接追加新列并指定 VECTOR(dim, dtype)。\n\n考点总结:\nALTER TABLE … ADD column_name VECTOR(dim, dtype); 为官方语法。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“add new column”用 ADD，无需括号包裹。"
+  },
+  {
+    "question": "### Question 44\nWhich function returns information about how the dimensions of a vector are stored (e.g., data type, precision)?",
+    "selections": {
+      "A": "VECTOR_NORM",
+      "B": "VECTOR_DIMENSION_FORMAT",
+      "C": "VECTOR_CHUNKS",
+      "D": "VECTOR_EMBEDDING"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- VECTOR_DIMENSION_FORMAT 返回维度、数据类型等元信息。\n\n考点总结:\n区别于 VECTOR_NORM（长度）与 VECTOR_CHUNKS（分块）。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“dimension format”直接锁定 B。"
+  },
+  {
+    "question": "### Question 45\nWhat is the correct data type to store vector embeddings for similarity searches in Oracle Database 23ai?",
+    "selections": {
+      "A": "VECTOR2",
+      "B": "VARCHAR2",
+      "C": "BLOB",
+      "D": "VECTOR"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- VECTOR 是 23ai 专用类型，支持 FLOAT32/INT8 等多种精度。\n\n考点总结:\n与 23c 保持一致，向量列统一用 VECTOR。",
+    "suggestion": "### 应试技巧与学习建议\n- 直接排除 VECTOR2 等干扰项。"
+  },
+  {
+    "question": "### Question 46\nWhat is one type of notebook used for interacting with Select AI?",
+    "selections": {
+      "A": "Oracle Machine Learning (OML) Notebooks",
+      "B": "Wyde Rule Notebooks",
+      "C": "RoCE Notebooks"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- OML Notebooks 内置 Select AI 魔法命令，支持 SQL+Python 混合开发。\n\n考点总结:\nOML Notebooks 与 Autonomous Database 原生集成。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“OML”即联想到 Autonomous 和 Select AI。"
+  },
+  {
+    "question": "### Question 47\nYou need to generate a vector from the string ['1.2, 3.4'] in FLOAT32 format with 2 dimensions. Which function will you use?",
+    "selections": {
+      "A": "TO_VECTOR",
+      "B": "VECTOR_SERIALIZE",
+      "C": "FROM_VECTOR",
+      "D": "VECTOR_DISTANCE"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- FROM_VECTOR 将字符串解析成 VECTOR 类型，支持指定 dtype。\n\n考点总结:\nFROM_VECTOR('text', dtype, dims) 为构造向量的快捷方式。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“from string”锁定 FROM_VECTOR。"
+  },
+  {
+    "question": "### Question 48\nWhich SQL function is used to create a vector embedding for a given text string in Oracle Database 23c AI?",
+    "selections": {
+      "A": "CREATE_VECTOR_EMBEDDING",
+      "B": "VECTOR_EMBEDDING",
+      "C": "EMBED_TEXT",
+      "D": "GENERATE_EMBEDDING"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- VECTOR_EMBEDDING(text [, model]) 直接返回文本的向量表示。\n\n考点总结:\n函数名与数据类型 VECTOR 对应，简洁易记。",
+    "suggestion": "### 应试技巧与学习建议\n- 见到“embedding”+“text”直接选 VECTOR_EMBEDDING。"
+  },
+  {
+    "question": "### Question 49\nWhat is a key advantage of using GoldenGate 23c AI for managing and distributing vector data for AI applications?",
+    "selections": {
+      "A": "Real-time vector data updates across locations.",
+      "B": "Automatic translation of vector embeddings between formats.",
+      "C": "Built-in version control for vector data.",
+      "D": "Specialized vector embedding compression."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- GoldenGate 提供亚秒级跨地域向量同步，保证推荐/搜索实时一致。\n\n考点总结:\nGoldenGate 的核心价值是实时复制，而非格式转换或压缩。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“real-time”+“across locations”锁定 A。"
+  },
+  {
+    "question": "### Question 50\nHow does Select AI RAG leverage vector stores to enhance LLMs?",
+    "selections": {
+      "A": "Isolates sensitive data so LLMs never access it.",
+      "B": "Reduces prompt size by retrieving only relevant info.",
+      "C": "Efficiently manages large volumes for faster LLM response.",
+      "D": "Performs semantic similarity searches to enrich prompts with private data."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- RAG 通过语义搜索把最相关的私有内容加入提示，提升答案质量。\n\n考点总结:\nRAG 的核心动作：semantic search → augment prompt → generate。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“semantic similarity”+“enrich prompts”直接选 D。"
+  },
+  {
+    "question": "### Question 51\nWhat is the most significant advantage of using local ONNX models for embedding within the database?",
+    "selections": {
+      "A": "Reduced embedding dimensions for faster processing.",
+      "B": "Support for legacy SQLPlus clients.",
+      "C": "Enhanced security because data remains within the database.",
+      "D": "Improved accuracy compared to external models."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 本地 ONNX 模型在数据库内执行，敏感数据不外泄，满足合规与隐私要求。\n\n考点总结:\n本地化部署的首要价值是数据不出库，而非性能或精度提升。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“security”或“data remains within”立即锁定 C。"
+  },
+  {
+    "question": "### Question 52\nWhen generating vector embeddings outside the database, what must be consistent to ensure meaningful similarity search?",
+    "selections": {
+      "A": "The programming language used for processing.",
+      "B": "The storage format of the new dataset.",
+      "C": "The same embedding model must be used for both data and query vectors.",
+      "D": "The physical location where embeddings are stored."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 模型不一致会导致向量空间不同，距离失去意义；维度与度量必须保持一致。\n\n考点总结:\n“同一模型”是跨系统向量检索的硬要求。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“same embedding model”直接对应 C。"
+  },
+  {
+    "question": "### Question 53\nYou need to retrieve the top 5 most similar documents from a specific category using vector search. Which query structure should you use?",
+    "selections": {
+      "A": "Use VECTOR_INDEX_HINT and NO WHERE clause.",
+      "B": "Use UNION ALL with vector operations.",
+      "C": "Perform the similarity search without a WHERE clause.",
+      "D": "Apply relational filters and a similarity search in the query."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- 先用 WHERE category = ? 过滤关系数据，再 ORDER BY VECTOR_DISTANCE 取 Top-K。\n\n考点总结:\n向量搜索常与关系谓词组合，实现“分类+相似度”双重筛选。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“specific category”想到 relational filter + vector distance。"
+  },
+  {
+    "question": "### Question 54\nWhich DDL operation is NOT permitted on a table containing a VECTOR column in Oracle Database 23c AI?",
+    "selections": {
+      "A": "Dropping an existing VECTOR column from the table",
+      "B": "Modifying the data type of an existing VECTOR column to a non-VECTOR type",
+      "C": "Creating a new table using CTAS that includes the VECTOR column",
+      "D": "Adding a new VECTOR column to the table"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- VECTOR 列只能删除或新增，不能改成非 VECTOR 类型。\n\n考点总结:\nALTER TABLE … MODIFY 对 VECTOR 列的“改类型”操作被禁止。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“change datatype”为红线，其余操作均允许。"
+  },
+  {
+    "question": "### Question 55\nWhat is a key advantage of generating vector embeddings outside the database?",
+    "selections": {
+      "A": "Improved data security",
+      "B": "Flexibility in choosing specialized embedding models",
+      "C": "Simplified data management",
+      "D": "Reduced storage requirements"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 外部生成可自由选用最新或领域专用模型，不受数据库内置模型限制。\n\n考点总结:\n外部生成的最大收益是“模型自由”，而非安全或存储。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“specialized models”直接锁定 B。"
+  },
+  {
+    "question": "### Question 56\nWhich PL/SQL package is primarily used for interacting with Generative AI services in Oracle Database 23ai?",
+    "selections": {
+      "A": "DBMS_GENAI",
+      "B": "DBMS_AI_SERVICES"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- 23ai 延续 23c 命名，统一使用 DBMS_GENAI。\n\n考点总结:\n包名保持一致：DBMS_GENAI。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“GENAI”即可，无需纠结版本号差异。"
+  },
+  {
+    "question": "### Question 57\nYou are storing 1,000 embeddings in a VECTOR column, each with 256 dimensions. What is the approximate size of the data on disk?",
+    "selections": {
+      "A": "256 KB",
+      "B": "1 MB",
+      "C": "4 MB"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 256 dims × 4 bytes (FLOAT32) × 1,000 rows ≈ 1,000 × 1 KB = 1 MB；Oracle 额外开销后约 4 MB。\n\n考点总结:\n估算：dim4*rows 再乘 2~4 倍存储开销。",
+    "suggestion": "### 应试技巧与学习建议\n- 快速心算：256×4≈1 KB/向量，1,000 向量≈1 MB，再×4 选 C。"
+  },
+  {
+    "question": "### Question 58\nWhat is the purpose of the policy created in the Select AI practice environment?",
+    "selections": {
+      "A": "To enforce data encryption protocols",
+      "B": "To enable access to OCI Generative AI",
+      "C": "To define backup and recovery procedures"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 该 IAM policy 授予 Autonomous Database 访问 OCI Generative AI 的权限。\n\n考点总结:\nSelect AI 需通过 Resource Principal + Policy 打通 OCI 服务。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“enable access”直接选 B。"
+  },
+  {
+    "question": "### Question 59\nWhat is the default distance metric used by the VECTOR_DISTANCE function if none is specified?",
+    "selections": {
+      "A": "Cosine",
+      "B": "Manhattan",
+      "C": "Hamming",
+      "D": "Euclidean"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- 官方文档明确指出，当第三个参数省略时，默认使用 COSINE。\n\n考点总结:\n牢记默认度量：COSINE。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“default”与“cosine”绑定记忆。"
+  },
+  {
+    "question": "### Question 60\nWhat is the most accurate way to perform a similarity search when accuracy is the top priority?",
+    "selections": {
+      "A": "Approximate similarity search with HNSW indexing and target accuracy of 70%",
+      "B": "Multivector similarity search with partitioning",
+      "C": "Approximate similarity search with IVF indexing and target accuracy of 70%",
+      "D": "Exact similarity search using a full table scan"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- 只有全表精确扫描能保证 100% 召回，任何近似搜索都存在误差。\n\n考点总结:\n“accuracy over speed” → exact search → full table scan。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“top priority accuracy”直接选 exact/全表。"
+  },
+  {
+    "question": "### Question 61\nHow is the security interaction between Autonomous Database and OCI Generative AI managed?",
+    "selections": {
+      "A": "By encrypting all communication between the Autonomous Database and OCI Generative AI",
+      "B": "By requiring users to manually enter their OCI API keys each time they execute a native function",
+      "C": "By establishing a secure VPN tunnel between the Autonomous Database and OCI Generative AI",
+      "D": "By utilizing Resource Principals, which grant the Autonomous Database instance access to OCI services"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- Autonomous Database 通过 Resource Principals + IAM Policy 实现无密钥、安全的 OCI 服务访问。\n\n考点总结:\nResource Principals 是 Oracle 推荐的无密钥云资源互访机制。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“Resource Principals”直接锁定 D。"
+  },
+  {
+    "question": "### Question 62\nWhen generating vector embeddings outside the database, what is the most common way to store them?",
+    "selections": {
+      "A": "In a CSV file for long-term storage and retrieval",
+      "B": "In a relational database as plain text",
+      "C": "In a dedicated vector database"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 专用向量数据库（如 Milvus、Weaviate、Pinecone 等）提供高维索引与检索优化，是外部生成向量的主流落地方式。\n\n考点总结:\n外部生成 → 向量数据库；Oracle 内生成 → VECTOR 列。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“outside”即联想到“dedicated vector DB”。"
+  },
+  {
+    "question": "### Question 63\nWhat is the best approach to retrieve the top 5 most similar documents from a specific category using vector search?",
+    "selections": {
+      "A": "Use VECTOR_INDEX_HINT and NO WHERE clause",
+      "B": "Use UNION ALL with vector operations",
+      "C": "Perform the similarity search without a WHERE clause",
+      "D": "Apply relational filters and a similarity search in the query"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- 先用 WHERE category = ? 过滤关系数据，再 ORDER BY VECTOR_DISTANCE 取 Top-5，兼顾过滤与相似度排序。\n\n考点总结:\n混合查询：关系谓词 + 向量距离排序是标准写法。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“specific category”立即想到 relational filter + vector distance。"
+  },
+  {
+    "question": "### Question 64\nWhich DDL operation is NOT permitted on a table containing a VECTOR column in Oracle Database 23c AI?",
+    "selections": {
+      "A": "Dropping an existing VECTOR column from the table",
+      "B": "Modifying the data type of an existing VECTOR column to a non-VECTOR type",
+      "C": "Creating a new table using CTAS that includes the VECTOR column",
+      "D": "Adding a new VECTOR column to the table"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- VECTOR 列一旦创建，其类型不可更改为非 VECTOR；其他操作均受支持。\n\n考点总结:\nALTER TABLE … MODIFY 对 VECTOR 列的“改类型”为禁用操作。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“change datatype”是红线，其余均放行。"
+  },
+  {
+    "question": "### Question 65\nWhat is a key advantage of generating vector embeddings outside the database?",
+    "selections": {
+      "A": "Improved data security",
+      "B": "Flexibility in choosing specialized embedding models",
+      "C": "Simplified data management",
+      "D": "Reduced storage requirements"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 外部生成可自由选择最新或领域专用模型（如医学、法律），不受数据库内置模型限制。\n\n考点总结:\n模型灵活性是外部生成的最大卖点，安全与存储并非主要收益。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“specialized models”直接锁定 B。"
+  },
+  {
+    "question": "### Question 66\nWhat is the PL/SQL package primarily used for interacting with Generative AI services in Oracle Database 23ai?",
+    "selections": {
+      "A": "DBMS_GENAI",
+      "B": "DBMS_AI_SERVICES"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- 23ai 官方统一入口为 DBMS_GENAI，封装 LLM/Embedding 调用。\n\n**考点总结:**\n包名与版本无关，始终使用 DBMS_GENAI。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住缩写：GENAI → Generative AI。"
+  },
+  {
+    "question": "### Question 67\nYou are storing 1,000 embeddings in a VECTOR column, each with 256 dimensions. What is the approximate size of the data on disk?",
+    "selections": {
+      "A": "256 KB",
+      "B": "1 MB",
+      "C": "4 MB"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 256 dims × 4 bytes (FLOAT32) × 1,000 ≈ 1 MB；加上 Oracle 额外开销后约 4 MB。\n\n**考点总结:**\n快速估算：向量字节数 × 行数 × 4 倍存储系数。",
+    "suggestion": "### 应试技巧与学习建议\n- 心算：256×4=1 KB/向量 → 1 MB → ×4 ≈ 4 MB。"
+  },
+  {
+    "question": "### Question 68\nWhat is the purpose of the policy created in the Select AI practice environment?",
+    "selections": {
+      "A": "To enforce data encryption protocols",
+      "B": "To enable access to OCI Generative AI",
+      "C": "To define backup and recovery procedures"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- IAM Policy 授予 Autonomous Database Resource Principal 访问 OCI Generative AI 的权限。\n\n**考点总结:**\nSelect AI 需此 Policy 才能调用云端 LLM/Embedding 服务。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“enable access”直接锁定 B。"
+  }
+]
