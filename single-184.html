@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Oracle AI Vector Search 184 单页版</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        background: #f4f4f4;
+      }
+      .question-block {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+      .question-block h2 {
+        margin-top: 0;
+        color: #333;
+      }
+      .answers {
+        font-weight: bold;
+        color: #006600;
+      }
+      .markdown {
+        margin-top: 10px;
+      }
+      pre {
+        background: #f0f0f0;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      code {
+        background: #eee;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        border-radius: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MySQL OCP 题库单页展示</h1>
+    <button
+      onclick="window.print()"
+      style="
+        margin-bottom: 20px;
+        padding: 8px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      "
+    >
+      🖨 打印题目
+    </button>
+    <div id="questions"></div>
+
+    <script>
+      const jsonUrl = "./184-questions.json";
+      fetch(jsonUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          const container = document.getElementById("questions");
+          data.forEach((item, idx) => {
+            const block = document.createElement("div");
+            block.className = "question-block";
+
+            // 题干（支持 Markdown）
+            const qHTML = marked.parse(`${item.question}`);
+            block.innerHTML += `<div class="markdown">${qHTML}</div><br />`;
+
+            // 选项（A-F）
+            if (item.selections) {
+              let optionsMarkdown = "";
+              for (const [key, val] of Object.entries(item.selections)) {
+                optionsMarkdown += `**${key}.** ${val}\n\n`;
+              }
+              block.innerHTML += `<div class="markdown">${marked.parse(
+                optionsMarkdown
+              )}</div>`;
+            }
+
+            // 正确答案
+            const answers = Array.isArray(item.answers)
+              ? item.answers.join("")
+              : item.answers;
+            block.innerHTML += `<hr /><h3 class="answers">✅ 正确答案: ${answers}</h3>`;
+
+            // 解析与建议（markdown）
+            if (item.summary) {
+              block.innerHTML += `<div class="markdown">${marked.parse(
+                item.summary
+              )}</div>`;
+            }
+            if (item.suggestion) {
+              block.innerHTML += `<div class="markdown">${marked.parse(
+                item.suggestion
+              )}</div>`;
+            }
+
+            container.appendChild(block);
+          });
+        })
+        .catch((err) => {
+          document.getElementById("questions").innerText =
+            "❌ 加载失败：" + err.message;
+        });
+    </script>
+  </body>
+</html>
