@@ -3446,5 +3446,302 @@
         ],
         "summary": "### 选项分析与考点总结\n\n**选项分析:**\nMySQL Enterprise Backup (`mysqlbackup`) 是一个企业级物理备份工具。\nA) 它支持创建增量备份（incremental backups）。增量备份只备份自上次备份（完全备份或另一次增量备份）以来发生更改的数据页，可以显著减少备份时间和存储空间 (A 正确)。\nF) 它可以执行热备份（hot backups）或温备份（warm backups）。对于InnoDB存储引擎，它可以执行热备份，即在数据库正常运行且可读写的情况下进行备份，对应用影响最小。对于其他存储引擎（如MyISAM），可能执行温备份（需要短暂锁定）或需要其他策略 (F 正确)。\n\n错误选项分析：\nB) `mysqlbackup`主要创建物理备份，而不是逻辑备份。逻辑备份通常由`mysqldump`或`mysqlpump`创建。\nC) `mysqlbackup`本身主要用于将备份恢复到本地系统或具有相似配置的系统。要恢复到“远程MySQL系统”，通常涉及将备份文件传输到远程系统，然后在那里进行恢复操作。它不直接“支持恢复到远程系统”作为一个内建的网络恢复功能。\nD) `mysqlbackup`进行的是物理备份，会备份整个数据文件，包括表结构和数据，而不仅仅是表结构。\nE) `mysqlbackup`通常在MySQL服务器本机或可以访问其数据文件的主机上运行以执行备份。它不直接“备份远程MySQL系统”的数据文件（除非通过网络文件系统等间接方式，但这不算是其标准远程备份模式）。要备份远程系统，通常是在远程系统上运行备份工具。\n\n**考点总结:**\n此题考察MySQL Enterprise Backup的核心特性，包括其物理备份的本质、对增量备份的支持以及执行热/温备份的能力。",
         "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n将MySQL Enterprise Backup定位为一个高级的“物理备份”解决方案。记住其关键特性：热备、增量、压缩、加密等。\n\n**学习建议:**\n学习MySQL Enterprise Backup (`mysqlbackup`) 的各种备份类型（完全、增量、差异）、特性（压缩、加密、TTL、乐观备份、传输表空间等）和操作（备份、准备、恢复）。了解其与不同存储引擎（特别是InnoDB）的交互方式。进行实际的备份恢复演练，熟悉其命令行选项和配置文件。"
+    },
+    {
+        "question": "### 试题 218:\n\nWhich two types of logs can be stored in database tables?",
+        "selections": {
+            "A": "General query log",
+            "B": "Slow query log",
+            "C": "Binary log",
+            "D": "Audit log",
+            "E": "Relay log"
+        },
+        "answers": [
+            "A",
+            "B"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\nMySQL 提供了多种类型的日志文件，用于记录数据库活动、错误、以及复制等信息。其中，有两类日志是可以选择存储在数据库表中的。\nA) **General query log（通用查询日志）(A 正确)。** 通用查询日志记录了 MySQL 服务器接收到的所有客户端连接和执行的 SQL 语句。它可以通过配置选择是写入文件（默认）还是写入名为 `mysql.general_log` 的数据库表。\nB) **Slow query log（慢查询日志）(B 正确)。** 慢查询日志记录了执行时间超过 `long_query_time` 系统变量值的 SQL 语句。它同样可以通过配置选择是写入文件（默认）还是写入名为 `mysql.slow_log` 的数据库表。\n\n错误选项分析：\nC) **Binary log（二进制日志）。** 二进制日志记录了所有更改数据或可能更改数据（例如DDL和DML语句）的事件，是数据恢复和复制的基础。它只能以二进制格式写入文件，不能存储在数据库表中。\nD) **Audit log（审计日志）。** 审计日志记录了数据库的安全相关事件，例如用户登录、数据访问等。虽然审计日志插件（如 MySQL Enterprise Audit）可以提供灵活的存储选项，但其主要设计是写入文件或专门的审计存储（如 syslog），而不是直接写入常规的数据库表 `mysql.audit_log`。核心的 MySQL Audit Log 插件通常写入文件。\nE) **Relay log（中继日志）。** 中继日志是 MySQL 复制过程中从主服务器复制到从服务器的二进制日志事件的副本。它由从服务器写入，并且只能以二进制格式写入文件，不能存储在数据库表中。\n\n**考点总结:**\n此题考察 MySQL 各种日志的存储方式和特点。核心考点在于区分哪些日志可以灵活配置存储在文件或数据库表中，以及哪些日志（特别是二进制日志和中继日志）只能存储在文件。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n在记忆 MySQL 日志类型时，将日志分为“记录操作或查询”和“用于复制/恢复”两大类。通常，“记录操作或查询”的日志（如通用查询日志和慢查询日志）在特定配置下可以存储在表中，而“用于复制/恢复”的日志（如二进制日志和中继日志）则只能是文件。\n\n**学习建议:**\n深入学习 MySQL 的各种日志：\n1.  **错误日志 (Error Log):** 记录服务器启动、关闭和运行过程中的错误、警告和事件。\n2.  **通用查询日志 (General Query Log):** 记录所有连接和执行的语句，了解其如何启用、存储位置（文件或表）以及对性能的影响。\n3.  **慢查询日志 (Slow Query Log):** 记录执行时间超过阈值的查询，了解其配置（`long_query_time`）、存储位置（文件或表）以及如何用于性能优化。\n4.  **二进制日志 (Binary Log):** 掌握其作用（数据恢复、复制）、格式以及无法存储在表中的原因。\n5.  **中继日志 (Relay Log):** 理解其在主从复制中的作用以及文件存储的特性。\n6.  **审计日志 (Audit Log):** 了解其目的和常见的实现方式（通常通过插件）。\n\n通过配置和实践不同日志的启用和查看，可以加深理解。"
+    },
+    {
+        "question": "### 试题 219:\n\nExamine these queries and output:\n\n```sql\nmysql> EXPLAIN FORMAT=TREE SELECT * FROM city WHERE CountryCode LIKE 'A%'\n*************************** 1. row ***************************\nEXPLAIN: -> Index range scan on city using CountryCode, with index condition: (city.CountryCode like 'A%') (cost=129.41 rows=107)\n1 row in set (0.00 sec)\n\nmysql> EXPLAIN FORMAT=TREE SELECT * FROM city WHERE CountryCode LIKE 'C%'\n*************************** 1. row ***************************\nEXPLAIN: -> Filter: (city.CountryCode like 'C%') (cost=429.60 rows=551)\n-> Table scan on city (cost=429.60 rows=4046)\n1 row in set (0.00 sec)\n```\n\nThe `city` table is using the InnoDB storage engine.\n\nWhich statement is true?",
+        "selections": {
+            "A": "The `city` table has exactly 4046 rows.",
+            "B": "The `CountryCode` index has no statistics.",
+            "C": "The `CountryCode` index is a hash index.",
+            "D": "The `CountryCode` column is the primary key of the `city` table.",
+            "E": "The predicate `CountryCode LIKE 'A%'` is more selective than `CountryCode LIKE 'C%'`."
+        },
+        "answers": [
+            "E"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n这道题目通过两个 `EXPLAIN FORMAT=TREE` 的输出，考察了 `MySQL` 优化器对 `LIKE` 查询的索引使用和选择性判断。`city` 表使用 `InnoDB` 存储引擎。\n\n**第一个 `EXPLAIN` (WHERE CountryCode LIKE 'A%'):**\n`EXPLAIN: -> Index range scan on city using CountryCode, with index condition: (city.CountryCode like 'A%') (cost=129.41 rows=107)`\n* `Index range scan`: 表示优化器使用了 `CountryCode` 列上的索引进行范围扫描。\n* `rows=107`: 优化器估计满足 `CountryCode LIKE 'A%'` 条件的行数为 107。\n\n**第二个 `EXPLAIN` (WHERE CountryCode LIKE 'C%'):**\n`EXPLAIN: -> Filter: (city.CountryCode like 'C%') (cost=429.60 rows=551)`\n`-> Table scan on city (cost=429.60 rows=4046)`\n* `Table scan on city`: 表示优化器选择了全表扫描，没有使用 `CountryCode` 上的索引。\n* `Filter: (city.CountryCode like 'C%')`: 表示在全表扫描后，MySQL 会对所有行进行过滤，以找出满足 `CountryCode LIKE 'C%'` 条件的行。\n* `rows=4046` (在 `Table scan` 行中): 这表示优化器估计 `city` 表的总行数为 4046。\n* `rows=551` (在 `Filter` 行中): 优化器估计满足 `CountryCode LIKE 'C%'` 条件的行数为 551。\n\n现在分析选项：\nA) **The `city` table has exactly 4046 rows。** 从第二个 `EXPLAIN` 的 `Table scan on city (cost=429.60 rows=4046)` 中可以看出，优化器估算的表总行数是 4046。虽然这不是“精确”的行数（`EXPLAIN` 中的 `rows` 是一个估算值），但在没有更精确信息的情况下，这是最接近的答案。然而，`EXPLAIN` 的 `rows` 是估算值，不保证精确，所以“exactly”一词使得这个选项存疑。\nB) **The `CountryCode` index has no statistics。** 如果索引没有统计信息，优化器通常很难做出有效的索引选择决策，或者会选择全表扫描。但在这里，对于 `LIKE 'A%'` 的查询，它使用了索引，这表明索引有足够的统计信息供优化器使用。如果完全没有统计信息，那么两个查询很可能都会进行全表扫描。\nC) **The `CountryCode` index is a hash index。** `InnoDB` 表默认使用 B-tree 索引。虽然 MySQL 支持哈希索引（例如 Memory 存储引擎或通过自适应哈希索引），但 `EXPLAIN` 输出中没有明确指示这是哈希索引。`Index range scan` 是 B-tree 索引的典型行为，而哈希索引通常用于等值查询（`=`），并且不支持范围扫描（`LIKE 'A%'`）。因此，此选项不正确。\nD) **The `CountryCode` column is the primary key of the `city` table。** 如果 `CountryCode` 是主键，那么 `SELECT * FROM city WHERE CountryCode LIKE 'A%'` 的 `EXPLAIN` 输出会显示 `const` 或 `eq_ref` 等更高效的访问类型，或者在 `PRIMARY` 索引上进行操作。这里显示的是 `Index range scan`，说明 `CountryCode` 可能是普通索引，而不是主键。\nE) **The predicate `CountryCode LIKE 'A%'` is more selective than `CountryCode LIKE 'C%'` (E 正确)。**\n* 对于 `LIKE 'A%'`，优化器估计结果集有 107 行。\n* 对于 `LIKE 'C%'`，优化器估计结果集有 551 行。\n选择性（Selectivity）是指谓词能够过滤掉的行数占总行数的比例，或者说，满足条件的行数占总行数的比例越小，选择性越高。107/4046 (约 2.6%) 明显小于 551/4046 (约 13.6%)。因此，`CountryCode LIKE 'A%'` 的选择性更高，这也是为什么优化器选择了索引扫描，因为它能更快地找到少量匹配的行；而 `CountryCode LIKE 'C%'` 的选择性较低，优化器认为全表扫描并过滤比索引扫描更高效。\n\n**考点总结:**\n此题考察 `MySQL EXPLAIN` 命令的输出解读，特别是关于：\n1.  **索引使用（Index Usage）：** 识别 `Index range scan` 和 `Table scan`。\n2.  **优化器估算（Optimizer Estimates）：** 理解 `rows` 字段表示优化器估算的行数。\n3.  **查询选择性（Query Selectivity）：** 如何通过估算行数判断谓词的选择性。\n4.  **索引类型和适用性：** `LIKE` 条件对索引使用的影响，以及 B-tree 索引与哈希索引的区别。\n5.  **主键索引的特性：** 了解主键索引通常的访问方式。\n\n理解优化器如何根据谓词的选择性来决定是否使用索引是解决此类问题的关键。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n仔细分析 `EXPLAIN` 输出中的 `type` (或 `FORMAT=TREE` 格式下的操作类型，如 `Index range scan`, `Table scan`) 和 `rows` 字段。`rows` 字段是优化器估算的行数，是判断选择性的直接依据。当 `rows` 估算值占总行数比例较小，且使用了索引时，通常表明选择性较高。\n\n**学习建议:**\n1.  **熟练掌握 `EXPLAIN` 命令:** 学习 `EXPLAIN` 的各种输出字段及其含义，特别是 `id`, `select_type`, `table`, `partitions`, `type`, `possible_keys`, `key`, `key_len`, `ref`, `rows`, `filtered`, `Extra` 等。`FORMAT=TREE` 是 MySQL 8.0 引入的新格式，也应熟悉。\n2.  **理解索引工作原理:** 深入理解 B-tree 索引的工作原理，以及它如何支持等值查询、范围查询（如 `LIKE 'prefix%'`）和排序。了解哈希索引的特点和局限性。\n3.  **掌握查询优化器原理:** 了解优化器如何根据表的统计信息（如行数、索引基数、数据分布）来估算查询成本，并选择最佳的执行计划。\n4.  **理解选择性（Selectivity）：** 它是数据库优化的一个核心概念。高选择性的查询（过滤掉大量数据）通常能更好地利用索引。\n5.  **实践 `LIKE` 查询和索引：** 通过实际操作，测试不同 `LIKE` 模式（如 `LIKE 'prefix%'` vs `LIKE '%suffix'` vs `LIKE '%pattern%'`）对索引使用的影响，并观察 `EXPLAIN` 输出的变化。"
+    },
+    {
+        "question": "### 试题 220:\n\nExamine this command which executes successfully:\n\n```bash\nmysqlbackup --user=mysqlbackup --password --backup-image=/home/backup.mbi --backup-dir=/home/backupdir backup-to-image\n```\n\nWhich command restores the backup to the original data directory?",
+        "selections": {
+            "A": "`mysqlbackup --backup-dir=/home/backupdir copy-back`",
+            "B": "`mysqlbackup --backup-dir=/home/backupdir apply-log`",
+            "C": "`mysqlbackup --backup-dir=/home/backupdir --backup-image=/home/backup.mbi copy-back`",
+            "D": "`mysqlbackup --backup-dir=/home/backupdir --backup-image=/home/backup.mbi copy-back-and-apply-log`",
+            "E": "`mysqlbackup --backup-dir=/home/backupdir --backup-image=/home/backup.mbi extract`"
+        },
+        "answers": [
+            "D"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n题目中给出的命令是使用 `mysqlbackup` 工具创建了一个“备份镜像”（backup image）。命令 `backup-to-image` 将数据库备份到一个单一的压缩文件中（即 `.mbi` 文件），同时将一些中间文件和元数据存储在 `--backup-dir` 指定的目录中。现在的问题是如何将这个备份还原到原始数据目录。\n\n`mysqlbackup` 的恢复过程通常分为两个阶段：\n1.  **准备阶段 (Preparation):** `apply-log` 或 `copy-back-and-apply-log`。这个阶段会应用备份期间产生的事务日志（redo log），使数据文件达到一致性状态。\n2.  **还原阶段 (Restore):** `copy-back`。这个阶段将准备好的数据文件从备份目录复制回 MySQL 的数据目录。\n\n分析选项：\nA) **`mysqlbackup --backup-dir=/home/backupdir copy-back`**：这个命令只执行 `copy-back` 操作。对于使用 `backup-to-image` 创建的 `.mbi` 备份，`copy-back` 操作需要知道备份镜像文件的位置。更重要的是，在复制回数据目录之前，备份数据通常需要经过 `apply-log` 阶段，使其处于一致状态。这个命令缺少 `apply-log` 步骤和 `backup-image` 参数。\nB) **`mysqlbackup --backup-dir=/home/backupdir apply-log`**：这个命令只执行 `apply-log` 操作。它通常是在 `backup-dir` 目录下对已解压的备份文件进行准备，使其达到一致性。然而，从 `.mbi` 文件恢复需要先将内容解压或使用能处理 `.mbi` 的操作。它缺少 `copy-back` 步骤和 `backup-image` 参数。\nC) **`mysqlbackup --backup-dir=/home/backupdir --backup-image=/home/backup.mbi copy-back`**：这个命令指定了 `backup-image` 并执行 `copy-back`。但是，它缺少了对日志进行应用（`apply-log`）的步骤。直接复制一个未经准备的物理备份可能导致数据不一致。\nD) **`mysqlbackup --backup-dir=/home/backupdir --backup-image=/home/backup.mbi copy-back-and-apply-log` (D 正确)。** `copy-back-and-apply-log` 是 `mysqlbackup` 提供的一个组合操作，它首先从 `backup-image` 文件中将数据复制到 `backup-dir`，然后立即对这些数据应用事务日志（redo log），使其达到一致状态，最后将准备好的数据复制到 MySQL 的数据目录。这个命令完整地处理了从备份镜像文件还原到原始数据目录所需的所有步骤：解压、准备和复制。\nE) **`mysqlbackup --backup-dir=/home/backupdir --backup-image=/home/backup.mbi extract`**：`extract` 命令用于将备份镜像文件 (`.mbi`) 的内容解压到指定的 `--backup-dir` 目录，但它不执行日志应用 (`apply-log`) 或复制到最终数据目录 (`copy-back`) 的步骤。它只是解压。\n\n**考点总结:**\n此题考察 `MySQL Enterprise Backup (MEB)` 中 `mysqlbackup` 命令的恢复流程，特别是从备份镜像文件 (`.mbi`) 进行恢复的完整步骤和相关参数。理解 `apply-log` 和 `copy-back` 在物理备份恢复中的作用，以及 `copy-back-and-apply-log` 作为一个组合操作的便利性是关键。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n对于 `mysqlbackup` 的恢复命令，记住两个核心步骤：**准备 (prepare / apply-log)** 和 **还原 (copy-back)**。当从 `.mbi` 文件恢复时，还需要指定 `backup-image`。`copy-back-and-apply-log` 是一个方便的组合命令，它集成了这两步（以及从镜像中解压），是物理备份恢复的常见做法。\n\n**学习建议:**\n1.  **了解 `mysqlbackup` 的备份类型:** 掌握 `backup-dir` (目录备份) 和 `backup-to-image` (镜像备份) 的区别。\n2.  **熟悉 `mysqlbackup` 的恢复流程:** 这是一个多阶段的过程。通常是 `backup` -> `apply-log` (或 `prepare`) -> `copy-back`。\n3.  **掌握关键的 `mysqlbackup` 恢复命令和参数：**\n    * `apply-log`：用于使备份数据一致。\n    * `copy-back`：用于将数据复制回 MySQL 的数据目录。\n    * `copy-back-and-apply-log`：用于一站式完成准备和复制。\n    * `extract`：用于从 `.mbi` 镜像中解压内容。\n    * `--backup-dir`: 指定备份的目录。\n    * `--backup-image`: 指定备份镜像文件。\n4.  **实践操作：** 最好能在测试环境中实际操作 `mysqlbackup` 的备份和恢复过程，加深理解。这将帮助你理解每个命令的作用和参数的必要性。"
+    },
+    {
+        "question": "### 试题 221:\n\nWhich two are benefits of Group Replication over circular replication?",
+        "selections": {
+            "A": "Group Replication performs conflict resolution.",
+            "B": "Group Replication supports all storage engines.",
+            "C": "Group Replication detects and handles network partitioning.",
+            "D": "Group Replication scales write operations.",
+            "E": "Group Replication partitions data across multiple MySQL servers."
+        },
+        "answers": [
+            "A",
+            "C"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\nMySQL Group Replication (MGR) 是一种高可用性和高伸缩性的多主更新（multi-primary update）复制解决方案，它基于 Paxos 协议实现，提供了比传统循环复制（Circular Replication，通常指异步或半同步的主从复制链）更多的优势。\n\nA) **Group Replication performs conflict resolution (A 正确)。** MGR 的一个核心特性是内置了冲突检测和解决机制。当多个成员同时写入并导致冲突时（例如，对同一行进行不同修改），MGR 会自动检测并根据配置的策略（通常是“第一个提交者获胜”）来处理冲突，确保数据一致性。传统循环复制在多主写入时通常需要外部机制来处理冲突，或者根本不推荐多主写入。\n\nC) **Group Replication detects and handles network partitioning (C 正确)。** MGR 通过 Paxos 协议的分布式共识机制，能够检测并自动处理网络分区（split-brain）。当发生网络分区时，只有拥有大多数成员的分区才能继续执行写入操作，从而避免了数据不一致性。传统的主从复制在网络分区时可能导致脑裂，不同节点写入不同数据而无法同步。\n\n错误选项分析：\nB) **Group Replication supports all storage engines。** MGR **主要依赖 InnoDB 存储引擎**，因为它需要 InnoDB 的事务能力、行级锁定和二进制日志。虽然理论上可以与非事务性引擎（如 MyISAM）一起使用，但 MGR 的核心功能和数据一致性保证是基于 InnoDB 的。因此，说它支持“所有”存储引擎是不准确的，尤其是无法充分利用非事务性引擎的特性。\nD) **Group Replication scales write operations。** 虽然 MGR 支持多主写入（所有成员都可以接受写入请求），但由于其内部的原子性广播和共识协议（Paxos），**写入操作实际上是同步的，这意味着所有成员都需要对每笔事务达成共识，这在一定程度上限制了写入的吞吐量，并不会像分片（sharding）那样真正线性扩展写入能力。** MGR 更多是提供高可用性和读扩展，而非线性写扩展。线性写扩展通常通过分片实现。\nE) **Group Replication partitions data across multiple MySQL servers。** **数据分区（Data Partitioning）或分片（Sharding）是另外一种扩展数据库的方法**，它将数据分散存储在不同的独立服务器上。Group Replication 是一个复制技术，旨在提供相同数据集的高可用性和一致性，而不是将数据在不同服务器之间进行分区存储。两者是不同的概念和解决方案。\n\n**考点总结:**\n此题考察 MySQL Group Replication 相较于传统复制的主要优势，特别是其在**冲突解决、网络分区处理**以及高可用性方面的能力。理解 MGR 的设计目标和底层机制是关键。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n将 Group Replication 的优势与传统主从复制（异步/半同步）进行对比。重点关注 MGR 带来的分布式一致性、高可用性和多主写入能力。排除那些描述分片（Sharding）或通用安全/性能特性的选项。\n\n**学习建议:**\n1.  **理解 MGR 的核心概念:** 学习其成员资格服务、分布式共识协议（Paxos）、原子性广播以及冲突检测和解决机制。\n2.  **MGR 与传统复制的对比:** 明确 MGR 在高可用性、脑裂预防、自动化管理方面的优势。了解其多主更新模型（尽管写扩展受限）。\n3.  **MGR 的限制和适用场景:** 认识到 MGR 对 InnoDB 的依赖，以及其在写扩展方面的局限性。它更适合需要高可用性和数据强一致性的场景，而不是纯粹的线性写扩展。\n4.  **关注 MGR 的具体特性:** 例如，`single-primary` 模式与 `multi-primary` 模式的区别，以及故障转移和恢复的机制。\n5.  **阅读官方文档:** MySQL 官方文档是学习 Group Replication 最佳的资源，它提供了详细的配置、管理和最佳实践指南。"
+    },
+    {
+        "question": "### 试题 222:\n\nAn application that is running on a Windows desktop needs to access data from a MySQL server running on a Linux server.\n\nWhich connection protocol must you use?",
+        "selections": {
+            "A": "UNIX socket",
+            "B": "Named pipe",
+            "C": "Shared memory",
+            "D": "TCP/IP",
+            "E": "UDP"
+        },
+        "answers": [
+            "D"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n此题考察 MySQL 客户端与服务器之间的连接协议。关键信息是应用程序运行在 Windows 桌面，而 MySQL 服务器运行在 Linux 服务器上，这意味着它们是不同的机器，需要通过网络进行通信。\n\nA) **UNIX socket (A 错误)。** UNIX socket (Unix域套接字) 是一种用于**同一台机器上不同进程间通信**的机制。它通过文件系统路径来表示，无法用于跨网络的连接。Windows 系统也不直接支持 UNIX socket。\nB) **Named pipe (B 错误)。** 命名管道是一种主要用于 **Windows 操作系统上本地进程间通信**的机制。它通常用于在同一台 Windows 机器上连接 MySQL 客户端和服务器，不能用于跨操作系统的网络连接。\nC) **Shared memory (C 错误)。** 共享内存是一种允许**同一台机器上不同进程共享一块内存区域**以进行高效通信的机制。它也仅限于本地连接，无法用于跨网络的连接。\nD) **TCP/IP (D 正确)。** TCP/IP (传输控制协议/互联网协议) 是**互联网上最常用的通信协议栈**。它允许不同主机（无论是 Windows 还是 Linux）上的应用程序通过网络进行通信。MySQL 服务器通常监听一个 TCP 端口（默认为 3306），客户端通过 TCP/IP 连接到这个端口来访问数据库。\nE) **UDP (E 错误)。** UDP (用户数据报协议) 是一种**无连接的、不可靠的传输协议**。虽然它也可以用于网络通信，但 MySQL 客户端-服务器通信主要使用 TCP/IP，因为 TCP 提供了可靠的数据传输、流量控制和错误恢复机制，这对于数据库操作至关重要。UDP 不适用于这种需要可靠连接的场景。\n\n**考点总结:**\n此题考察 MySQL 客户端连接协议的基础知识，特别是区分本地连接协议（UNIX socket, Named pipe, Shared memory）和跨网络连接协议（TCP/IP）。理解不同协议的适用场景是关键。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n当题目描述的是**不同机器之间**的连接时，答案几乎总是 `TCP/IP`。本地连接选项（UNIX socket, Named pipe, Shared memory）适用于客户端和服务器运行在**同一台机器上**的情况。排除 UDP，因为它不提供可靠的数据传输，不适用于数据库连接。\n\n**学习建议:**\n1.  **深入理解 MySQL 连接协议:** 学习各种连接协议的特点和适用场景。\n    * **TCP/IP:** 默认且最常用的网络连接方式，用于跨主机连接。记住默认端口 3306。\n    * **UNIX socket:** Linux/Unix 系统本地连接的首选，高效。\n    * **Named pipe:** Windows 系统本地连接的一种方式。\n    * **Shared memory:** 仅限 Windows，在服务器和客户端在同一台机器时提供最高效的本地连接。\n2.  **配置 MySQL 监听:** 了解 `my.cnf` 或 `my.ini` 中如何配置 `bind-address` 来控制 MySQL 服务器监听哪些 IP 地址和端口，以及如何启用/禁用本地连接协议。\n3.  **客户端连接字符串:** 熟悉不同语言的 MySQL 客户端库如何构建连接字符串来指定连接协议、主机、端口等信息。"
+    },
+    {
+        "question": "### 试题 223:\n\nMySQL 8.0 supports data-at-rest encryption.\n\nWhich three types of files can be encrypted?",
+        "selections": {
+            "A": "Error logs",
+            "B": "General query logs",
+            "C": "Slow query logs",
+            "D": "Binary logs",
+            "E": "InnoDB tablespaces",
+            "F": "InnoDB redo logs",
+            "G": "MyISAM tables"
+        },
+        "answers": [
+            "D",
+            "E",
+            "F"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\nMySQL 8.0 引入了**数据静态加密（Data-at-rest encryption）**功能，主要通过 `InnoDB` 表空间加密和二进制日志加密来实现，旨在提高数据的安全性，防止未经授权的物理访问导致数据泄露。加密通常由 Keyring 插件管理。\n\nD) **Binary logs (D 正确)。** MySQL 8.0 支持对二进制日志进行加密。二进制日志包含所有数据修改的事件，加密它们对于确保数据在传输和静态存储时的安全至关重要，尤其是在复制环境中。\nE) **InnoDB tablespaces (E 正确)。** `InnoDB` 表空间加密是 MySQL 8.0 静态数据加密的核心功能。它可以对独立的 `InnoDB` 表空间 (`.ibd` 文件) 和通用表空间中的数据进行加密，包括表数据、索引、undo logs 等。这意味着即使文件被非法获取，没有密钥也无法读取内容。\nF) **InnoDB redo logs (F 正确)。** `InnoDB` 重做日志 (`redo logs`) 记录了所有对 `InnoDB` 数据进行修改的物理操作。在 MySQL 8.0 中，`redo logs` 也可以被加密，这是确保数据库数据完整性和恢复能力的最后一道防线，因为它们包含了尚未写入数据文件的变更信息。\n\n错误选项分析：\nA) **Error logs (A 错误)。** 错误日志记录服务器的启动、关闭、警告和错误信息。这些日志通常是文本文件，MySQL 8.0 的静态加密功能不直接支持对其进行加密。日志的加密通常由操作系统层面的加密（如文件系统加密）或外部工具实现。\nB) **General query logs (B 错误)。** 通用查询日志记录了所有客户端连接和执行的 SQL 语句。与错误日志类似，它们通常是文本文件，不直接受 MySQL 8.0 静态加密功能的保护。如果存储在 `mysql.general_log` 表中，理论上如果表空间被加密，数据也会被加密，但通常我们谈论的是文件层面的加密。\nC) **Slow query logs (C 错误)。** 慢查询日志记录执行时间超过阈值的 SQL 语句。与通用查询日志和错误日志一样，它们通常是文本文件，不直接受 MySQL 8.0 静态加密功能的保护。\nG) **MyISAM tables (G 错误)。** `MySQL 8.0` 的静态加密功能主要针对 `InnoDB` 存储引擎。`MyISAM` 是一种非事务性存储引擎，**不直接支持表空间级别的加密**。`MyISAM` 表的数据文件通常是 `.MYD` 和 `.MYI` 文件，它们不包含在 `InnoDB` 的加密范畴内。如果需要加密 `MyISAM` 数据，通常需要依赖文件系统级别的加密。\n\n**考点总结:**\n此题考察 MySQL 8.0 静态数据加密（Data-at-rest encryption）的具体范围。核心考点在于识别哪些是 `InnoDB` 相关的关键数据文件和二进制日志，它们是该加密功能的主要目标，而其他类型的文本日志和非 `InnoDB` 表（如 `MyISAM`）则不直接支持。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n记住 `MySQL 8.0` 的静态加密主要集中在**事务性存储引擎（尤其是 `InnoDB`）**和**二进制日志**。对于普通文本日志（如错误日志、查询日志、慢日志）和非事务性存储引擎（如 `MyISAM`），MySQL 自身的加密功能不直接适用。\n\n**学习建议:**\n1.  **理解静态加密的目标：** 为什么需要静态加密？它保护的是什么（主要是数据文件和日志文件，以防物理泄露）。\n2.  **了解 MySQL 的 Keyring 插件：** 这是实现静态加密的关键组件，用于管理加密密钥。\n3.  **区分可加密和不可加密的文件类型：**\n    * **可加密：** `InnoDB` 表空间（包括独立表空间和通用表空间）、`InnoDB` 重做日志、二进制日志。\n    * **不可直接加密（通过 MySQL 自身功能）：** 错误日志、通用查询日志、慢查询日志（通常为文本文件）、`MyISAM` 表文件、`CSV` 等其他存储引擎的文件。\n4.  **掌握相关系统变量和配置：** 了解如何启用和配置静态加密，例如 `innodb_encrypt_tablespaces`、`binlog_encryption` 等。\n5.  **安全最佳实践：** 了解除了静态加密，还有哪些安全措施（如传输加密、访问控制、审计日志）可以提高 MySQL 数据库的整体安全性。"
+    },
+    {
+        "question": "### 试题 224:\n\nExamine this statement and output:\n\n```sql\nmysql> SET log_slave_updates=0;\nERROR 1238 (HY000): Variable 'log_slave_updates' is a read only variable\n```\n\nWhich method changes `log_slave_updates` to 0 immediately?",
+        "selections": {
+            "A": "`SET GLOBAL log_slave_updates=0;`",
+            "B": "`SET PERSIST log_slave_updates=0;`",
+            "C": "`SET PERSIST_ONLY log_slave_updates=0;`",
+            "D": "`SET PERSIST log_slave_updates=0; RESTART;`",
+            "E": "`SET PERSIST_ONLY log_slave_updates=0; RESTART;`"
+        },
+        "answers": [
+            "E"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n题目中显示 `SET log_slave_updates=0;` 报错 `ERROR 1238 (HY000): Variable 'log_slave_updates' is a read only variable`。这意味着 `log_slave_updates` 是一个只读系统变量，不能在运行时通过 `SET` 命令直接修改（即使是 `SET GLOBAL` 也不行）。对于这类只读变量，通常需要在 MySQL 服务器启动时在配置文件（如 `my.cnf` 或 `my.ini`）中设置，或者使用 `SET PERSIST` 系列命令将其持久化到 `mysqld-auto.cnf` 文件中，然后在**下次重启服务器后**才能生效。\n\n`log_slave_updates` 这个变量控制从服务器是否将其收到的（和执行的）事件写入自己的二进制日志。将其设置为 0 意味着从服务器不会将其复制操作记录到自己的二进制日志中，这在某些级联复制或特定备份场景中可能会用到。\n\n分析选项：\nA) **`SET GLOBAL log_slave_updates=0;` (A 错误)。** `SET GLOBAL` 用于修改当前运行服务器的全局变量值。但由于 `log_slave_updates` 是一个只读变量，此命令会像题目中 `SET` 命令一样报错，无法立即修改。\nB) **`SET PERSIST log_slave_updates=0;` (B 错误)。** `SET PERSIST` 命令用于将系统变量的值写入 `mysqld-auto.cnf` 文件，使其在服务器重启后生效。虽然它能持久化设置，但对于只读变量，它**不能立即生效**。命令执行时会提示变量是只读的，且需要重启才能生效。\nC) **`SET PERSIST_ONLY log_slave_updates=0;` (C 错误)。** `SET PERSIST_ONLY` 同样用于持久化变量设置到 `mysqld-auto.cnf` 文件，与 `SET PERSIST` 的主要区别在于它**只持久化，不尝试立即修改当前会话或全局值**。因此，它也不能“立即”改变只读变量的值。它依然需要重启才能生效。\nD) **`SET PERSIST log_slave_updates=0; RESTART;` (D 错误)。** `RESTART` 并不是 `SET PERSIST` 命令的一部分。`SET PERSIST` 是一个 SQL 命令，`RESTART` 是一个 SQL 命令，它们是独立的。虽然 `SET PERSIST` 之后需要重启，但将 `RESTART` 直接写在同一个 SQL 语句中是语法错误的。而且，即使能够这样写，也不是 `SET PERSIST` 命令本身能“立即”改变值，而是“重启”这个动作改变的。\nE) **`SET PERSIST_ONLY log_slave_updates=0; RESTART;` (E 正确)。** 就像上面分析的，`log_slave_updates` 是一个只读变量，不能在运行时直接修改。要使其生效，必须：\n    1.  通过 `SET PERSIST_ONLY` (或 `SET PERSIST`) 将新值写入配置文件，以便持久化。\n    2.  **重启 MySQL 服务器**。只有重启后，服务器才会读取新的配置值并应用它。因此，`SET PERSIST_ONLY log_slave_updates=0;` 后跟着执行服务器 `RESTART` 操作（这是通过操作系统或服务管理工具完成的，而非 SQL 命令），是改变这个只读变量并使其立即生效的唯一方法（从服务器的角度看，“立即生效”指的是重启后）。选项中将 `RESTART` 以这种方式呈现，暗示了这是一个需要在命令执行后进行的独立操作。\n\n**考点总结:**\n此题考察 `MySQL` 系统变量的类型（特别是只读变量）以及 `SET`、`SET GLOBAL`、`SET PERSIST`、`SET PERSIST_ONLY` 命令的用法和区别。核心考点是理解对于只读变量，**任何运行时修改都无效，必须通过修改配置文件并在服务器重启后才能生效**。`SET PERSIST_ONLY` 专门用于这种情况，因为它不尝试在运行时修改当前值，只负责持久化。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n遇到 `Variable '...' is a read only variable` 错误时，立即想到需要**重启**才能使变量生效。`SET PERSIST` 和 `SET PERSIST_ONLY` 的作用是持久化配置，本身不会让只读变量立即生效。选项中包含 `RESTART` 的往往是正确方向，但要注意 `RESTART` 通常不是 SQL 命令的一部分，而是独立的服务器操作。\n\n**学习建议:**\n1.  **系统变量分类：** 学习 `MySQL` 系统变量的范围（GLOBAL, SESSION）和类型（动态可修改、只读）。\n2.  **`SET` 命令家族：**\n    * `SET variable = value;` (SESSION 级别)\n    * `SET GLOBAL variable = value;` (GLOBAL 级别，影响后续连接)\n    * `SET PERSIST variable = value;` (GLOBAL 级别，同时持久化到 `mysqld-auto.cnf`，并尝试立即生效)\n    * `SET PERSIST_ONLY variable = value;` (只持久化到 `mysqld-auto.cnf`，不尝试立即修改当前值)\n3.  **配置文件 (`my.cnf`) 和 `mysqld-auto.cnf`：** 理解它们在 `MySQL` 配置中的作用，以及 `SET PERSIST` 系列命令对 `mysqld-auto.cnf` 的影响。\n4.  **服务器重启的重要性：** 明确哪些变量的更改需要重启服务器才能生效。"
+    },
+    {
+        "question": "### 试题 225:\n\nWhich two statements are true about multisource replication?",
+        "selections": {
+            "A": "Each channel has its own IO thread.",
+            "B": "Each channel has its own master.info file.",
+            "C": "All channels share one SQL thread.",
+            "D": "All channels share the same relay log files.",
+            "E": "Each source server has a binary log dump thread."
+        },
+        "answers": [
+            "A",
+            "E"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\nMySQL 多源复制（Multisource Replication）允许一个从服务器从多个主服务器接收并应用二进制日志事件。这在合并多个数据源或构建数据仓库等场景中非常有用。\n\nA) **Each channel has its own IO thread (A 正确)。** 在多源复制中，每个复制通道（channel）对应一个独立的主服务器。为了从各自的主服务器获取二进制日志事件，每个通道都会启动一个独立的 I/O 线程（`Receiver_IO_thread`），负责连接主服务器并读取其二进制日志事件。\n\nE) **Each source server has a binary log dump thread (E 正确)。** 二进制日志 dump 线程 (`Binlog Dump thread`) 是在**主服务器**上运行的。每当一个从服务器连接到主服务器并请求二进制日志事件时，主服务器就会为该从服务器启动一个独立的 `Binlog Dump thread`。因此，如果一个主服务器有多个从服务器连接（包括多个多源复制的通道），它就会有多个 `Binlog Dump thread`。这适用于所有类型的 MySQL 复制，包括多源复制。\n\n错误选项分析：\nB) **Each channel has its own master.info file。** `master.info` 文件（在 MySQL 8.0 中通常是 `mysql.slave_master_info` 表）用于存储从服务器连接到主服务器的信息，例如主服务器的地址、端口、用户名、密码以及从服务器读取到的二进制日志文件名和位置。在多源复制中，这些信息是针对**每个通道**独立存储的。所以，更准确的说法是每个通道有自己独立的存储来记录这些信息，而不是一个独立的 `master.info` 文件（如果以文件形式存在，通常只有一个文件包含所有通道信息，或者说每个通道的元数据单独存储）。但在 MySQL 8.0 中，这些信息存储在 `mysql.slave_master_info` 和 `mysql.slave_relay_log_info` 表中，每个通道在这些表中都有独立的记录，而不是独立的文件。\nC) **All channels share one SQL thread。** **这是错误的。** 在多源复制中，虽然早期版本可能存在单 SQL 线程的限制，但在现代 MySQL 版本（尤其是支持多源复制的版本）中，为了并行应用来自不同源的事件，**每个通道都有自己的 SQL 线程**（`Applier_SQL_thread`）。这样可以避免单个 SQL 线程成为瓶颈，提高应用效率。\nD) **All channels share the same relay log files。** **这是错误的。** 每个通道都有自己的**独立的**中继日志文件集。这是为了确保不同主服务器的事件流可以独立管理和应用，防止混淆和冲突。中继日志文件存储在从服务器的数据目录下，通常以 `relay-log.index` 文件来索引，并且每个通道都有自己的索引文件和对应的中继日志文件。\n\n**考点总结:**\n此题考察 `MySQL` 多源复制的架构和工作原理，特别是不同线程和文件在多通道环境下的独立性。核心考点在于理解每个复制通道的资源（I/O 线程、SQL 线程、中继日志）都是独立的，而主服务器的二进制日志 `dump` 线程是为每个连接的从服务器独立生成的。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n理解多源复制的核心是**“通道（Channel）”**的概念。每个通道可以看作是独立的单源复制实例。因此，与特定源（主服务器）相关的资源（如 I/O 线程、SQL 线程、中继日志）通常都是**通道级别独立**的。二进制日志 `dump` 线程是主服务器为每个从服务器连接生成的。\n\n**学习建议:**\n1.  **深入理解 MySQL 复制的基本架构：** 掌握主服务器的二进制日志、主服务器的 `Binlog Dump thread`、从服务器的 I/O 线程、从服务器的 SQL 线程、以及从服务器的中继日志。\n2.  **学习多源复制的概念：** 理解“通道”在多源复制中的作用，它如何将来自不同主服务器的事件流隔离开。\n3.  **区分各线程和文件的归属：**\n    * **主服务器：** `Binlog Dump thread`（每个连接的从服务器一个）。\n    * **从服务器（多源复制）：**\n        * I/O 线程：每个通道一个。\n        * SQL 线程：每个通道一个。\n        * 中继日志：每个通道独立一套。\n        * `master.info` / `slave_master_info`：信息存储针对每个通道独立记录。\n4.  **实践多源复制配置：** 通过实际配置和运行多源复制，可以更直观地理解其工作原理和各组件之间的关系。"
+    },
+    {
+        "question": "### 试题 226:\n\nWhich type of file is required to perform a point-in-time recovery?",
+        "selections": {
+            "A": "InnoDB redo log",
+            "B": "InnoDB undo log",
+            "C": "Binary log",
+            "D": "Relay log",
+            "E": "General query log"
+        },
+        "answers": [
+            "C"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n**时间点恢复 (Point-in-Time Recovery, PITR)** 是指将数据库恢复到在某个特定时间点或特定事件之前/之后的状态。这种恢复能力是数据库备份和恢复策略的关键组成部分，它允许用户从数据损坏、意外删除或逻辑错误中恢复，而不仅仅是恢复到最近一次全备份的状态。\n\nC) **Binary log (C 正确)。** 二进制日志（Binary Log，通常简称为 Binlog）是进行时间点恢复的**核心文件**。它记录了所有更改数据库数据或结构的事件（如 INSERT, UPDATE, DELETE, DDL语句）。时间点恢复的基本步骤是：\n1.  恢复到最近一次的**完整备份**（可以是物理备份或逻辑备份）。\n2.  然后，从完整备份的时间点开始，**重放二进制日志中记录的事件**，直到目标时间点或事件。通过这种方式，可以精确地将数据库恢复到过去的任意一个时间点，从而实现精细化的数据恢复。\n\n错误选项分析：\nA) **InnoDB redo log (A 错误)。** `InnoDB redo log` (重做日志) 主要用于确保事务的持久性（crash recovery）。它记录了 `InnoDB` 存储引擎的物理数据页修改，用于在数据库崩溃后恢复未完成的事务，使数据达到一致状态。它不用于回放历史操作到特定时间点，其内容是循环写入的，并且在崩溃恢复后通常会被截断或重用。\nB) **InnoDB undo log (B 错误)。** `InnoDB undo log` (撤销日志) 主要用于事务回滚（rollback）、MVCC（多版本并发控制）以及崩溃恢复。它记录了事务修改数据之前的状态，以便在事务回滚时恢复数据。它也不用于时间点恢复。\nD) **Relay log (D 错误)。** 中继日志是 MySQL 复制过程中，从服务器从主服务器接收并存储二进制日志事件的临时文件。虽然它包含了需要应用的事件，但它是从服务器的本地缓存，其内容是动态变化的，并且在应用后通常会被删除。进行时间点恢复时，需要的是**主服务器的原始二进制日志**，而不是从服务器的中继日志。\nE) **General query log (E 错误)。** 通用查询日志记录了所有客户端的连接和 SQL 语句。它主要用于调试和审计，不包含用于数据恢复所需的操作的精确、完整和原子性的记录，也不是事务性的。因此，它无法用于时间点恢复。\n\n**考点总结:**\n此题考察 `MySQL` 备份与恢复的核心概念，特别是**时间点恢复**对**二进制日志**的依赖性。理解二进制日志作为数据库变更的完整和有序记录的重要性是关键。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n在关于 `MySQL` 备份和恢复的题目中，凡是涉及到**“时间点恢复”**或**“前滚操作 (roll-forward)”**，答案几乎总是**二进制日志 (Binary Log)**。其他日志（`redo log`, `undo log`, `relay log` 等）各有其特定用途，但都不直接用于这种类型的恢复。\n\n**学习建议:**\n1.  **深入理解 `MySQL` 的备份类型：**\n    * **物理备份：** 直接复制数据文件（如 `mysqlbackup`）。\n    * **逻辑备份：** 导出 `SQL` 语句（如 `mysqldump`）。\n2.  **掌握 `MySQL` 恢复机制：**\n    * **完整恢复：** 使用完整备份进行恢复。\n    * **时间点恢复 (PITR)：** 在完整备份的基础上，结合二进制日志进行前滚，达到指定时间点或事件。\n3.  **区分各种日志的作用：**\n    * **二进制日志 (Binary Log):** 事务性事件的完整记录，用于复制和时间点恢复。\n    * **重做日志 (Redo Log):** `InnoDB` 崩溃恢复的关键，确保持久性。\n    * **撤销日志 (Undo Log):** `InnoDB` 事务回滚和 `MVCC` 的基础。\n    * **中继日志 (Relay Log):** 从服务器用于缓存主服务器二进制日志事件的临时文件。\n    * **错误日志 (Error Log):** 记录服务器错误、启动关闭信息。\n    * **通用查询日志 (General Query Log):** 记录所有 SQL 语句。\n    * **慢查询日志 (Slow Query Log):** 记录执行慢的 SQL 语句。\n4.  **实践恢复操作：** 通过模拟数据库崩溃和数据丢失，练习使用备份和二进制日志进行时间点恢复，这将极大加深你的理解。"
+    },
+    {
+        "question": "### 试题 227:\n\nWhere is the MySQL data dictionary stored?",
+        "selections": {
+            "A": "InnoDB tables",
+            "B": "JSON formatted text files",
+            "C": "Text files containing SQL statements",
+            "D": "Combinations of binary and text files"
+        },
+        "answers": [
+            "A"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n`MySQL` 的数据字典（Data Dictionary）存储了关于数据库对象（如表、视图、存储过程、函数、索引等）的元数据。从 `MySQL 8.0` 开始，数据字典的存储方式发生了重大变化，以提高原子性、一致性、持久性和隔离性（ACID）。\n\nA) **InnoDB tables (A 正确)。** 在 `MySQL 8.0` 及更高版本中，数据字典被重新设计并存储在**持久的 `InnoDB` 表中**。这些表位于 `mysql` 系统数据库中，通常使用加密。这种设计确保了数据字典本身是事务性的，并且可以从崩溃中安全恢复，提供更好的数据一致性和可靠性。\n\n错误选项分析：\nB) **JSON formatted text files (B 错误)。** 尽管 `MySQL` 在某些场景下会使用 `JSON` 格式（例如 `EXPLAIN` 输出或文档存储），但数据字典的核心元数据不以 `JSON` 格式的文本文件存储。以前的 `.frm` 文件包含一些表定义信息，但这些也不是 `JSON` 格式。\nC) **Text files containing SQL statements (C 错误)。** 文本文件包含 `SQL` 语句通常是用于导入或导出数据/结构，而不是 `MySQL` 内部存储数据字典的方式。\nD) **Combinations of binary and text files (D 错误)。** 在 `MySQL 8.0` 之前，数据字典信息分散在多种文件类型中，包括 `.frm` 文件（存储表定义，是二进制格式）、`InnoDB` 内部系统表空间（包含 `InnoDB` 表的元数据）以及 `mysql` 数据库中的某些表（如 `mysql.table_definitions`）。然而，`MySQL 8.0` 的目标就是将这些分散的元数据统一存储在 `InnoDB` 表中，从而避免了这种“组合”的复杂性和潜在不一致性。\n\n**考点总结:**\n此题考察 `MySQL` 数据字典的存储方式，特别是 `MySQL 8.0` 版本后的重要变化。核心考点在于理解 `MySQL 8.0` 将数据字典统一存储在 `InnoDB` 表中，以实现 `ACID` 特性和更高的可靠性。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n对于 `MySQL 8.0` 之后的版本，记住其重要的架构改进之一就是**将数据字典存储在 `InnoDB` 表中**。这与早期版本的数据字典分散在文件和旧版系统表中的方式有根本区别。\n\n**学习建议:**\n1.  **理解数据字典的作用：** 它是数据库的元数据存储，描述了数据库中所有对象的结构和属性。\n2.  **了解 `MySQL 8.0` 数据字典的改进：** 重点学习为什么 `Oracle` 决定重构数据字典，以及将其存储在 `InnoDB` 表中带来的好处（如事务性、原子性、崩溃恢复能力、更好的并发性等）。\n3.  **区分不同版本的存储方式：** 了解 `MySQL 8.0` 之前数据字典的存储方式（`.frm` 文件、`InnoDB` 内部数据字典等），以及 `MySQL 8.0` 如何统一这些存储。\n4.  **不要与 `information_schema` 混淆：** `information_schema` 是一个虚拟数据库，提供对数据字典信息的标准 SQL 访问接口，它本身不存储数据，而是从底层的数据字典获取信息。"
+    },
+    {
+        "question": "### 试题 228:\n\nExamine these entries from the general log:\n\n```\nTime                     Id  Command  Argument\n2020-08-06T06:52:10.893454Z 17  Query    START TRANSACTION\n2020-08-06T06:52:56.129623Z 20  Query    START TRANSACTION\n2020-08-06T06:53:42.832127Z 17  Query    UPDATE db.t SET c=1 WHERE id=10\n2020-08-06T06:54:09.162324Z 20  Query    SELECT * FROM db.t WHERE id<25\n2020-08-06T06:55:01.263298Z 17  Query    UPDATE db.t SET c=1 WHERE id=20\n```\n\nThe server has only two sessions at this time. The `db.t` table uses the `InnoDB` storage engine and all `UPDATE` statements reference existing rows. The `id` column is the primary key. Which describes the outcome of the sequence of statements?",
+        "selections": {
+            "A": "Connection 17 has to wait for connection 20.",
+            "B": "Connection 20 has to wait for connection 17.",
+            "C": "All statements execute without waiting."
+        },
+        "answers": [
+            "C"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n这道题目考察对 `InnoDB` 事务和行级锁的理解。在 `InnoDB` 中，`UPDATE` 语句通常会对被修改的行施加排他锁（X-lock），以防止其他事务同时修改这些行。`SELECT` 语句在默认的 `REPEATABLE READ` 隔离级别下，如果是普通 `SELECT`（非 `FOR UPDATE` 或 `FOR SHARE`），则通常使用快照读（snapshot read），不会加锁，因此不会阻塞写入。\n\n分析日志中的事件：\n1.  **`2020-08-06T06:52:10.893454Z 17 Query START TRANSACTION`**: 连接 17 开启事务。\n2.  **`2020-08-06T06:52:56.129623Z 20 Query START TRANSACTION`**: 连接 20 开启事务。\n3.  **`2020-08-06T06:53:42.832127Z 17 Query UPDATE db.t SET c=1 WHERE id=10`**: 连接 17 更新 `id=10` 的行。此时，连接 17 会对 `id=10` 的行施加排他锁。\n4.  **`2020-08-06T06:54:09.162324Z 20 Query SELECT * FROM db.t WHERE id<25`**: 连接 20 执行一个 `SELECT` 语句。这个 `SELECT` 语句是一个普通查询，它不会对 `id<25` 的行加锁，而是通过 `MVCC` 读取一个历史快照。因此，即使连接 17 持有 `id=10` 的锁，连接 20 的 `SELECT` 也不会被阻塞。\n5.  **`2020-08-06T06:55:01.263298Z 17 Query UPDATE db.t SET c=1 WHERE id=20`**: 连接 17 更新 `id=20` 的行。`id=20` 的行与连接 17 之前更新的 `id=10` 以及连接 20 查询的范围 `id<25` 并不直接冲突。连接 17 已经持有 `id=10` 的锁，现在它试图获取 `id=20` 的锁。由于连接 20 并没有对 `id=20` 加锁（它只是一个普通 `SELECT`），并且 `id=20` 与 `id=10` 是不同的行，因此连接 17 在更新 `id=20` 时不会被阻塞。\n\n结论是，连接 17 和连接 20 执行的操作不会相互阻塞，因为它们操作的行不冲突（`UPDATE` 不同行），并且 `SELECT` 语句是快照读（不加锁）。\n\nC) **All statements execute without waiting (C 正确)。** 根据上述分析，由于 `SELECT` 语句不会加锁，并且两个 `UPDATE` 语句操作的是 `InnoDB` 不同行（通过主键 `id` 区分），它们之间不会产生锁冲突，因此所有语句都会立即执行，不会有等待情况发生。\n\n错误选项分析：\nA) **Connection 17 has to wait for connection 20。** 错误，连接 20 是 `SELECT` 操作，不会持有锁来阻塞连接 17 的 `UPDATE`。\nB) **Connection 20 has to wait for connection 17。** 错误，连接 20 的 `SELECT` 是快照读，不会被连接 17 对 `id=10` 的锁阻塞。\n\n**考点总结:**\n此题考察 `InnoDB` 存储引擎的**行级锁机制**和**多版本并发控制 (MVCC)**。关键点在于理解：\n* `UPDATE` 语句会对所修改的行加排他锁。\n* 默认隔离级别下，普通 `SELECT` 语句（非 `FOR UPDATE`/`FOR SHARE`）使用 `MVCC` 进行快照读，不加锁，因此不会被其他事务的写锁阻塞，也不会阻塞其他事务。\n* `InnoDB` 的锁是行级的，不同行的并发修改通常不会相互阻塞。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n在分析事务并发和锁等待问题时，首先识别语句类型：`SELECT` 通常是读操作，默认不加锁；`UPDATE/DELETE/INSERT` 是写操作，会加锁。其次，判断操作的**具体资源**是否冲突（例如，是否操作同一行）。`InnoDB` 是行级锁，精确到行。\n\n**学习建议:**\n1.  **深入理解 `InnoDB` 的事务特性：** 学习 `ACID` 特性，特别是隔离性（Isolation）。\n2.  **掌握 `InnoDB` 的锁机制：** 了解行级锁（Record Lock, Gap Lock, Next-Key Lock）、意向锁（Intention Lock）以及共享锁（S-lock）和排他锁（X-lock）的概念和用途。\n3.  **理解 `MVCC`：** 学习 `InnoDB` 如何通过 `MVCC`（多版本并发控制）实现读写不阻塞，特别是在 `READ COMMITTED` 和 `REPEATABLE READ` 隔离级别下的快照读。\n4.  **不同隔离级别的影响：** 了解 `READ UNCOMMITTED`, `READ COMMITTED`, `REPEATABLE READ`, `SERIALIZABLE` 这些隔离级别对锁行为和并发性的影响。\n5.  **实践：** 通过实际执行 `SQL` 语句，并结合 `SHOW ENGINE INNODB STATUS` 或 `performance_schema` 中的锁信息，观察并发操作时的锁等待情况，加深理解。"
+    },
+    {
+        "question": "### 试题 229:\n\nWhich three statements are true about InnoDB files?",
+        "selections": {
+            "A": "InnoDB redo logs are stored in binary log files.",
+            "B": "InnoDB undo logs are stored in the system tablespace.",
+            "C": "MySQL data dictionary tables are stored in the mysql.ibd file.",
+            "D": "A general tablespace consists of only one file.",
+            "E": "A file-per-table tablespace can store only one table.",
+            "F": "All InnoDB files must be stored in the data directory."
+        },
+        "answers": [
+            "C",
+            "D",
+            "E"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n这道题目考察对 `InnoDB` 存储引擎文件结构和管理方式的理解。\n\nC) **MySQL data dictionary tables are stored in the `mysql.ibd` file (C 正确)。** 在 `MySQL 8.0` 及更高版本中，`MySQL` 的数据字典（包括所有数据库对象的元数据）被统一存储在 `mysql` 系统数据库中，这些系统表本身就是 `InnoDB` 表，它们的数据存储在 `InnoDB` 系统表空间文件 `ibdata1`（或配置的系统表空间文件）以及 `mysql` 数据库对应的 `.ibd` 文件中。题目中的 `mysql.ibd` 指的是 `mysql` 数据库下的表所对应的文件，**数据字典的核心表（如 `mysql.dd_tables` 等）确实存储在 `InnoDB` 表中，其文件位于数据目录下 `mysql` 目录下的 `.ibd` 文件中**。例如，`mysql.dd_tables.ibd`，`mysql.dd_columns.ibd` 等。\n\nD) **A general tablespace consists of only one file (D 正确)。** 通用表空间（General Tablespace）是 `MySQL 5.7.24` 和 `8.0` 引入的新特性，允许用户在一个共享的 `InnoDB` 文件中存储多个表。一个通用表空间在创建时只对应一个物理文件（例如 `my_general_tablespace.ibd`），并且这个文件是不会自动分裂成多个文件的。它作为一个整体来管理。\n\nE) **A file-per-table tablespace can store only one table (E 正确)。** 按表文件（`file-per-table`）表空间是 `InnoDB` 的默认行为（通过 `innodb_file_per_table=ON` 控制），意味着每个 `InnoDB` 表都拥有一个独立的 `.ibd` 文件。这个 `.ibd` 文件只包含对应表的数据和索引，因此每个文件只存储一个表。\n\n错误选项分析：\nA) **InnoDB redo logs are stored in binary log files。** `InnoDB redo logs`（通常是 `ib_logfile0`, `ib_logfile1` 等）和二进制日志 (`binary log`，通常是 `mysql-bin.xxxxxx`）是**两种完全独立的文件**。`redo log` 记录 `InnoDB` 存储引擎的物理更改，用于崩溃恢复；`binary log` 记录所有数据库的逻辑更改，用于复制和时间点恢复。它们有不同的作用和存储格式，不会存储在一起。\nB) **InnoDB undo logs are stored in the system tablespace。** 在 `MySQL 5.7` 之前，`undo logs` 的确存储在系统表空间 (`ibdata1`) 中。然而，从 `MySQL 5.7` 开始，`undo logs` 可以配置为存储在独立的 `undo` 表空间文件 (`undo_001.ibd`, `undo_002.ibd` 等) 中，**并且这是推荐和默认的做法**，尤其是在 `MySQL 8.0` 中，默认就是独立的 `undo` 表空间。因此，说它们“存储在系统表空间”是不全面的，甚至可能是错误的描述，因为它通常在独立文件中。\nF) **All InnoDB files must be stored in the data directory。** 大多数 `InnoDB` 文件（如 `.ibd` 文件、`redo log`、`undo log` 等）默认存储在数据目录下。然而，用户可以通过配置参数（如 `innodb_data_home_dir`、`innodb_log_group_home_dir`、`innodb_undo_directory` 等）将这些文件存储在**数据目录以外的其他位置**。因此，“所有 `InnoDB` 文件必须”是一个过于绝对的说法，是不正确的。\n\n**考点总结:**\n此题考察 `InnoDB` 存储引擎的文件结构和管理方式，特别是对 `MySQL 8.0` 中 `InnoDB` 文件系统的一些新特性和最佳实践的理解。核心考点包括 `redo log` 与 `binary log` 的区别、数据字典的存储、通用表空间和按表文件表空间的特性，以及文件存储位置的灵活性。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n对于 `InnoDB` 文件的特性，注意区分不同日志的作用。重点关注 `MySQL 8.0` 引入的新特性（如数据字典的 `InnoDB` 化、通用表空间）。“所有/必须”这类绝对词通常会提示选项可能是错误的。\n\n**学习建议:**\n1.  **深入学习 `InnoDB` 文件结构：**\n    * **系统表空间 (`ibdata1`):** 曾经存储所有 `InnoDB` 数据、索引、`undo log` 和数据字典。现在主要存储共享信息。\n    * **独立表空间 (`.ibd` 文件):** `innodb_file_per_table=ON` 时，每个表一个 `.ibd` 文件，包含数据和索引。\n    * **通用表空间 (`.ibd` 文件):** 存储多个表的共享表空间。\n    * **临时表空间 (`ibtmp1`):** 用于内部临时表。\n    * **重做日志 (`redo log`):** `ib_logfileX`，用于崩溃恢复。\n    * **撤销日志 (`undo log`):** `undo_00X.ibd`，用于事务回滚和 `MVCC`。\n2.  **理解 `MySQL 8.0` 的变化：** 重点是数据字典的 `InnoDB` 化和 `undo log` 的独立表空间化。\n3.  **区分不同日志文件的作用：** `redo log`、`undo log` 和 `binary log` 是三个最常混淆的日志文件，理解它们各自的职责。\n4.  **掌握文件存储位置的配置：** 了解如何通过 `my.cnf` 配置 `InnoDB` 文件的存储位置。"
+    },
+    {
+        "question": "### 试题 230:\n\nYou want to change your own MySQL password. Which two methods can you use?",
+        "selections": {
+            "A": "The `ALTER USER` statement",
+            "B": "The `GRANT` statement",
+            "C": "The `mysqladmin` client program",
+            "D": "The `mysql_config_editor` utility",
+            "E": "The `mysql_secure_installation` utility"
+        },
+        "answers": [
+            "A",
+            "C"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n这道题目考察 `MySQL` 中修改用户密码的常用方法。\n\nA) **The `ALTER USER` statement (A 正确)。** `ALTER USER` 语句是 `MySQL` 中修改用户属性（包括密码）的标准 SQL 命令。例如：`ALTER USER 'username'@'localhost' IDENTIFIED BY 'new_password';` 这是一个推荐且常用的方法，因为它直接在数据库中操作。\nC) **The `mysqladmin` client program (C 正确)。** `mysqladmin` 是 `MySQL` 附带的一个命令行管理工具，可以执行各种管理操作，包括修改密码。使用 `mysqladmin` 修改密码的命令通常是：`mysqladmin -u username -p password old_password new_password`。这是一个在命令行环境下方便且常用的方法。\n\n错误选项分析：\nB) **The `GRANT` statement (B 错误)。** `GRANT` 语句主要用于授予用户权限。虽然在 `MySQL` 较早的版本中，`GRANT ... IDENTIFIED BY ...` 语句可以在创建用户时设置密码，或者在某些情况下修改密码，但在现代 `MySQL` 版本中（尤其是在 `MySQL 8.0` 中），`ALTER USER` 是修改密码的推荐和更明确的语句。直接使用 `GRANT` 来修改现有用户的密码不是其主要目的，并且可能会有权限上的限制或不确定的行为（例如，如果用户不存在，它会创建用户）。\nD) **The `mysql_config_editor` utility (D 错误)。** `mysql_config_editor` 工具是用于管理 `MySQL` 配置文件中加密的登录路径（login-path）。它存储连接信息（如用户、主机、端口、密码），以便客户端程序连接到 `MySQL` 服务器时不需要在命令行中输入密码。它修改的是**客户端的连接配置**，而不是服务器上用户的真实密码。\nE) **The `mysql_secure_installation` utility (E 错误)。** `mysql_secure_installation` 是一个交互式脚本，用于帮助用户执行一系列安全最佳实践，例如设置 `root` 密码、删除匿名用户、禁用远程 `root` 登录、删除测试数据库等。它主要用于**首次安全设置**，而不是日常修改用户密码的工具。它通常在安装 `MySQL` 后运行一次。\n\n**考点总结:**\n此题考察 `MySQL` 中管理用户密码的常用方法。核心考点在于区分直接在数据库中修改密码的 SQL 命令 (`ALTER USER`) 和命令行工具 (`mysqladmin`)，以及其他不用于修改数据库用户密码的工具 (`GRANT` 的主要作用、`mysql_config_editor`、`mysql_secure_installation`)。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n当遇到密码修改问题时，首先想到的是 `SQL` 语句 (`ALTER USER`) 和命令行管理工具 (`mysqladmin`)。其他选项，如 `GRANT` 主要用于授权，`mysql_config_editor` 用于客户端连接，`mysql_secure_installation` 用于初始安全设置，它们的目的不同。\n\n**学习建议:**\n1.  **用户账户管理：** 学习 `MySQL` 中用户账户的创建、修改和删除。掌握 `CREATE USER`, `ALTER USER`, `DROP USER` 等语句。\n2.  **权限管理：** 学习 `GRANT` 和 `REVOKE` 语句，理解它们与用户密码修改的区别。\n3.  **`mysqladmin` 工具：** 熟悉 `mysqladmin` 的常用子命令，包括 `password`、`shutdown`、`status` 等。\n4.  **`mysql_config_editor`：** 理解其作用是方便客户端连接，而不是修改数据库中的用户密码。\n5.  **`mysql_secure_installation`：** 了解其作为安全配置向导的作用。"
+    },
+    {
+        "question": "### 试题 231:\n\nWhen does the `GRANT` take effect?",
+        "selections": {
+            "A": "Immediately",
+            "B": "When Mark reconnects to the MySQL server",
+            "C": "When Mark changes the default database",
+            "D": "When the database administrator executes `FLUSH PRIVILEGES`"
+        },
+        "answers": [
+            "B"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n`GRANT` 语句用于授予用户权限。当数据库管理员（DBA）执行 `GRANT` 语句时，权限信息会被立即写入 `MySQL` 的授权表（例如 `mysql.user`, `mysql.db`, `mysql.tables_priv` 等）。然而，这些新的权限对于**当前已经连接的会话**并不会立即生效。会话在连接时会加载其权限信息。\n\nB) **When Mark reconnects to the MySQL server (B 正确)。** 当 `Mark` （或任何其他用户）重新连接到 `MySQL` 服务器时，服务器会重新读取其在授权表中的权限信息。此时，通过 `GRANT` 语句授予的新权限才会对其生效。这是 `MySQL` 权限生效的典型行为。\n\n错误选项分析：\nA) **Immediately。** 对于已存在的连接，新的 `GRANT` 权限不会立即生效。只有新连接才会获取到更新后的权限。\nC) **When Mark changes the default database。** 改变当前会话的默认数据库 (`USE database_name;`) 不会重新加载用户权限。权限的加载发生在连接建立时。\nD) **When the database administrator executes `FLUSH PRIVILEGES`。** `FLUSH PRIVILEGES` 命令会强制 `MySQL` 服务器重新加载授权表到内存中。这个命令通常在直接修改授权表后（例如通过 `INSERT` 或 `UPDATE` 语句而非 `GRANT`/`REVOKE`）使用，以使更改生效。对于 `GRANT` 和 `REVOKE` 语句，它们在执行时已经更新了授权表并通常会触发内部机制来通知服务器，因此**不需要**手动执行 `FLUSH PRIVILEGES` 来使权限生效。`FLUSH PRIVILEGES` 对已连接用户权限的刷新效果和重新连接类似，但对于 `GRANT` 语句而言，主要还是通过重新连接生效。在日常操作中，`GRANT` 语句本身已经具备了使其效果持久化并被新连接识别的能力。\n\n**考点总结:**\n此题考察 `MySQL` 权限管理中 `GRANT` 语句的生效时机。核心考点是理解 `GRANT` 语句会立即更新授权表，但对于现有连接，权限通常需要在**重新连接**后才能生效。同时，要区分 `GRANT` 语句与 `FLUSH PRIVILEGES` 命令的不同作用。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n关于 `MySQL` 权限生效的问题，记住一条黄金法则：**大多数权限更改对当前会话不会立即生效，需要重新连接**。`FLUSH PRIVILEGES` 虽然能重新加载权限表，但对于 `GRANT` 和 `REVOKE` 语句而言并非必要步骤。\n\n**学习建议:**\n1.  **理解 `MySQL` 权限体系：** 学习用户账户、权限级别（全局、数据库、表、列）、权限表（`mysql.user`, `mysql.db`, `mysql.tables_priv` 等）以及权限的存储方式。\n2.  **掌握 `GRANT` 和 `REVOKE` 语句：** 熟练使用这些语句授予和撤销权限。\n3.  **区分权限生效机制：**\n    * **新连接：** 始终会加载最新的权限。\n    * **当前连接：** `GRANT`/`REVOKE` 权限通常不会立即对当前连接生效（除了少数特殊情况，如 `PROXY` 权限）。\n    * **`FLUSH PRIVILEGES`：** 主要用于手动修改授权表后的重新加载，对于 `GRANT`/`REVOKE` 命令通常不是必需的。\n4.  **实践：** 创建用户、授予权限、然后尝试在同一会话和新会话中测试权限是否生效，以验证理解。"
+    },
+    {
+        "question": "### 试题 232:\n\nYou want to run multiple MySQL instances on the same host machine. Which two `mysqld` options can share the same value?",
+        "selections": {
+            "A": "`basedir`",
+            "B": "`datadir`",
+            "C": "`socket`",
+            "D": "`user`",
+            "E": "`pid-file`"
+        },
+        "answers": [
+            "A",
+            "D"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n在一台主机上运行多个 `MySQL` 实例（即多实例部署）时，每个实例都需要有其独立的配置，以避免资源冲突。然而，有些配置参数是可以共享的，或者说其值可以是相同的，而另一些则必须是独立的。\n\nA) **`basedir` (A 正确)。** `basedir` 参数指定 `MySQL` 的安装目录，即所有 `MySQL` 相关文件（如可执行文件、库文件、脚本等）的根目录。在同一台机器上，你通常只需要安装一份 `MySQL` 软件，然后从这个安装目录启动多个实例，每个实例可以有自己的数据目录。因此，多个 `MySQL` 实例可以共享同一个 `basedir` 值。\n\nD) **`user` (D 正确)。** `user` 参数指定 `mysqld` 进程以哪个操作系统用户身份运行。为了安全和管理方便，多个 `MySQL` 实例可以都以同一个非特权操作系统用户身份运行（例如 `mysql` 用户）。这通常是一个推荐的做法，因为它避免了为每个实例创建单独的操作系统用户账户的复杂性，并且可以统一管理权限。\n\n错误选项分析：\nB) **`datadir` (B 错误)。** `datadir` 参数指定 `MySQL` 实例的数据目录，其中包含数据库文件、表空间、日志文件等。**每个 `MySQL` 实例必须拥有一个独立的 `datadir`**，否则它们会尝试访问和修改同一套数据文件，导致数据损坏和冲突。\nC) **`socket` (C 错误)。** `socket` 参数指定 `MySQL` 服务器用于本地客户端连接的 `UNIX` 域套接字文件路径。在同一台 `UNIX/Linux` 主机上，`UNIX` 域套接字是文件，其路径必须是唯一的，因为它们代表了不同的通信端点。如果多个实例使用相同的 `socket` 文件，将会导致冲突和连接失败。\nE) **`pid-file` (E 错误)。** `pid-file` 参数指定 `MySQL` 服务器进程 ID (PID) 文件的路径。每个 `MySQL` 实例都是一个独立的进程，因此它会有一个唯一的 `PID`，并且其 `PID` 文件路径必须是唯一的，以避免覆盖和混淆。\n\n**考点总结:**\n此题考察 `MySQL` 多实例部署的关键配置，特别是哪些 `mysqld` 参数在多实例环境中必须是唯一的，哪些可以共享。核心考点是理解资源冲突和隔离在多实例部署中的重要性。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n在多实例部署中，记住以下原则：**凡是与实例运行时产生数据、日志、连接入口相关的文件或端口，都必须是唯一的**。而程序本身所在的目录 (`basedir`) 和运行进程的操作系统用户 (`user`) 则可以共享。\n\n**学习建议:**\n1.  **理解多实例部署的意义：** 为什么需要多实例？它的优势（资源隔离、版本测试）和挑战（配置复杂性）。\n2.  **核心配置参数：** 掌握在多实例部署中必须独立的参数：\n    * `port` (TCP/IP 端口，必须唯一)\n    * `socket` (UNIX 域套接字文件，必须唯一)\n    * `datadir` (数据目录，必须唯一)\n    * `pid-file` (进程ID文件，必须唯一)\n    * `log-error` (错误日志文件，必须唯一)\n    * `general_log_file` (通用查询日志文件，通常需要唯一)\n    * `slow_query_log_file` (慢查询日志文件，通常需要唯一)\n    * `log_bin` (二进制日志前缀，必须唯一)\n    * `server_id` (复制场景下必须唯一)\n3.  **可以共享的参数：** `basedir` (安装目录) 和 `user` (操作系统运行用户)。\n4.  **实践多实例配置：** 尝试在本地搭建多实例环境，手动配置 `my.cnf` 文件，并启动/停止不同实例，这将有助于加深理解。"
+    },
+    {
+        "question": "### 试题 233:\n\nWhich two are benefits of using `mysqlpump` instead of `mysqldump` for databases with many large tables?",
+        "selections": {
+            "A": "`mysqlpump` does not lock the tables.",
+            "B": "`mysqlpump` shows the dump progress.",
+            "C": "`mysqlpump` reduces the backup time with multiple threads.",
+            "D": "`mysqlpump` reduces the restore time with multiple threads.",
+            "E": "`mysqlpump` can perform incremental backup."
+        },
+        "answers": [
+            "B",
+            "C"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n`mysqlpump` 是 `MySQL 5.7` 引入的一个逻辑备份工具，旨在解决 `mysqldump` 在处理大型数据库时的一些局限性，特别是其在并发性和进度显示方面的不足。它是一个并行（多线程）备份工具，而 `mysqldump` 主要是单线程的。\n\nB) **`mysqlpump` shows the dump progress (B 正确)。** `mysqlpump` 在执行备份时，能够实时显示备份的进度信息，例如已备份的字节数、剩余时间等。这对于管理大型数据库的备份过程非常有用，因为 `mysqldump` 默认情况下没有这样的进度显示功能，用户无法直观地了解备份的进展。\n\nC) **`mysqlpump` reduces the backup time with multiple threads (C 正确)。** `mysqlpump` 的主要优势之一是其**并行（多线程）备份能力**。它可以使用多个线程同时备份不同的数据库或表，从而显著减少大型数据库的备份时间。相比之下，`mysqldump` 是单线程的，备份大型数据库时效率较低。\n\n错误选项分析：\nA) **`mysqlpump` does not lock the tables。** `mysqlpump` 和 `mysqldump` 都可以通过不同的方式来减少甚至避免对表的锁定，尤其是在使用 `InnoDB` 存储引擎时。它们通常会使用 `READ COMMITTED` 或 `REPEATABLE READ` 隔离级别（通过 `FOR EXPORT` 或 `START TRANSACTION ... WITH CONSISTENT SNAPSHOT`）来获取一致性快照，从而最小化对表的读写锁定。所以，说 `mysqlpump` **不**锁定表是不准确的，它仍然会获取必要的锁来确保数据一致性，只是其锁定策略更灵活或影响更小。这个描述并非其相对于 `mysqldump` 的独特优势。\nD) **`mysqlpump` reduces the restore time with multiple threads。** `mysqlpump` 生成的备份文件通常是 `SQL` 语句，导入（恢复）这些 `SQL` 文件通常使用 `mysql` 客户端工具。`mysqlpump` **本身不直接参与恢复过程**。虽然可以通过并行导入 `SQL` 文件来加速恢复，但这更多是 `mysql` 客户端（或自定义脚本）的功能，而非 `mysqlpump` 的直接利益。`mysqlpump` 的主要目的是加速**备份**。\nE) **`mysqlpump` can perform incremental backup。** `mysqlpump` 和 `mysqldump` 都属于逻辑备份工具，它们都**不能直接执行增量备份**。增量备份通常是物理备份工具（如 `MySQL Enterprise Backup` 或 `XtraBackup`）的功能，它们通过备份数据文件的修改部分来实现。逻辑备份工具通常生成完整的 `SQL` 导出文件。\n\n**考点总结:**\n此题考察 `mysqlpump` 相较于 `mysqldump` 的主要优势。核心考点在于理解 `mysqlpump` 作为并行备份工具，在**性能（通过多线程加速）**和**用户体验（进度显示）**方面的提升。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n将 `mysqlpump` 视为 `mysqldump` 的“增强版”或“并行版”。记住其主要优势在于**并行备份**（从而缩短备份时间）和**进度显示**。排除与增量备份或恢复时间直接相关的选项，因为这些不是 `mysqlpump` 的直接特点。\n\n**学习建议:**\n1.  **掌握 `mysqldump` 的基本用法：** 理解其单线程、生成 `SQL` 文本文件、以及如何处理 `InnoDB` 和 `MyISAM` 表的锁定。\n2.  **学习 `mysqlpump` 的特性：**\n    * **并行性：** 如何使用 `--default-parallelism` 或 `--parallel-databases` 等选项来控制并行度。\n    * **进度显示：** 了解其输出格式。\n    * **不同输出格式：** 除了 `SQL`，还可以输出其他格式。\n    * **过滤选项：** 支持更细粒度的包含/排除数据库和表。\n3.  **区分逻辑备份和物理备份：** 明确 `mysqldump` 和 `mysqlpump` 是逻辑备份工具，它们与 `mysqlbackup` (物理备份) 在功能和适用场景上的区别，特别是增量备份。\n4.  **备份和恢复策略：** 了解如何根据数据库大小、业务需求和可用资源选择合适的备份工具和策略。"
+    },
+    {
+        "question": "### 试题 234:\n\nWhich MySQL client program can list all the current sessions connected to a MySQL server?",
+        "selections": {
+            "A": "`mysqladmin`",
+            "B": "`mysqlbinlog`",
+            "C": "`mysqlcheck`",
+            "D": "`mysqlshow`",
+            "E": "`mysqlslap`"
+        },
+        "answers": [
+            "A"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n这道题目考察 `MySQL` 客户端工具的功能，特别是哪个工具能够查看当前连接到 `MySQL` 服务器的会话。\n\nA) **`mysqladmin` (A 正确)。** `mysqladmin` 是 `MySQL` 的一个命令行管理工具，可以执行各种管理操作，包括显示服务器状态。使用 `mysqladmin status` 或 `mysqladmin processlist` 命令可以查看当前连接到 `MySQL` 服务器的会话列表（进程列表）。`mysqladmin processlist` 是专门用于列出连接和它们正在执行的命令的。\n\n错误选项分析：\nB) **`mysqlbinlog` (B 错误)。** `mysqlbinlog` 工具用于处理和显示二进制日志文件的内容。它用于查看二进制日志中的事件，但不能列出当前连接的会话。\nC) **`mysqlcheck` (C 错误)。** `mysqlcheck` 工具用于检查、修复、优化和分析表。它执行的是表维护操作，与查看当前会话无关。\nD) **`mysqlshow` (D 错误)。** `mysqlshow` 工具用于快速查看数据库、表、列和索引的信息。它可以显示数据库和表的结构，但不能列出当前连接的会话。\nE) **`mysqlslap` (E 错误)。** `mysqlslap` 工具是一个用于模拟 `MySQL` 服务器负载并测试其性能的客户端工具。它用于性能测试和基准测试，与查看当前会话无关。\n\n**考点总结:**\n此题考察 `MySQL` 常用客户端工具的功能。核心考点是识别 `mysqladmin` 作为管理工具在查看服务器状态和进程列表方面的作用。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n将 `MySQL` 客户端工具按其主要功能进行分类。`mysqladmin` 是一个通用的管理工具，涵盖了服务器状态、进程管理等多个方面。遇到与“服务器管理”或“查看运行时信息”相关的题目时，首先考虑 `mysqladmin`。\n\n**学习建议:**\n1.  **熟悉 `MySQL` 常用客户端工具：**\n    * **`mysql`:** 命令行客户端，用于执行 `SQL` 语句。\n    * **`mysqldump`:** 逻辑备份工具。\n    * **`mysqlpump`:** 并行逻辑备份工具。\n    * **`mysqladmin`:** 服务器管理工具，可用于查看状态、进程、关闭服务器、修改密码等。\n    * **`mysqlbinlog`:** 查看和处理二进制日志。\n    * **`mysqlcheck`:** 表维护工具（检查、修复、优化、分析）。\n    * **`mysqlshow`:** 显示数据库对象信息。\n    * **`mysqlslap`:** 性能测试工具。\n2.  **了解每个工具的主要用途和常用选项：** 尤其是一些常见的管理命令，如 `mysqladmin status`、`mysqladmin processlist`。\n3.  **实践：** 在自己的 `MySQL` 环境中尝试运行这些命令，观察它们的输出和效果，加深理解。"
+    },
+    {
+        "question": "### 试题 235:\n\nExamine this command which executes successfully on an `InnoDB` cluster:\n\n```sql\ndba.killSandboxInstance(3320)\n```\n\nWhich two are true?",
+        "selections": {
+            "A": "The sandbox instance is shut down gracefully.",
+            "B": "The files of the sandbox instance are deleted.",
+            "C": "The sandbox instance performs instance recovery when it restarts.",
+            "D": "The method simulates an instance failure.",
+            "E": "The method simulates a disk failure.",
+            "F": "The method simulates a network failure."
+        },
+        "answers": [
+            "C",
+            "D"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n题目中提到的 `dba.killSandboxInstance(3320)` 是 `MySQL Shell` 中 `dba` (Database Administrator) 实用程序提供的一个函数，用于管理沙箱实例（Sandbox Instance）。沙箱实例通常是用于开发和测试目的的轻量级 `MySQL` 实例。`killSandboxInstance` 函数的设计目的是模拟一种**非正常终止**，即模拟崩溃。\n\nC) **The sandbox instance performs instance recovery when it restarts (C 正确)。** 当一个 `MySQL` 实例非正常终止（崩溃）时，`InnoDB` 存储引擎会在下次启动时自动执行**崩溃恢复（Crash Recovery）**。崩溃恢复利用 `redo logs` 来确保数据的一致性和持久性。由于 `killSandboxInstance` 模拟的是实例失败，所以重启后会执行崩溃恢复。\n\nD) **The method simulates an instance failure (D 正确)。** `killSandboxInstance` 的目的就是模拟一个 `MySQL` 实例突然停止（崩溃）的情况，而不是优雅地关机。这对于测试数据库的故障恢复能力和 `InnoDB` 的崩溃恢复机制非常有用。\n\n错误选项分析：\nA) **The sandbox instance is shut down gracefully。** `killSandboxInstance` 的名称和其设计目的（模拟失败）表明它是一个**非优雅关机**，更像是强制终止进程，而不是像 `mysqladmin shutdown` 那样的正常关机。正常关机会确保所有事务提交或回滚，并刷新所有数据到磁盘。\nB) **The files of the sandbox instance are deleted。** `killSandboxInstance` 函数只会停止或终止实例进程，**不会删除沙箱实例的数据文件或配置文件**。要删除沙箱实例，通常需要使用 `dba.dropSandboxInstance()` 函数。\nE) **The method simulates a disk failure。** 磁盘故障是存储层面的问题，`killSandboxInstance` 模拟的是 `MySQL` 进程本身的异常终止，而不是存储介质的故障。\nF) **The method simulates a network failure。** 网络故障是网络连接中断，`killSandboxInstance` 作用于本地 `MySQL` 进程，模拟的是进程层面的崩溃，与网络故障是不同的故障类型。\n\n**考点总结:**\n此题考察 `MySQL Shell` 中 `dba` 实用程序对沙箱实例的管理功能，特别是 `killSandboxInstance()` 函数的作用和它所模拟的故障类型。核心考点是理解该函数旨在模拟**实例崩溃（instance failure）**，从而触发 `InnoDB` 的**崩溃恢复（instance recovery）**。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n`kill` 通常暗示着非正常终止或强制杀死。当看到 `killSandboxInstance` 这样的函数名时，应联想到它模拟的是**实例失败/崩溃**，而不是优雅关机。而实例崩溃必然会触发 `InnoDB` 的**崩溃恢复**。\n\n**学习建议:**\n1.  **了解 `MySQL Shell` 和 `dba` 实用程序：** 熟悉 `MySQL Shell` 作为 `MySQL` 高级管理工具的功能，特别是 `dba` 实用程序提供的自动化部署、管理 `InnoDB Cluster`、`InnoDB ReplicaSet` 和沙箱实例的功能。\n2.  **理解沙箱实例：** 知道沙箱实例是用于测试和开发目的的轻量级 `MySQL` 实例，以及它们如何通过 `MySQL Shell` 快速部署和管理。\n3.  **区分不同的实例管理操作：**\n    * **启动：** `dba.deploySandboxInstance()`\n    * **停止/杀死：** `dba.killSandboxInstance()` (模拟崩溃), `dba.stopSandboxInstance()` (优雅停止)\n    * **删除：** `dba.dropSandboxInstance()`\n4.  **掌握 `InnoDB` 的崩溃恢复机制：** 了解 `redo log` 在崩溃恢复中的作用，以及 `MySQL` 如何在非正常关机后自动执行恢复。\n5.  **实践：** 在测试环境中部署和使用沙箱实例，并尝试使用 `killSandboxInstance()` 来观察崩溃恢复的过程。"
+    },
+    {
+        "question": "### 试题 236:\n\nThis is the structure of the employees table:\n\n```sql\nCREATE TABLE employees (\n  emp_no INT UNSIGNED NOT NULL,\n  job_title VARCHAR(50),\n  last_name VARCHAR(50),\n  first_name VARCHAR(50),\n  PRIMARY KEY (emp_no),\n  KEY job_title(job_title,last_name,first_name)\n);\n```\n\nWhich two queries can take advantage of existing indexes to avoid a filesort?",
+        "selections": {
+            "A": "`SELECT * FROM employees WHERE job_title='Manager' ORDER BY last_name`",
+            "B": "`SELECT * FROM employees WHERE job_title='Manager' ORDER BY first_name`",
+            "C": "`SELECT * FROM employees WHERE last_name='Smith' ORDER BY first_name`",
+            "D": "`SELECT job_title, COUNT(*) FROM employees GROUP BY job_title ORDER BY job_title`",
+            "E": "`SELECT first_name, COUNT(*) FROM employees GROUP BY first_name ORDER BY first_name`"
+        },
+        "answers": [
+            "A",
+            "D"
+        ],
+        "summary": "### 选项分析与考点总结\n\n**选项分析:**\n本题考察 `MySQL` 优化器如何利用索引来避免 `filesort` 操作。`filesort` 是一种消耗资源的操作，发生在 `ORDER BY` 或 `GROUP BY` 的列无法通过现有索引直接满足排序或分组需求时。`MySQL` 可以利用索引的有序性来直接获取排序/分组好的结果。\n\n表中有一个复合索引 `KEY job_title(job_title,last_name,first_name)`。\n\n**索引的特点是：从左到右，列的顺序很重要。只有当查询条件或排序/分组的列**符合索引的前缀**时，才能有效利用索引的有序性。\n\nA) **`SELECT * FROM employees WHERE job_title='Manager' ORDER BY last_name` (A 正确)。**\n    * `WHERE job_title='Manager'`：使用了索引的第一个列 `job_title` 进行等值查询，这使得索引的剩余部分 (`last_name, first_name`) 在 `job_title='Manager'` 的这个固定值下是排序好的。\n    * `ORDER BY last_name`：`last_name` 是复合索引的第二个列。在 `job_title` 固定时，`last_name` 在索引中是有序的。因此，优化器可以直接利用索引的顺序来满足 `ORDER BY` 子句，避免 `filesort`。\n\nD) **`SELECT job_title, COUNT(*) FROM employees GROUP BY job_title ORDER BY job_title` (D 正确)。**\n    * `GROUP BY job_title`：`job_title` 是复合索引的第一个列。`MySQL` 可以直接利用索引 `job_title` 的有序性进行分组，而不需要创建临时表进行 `filesort`。\n    * `ORDER BY job_title`：`job_title` 也是索引的第一个列。由于 `GROUP BY` 已经通过索引满足了 `job_title` 的有序性，`ORDER BY job_title` 也可以直接利用索引的顺序，从而避免 `filesort`。\n\n错误选项分析：\nB) **`SELECT * FROM employees WHERE job_title='Manager' ORDER BY first_name` (B 错误)。**\n    * `WHERE job_title='Manager'`：使用了索引的第一个列 `job_title` 进行等值查询。\n    * `ORDER BY first_name`：`first_name` 是复合索引的第三个列。虽然 `job_title` 固定了，但 `first_name` 在 `last_name` 之前并不是有序的（只有当 `job_title` 和 `last_name` 都确定后，`first_name` 才有序）。因此，此查询无法直接利用索引来满足 `first_name` 的排序，可能需要 `filesort`。\n\nC) **`SELECT * FROM employees WHERE last_name='Smith' ORDER BY first_name` (C 错误)。**\n    * `WHERE last_name='Smith'`：查询条件直接跳过了复合索引的第一个列 `job_title`。这意味着 `MySQL` 无法直接利用这个复合索引来过滤 `last_name`，也无法利用其有序性来满足 `ORDER BY`。\n    * 即使 `last_name` 被过滤，`first_name` 也不在 `last_name` 后面直接有序，除非 `job_title` 固定。\n    * 这种情况下，`MySQL` 可能会进行全表扫描或利用其他索引（如果有），但不能通过这个复合索引来避免 `filesort`。\n\nE) **`SELECT first_name, COUNT(*) FROM employees GROUP BY first_name ORDER BY first_name` (E 错误)。**\n    * `GROUP BY first_name`：`first_name` 是复合索引的第三个列。直接对 `first_name` 进行分组，无法利用复合索引 `(job_title,last_name,first_name)` 的前缀有序性。`MySQL` 需要进行 `filesort` 来完成分组和排序。\n\n**考点总结:**\n此题考察 `MySQL` 优化器对复合索引的利用，特别是如何使用索引来优化 `WHERE`、`ORDER BY` 和 `GROUP BY` 子句，从而避免 `filesort`。核心在于理解复合索引的**最左前缀原则**和**有序性**。\n\n`ORDER BY` 或 `GROUP BY` 能够利用索引的条件是：\n1.  `ORDER BY` 或 `GROUP BY` 的列是索引的最左前缀。\n2.  `ORDER BY` 或 `GROUP BY` 的列是索引的连续部分，且其前面的索引列都被用于**等值查询**。",
+        "suggestion": "### 应试技巧与学习建议\n\n**应试技巧:**\n分析 `ORDER BY` 或 `GROUP BY` 子句时，要对照索引的定义。如果排序/分组的列与索引的前缀（或在索引前缀等值查询后）匹配，则可以避免 `filesort`。特别是对于复合索引，记住“最左前缀匹配”原则对于 `WHERE`、`ORDER BY` 和 `GROUP BY` 都非常重要。\n\n**学习建议:**\n1.  **深入理解索引原理：** 学习 `B-tree` 索引的结构和有序性。\n2.  **掌握复合索引（组合索引）的创建和使用：** 理解最左前缀原则，以及它如何影响查询优化。\n3.  **分析 `EXPLAIN` 输出：** 学习如何通过 `EXPLAIN` 输出中的 `Extra` 列来判断是否发生了 `filesort` (例如 `Using filesort`)。\n4.  **优化 `ORDER BY` 和 `GROUP BY`：**\n    * 如果 `WHERE` 子句使用了索引的一部分，那么 `ORDER BY` 可以继续使用索引的下一部分。\n    * `ORDER BY` 的列必须与索引的顺序和方向（ASC/DESC）一致。\n    * `GROUP BY` 可以在某些情况下直接使用索引的有序性，避免 `filesort`。\n5.  **实践：** 创建包含复合索引的表，然后执行各种 `SELECT` 语句（包含 `WHERE`、`ORDER BY`、`GROUP BY`），并使用 `EXPLAIN` 命令分析其执行计划，观察 `filesort` 是否被避免。"
     }
   ]
