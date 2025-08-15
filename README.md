@@ -8,11 +8,15 @@
 
 [点我打开（AI Vector - 184-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/184.html)
 
+[点我打开（OCI Data Science - 1110-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/1110.html)
+
 [点我打开（908 - 单页打印版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single.html)
 
 [点我打开（909 - 单页打印版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-909.html)
 
-[点我打开（AI Vector - 184-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-184.html)
+[点我打开（AI Vector - 184-单页打印版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-184.html)
+
+[点我打开（OCI Data Science - 1110-单页打印版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-1110.html)
 
 ## 背景
 
