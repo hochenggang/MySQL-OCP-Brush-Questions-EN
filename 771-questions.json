@@ -376,7 +376,6 @@
     "summary": "### 选项分析与考点总结\n\n- A、B、C 均为单一可执行单元，无法一次性编排多个后台步骤。\n- D 正确：Execution Chain 专门用于将多个 Process/Plug-in 组合成链式任务，在后台顺序或并行执行。\n\n考点总结：Execution Chain 是 APEX 中实现复杂后台作业（如批处理、数据同步）的核心机制。",
     "suggestion": "### 应试技巧与学习建议\n- 只要看到“run multiple processes in the background”或“chained jobs”，锁定 Execution Chain。\n- 在本地测试：创建一条包含 PL/SQL → REST → 邮件通知三步的 Execution Chain，加深理解。"
   },
-
   {
     "question": "### Question 33\nWhich statement is true about Theme Styles in Oracle APEX?",
     "selections": {
@@ -455,6 +454,17 @@
     "answers": ["B"],
     "summary": "### 选项分析与考点总结\n\n- A 错误：v() 函数读取的是 Session State，无法实时捕获拖动事件数据。\n- B 正确：APEX 在触发 drag-drop 事件时，自动把相关值注入占位符 #APEX$...#，可直接在动态动作或 JavaScript 中使用。\n\n考点总结：Calendar 拖动事件使用专用占位符，而非传统 v() 或 $v()。",
     "suggestion": "### 应试技巧与学习建议\n- 识别题干关键词 “dragged event” → 立即联想到 #APEX$...# 占位符。\n- 在 Sample Calendar → Dynamic Action → JavaScript Code 中打印 console.log('#APEX$PK_VALUE#'); 观察值。"
+  },
+  {
+    "question": "### Question 40\nYou must create a single master detail page where users can select a row in the master region and see the corresponding details in the detail region. Users must also interact with the master or the detail without leaving the page. Which type of master detail implementation should you use?",
+    "selections": {
+      "A": "Stacked",
+      "B": "Drill Down",
+      "C": "Side by Side"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：Stacked 在同一页内以上下或左右区域同时展示主表与明细，用户点击主表行即可原地刷新明细，无需跳转，满足“单页交互”需求。\n- B 错误：Drill Down 需从主表页面跳转到新页面查看明细，不符合“不离开当前页”的要求。\n- C 错误：Side by Side 并非官方 Master-Detail 模板类型，仅描述布局，无对应向导。\n\n考点总结：需要行内编辑或单页交互时，唯一选择 Stacked。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“single page”+“stay on the same page”→秒选 Stacked。\n- 在 Create Page Wizard → Master Detail → Stacked 亲自体验布局结构。"
   },
   {
     "question": "### Question 41\nWhich two Plugin types can be created in Oracle APEX?",
