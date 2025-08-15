@@ -1,0 +1,1151 @@
+[
+  {
+    "question": "### Question 1\nWhich step is mandatory to make an existing Oracle APEX application Progressive Web App (PWA) enabled?",
+    "selections": {
+      "A": "Enable RESTful Web Services in the application.",
+      "B": "Add custom JavaScript to support offline functionality.",
+      "C": "Verify that Friendly URLs are turned on in the Application Definition.",
+      "D": "Enable the PWA flag in the Application Definition."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：RESTful Web Services 与 PWA 功能无必然关系。\n- B 错误：APEX 已内置 PWA 离线处理逻辑，无需手动写 JavaScript。\n- C 错误：Friendly URL 仅影响 URL 可读性，并非 PWA 先决条件。\n- D 正确：在 Application Definition 中勾选 “Progressive Web App” 复选框是唯一必须步骤。\n\n考点总结：\nAPEX 提供一键式 PWA 启用功能，开发者只需在应用属性中开启 PWA 开关即可自动注入 Service Worker 及离线清单文件。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 PWA 在 APEX 中的启用路径：App Builder → Application → Edit Application Properties → Progressive Web App。\n- 理解 PWA 三要素：Manifest、Service Worker、HTTPS，APEX 会自动处理前两者的生成与注册。\n- 熟悉常见误区：PWA ≠ 离线缓存 JavaScript 手写，也≠ RESTful Service 必须。"
+  },
+  {
+    "question": "### Question 2\nWhich two tasks can be performed by the APEX Assistant when you create an application using the 'Create App using Generative AI' option?",
+    "selections": {
+      "A": "Create a Generative AI service.",
+      "B": "Add a Dashboard page.",
+      "C": "Update the App icon with a custom image.",
+      "D": "Create the application blueprint."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：创建 Generative AI 服务属于 OCI 控制台操作，APEX Assistant 不负责。\n- B 正确：Assistant 可根据提示词自动生成 Dashboard 页面。\n- C 错误：图标上传需开发者后续在 Shared Components 手动完成。\n- D 正确：Assistant 的核心职责是解析提示词并输出 App 蓝图（数据模型+页面结构）。\n\n考点总结：\n“Create App using Generative AI” 由 APEX Assistant 完成应用蓝图设计、页面布局生成，但不涉及基础设施预配，也不覆盖可视化微调。",
+    "suggestion": "### 应试技巧与学习建议\n- 区分 APEX Assistant 的“生成”能力与“配置”能力：前者生成蓝图、页面；后者需开发者手动完善图标、主题等细节。\n- 熟记关键词：Blueprint（蓝图）、Dashboard Page、Interactive Report Page 是高频输出。\n- 练习通过提示词触发不同页面类型，例如“Create a dashboard for sales KPIs” 验证选项 B。"
+  },
+  {
+    "question": "### Question 3\nYou have an Interactive Grid component and you are enabling the Save Report functionality. As what can end users save the report type?",
+    "selections": {
+      "A": "As Primary",
+      "B": "As Private and Public only",
+      "C": "As Private and Primary only"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Primary 报告只能由开发者预设，终端用户无法保存为 Primary。\n- B 正确：系统允许用户保存为 Private（仅自己可见）或 Public（全体可见）。\n- C 错误：Primary 不在用户可选范围。\n\n考点总结：\nInteractive Grid 的 Save Report 功能通过授权开关控制，最终用户只能创建 Private 或 Public 报告，Primary/Alternative 报告归开发者维护。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住三类报告权限：Primary（开发者）、Alternative（开发者）、Private/Public（用户）。\n- 在 App Builder 中勾选 “Enable Users to Save Public Reports” 后，选项 B 的两个值才会出现。\n- 通过实验验证：以 End User 身份登录并尝试保存报告，菜单仅出现 Private、Public 两项。"
+  },
+  {
+    "question": "### Question 4\nWhich two AI Service Providers are supported by Oracle APEX?",
+    "selections": {
+      "A": "DOC Document Generator pre-built function",
+      "B": "OCI Generative AI",
+      "C": "Jarvis",
+      "D": "OpenAI"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：DOC Document Generator 是 APEX 自带 PL/SQL API，并非外部 AI 服务提供商。\n- B 正确：OCI Generative AI（托管在 OCI）是官方支持的第一方服务。\n- C 错误：Jarvis（NVIDIA）目前不在 APEX 23c/24.1 支持列表。\n- D 正确：OpenAI 通过 REST 数据源可直接集成，官方文档已给出示例。\n\n考点总结：\nAPEX 23c 起通过 “AI Services” 属性组原生集成 OCI Generative AI；同时允许配置 REST 数据源调用 OpenAI，其他第三方需自定义插件。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记官方文档中 “Supported AI Service Providers” 表格：OCI Generative AI、OpenAI。\n- 注意区分 “APEX Built-ins” 与 “External Providers”：选项 A 属于前者。\n- 关注版本差异：APEX 24.1 将新增 Cohere、Llama2 选项，但 23c 考试范围仅 B、D。"
+  },
+  {
+    "question": "### Question 5\nYou need to ensure that 'How may I help you today?' is the first message displayed by the AI assistant. Which attribute of the Show AI Assistant Dynamic Action should be configured in the Property Editor to achieve this?",
+    "selections": {
+      "A": "Initial Prompt",
+      "B": "Welcome Message",
+      "C": "AI Assistant Name"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Initial Prompt 用于设定 AI 的“系统提示词”，不展示给用户。\n- B 正确：Welcome Message 字段的内容会在对话框首次打开时渲染给用户。\n- C 错误：该属性仅定义助手名称，不影响首条消息。\n\n考点总结：\nShow AI Assistant 动态操作提供 Welcome Message 属性，用于设置寒暄语，首屏展示优先级最高。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住三大可配置文本：Welcome Message（用户可见寒暄语）、Initial Prompt（系统上下文）、System Instructions（高级提示词）。\n- 通过 Live Preview 即时查看 Welcome Message 效果，验证配置正确性。\n- 注意多语言场景：Welcome Message 支持 &APP_TEXT$ 替换，可结合 APEX 文本消息实现国际化。"
+  },
+  {
+    "question": "### Question 6\nWhich search type in keywords do they represent in Oracle Text?",
+    "selections": {
+      "A": "Standard",
+      "B": "List",
+      "C": "Oracle Text"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：Keyword Search Type 的默认值即为 Standard，对应传统布尔/模糊检索。\n- B 错误：List 指 LOV 显示方式，与 Oracle Text 检索模式无关。\n- C 错误：Oracle Text 是技术总称，非搜索类型枚举值。\n\n考点总结：\nOracle Text 提供两类搜索类型：Standard（关键词）与 MDATA（元数据），APEX Item 的 Search Type 属性仅体现 Standard。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住 APEX 封装了 Oracle Text 的“简化模式”，在 Item 级别只有 Standard 可选；高级需求需手写 CONTAINS 查询。\n- 理解 Standard 搜索对应的查询变换：APEX 自动将空格转为 OR 或 AND（依据属性）。\n- 实验对比：将 Search Type 改为 None 时，Oracle Text 索引仍可用，但失去关键词解析。"
+  },
+  {
+    "question": "### Question 7\nWhich two statements are true about Oracle APEX?",
+    "selections": {
+      "A": "Running an APEX app needs client software.",
+      "B": "Application definition is not stored in the database.",
+      "C": "APEX eliminates middle tier application logic.",
+      "D": "Processing and data manipulation are not executed in the database.",
+      "E": "You can build interactive reporting apps based on data from disparate systems."
+    },
+    "answers": ["C", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：APEX 纯浏览器运行，无需安装客户端。\n- B 错误：所有元数据（页面、校验、分支等）均存于数据库表（wwv_flow_*）。\n- C 正确：APEX 把业务逻辑下沉到数据库层，通过 PL/SQL、SQL 实现，减少中间层代码。\n- D 错误：处理与数据操纵 100% 在 Oracle 数据库内完成。\n- E 正确：通过 REST 数据源、DB Link、ORDS 可整合多系统数据。\n\n考点总结：\nAPEX 架构核心为“Database-Centric”，应用即元数据表集合，逻辑执行全部在数据库引擎内，天然支持跨源数据整合。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 APEX 口号：100% in the Database。\n- 遇到“needs client”或“logic outside DB”之类描述，直接排除。\n- 练习使用 REST Data Source + Interactive Report 快速整合第三方 JSON API，验证选项 E。"
+  },
+  {
+    "question": "### Question 8\nWhich two Query Source types can be used to create a dynamic LOV?",
+    "selections": {
+      "A": "Select List",
+      "B": "SQL Query",
+      "C": "Procedure",
+      "D": "Function Returning SQL Query"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Select List 是 UI 组件，不可作为 LOV 查询源。\n- B 正确：直接输入 SQL 是最常见方式。\n- C 错误：Procedure 无法直接返回结果集给 LOV；需封装在 Function 中。\n- D 正确：Function Returning SQL Query 允许动态拼接语句，适配复杂逻辑。\n\n考点总结：\n动态 LOV 支持两类查询源：静态 SQL（SQL Query）与动态 SQL（Function Returning SQL Query），后者在运行时解析。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住命名差异：SQL Query vs Function Returning SQL Query，注意后者带“Function”关键词。\n- 掌握典型用法：Function 内使用 IF/ELSE 根据页面项切换 SQL，实现级联 LOV。\n- 排除法：凡出现“Procedure”或“Select List”作为 Query Source 直接排除。"
+  },
+  {
+    "question": "### Question 9\nWhich is NOT an available Geometry Column data type for the map region?",
+    "selections": {
+      "A": "GeoJSON",
+      "B": "Latitude/Longitude",
+      "C": "SDO_GEOMETRY",
+      "D": "JSON OBJECT"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A、B、C 均为官方支持的 Geometry 类型：GeoJSON（VARCHAR2/CLOB）、Lat/Long（两列数值）、SDO_GEOMETRY（原生 Oracle Spatial）。\n- D 错误：JSON OBJECT 是通用文档格式，不被地图区域识别为几何列。\n\n考点总结：\nAPEX Map Region 支持三种几何映射方式：GeoJSON 字符串、数值型经纬度双列、SDO_GEOMETRY 对象，JSON OBJECT 不在支持列表。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记 Map Region → Geometry Column 下拉框中的三项：GeoJSON、Latitude/Longitude、SDO_GEOMETRY。\n- 了解 GeoJSON 只需存储于 VARCHAR2/CLOB，无需额外对象类型，降低使用门槛。\n- 若题目出现“JSON OBJECT”或“BLOB”之类，可直接选为 NOT available。"
+  },
+  {
+    "question": "### Question 10\nWhich statement is true about the Link Column attributes of an Interactive Report?",
+    "selections": {
+      "A": "It is not possible to include a custom target in Link Column.",
+      "B": "A Link Column cannot be sorted, hidden, or moved by an end user.",
+      "C": "If you select Link Column, it is always displayed as the last column in the report.",
+      "D": "It is not possible to exclude Link Column."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Link Column 支持自定义目标（URL、Page、Dialog）。\n- B 错误：Link Column 与普通列一样可受 IR 用户操作（排序、隐藏、移动）。\n- C 错误：列顺序可在 Actions → Columns 中自由调整。\n- D 正确：Link Column 一旦启用，即随每行输出，无法按行条件排除。\n\n考点总结：\nInteractive Report 的 Link Column 是行级导航入口，全局生效，无法按数据条件隐藏；其他属性均可被用户或开发者灵活调整。",
+    "suggestion": "### 应试技巧与学习建议\n- 理解 Link Column 的“全局性”：要么全部行显示，要么在列属性里整体关闭。\n- 若需按行控制，可使用 HTML Expression 构造 <a> 标签替代 Link Column。\n- 实验验证：在 Actions → Columns 中可拖动 Link Column 到任意位置，反驳选项 C 的“总是最后”。"
+  },
+  {
+    "question": "### Question 11\nWhich client credentials are used for authentication during the 'Check Syntax' process?",
+    "selections": {
+      "A": "APEX Workspace Admin credentials",
+      "B": "Database schema credentials",
+      "C": "APEX Developer credentials"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Workspace Admin 账户只在 Workspace 层面管理用户与权限，与“检查语法”这一数据库级操作无关。\n- B 正确：Check Syntax 实际由数据库引擎执行 PL/SQL/SQL 解析，因此使用当前页面解析模式(schema)的数据库口令。\n- C 错误：Developer 凭据仅用于登录 App Builder，不用于后端解析。\n\n考点总结：\n在 APEX 中，任何需要数据库层面解析（编译 PL/SQL、验证 SQL、Check Syntax）的动作，均以解析模式的数据库用户身份执行，而非 APEX 工作区或开发者账户。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“解析模式(schema)”这一概念：所有数据库对象与权限都依赖它。\n- 遇到“Check Syntax、Validate SQL、Compile”之类动词，立即联想到“数据库 schema 口令”。\n- 实验验证：在 SQL Workshop → SQL Commands 里执行 Check Syntax，查看右下角连接用户即解析模式。"
+  },
+  {
+    "question": "### Question 12\nWhich two statements are true about creating and using dynamic actions?",
+    "selections": {
+      "A": "After you create a dynamic action, you cannot add more true actions.",
+      "B": "If a client-side condition is defined, the true action will fire when the condition is met.",
+      "C": "If no client-side condition is defined, true actions will not fire.",
+      "D": "You can execute JavaScript code by creating a dynamic action."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：动态动作支持无限添加 True/False 子动作，可随时编辑。\n- B 正确：当定义了客户端条件且结果为 true，则触发 True 分支下的全部动作。\n- C 错误：未定义条件时，默认为“无条件触发”，True 动作直接执行。\n- D 正确：通过动作类型“Execute JavaScript Code”可直接运行前端脚本。\n\n考点总结：\n动态动作的核心是事件-条件-动作(Event-Condition-Action)模型；条件为可选项，缺省即始终触发。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记 ECA 模型：Event → Condition(可选) → Action(s)。\n- 实验：在页面临时添加一个按钮，新建动态动作，随时通过“Add True Action”按钮验证 A 选项错误。\n- 注意区分客户端条件与服务器端条件：前者用 JavaScript 表达式，后者使用 PL/SQL 表达式。"
+  },
+  {
+    "question": "### Question 13\nThere is a page with an interactive grid region based on this SQL statement: (SQL statement shown in image). In the Interactive Grid attributes, in the Edit group, the Enabled switch is turned off. Which two actions must be performed to make an employee's commission editable in the grid?",
+    "selections": {
+      "A": "In the Interactive Grid attributes, in the Edit group, turn on the Enabled switch.",
+      "B": "In the COMM column attributes, set the Read Only attribute to No.",
+      "C": "In the Interactive Grid attributes, select COMM for Allowed Row Operations Column."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n- A 正确：整个 IG 必须先启用编辑功能（Edit → Enabled = Yes）。\n- B 错误：COMM 列默认即可编辑，无需显式改 Read Only；此属性用于行级或条件只读。\n- C 正确：若表中有虚拟列或需要按条件控制可编辑行，则需在 Allowed Row Operations Column 指定布尔列或列名（此处为 COMM）。\n\n考点总结：\n要让某列可编辑，先开 IG 编辑总开关，再确保列级别或行级别未显式设置只读；若需行级控制，则借助 Allowed Row Operations Column。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记两步：IG 级 Enabled → 列/行级权限。\n- 若题干出现“must be performed”，通常暗示总开关(A) + 行级控制(C)组合。\n- 通过测试：将 Enabled 关闭后，即使列 Read Only=No 也无法编辑，验证 A 的必要性。"
+  },
+  {
+    "question": "### Question 14\nWhich authentication scheme type supports authentication with social networks?",
+    "selections": {
+      "A": "Social Sign-In",
+      "B": "OAuth2 Client Credentials",
+      "C": "OpenID Connect"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：APEX 内置的“Social Sign-In”方案专门用于 Facebook、Google、Apple 等社交身份提供商。\n- B 错误：OAuth2 Client Credentials 用于机器对机器通信，不面向终端用户。\n- C 错误：OpenID Connect 虽然可用于社交登录，但 APEX 将其作为独立方案而非“Social Sign-In”。\n\n考点总结：\n在 APEX 23c/24.1 中，社交登录统一归类为 Social Sign-In 方案，底层可配置 OAuth2 或 OpenID Connect 协议细节。",
+    "suggestion": "### 应试技巧与学习建议\n- 认准关键字：Social Sign-In = 社交登录快捷模板。\n- 理解 Social Sign-In 与 OpenID Connect 的关系：前者是“模板”，后者是“协议实现”。\n- 实验：在 Shared Components → Authentication Schemes → Create → Based on a pre-configured template 中选择 Social Sign-In。"
+  },
+  {
+    "question": "### Question 15\nWhat is the Unified Task List in the Approvals component?",
+    "selections": {
+      "A": "A page type in the Create Page Wizard that is used to create a summary of tasks that functions like an inbox.",
+      "B": "A page type in the Create Page Wizard that is used to create a task filter.",
+      "C": "A page type in the Create Page Wizard that is used to create a task view."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：Unified Task List 页面模板直接生成类邮箱的待办任务汇总列表。\n- B、C 错误：过滤器与单一视图是 Task List 页面内部的区域或组件，而非独立页面类型。\n\n考点总结：\nAPEX Approvals 通过 Unified Task List 页面模板，为最终用户呈现跨工作流的集中收件箱，支持开箱即用的高亮、排序与批量审批。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住页面模板名称：Unified Task List 对应“Inbox”体验。\n- 区分 Task List 页面与 Task Details 页面：前者汇总，后者单条审批。\n- 快速验证：Create Page → Approvals → Unified Task List，查看生成页面右侧区域即汇总表。"
+  },
+  {
+    "question": "### Question 16\nWhich two statements are true about REST Data Source Synchronization?",
+    "selections": {
+      "A": "If the local table is not in sync with the Data Profile, Data Synchronization does not work.",
+      "B": "To execute REST source synchronizations on schedule, the CREATE Job privilege must be granted to the application's parsing schema.",
+      "C": "If the local table is not in sync with the Data Profile, Data Synchronization continues to work for columns present in both.",
+      "D": "You cannot trigger Data Synchronization on a regular schedule using a scheduler job.",
+      "E": "The local table can only be used for Data Synchronization but you cannot add indexes or change physical properties."
+    },
+    "answers": ["B", "C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：缺失列不会导致同步整体失败，只影响缺失列。\n- B 正确：APEX 通过 DBMS_SCHEDULER 创建自动同步 Job，因此解析模式需 CREATE Job 权限。\n- C 正确：同步采用“列交集”策略，公共列继续更新。\n- D 错误：APEX 提供“Enable Synchronization”并自动生成调度器 Job。\n- E 错误：本地表是普通数据库表，可自由加索引、分区等。\n\n考点总结：\nREST 同步本质是“外部→本地表”增量刷新；同步容错、调度依赖 DBMS_SCHEDULER，且本地表完全可维护。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记同步容错机制：列差异不中断同步，只跳过差异列。\n- 配置同步后，在 SQL Workshop 查看自动生成的 JOB_NAME 前缀 APEX_SYNC_，验证 B 选项。\n- 注意权限：除了 CREATE JOB，解析模式还需对目标表有 INSERT/UPDATE/DELETE。"
+  },
+  {
+    "question": "### Question 17\nWhich statement is true about creating and using reports with a local database or REST Data Source?",
+    "selections": {
+      "A": "The Create Page Wizard doesn't support the creation of a classic report and form.",
+      "B": "The Create Application Wizard doesn't support the creation of an interactive report and form combination.",
+      "C": "In the Create Application Wizard, you can select a data source (that is, Local Database, REST Enabled SQL Service or REST Data Source) for the initial page of the application.",
+      "D": "Both the Create Application Wizard and Create Page Wizard support the creation of an interactive report or classic report."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Create Page Wizard 提供 Report + Form (Classic) 模板。\n- B 错误：Create Application Wizard 可直接生成 IR + Form 组合。\n- C 错误：Create Application Wizard 的“Add Page”步骤仅支持 Local Database 作为初始页数据源，REST 数据源需后续手动添加。\n- D 正确：两个向导均支持 IR 与 Classic Report 的创建，只是入口不同。\n\n考点总结：\n无论 Create Application 还是 Create Page 向导，均覆盖 IR 与 Classic Report；差异在于 REST 数据源页面的创建顺序与入口。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键字：两个向导（Create App / Create Page）都支持 IR & Classic。\n- 若题目强调“initial page of the app”，优先排除 REST 数据源，因向导默认 Local DB。\n- 实验：Create Page → Report → Classic Report + Form 验证 A 选项错误。"
+  },
+  {
+    "question": "### Question 18\nWhich two statements are true about loading data from the 'Create Page' wizard?",
+    "selections": {
+      "A": "Data from remote web services can be uploaded.",
+      "B": "Seed data from a SQL script can be uploaded.",
+      "C": "CSV, XLSX, XML, TXT, or JSON files can be uploaded.",
+      "D": "XML and JSON data can be pasted and loaded.",
+      "E": "A sample data set from the sample list can be uploaded."
+    },
+    "answers": ["C", "E"],
+    "summary": "### 选项分析与考点总结\n- A 错误：向导的上传组件仅支持本地文件，远程服务需 REST Data Source。\n- B 错误：SQL 脚本运行需 SQL Workshop 或 SQL Scripts，不在 Create Page 向导范围。\n- C 正确：向导集成 Data Load 组件，支持多格式文件上传。\n- D 错误：向导暂不支持粘贴 XML/JSON 文本，仅支持文件上传。\n- E 正确：APEX 提供示例数据集（EMP, DEPT, Sample Projects）一键加载。\n\n考点总结：\nCreate Page Wizard 的 Data Load 功能限定本地文件 (CSV/XLSX/XML/TXT/JSON) 与内置示例数据集，不支持脚本或远程 URL。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记支持格式：CSV、XLSX、XML、TXT、JSON 五类文件 + 内置示例。\n- 若出现“SQL script”“paste JSON”“remote web service”关键词，直接排除。\n- 实验：Create Page → Data Loading → Drag & Drop file 验证格式列表。"
+  },
+  {
+    "question": "### Question 19\nWhich two statements are true about creating and customizing Smart Filters?",
+    "selections": {
+      "A": "If you create a Smart Filters page based on a table, the filters are auto-discovered by using the Data Dictionary table.",
+      "B": "The suggestion chip count is displayed only for filters that support counts such as checkboxes.",
+      "C": "The search results report can be displayed as an interactive report."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n- A 正确：APEX 利用数据字典中的列统计信息自动生成范围、列表、搜索等过滤器。\n- B 错误：Chip 计数对所有可枚举过滤器均显示（单选、复选、范围），不限于复选框。\n- C 正确：Smart Filters 支持将结果区域切换为 IR、Cards、Gallery 等展示方式。\n\n考点总结：\nSmart Filters 通过数据字典洞察列特征，自动生成过滤器；结果区域可任意切换为 IR，实现高级交互。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“auto-discovered”对应数据字典，是 Smart Filters 的核心卖点。\n- 在 Create Page → Smart Filters 向导里勾选“Include Interactive Report”验证 C 选项。\n- 注意区分 Smart Filters（过滤器页）与 Smart Search（搜索框）功能差异。"
+  },
+  {
+    "question": "### Question 20\nWhich two statements are true about faceted search pages?",
+    "selections": {
+      "A": "A facet's chart can be seen only in a nonmodal dialog.",
+      "B": "Faceted Search supports the ability to filter columns storing multiple values.",
+      "C": "Multiple charts are not visible in the same region.",
+      "D": "Facets map to specific database columns."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Facet 图表可在主区域直接显示，也可弹窗；非强制对话框。\n- B 正确：通过设置分隔符可把存储为多值串的列拆分为独立过滤项。\n- C 错误：Faceted Search 区域可配置多个图表并排显示。\n- D 正确：每个 facet 必须绑定到一列或表达式，形成 1:1 映射。\n\n考点总结：\nFaceted Search 将数据库列映射为过滤器，支持单值、多值、范围、图表等多种呈现；多值存储列也能被拆分过滤。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键字：Facet ↔ Column 一一映射，支持多值列。\n- 实验：在 Facet → Column 选择逗号分隔的多值列，并启用“Split delimited values”验证 B 选项。\n- 排除“only in dialog”与“not visible”之类绝对描述，通常错误。"
+  },
+  {
+    "question": "### Question 21\nThe Movies faceted search report is filtered only when the Apply button for a selected facet is clicked. What must be done in the Page Designer so that report filtering is automatically executed when any facet value is selected?",
+    "selections": {
+      "A": "Navigate to the faceted search region Attributes, and turn off the Show Facet Name attribute.",
+      "B": "Navigate to each facet and then in the Property Editor, turn on Client-Side Filtering.",
+      "C": "Navigate to the faceted search region Attributes, and disable the Batch Facet Changes attribute."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Show Facet Name 只控制 UI 文字显示，与自动过滤无关。\n- B 错误：Client-Side Filtering 仅在数据已完全加载到浏览器时使用，对服务器端 Faceted Search 无效。\n- C 正确：Batch Facet Changes 默认启用，需要显式禁用才能“即时过滤”。禁用后，用户每次点击 facet 值即立即刷新报告。\n\n考点总结：\nFaceted Search 区域提供“Batch Facet Changes”开关，控制是否等待用户点击 Apply；关闭即可实现自动即时过滤。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键词：Batch Facet Changes = 批量应用/延迟过滤；关闭即可即时。\n- 在 Page Designer → Region → Attributes → Batch Facet Changes 快速定位。\n- 区分 Client-Side Filtering（本地小数据集）与服务器端 Faceted Search（大数据集）。"
+  },
+  {
+    "question": "### Question 22\nWhich two actions does the Create Application Wizard allow?",
+    "selections": {
+      "A": "Changing the application authorization.",
+      "B": "Adding or deleting application pages.",
+      "C": "Uploading JavaScript or CSS files required for an application.",
+      "D": "Recording application pages."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：授权方案(Authorization Scheme)需在 App Builder 中后续设置，向导创建阶段不提供。\n- B 正确：向导可在“Add Page”步骤自由增删页面。\n- C 错误：静态文件上传需进入 Shared Components → Static Files，不在向导流程。\n- D 正确：向导的“Features”步骤可一键添加“Application Pages”(如 Dashboard、Login 等)，即记录页面。\n\n考点总结：\nCreate Application Wizard 聚焦页面结构与功能开关，授权与静态资源需后续在开发环境补充。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记向导步骤：Features → Pages → Add Page/Delete Page。\n- 若出现“authorization”或“upload static files”关键词，优先排除。\n- 实验：在向导最后一步点击“Add Page”按钮，验证 B 选项。"
+  },
+  {
+    "question": "### Question 23\nYou created a shopping cart application and added the 'Add to Cart' functionality. Assume P2_PRODUCT_ID holds the product id of the item being added to the cart. Which PL/SQL Code snippet can be used to add items (PRODUCT_ID) into the APEX collection when the user adds items to the cart?",
+    "selections": {
+      "A": "INSERT INTO APEX_COLLECTION... (Incomplete code snippet)",
+      "B": "INSERT INTO CART... (Incomplete code snippet)",
+      "C": "BEGIN APEX_COLLECTION.ADD_MEMBER ( p_collection_name => 'CART', p_c001 =>:P2_PRODUCT_ID ); END;"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n给的题库就是缺少的，别怪我。- A 错误：直接 INSERT INTO APEX_COLLECTION 会绕过 API，导致会话不一致。\n- B 错误：CART 是业务表概念，非 APEX 提供的会话级集合。\n- C 正确：使用 APEX_COLLECTION.ADD_MEMBER 是官方推荐方式，确保会话隔离与并发安全。\n\n考点总结：\nAPEX_COLLECTION API 用于在会话期间维护临时数据集；购物车、审批流等场景均通过 ADD_MEMBER / UPDATE_MEMBER 操作集合。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记集合三大 API：CREATE_COLLECTION → ADD_MEMBER → UPDATE_MEMBER。\n- 注意 p_c001…p_c050 与 p_n001…p_n005 区分字符与数值列。\n- 实验：在 Process 里执行 C 代码后，查询 APEX_COLLECTIONS 视图验证数据进入集合。"
+  },
+  {
+    "question": "### Question 24\nWhich two statements are true about the APEX_MAIL API?",
+    "selections": {
+      "A": "The APEX_MAIL package supports sending emails only to Oracle database users.",
+      "B": "You can add files as attachments to your emails using the APEX_MAIL package.",
+      "C": "You can receive emails using the APEX_MAIL package in an Oracle APEX application.",
+      "D": "You can send emails using the APEX_MAIL package from an Oracle APEX application."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：邮件地址可为任意 SMTP 可投递地址，不限于数据库用户。\n- B 正确：通过 APEX_MAIL.ADD_ATTACHMENT 可添加 BLOB/CLOB 附件。\n- C 错误：APEX_MAIL 仅用于发送；接收需 APEX_MAIL_QUEUE 或外部 IMAP 配置。\n- D 正确：APEX_MAIL.SEND 是最基本方法，支持 HTML/文本正文。\n\n考点总结：\nAPEX_MAIL 提供发送邮件的封装，支持附件、HTML、模板，但不负责接收。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记两对 API：SEND + ADD_ATTACHMENT；QUEUE 用于延迟发送。\n- 关注 SMTP 配置：Workspace Administration → Manage Instance Settings → SMTP Host。\n- 若出现“receive email”关键词，直接排除。"
+  },
+  {
+    "question": "### Question 25\nWhich two feature pages can you create using the Create Page Wizard?",
+    "selections": {
+      "A": "Feedback",
+      "B": "Search Page",
+      "C": "Access Control",
+      "D": "Unified Task List"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Feedback 页面由 Team Development 管理，不在 Create Page Wizard。\n- B 正确：Search Page 模板（Smart Filters）在向导中可选。\n- C 错误：Access Control 作为应用级功能，由 Shared Components → Security → Access Control 配置，非页面模板。\n- D 正确：Unified Task List 属于 Approvals 页面模板，向导支持。\n\n考点总结：\nCreate Page Wizard 提供的“Feature Page”列表包括 Search、Login、Dashboard、Unified Task List 等，但 Feedback 与 Access Control 不在其中。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记向导页面类别：Form、Report、Feature、Modal Dialog；Feature 里找 Search & Unified Task List。\n- 若选项出现“Access Control”或“Feedback”，优先排除。\n- 实验：Create Page → Feature → 查看列表验证答案。"
+  },
+  {
+    "question": "### Question 26\nAn application includes a form on the EMPLOYEES table. You must limit the P1_MANAGER page item so users can select a single employee name and id from the corresponding manager id in the same table. Which item type can be used to display P1_MANAGER?",
+    "selections": {
+      "A": "Switch",
+      "B": "Popup LOV",
+      "C": "Check box"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Switch 仅表示布尔值，无法展示名字列表。\n- B 正确：Popup LOV 支持单选、搜索、级联，适合引用同表 EMPLOYEES 的 Manager 子集。\n- C 错误：Check box 用于多选，与“single employee”需求冲突。\n\n考点总结：\n当需要从同表或其他表做单值选择时，Popup LOV（或 Select List）是首选；Switch/Checkbox 用于布尔或多选场景。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“select single row/value” → Popup LOV / Select List。\n- 设置 Popup LOV 的 SQL：SELECT ename, empno FROM employees WHERE job='MANAGER'。\n- 注意区分 Popup LOV（可搜索）与 Native Select List 的差异。"
+  },
+  {
+    "question": "### Question 27\nWhich two statements are true about creating and managing an APEX Workspace?",
+    "selections": {
+      "A": "New schemas cannot be created during workspace creation.",
+      "B": "You can create only two workspaces in an APEX Service (APEX Application Development) instance.",
+      "C": "During workspace creation, you can associate the workspace with an existing database schema.",
+      "D": "A workspace can be associated with only one schema.",
+      "E": "A workspace enables multiple users to work within the same Oracle APEX installation."
+    },
+    "answers": ["C", "E"],
+    "summary": "### 选项分析与考点总结\n- A 错误：向导支持“Create new schema”或复用现有 schema。\n- B 错误：APEX Service 对 workspace 数量无硬性上限，仅受资源配额限制。\n- C 正确：向导提供下拉框选择已有 schema 或输入新名称。\n- D 错误：一个 workspace 可通过“Additional Schemas”关联多个 schema。\n- E 正确：workspace 是多用户协作容器，支持团队开发。\n\n考点总结：\nWorkspace 是逻辑容器，可映射多个 schema；创建时可新建或复用 schema；支持多开发者共享。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键词：workspace ↔ multiple schemas 一对多。\n- 遇到“only one schema”或“only two workspaces”之类绝对描述，直接排除。\n- 实验：Internal workspace → Manage Workspaces → Create Workspace → 下拉框选现有 schema。"
+  },
+  {
+    "question": "### Question 28\nWhich two actions are performed by using the Object Browser?",
+    "selections": {
+      "A": "Browse database objects of the current schema.",
+      "B": "Restore dropped database objects.",
+      "C": "Create a lookup table based on a column in the current table.",
+      "D": "Create and run SQL scripts.",
+      "E": "Export and import SQL scripts."
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n- A 正确：Object Browser 默认展示当前解析模式所有对象。\n- B 错误：对象恢复需 DBA/闪回或回收站，不在 Object Browser 功能内。\n- C 错误：Lookup 向导在 Create Page → Form → Lookup Table，非 Object Browser。\n- D 正确：Object Browser 内置 SQL Command 窗口可即时创建并运行脚本。\n- E 错误：脚本导入导出在 SQL Scripts 或 App Builder Utilities。\n\n考点总结：\nObject Browser 提供浏览、DDL 查看、简单创建及运行 SQL，但不负责回收站恢复或脚本管理。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住 Object Browser 的两大核心：Browse Objects + Run SQL。\n- 若出现“restore dropped objects”或“export scripts”，优先排除。\n- 实验：SQL Workshop → Object Browser → Tables → 右键 → Query Data 验证 D 选项。"
+  },
+  {
+    "question": "### Question 29\nYou created a custom theme for an application. Which solution guarantees that any changes to the master theme are reflected in the copied theme?",
+    "selections": {
+      "A": "Copying the changes made in the master theme to the copied theme.",
+      "B": "Verifying the theme subscription.",
+      "C": "Subscribing the copied theme to the master theme and refreshing the theme.",
+      "D": "Refreshing the templates."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：人工复制无法持续同步，易遗漏。\n- B 错误：仅验证订阅状态不执行刷新，不会应用变更。\n- C 正确：订阅机制 + 定期 Refresh Theme 可自动继承主模板更新。\n- D 错误：单独刷新模板不处理样式、JS 等全局变更。\n\n考点总结：\nAPEX Theme Subscription 通过“Subscribe + Refresh”实现主从主题同步，确保全局风格一致。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟记路径：Shared Components → Themes → Subscription → Refresh Theme。\n- 若题目出现“guarantees”与“master changes”，直接选“Subscribe + Refresh”组合。\n- 实验：修改主主题颜色 → Refresh 子主题，验证即时生效。"
+  },
+  {
+    "question": "### Question 30\nYou must use a Static Content region type to display messages about the employee of the month. Which text, when placed in this region, will display the message correctly?",
+    "selections": {
+      "A": "Join me in congratulating: P1_ENAME as the new employee of the month!",
+      "B": "Join me in congratulating ('P1_ENAME') as the new employee of the month!",
+      "C": "Join me in congratulating &P1_ENAME. as the new employee of the month!",
+      "D": "Join me in congratulating &P1_ENAME as the new employee of the month!"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：缺少替换语法，页面项值不会被解析。\n- B 错误：单引号会被原样输出，无法取值。\n- C 错误：&P1_ENAME. 末尾多一个句点，实际项名为 P1_ENAME，导致空值。\n- D 正确：&P1_ENAME 是标准替换语法，在渲染时自动替换为对应项值。\n\n考点总结：\n在 Static Content、HTML、Header Text 等静态区域，使用 &ITEM_NAME. 语法（无额外句点）即可输出页面项值。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住替换语法：&ITEM_NAME 或 &ITEM_NAME. 视上下文；但在静态区域通常用 &ITEM_NAME。\n- 使用“View Source”验证渲染结果，避免多余符号。\n- 若需 HTML 转义，可配合 &ITEM_NAME!HTML. 或 !ATTR. 等修饰符。"
+  },
+  {
+    "question": "### Question 31\nThere is a validation of type Item is Numeric on the P1_SALARY item. What will cause the validation error to appear only in the Notification area?",
+    "selections": {
+      "A": "Removing P1_SALARY from the validation Associated Item.",
+      "B": "Setting Value Required to Yes on P1_SALARY.",
+      "C": "Setting Display Location to inline in Notification."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n- A 错误：将关联项移除后，验证仍执行，但错误信息默认会出现在 Notification 区 **及** 行内，无法保证“仅”出现在 Notification。\n- B 错误：Value Required 是必填验证，与错误出现位置无关。\n- C 正确：将 Display Location 设为 inline in Notification 会强制把所有验证错误都汇聚到页面顶部 Notification 区域，而不再在行内单独显示。\n\n考点总结：APEX 验证错误的显示位置由验证属性 Display Location 控制，可选 Inline、Inline in Notification 或 None，需区分场景选择。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟背 Display Location 的三个取值及差异：Inline（行内）、Inline in Notification（顶部提示）、None（不显示）。\n- 题目关键词“only in the Notification area”= Inline in Notification。\n- 实验法：在 Sample Database Application 中修改任意验证的 Display Location，观察错误信息出现位置，加深记忆。"
+  },
+  {
+    "question": "### Question 32\nWhich Process type do you use to run multiple processes in the background in APEX?",
+    "selections": {
+      "A": "Execute Code",
+      "B": "Execute JavaScript Code",
+      "C": "Execute Server-side Code",
+      "D": "Execution Chain"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n- A、B、C 均为单一可执行单元，无法一次性编排多个后台步骤。\n- D 正确：Execution Chain 专门用于将多个 Process/Plug-in 组合成链式任务，在后台顺序或并行执行。\n\n考点总结：Execution Chain 是 APEX 中实现复杂后台作业（如批处理、数据同步）的核心机制。",
+    "suggestion": "### 应试技巧与学习建议\n- 只要看到“run multiple processes in the background”或“chained jobs”，锁定 Execution Chain。\n- 在本地测试：创建一条包含 PL/SQL → REST → 邮件通知三步的 Execution Chain，加深理解。"
+  },
+
+  {
+    "question": "### Question 33\nWhich statement is true about Theme Styles in Oracle APEX?",
+    "selections": {
+      "A": "Theme Styles control the layout of a webpage.",
+      "B": "The 'Is Current' attribute of a Theme Style depends on the 'Read Only' attribute.",
+      "C": "When the Is Public attribute is enabled, end users can choose the Theme Style from the runtime environment."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n- A 错误：Theme Style 仅控制配色/皮肤，不负责布局；布局由 Template 或 Layout 属性管理。\n- B 错误：Is Current 只取决于当前激活的样式，与 Read Only 无任何关联。\n- C 正确：Is Public=true 会在运行时在“用户菜单 → Theme Roller”中列出该 Style，供终端用户切换。\n\n考点总结：Theme Style 的可见性与可切换性由 Is Public 控制，Is Current 标识当前默认样式。",
+    "suggestion": "### 应试技巧与学习建议\n- 记忆口诀：Theme Style = 皮肤；Template = 布局；Is Public = 可见可换。\n- 打开任意 APEX 应用 → Theme Roller → 勾选 Is Public，观察运行时效果，强化记忆。"
+  },
+  {
+    "question": "### Question 34\nYou have defined a REST Data Source with ORDS as the REST Data Source Type. The Source is being used as source for an editable interactive grid. When a user updates an employee record in this Interactive Grid, which operation is performed on the Database?",
+    "selections": {
+      "A": "GET",
+      "B": "POST",
+      "C": "PUT"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n- A 错误：GET 用于读取数据。\n- B 错误：POST 用于新增记录。\n- C 正确：Interactive Grid 对已有行执行 DML 时，会自动调用 REST 模块的 PUT 方法完成更新。\n\n考点总结：APEX 与 ORDS 的 REST 模块默认遵循 HTTP 语义：GET/SELECT、POST/INSERT、PUT/UPDATE、DELETE/DELETE。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 CRUD 与 HTTP 动词映射：Create=POST, Read=GET, Update=PUT, Delete=DELETE。\n- 在 ORDS 模块中查看自动生成的 PUT handler，理解其绑定逻辑。"
+  },
+  {
+    "question": "### Question 35\nWhat do you achieve by performing the 'Refresh Working Copy' task?",
+    "selections": {
+      "A": "Merge the Working Copy changes with the Main application.",
+      "B": "Get the latest updates from the Main application.",
+      "C": "Update the changes from one Working Copy to another."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n- A 错误：这是“Merge”或“Publish”动作。\n- B 正确：Refresh Working Copy 会把 Main 应用的最新版本拉取到当前工作副本，覆盖本地元数据。\n- C 错误：工作副本之间不能直接同步，需通过 Main 应用中转。\n\n考点总结：Refresh Working Copy 是典型的“拉取”操作，与 Git 中的 git pull 类似。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 APEX 版本控制类比 Git：Main=远程仓库，Working Copy=本地分支。\n- 动手操作：在 Team Development → Application Export → Refresh Working Copy，观察版本号变化。"
+  },
+  {
+    "question": "### Question 36\nWhich two layout modes are available for Page Designer under Utilities?",
+    "selections": {
+      "A": "Two Pane",
+      "B": "Three Pane",
+      "C": "Single Pane",
+      "D": "Four Pane"
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n\n- Page Designer → Utilities → Layout 仅提供 Two Pane（左右）与 Three Pane（左中右）两种官方预设，Single/Four Pane 不存在。\n\n考点总结：熟悉 Page Designer 的 UI 切换，快速定位 Layout 菜单。",
+    "suggestion": "### 应试技巧与学习建议\n- 亲自打开 Page Designer → 右上角齿轮 → Utilities → Layout，观察只有 A、B 可选。\n- 记住关键词“Two Pane / Three Pane”即可秒杀。"
+  },
+  {
+    "question": "### Question 37\nWhich is a valid method of logging messages to the execution log in APEX automation?",
+    "selections": {
+      "A": "apex_debug.info('SAL for ' || :ENAME || ' increased by 18.');",
+      "B": "apex_error.add_error ( p_message => 'SAL for ' || :ENAME || ' increased by 18.', p_display_location => apex_error.c_inline_in_notification );",
+      "C": "apex_automation.log_info('SAL for ' || :ENAME || ' increased by 18.');"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n- A 错误：apex_debug.* 写入调试日志，非 Automation 专属日志。\n- B 错误：apex_error.add_error 用于抛出用户可见错误，非日志。\n- C 正确：apex_automation.log_info / log_warn / log_error 专用于在 Automation 执行日志中记录信息。\n\n考点总结：APEX Automation 拥有独立的日志 API，前缀统一为 apex_automation。",
+    "suggestion": "### 应试技巧与学习建议\n- 记关键字：automation 日志 → 前缀 apex_automation。\n- 在 Automation → Execution Log 中查看 log_info 输出，加深印象。"
+  },
+  {
+    "question": "### Question 38\nWhich three data types are supported by Oracle APEX Workflow parameters and item types?",
+    "selections": {
+      "A": "CLOB",
+      "B": "VARCHAR",
+      "C": "Image",
+      "D": "NUMBER",
+      "E": "Vector"
+    },
+    "answers": ["A", "B", "D"],
+    "summary": "### 选项分析与考点总结\n\n- A、B、D 正确：官方明确支持 VARCHAR、CLOB、NUMBER（及其子类型）。\n- C 错误：Image 并非 Workflow 原生类型，需通过 BLOB/URL 间接处理。\n- E 错误：Vector 类型目前仅在数据库 23c AI 功能中提供，Workflow 尚未支持。\n\n考点总结：Workflow 参数类型与 APEX Item 类型大体一致，但暂不支持复杂对象或 AI 专用类型。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“三大基本型”：VARCHAR、NUMBER、CLOB。\n- 打开 Workflow → Parameters → Data Type 下拉列表，确认候选范围。"
+  },
+  {
+    "question": "### Question 39\nYou must reference certain data from a dragged event under the Drag and Drop calendar. How can these be referenced?",
+    "selections": {
+      "A": "v('PK_VALUE'), v('NEW_START_DATE'), and v('NEW_END_DATE')",
+      "B": "#APEX$PK_VALUE#, #APEX$NEW_START_DATE#, and #APEX$NEW_END_DATE#"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n- A 错误：v() 函数读取的是 Session State，无法实时捕获拖动事件数据。\n- B 正确：APEX 在触发 drag-drop 事件时，自动把相关值注入占位符 #APEX$...#，可直接在动态动作或 JavaScript 中使用。\n\n考点总结：Calendar 拖动事件使用专用占位符，而非传统 v() 或 $v()。",
+    "suggestion": "### 应试技巧与学习建议\n- 识别题干关键词 “dragged event” → 立即联想到 #APEX$...# 占位符。\n- 在 Sample Calendar → Dynamic Action → JavaScript Code 中打印 console.log('#APEX$PK_VALUE#'); 观察值。"
+  },
+  {
+    "question": "### Question 41\nWhich two Plugin types can be created in Oracle APEX?",
+    "selections": {
+      "A": "Validation",
+      "B": "Process",
+      "C": "Email Template",
+      "D": "Region"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Validation 属于内置对象，**不是**可创建的插件类型。\n- B 正确：Process 插件可扩展服务器端执行逻辑。\n- C 错误：Email Template 是应用级模板，**无**对应插件类型。\n- D 正确：Region 插件用于自定义可视化区域或复杂 UI 组件。\n\n考点总结：官方支持的插件类型共 8 种，常见考查 Region、Item、Process、Dynamic Action 四类。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 4 大高频插件类型：Region / Item / Process / Dynamic Action。\n- 在 Workspace → Plug-ins → Create 下拉列表中快速验证官方类型，形成肌肉记忆。"
+  },
+  {
+    "question": "### Question 42\nWhich statement is true about importing an existing application into your workspace?",
+    "selections": {
+      "A": "The import process does not import the supporting objects defined during the export.",
+      "B": "You cannot change the application ID during the import process.",
+      "C": "You cannot import an APEX application exported from the latest APEX version to an old APEX version."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：导入向导会提示是否**同时导入 Supporting Objects**（表、数据、静态文件等），可选。\n- B 错误：导入时可手动指定新的 Application ID 以避免冲突。\n- C 正确：高版本导出的应用因元数据结构差异，**无法直接导入**低版本 APEX。\n\n考点总结：版本向下不兼容是 APEX 导入限制的核心考点。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词 “latest … to old” → 立即选 C。\n- 实验：在 23.2 导出应用，尝试导入 22.1 环境，观察报错信息，加深记忆。"
+  },
+  {
+    "question": "### Question 43\nWhich statement is true about Theme Styles?",
+    "selections": {
+      "A": "Theme Styles control the layout of a webpage.",
+      "B": "The 'Is Current' attribute of a Theme Style depends on the 'Read Only' attribute.",
+      "C": "When the Is Public attribute is enabled, end users can choose the Theme Style from the runtime environment."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Theme Style 仅控制配色/皮肤，布局由 Template 控制。\n- B 错误：Is Current 仅表示当前默认样式，与 Read Only 无任何关联。\n- C 正确：Is Public=true 会在运行时 Theme Roller 中列出该样式供用户切换。\n\n考点总结：Is Public 决定样式是否可被终端用户可见与切换。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记口诀：Style=配色，Template=布局，Is Public=用户可换肤。\n- 打开任意应用 Theme Roller 勾选 Is Public，实时体验效果。"
+  },
+  {
+    "question": "### Question 44\nWhich API can be used to send Push Notifications immediately in Oracle APEX?",
+    "selections": {
+      "A": "APEX_PWA.PURGE_QUEUE",
+      "B": "APEX_PWA.PUSH_QUEUE",
+      "C": "APEX_PWA.HAS_PUSH_SUBSCRIPTION"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：PURGE_QUEUE 用于清空待发送队列。\n- B 正确：PUSH_QUEUE 立即将队列中的消息推送到通知服务器。\n- C 错误：HAS_PUSH_SUBSCRIPTION 仅检测是否存在订阅。\n\n考点总结：APEX_PWA.PUSH_QUEUE 是触发即时推送的唯一 API。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到 “immediately send” → 直接锁定 PUSH_QUEUE。\n- 在 SQL Workshop 执行 `APEX_PWA.PUSH_QUEUE` 观察返回结果，加深记忆。"
+  },
+  {
+    "question": "### Question 45\nWhich three Theme Components are available out-of-the-box with the Universal Theme?",
+    "selections": {
+      "A": "Badge",
+      "B": "Comments",
+      "C": "Calendar",
+      "D": "REST Data Sources",
+      "E": "Avatar"
+    },
+    "answers": ["A", "C", "E"],
+    "summary": "### 选项分析与考点总结\n- A、C、E 正确：Badge、Calendar、Avatar 均为 UT 内建 Theme Components，可直接使用。\n- B 错误：Comments 不是独立组件，需借助 Report 或插件实现。\n- D 错误：REST Data Sources 属于数据源，非 Theme 组件。\n\n考点总结：Universal Theme 自带 20+ 组件，常考 Badge、Avatar、Calendar、Cards、Timeline 等。",
+    "suggestion": "### 应试技巧与学习建议\n- 在 Page Designer → Gallery → Theme Components 列表中浏览官方组件，建立直观印象。\n- 制作记忆卡片：把高频 5 个组件图标截屏保存，随时复习。"
+  },
+  {
+    "question": "### Question 46\nWhat happens when you regenerate credentials for Push Notifications in Oracle APEX?",
+    "selections": {
+      "A": "Push Notifications will be disabled for the application.",
+      "B": "Existing Push Subscriptions for the application will be invalidated.",
+      "C": "A new notification server must be created."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：功能不会自动禁用，仅更换密钥。\n- B 正确：重新生成凭证后，旧令牌失效，所有订阅需重新注册。\n- C 错误：通知服务器复用现有配置，无需重建。\n\n考点总结：凭证更新会导致令牌链断裂，必须重新订阅。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词 “regenerate credentials” → 立即联想到 invalidate subscriptions。\n- 官方文档实验：在 Shared Components → Push Notifications → Regenerate，查看提示信息。"
+  },
+  {
+    "question": "### Question 47\nWhich three statements are true about Data Workshops in Oracle APEX?",
+    "selections": {
+      "A": "You can load or unload a single table at a time.",
+      "B": "You can load or unload multiple tables at a time.",
+      "C": "You can load data into a new or existing table.",
+      "D": "You can unload data from a new or existing table.",
+      "E": "You can load or unload data only from existing tables."
+    },
+    "answers": ["B", "C", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Data Workshop 支持多表批量导入导出。\n- B 正确：支持一次选择多张表。\n- C、D 正确：既可将数据导入新表，也可追加/更新现有表；导出时亦如此。\n- E 错误：与 C/D 矛盾，排除。\n\n考点总结：Data Workshop = APEX 内置 ETL 工具，支持多表、新/旧表灵活操作。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“批量 + 新/旧表皆可”两大特点。\n- 亲自体验：SQL Workshop → Data Workshop → Load Data → 多选文件与表，验证功能。"
+  },
+
+  {
+    "question": "### Question 48\nWhich component of the Push Notifications feature stores the messages that are ready to be sent?",
+    "selections": {
+      "A": "Queue",
+      "B": "Subscription",
+      "C": "Application"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：所有待推送消息先进入队列，再由 PUSH_QUEUE 发送。\n- B 错误：Subscription 存储设备端点与密钥。\n- C 错误：Application 为整体配置容器，不负责消息暂存。\n\n考点总结：Queue 是消息缓冲区，Subscription 是目标地址。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到 “stores the messages ready to be sent” → 直接选 Queue。\n- 查询视图 `APEX_PWA_QUEUE` 观察待发送消息，形成直观印象。"
+  },
+  {
+    "question": "### Question 49\nWhich is a valid method of logging messages to the execution log in APEX applications?",
+    "selections": {
+      "A": "apex_error.add_error('SAL for ' || :ENAME || ' increased by 19.');",
+      "B": "apex_automation.log_info('SAL for ' || :ENAME || ' increased by 19.');",
+      "C": "apex_debug.info('SAL for ' || :ENAME || ' increased by 19.');"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：apex_error.add_error 用于抛出错误，非日志。\n- B 错误：apex_automation.log_info 专用于 Automation 日志，普通应用上下文无效。\n- C 正确：apex_debug.* 系列可将信息写入应用级调试日志，供开发者查看。\n\n考点总结：通用应用日志使用 apex_debug，Automation 日志使用 apex_automation。",
+    "suggestion": "### 应试技巧与学习建议\n- 题干无 “Automation” 关键词 → 排除 B，选 C。\n- 在 App Builder → Utilities → Debug Messages 中查看 apex_debug 输出，理解日志流向。"
+  },
+  {
+    "question": "### Question 50\nWhich statement is true about importing an existing application into your workspace?",
+    "selections": {
+      "A": "The import process does not import the supporting objects defined during the export.",
+      "B": "You cannot change the application ID during the import process.",
+      "C": "You cannot import an APEX application exported from the latest APEX version to an old APEX version."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A、B 均与事实相反，已在 Q42 解释。\n- C 正确：版本向下不兼容是硬性限制。\n\n考点总结：再次强调高→低版本不可导入，记住即可秒选。",
+    "suggestion": "### 应试技巧与学习建议\n- 与 Q42 合并记忆，出现 “latest to old” 一律选 C。\n- 关注官方文档中 “Compatibility Mode” 说明，理解版本差异。"
+  },
+  {
+    "question": "### Question 51\nWhich statement is true about the Data Workshop utility?",
+    "selections": {
+      "A": "The wizards load and unload table data only.",
+      "B": "You cannot load data from an XLSX file with multiple worksheets.",
+      "C": "The wizards load and unload all types of schema objects.",
+      "D": "You can load or unload multiple tables at a time."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：除表数据外，也支持 CSV、XLSX、XML、JSON 等多种数据源。\n- B 错误：Data Workshop 支持 XLSX 多工作表导入，向导会提示选择工作表。\n- C 错误：该工具专注“数据”而非所有模式对象（如索引、触发器等）。\n- D 正确：在一次会话中可批量选择多张表进行导入或导出。\n\n考点总结：Data Workshop 的核心卖点是“批量 + 多格式数据搬运”。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到 “multiple tables at a time” 即锁定 D。\n- 在 SQL Workshop → Data Workshop 中尝试一次勾选多张表，直观体验批量功能。"
+  },
+  {
+    "question": "### Question 52\nWhich two actions does the Create Application Wizard allow?",
+    "selections": {
+      "A": "Changing the application authorization",
+      "B": "Uploading JavaScript or CSS files required for an application",
+      "C": "Reordering application pages",
+      "D": "Adding or deleting application pages"
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：授权方案需在创建后于 Shared Components 中设置，向导不提供此步骤。\n- B 错误：静态文件上传同样属于创建后操作。\n- C 正确：向导允许拖拽调整页面顺序。\n- D 正确：向导可增删页面，即时生效。\n\n考点总结：Create Application Wizard 只负责“页面结构”与“顺序”，不涉及安全与资源。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词 “Wizard allow” → 聚焦向导界面可见的 Pages 步骤。\n- 亲自跑一次向导，观察只能在 Pages 页签内增删/排序，验证记忆。"
+  },
+  {
+    "question": "### Question 53\nWhich two SQL format options does the APEX Assistant provide when using the 'Create Data Model using AI' feature?",
+    "selections": {
+      "A": "Oracle PL/SQL",
+      "B": "MySQL",
+      "C": "Quick SQL",
+      "D": "Oracle SQL"
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：生成的是数据模型 DDL，不含业务 PL/SQL 单元。\n- B 错误：当前助手仅输出 Oracle 方言，不支持 MySQL。\n- C、D 正确：向导提供 Quick SQL（缩写语法）和 Oracle SQL（标准 DDL）两种格式。\n\n考点总结：APEX AI 助手输出限定在 Oracle 语法，且提供 Quick SQL 快捷语法。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Quick SQL + Oracle SQL”这对官方组合。\n- 在 SQL Workshop → APEX Assistant → Create Data Model 中切换下拉列表，实际体验两种语法差异。"
+  },
+  {
+    "question": "### Question 54\nWhat are two reasons to enable the 'Used by App Builder' option while creating a Generative AI Server?",
+    "selections": {
+      "A": "To create a Working Copy of your application",
+      "B": "To build applications using natural language powered by Generative AI",
+      "C": "To author SQL powered by Generative AI",
+      "D": "To create a REST-enabled database object"
+    },
+    "answers": ["B", "C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Working Copy 由版本控制功能管理，与 AI Server 无关。\n- B 正确：勾选后可在 App Builder 使用自然语言创建页面、区域等。\n- C 正确：SQL 命令处理器可调用 AI Server 进行智能补全或优化。\n- D 错误：REST 启用对象是 ORDS 功能，与 AI Server 设置无关。\n\n考点总结：'Used by App Builder' 把 AI 能力直接嵌入到 APEX IDE 内部。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到 “App Builder” 与 “Generative AI” 同时出现 → 立即锁定 B、C。\n- 在 Workspace → Generative AI → 编辑 Server → 勾选/取消 “Used by App Builder”，体验功能开关差异。"
+  },
+  {
+    "question": "### Question 55\nIn your application, you want to display data in a searchable, customizable report that supports inline editing at runtime using the mouse or keyboard. Which report type will you create?",
+    "selections": {
+      "A": "Smart Filters",
+      "B": "Classic Report",
+      "C": "Interactive Grid",
+      "D": "Interactive Report"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Smart Filters 是过滤组件，不是完整报表。\n- B 错误：Classic Report 只读，不支持行内编辑。\n- C 正确：Interactive Grid 同时具备搜索、列自定义及行内编辑能力。\n- D 错误：Interactive Report 支持过滤和定制，但默认不可直接修改数据。\n\n考点总结：需要“行内编辑”时，唯一选择 Interactive Grid。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住口诀：可编辑=Interactive Grid；只读=Interactive Report 或 Classic Report。\n- 创建 Interactive Grid → Runtime 双击单元格，体验键盘/鼠标编辑，加深记忆。"
+  },
+  {
+    "question": "### Question 56\nWhich two tasks can be performed by using the Generate Text with AI Dynamic Action?",
+    "selections": {
+      "A": "Summarize or translate text",
+      "B": "Draft an email",
+      "C": "Invoke a Workflow",
+      "D": "Update the underlying database tables"
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n- A 正确：内置提示支持文本摘要、翻译等自然语言处理。\n- B 正确：可通过提示模板直接生成邮件正文。\n- C 错误：启动 Workflow 需专用 API，不在文本生成功能范围。\n- D 错误：该动态动作仅返回文本，不执行 DML。\n\n考点总结：Generate Text with AI 属于“内容生成”工具，不处理流程或数据变更。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词 “Generate Text” → 联想“纯文本输出”，排除 C、D。\n- 在 Page Designer → Dynamic Action → Generate Text with AI → 选择提示模板，实际测试翻译与邮件草稿。"
+  },
+  {
+    "question": "### Question 57\nWhich two approaches can be used to create custom stored procedures in SQL Workshop?",
+    "selections": {
+      "A": "Using SQL scripts",
+      "B": "Using Quick SQL",
+      "C": "Using Data Workshop",
+      "D": "Using Object Browser"
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n- A 正确：SQL Scripts 工具支持直接编写并运行 CREATE OR REPLACE PROCEDURE。\n- B 错误：Quick SQL 只生成表、视图、触发器等结构，不生成业务过程。\n- C 错误：Data Workshop 面向数据搬运，不提供代码编辑器。\n- D 正确：Object Browser → Procedures → Create 提供可视化创建向导。\n\n考点总结：SQL Workshop 中写 PL/SQL 的两大入口：SQL Scripts & Object Browser。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“脚本 + 浏览器”组合即可秒选 A、D。\n- 在 SQL Workshop → SQL Scripts 新建脚本，写一段 CREATE PROCEDURE 并执行，体验完整流程。"
+  },
+  {
+    "question": "### Question 58\nHow many instances of a Workflow can exist in the 'In Development' state?",
+    "selections": {
+      "A": "50",
+      "B": "1",
+      "C": "Unlimited"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A、C 错误：为避免冲突，APEX 规定同一工作流在同一时刻只能有 **1** 个“开发中”版本。\n- B 正确：唯一限制值。\n\n考点总结：开发状态版本串行管理，保证版本一致性。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“1”当成固定答案背诵。\n- 在 Workflow Designer 新建第二个开发版本，系统会提示“已存在 In Development 实例”，加深理解。"
+  },
+  {
+    "question": "### Question 59\nYou use the Create Page Wizard to create a faceted search page on the EMP table. What is the default report type generated for this page?",
+    "selections": {
+      "A": "Classic Report",
+      "B": "Column Toggle Report",
+      "C": "Interactive Grid",
+      "D": "Interactive Report"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：向导默认使用 Classic Report 显示结果集，并自动为其添加 Faceted Search 区域。\n- B、C、D 均非默认模板。\n\n考点总结：Faceted Search 模板与底层报表类型可独立选择，向导预设为 Classic Report。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Faceted + Classic Report”是官方默认组合。\n- 跑一次向导，最后一步查看默认选中的 Report Type，验证答案。"
+  },
+  {
+    "question": "### Question 60\nIn a faceted search page, facets can be displayed as different UI types. Which two facet item types are supported in the faceted search region?",
+    "selections": {
+      "A": "Date Picker",
+      "B": "Popup LOV",
+      "C": "Range",
+      "D": "Checkbox Group"
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Date Picker 是页面部件，不作为 Facet 类型。\n- B 错误：Popup LOV 非官方支持的 Facet 控件。\n- C 正确：Range 用于数值或日期区间过滤。\n- D 正确：Checkbox Group 用于多选过滤。\n\n考点总结：官方支持 Checkbox Group、Range、Radio Group、Search 等 Facet 类型。",
+    "suggestion": "### 应试技巧与学习建议\n- 在 Faceted Search Region → Attributes → Facets → Type 下拉列表中浏览所有选项，形成视觉记忆。\n- 记住高频组合：Range + Checkbox Group。"
+  },
+  {
+    "question": "### Question 61\nWhich two are valid evaluation points for Authorization Schemes?",
+    "selections": {
+      "A": "Once per user",
+      "B": "Once per page view",
+      "C": "Never",
+      "D": "Once per session"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：不存在“per user”这一粒度。\n- B 正确：每次用户打开或刷新页面时重新评估。\n- C 错误：Never 仅用于调试，非正式选项。\n- D 正确：仅在会话建立时评估一次，后续沿用结果。\n\n考点总结：Authorization Scheme 的评估点决定性能与安全平衡，常考 Once per page view 与 Once per session。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住官方三大正式选项：Once per session / Once per page view / Always (every request)。\n- 在 Shared Components → Authorization Schemes → Evaluation Point 下拉框中验证。"
+  },
+  {
+    "question": "### Question 62\nWhich two declarative options in Oracle APEX allow you to download BLOB/CLOB content?",
+    "selections": {
+      "A": "Download page process",
+      "B": "APEX_UTIL.DOWNLOAD PL/SQL API",
+      "C": "Share dynamic action",
+      "D": "Download dynamic action"
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n- A 正确：页面级“Download BLOB” 过程通过声明式设置即可提供下载。\n- B 错误：APEX_UTIL.DOWNLOAD 是程序化 API，不是声明式选项。\n- C 错误：Share 动态动作用于社交分享，与下载无关。\n- D 正确：Download 动态动作可直接绑定按钮/链接，实现一键下载。\n\n考点总结：声明式下载 = Download Process + Download Dynamic Action。",
+    "suggestion": "### 应试技巧与学习建议\n- 注意题干限定“declarative”，排除程序化 API。\n- 在 Page Designer → Processes / Dynamic Actions 中搜索 Download，实际体验零代码配置。"
+  },
+  {
+    "question": "### Question 63\nWhich two are prerequisites to use the REST-enabled SQL feature in Oracle APEX?",
+    "selections": {
+      "A": "Install ORDS 19.x or later on the remote Oracle Database.",
+      "B": "REST-enable the schema in the remote Oracle Database by using ORDS.ENABLE_SCHEMA.",
+      "C": "Create a database link to the remote Oracle Database in the local APEX schema.",
+      "D": "Install Oracle APEX in the remote Oracle Database."
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n- A 正确：REST-enabled SQL 要求 ORDS 19c+ 作为网关。\n- B 正确：目标模式必须显式 REST enable（ORDS.ENABLE_SCHEMA）。\n- C 错误：无需传统 DB Link，REST over HTTP/HTTPS 即可。\n- D 错误：远程库只需 ORDS 与数据库，不必安装 APEX。\n\n考点总结：REST-enabled SQL = ORDS + REST Enabled Schema，无 DB Link、无 APEX 依赖。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“ORDS 19+ + ENABLE_SCHEMA”这对黄金组合。\n- 在 SQL Workshop → REST Enabled SQL → Test 连接，若失败按 A、B 检查前提。"
+  },
+  {
+    "question": "### Question 64\nExamine this code used in Quick SQL:\nstudents name roll_no num\nWhich table creation script or other output is produced?",
+    "selections": {
+      "A": "An \"Invalid column definition\" error message will be displayed.",
+      "B": "create table students (\nid number generated by default on null as identity\nconstraint students_id_pk primary key,\nname varchar2(255 char),\nroll_no number);",
+      "C": "create table students (\nid number generated by default on null as identity\nconstraint students_id_pk primary key,\nname varchar2(255 char) not null,\nroll_no number);"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- Quick SQL 语法要求列名与数据类型同时出现；`num` 单独作为数据类型缺少列名，触发语法错误。\n- 正确写法应为 `students name vc50 roll_no num` 之类。\n\n考点总结：Quick SQL 列定义格式为 `列名 类型 [约束]`，缺一不可。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 Quick SQL 列声明格式：`column_name data_type [constraint]`。\n- 在 SQL Workshop → Quick SQL 中实时输入 `students name roll_no num`，观察红色错误提示。"
+  },
+  {
+    "question": "### Question 65\nAn APEX e-commerce application is being used by 50 users. You need to send a push notification to all the subscribed users on their devices. Which step must be performed in Oracle APEX to achieve this?",
+    "selections": {
+      "A": "Create a Dynamic Action of Send Push Notification type to send push notifications to all the subscribed users.",
+      "B": "Create a REST Data Source to send push notifications to all the subscribed users.",
+      "C": "Create a PL/SQL block to fetch all the subscribed users and send push notifications by using APEX_APPL_PUSH_SUBSCRIPTIONS & APEX_PWA.SEND.",
+      "D": "Enable push notifications at the application level and let APEX handle the subscription and delivery process automatically."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Dynamic Action 无法一次性遍历所有订阅者。\n- B 错误：REST Data Source 用于获取外部数据，不用于推送。\n- C 正确：利用数据字典视图 + APEX_PWA.SEND 可批量推送。\n- D 错误：启用后仍需手动触发发送逻辑。\n\n考点总结：群发推送 = 查询订阅表 + 循环调用 SEND API。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“send to all subscribed users”→ 立即联想到 PL/SQL + APEX_PWA.SEND。\n- 在 SQL Commands 中执行 `select * from apex_appl_push_subscriptions` 查看订阅数据，加深理解。"
+  },
+  {
+    "question": "### Question 66\nIn which two formats can the GetCurrentPosition Dynamic Action in Oracle APEX return coordinates?",
+    "selections": {
+      "A": "GeoJSON",
+      "B": "State and Pincode",
+      "C": "Function Body returning SQL Query",
+      "D": "Latitude and Longitude"
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n- A 正确：支持返回标准 GeoJSON 点对象。\n- B 错误：不返回行政区划或邮编。\n- C 错误：与返回格式无关。\n- D 正确：可直接提供 lat/lng 数值对。\n\n考点总结：GetCurrentPosition 支持 GeoJSON 与 Lat/Lng 两种输出格式。",
+    "suggestion": "### 应试技巧与学习建议\n- 记忆关键词“GeoJSON”与“Latitude and Longitude”。\n- 在 Page Designer → Dynamic Action → GetCurrentPosition → Return Type 下拉框验证选项。"
+  },
+  {
+    "question": "### Question 67\nAt what level does a developer enable push notifications so that end users can receive them on their devices from an APEX application?",
+    "selections": {
+      "A": "Instance",
+      "B": "Application",
+      "C": "Page",
+      "D": "Region"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- 推送功能开关位于 Shared Components → Application → Push Notifications，属于 **Application** 级配置。\n\n考点总结：启用/禁用推送的最小粒度是 **应用** 而非实例或页。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Application 级”即可秒杀。\n- 在 App Builder → Shared Components → Push Notifications 查看复选框位置。"
+  },
+  {
+    "question": "### Question 68\nWhich statement is true about creating and using a faceted search page?",
+    "selections": {
+      "A": "The Search Results region can be displayed as an interactive report.",
+      "B": "If you create a faceted search page based on a table, the facets are not auto-discovered.",
+      "C": "The Search Results region can be displayed as a Classic Report or Cards.",
+      "D": "If you create a faceted search page on a view or a SQL query, the facets are auto-discovered."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：向导默认 **Classic Report**，不支持直接选 Interactive Report。\n- B 错误：基于表时，向导会自动根据索引与列统计信息发现候选 Facet。\n- C 正确：官方模板仅提供 Classic Report 或 Cards 两种结果展示。\n- D 错误：视图/查询需手动定义 Facet，不会自动发现。\n\n考点总结：结果区域模板=Classic Report/Cards；表→可自动发现，视图/查询→需手动。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Classic Report or Cards”与“表自动发现”两条即可。\n- 在 Create Page Wizard → Faceted Search → 查看 Results Region 下拉框验证。"
+  },
+  {
+    "question": "### Question 69\nWhich Process Type allows you to invoke a REST Source declaratively?",
+    "selections": {
+      "A": "Invoke API",
+      "B": "Execute Server-side Code",
+      "C": "Execute JavaScript Code"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：Invoke API 过程可零代码调用 REST Data Source（GET/POST 等）。\n- B、C 均为通用代码容器，需手动写调用逻辑。\n\n考点总结：Invoke API = 声明式 REST 调用。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“declaratively invoke REST”→ 锁定 Invoke API。\n- 在 Page Designer → Processes → Create → Invoke API，体验下拉选择 REST Source 的便捷性。"
+  },
+  {
+    "question": "### Question 70\nWhich two functions can be used by an end user when pivoting an interactive report?",
+    "selections": {
+      "A": "Minimum",
+      "B": "Rank",
+      "C": "Median",
+      "D": "List aggregate"
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n- A 正确：MIN 是官方支持的聚合函数之一。\n- B 错误：Rank 不在交互报表 Pivot 的聚合列表。\n- C 错误：Median 同样未开放给最终用户。\n- D 正确：LISTAGG 以 List aggregate 名称提供，用于拼接字符串。\n\n考点总结：Pivot 模式下用户可选 SUM、COUNT、MIN、MAX、AVG、LISTAGG 等有限函数。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“MIN + LISTAGG”常考组合。\n- 打开任意 Interactive Report → Actions → Pivot → Aggregate 下拉框，浏览全部可用函数。"
+  },
+  {
+    "question": "### Question 71\nWhich authentication scheme type supports authentication with social networks and enterprise identity providers that support OpenID Connect or OAuth2 standards?",
+    "selections": {
+      "A": "Open Door Credentials",
+      "B": "SAML Sign-In",
+      "C": "Social Sign-In",
+      "D": "HTTP Header Variable"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Open Door Credentials 为免密登录，不接入外部身份源。\n- B 错误：SAML Sign-In 用于 SAML 2.0 协议，而非 OpenID Connect/OAuth2。\n- C 正确：Social Sign-In 内建支持 Google、Facebook、Azure AD 等 OAuth2/OIDC 提供商。\n- D 错误：HTTP Header Variable 仅读取反向代理传递的头信息。\n\n考点总结：OAuth2 / OIDC → Social Sign-In 是唯一匹配方案。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“social networks / OAuth2 / OIDC”立即锁定 Social Sign-In。\n- 在 Shared Components → Authentication Schemes → Create → Social Sign-In 浏览支持列表，加深印象。"
+  },
+  {
+    "question": "### Question 72\nWhich statement is true about creating and using an interactive grid?",
+    "selections": {
+      "A": "An interactive grid supports Pivot View and Group By View features.",
+      "B": "For both editable and noneditable interactive grids, end users can change the report layout and create private reports.",
+      "C": "End users cannot rearrange columns by dragging and dropping."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Pivot 与 Group By 是 Interactive Report 的特性，Interactive Grid 无此两种视图。\n- B 正确：无论是否可编辑，用户均可调整列顺序、隐藏列、保存私人报表。\n- C 错误：拖放列是 Interactive Grid 的基本交互特性。\n\n考点总结：Interactive Grid 的“用户可自定义布局+私人报表”功能与可编辑性无关。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键词“both editable and noneditable … private reports”→直接选 B。\n- 在运行时点击 Actions → Report → Save，体验私人报表功能。"
+  },
+  {
+    "question": "### Question 73\nWhich is a valid Page Process type?",
+    "selections": {
+      "A": "Set Value",
+      "B": "Execute JavaScript Code",
+      "C": "Send E-Mail"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Set Value 是动态动作类型，非 Page Process。\n- B 错误：Execute JavaScript Code 是浏览器端动态动作或页面前端代码区域，不属服务器端 Page Process。\n- C 正确：Send E-Mail 是官方提供的标准 Page Process 类型。\n\n考点总结：Page Process 仅包含服务器端任务；浏览器端操作归类为动态动作。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“Page Process”→定位服务器端；排除浏览器端选项。\n- 在 Page Designer → Processes → Create，浏览官方列表确认 Send E-Mail 存在。"
+  },
+  {
+    "question": "### Question 74\nWhat are the two possible transitions for a Workflow in the Faulted state?",
+    "selections": {
+      "A": "Completed",
+      "B": "Suspended",
+      "C": "Inactive",
+      "D": "Active"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Faulted 无法直接到 Completed，需先恢复。\n- B 正确：可人工或自动转入 Suspended 暂停处理。\n- C 错误：Inactive 不是官方状态。\n- D 正确：修复错误后可重试回到 Active。\n\n考点总结：Faulted → Active / Suspended 为官方允许的状态迁移路径。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“Suspended & Active”作为固定搭配记忆。\n- 在 Workflow Monitor 中右键 Faulted 实例，观察可执行操作菜单。"
+  },
+  {
+    "question": "### Question 75\nWhich two actions must be performed to make an employee's commission editable in the grid?",
+    "selections": {
+      "A": "In the Interactive Grid attributes, in the Edit group, turn on the Enabled switch.",
+      "B": "Ensure that the Primary Key switch is turned on for the EMPNO column.",
+      "C": "Set EMPNO, ENAME to Display Only.",
+      "D": "In the Interactive Grid attributes, select COMM for Allowed Row Operations Column."
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n- A 正确：启用编辑功能总开关。\n- B 正确：必须设置主键才能执行 DML。\n- C 错误：仅设置为显示不影响可编辑性，可有可无。\n- D 错误：Allowed Row Operations Column 用于行级权限控制，非字段可编辑开关。\n\n考点总结：可编辑 Interactive Grid 的两大前提：全局 Enabled + 主键列标记。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记口诀：Enable Edit + Primary Key。\n- 在运行时若缺少主键，系统将提示“无法保存更改”，可加深理解。"
+  },
+  {
+    "question": "### Question 76\nWhich action must be performed while configuring a Generative AI service for the 'Create App using Generative AI' option to appear on the Create Application page?",
+    "selections": {
+      "A": "Disable the Used by App Builder setting.",
+      "B": "Select the database schema.",
+      "C": "Enable the Used by App Builder setting."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：禁用后 AI 入口消失。\n- B 正确：必须指定目标模式，向导才能读取表元数据。\n- C 错误：仅勾选 Used by App Builder 但未选模式，入口仍不出现。\n\n考点总结：模式选择是向导生成应用的数据来源前提。",
+    "suggestion": "### 应试技巧与学习建议\n- 题干出现“Create App using Generative AI”→ 立即联想到 Schema 选择。\n- 在 Workspace → Generative AI → Edit Server，尝试留空 Schema，观察入口消失现象。"
+  },
+  {
+    "question": "### Question 77\nWhich two actions enable 'hide and show' behavior of a data series in a bar chart when its corresponding legend item is clicked?",
+    "selections": {
+      "A": "Setting the On Data Change attribute value to Slide to Left",
+      "B": "Setting the Hide and Show Behavior attribute value to Rescale",
+      "C": "Setting the Hide and Show Behavior attribute value to None",
+      "D": "Setting the Hide and Show Behavior attribute value to No Rescaling"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：On Data Change 控制动画，与图例交互无关。\n- B 正确：Rescale 会在隐藏系列后重新计算 Y 轴范围。\n- C 错误：None 将禁用图例点击功能。\n- D 正确：No Rescaling 隐藏系列但保持原轴范围。\n\n考点总结：Hide and Show Behavior 提供 Rescale / No Rescaling / None 三选项，前两者支持图例交互。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Rescale + No Rescaling”即可。\n- 在 Page Designer → Chart → Attributes → Legend → Hide and Show Behavior 下拉框验证。"
+  },
+
+  {
+    "question": "### Question 78\nYou created a shopping cart application and added the 'Add to Cart' functionality. Which PL/SQL Code snippet can be used to add items (PRODUCT_ID) into the APEX collection when the user adds items to the cart?",
+    "selections": {
+      "A": "BEGIN INSERT INTO APEX_COLLECTION(id, name, c001) values (1, 'CART', :P2_PRODUCT_ID); END;",
+      "B": "BEGIN INSERT INTO CART (id, c001) values (1, :P2_PRODUCT_ID); END;",
+      "C": "BEGIN APEX_COLLECTION.ADD_MEMBER (p_collection_name => 'CART', p_c001 => :P2_PRODUCT_ID ); END;"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：直接 INSERT 违反 APEX_COLLECTION 封装，需使用 API。\n- B 错误：CART 并非系统集合表名。\n- C 正确：ADD_MEMBER 是官方 API，自动处理会话级集合。\n\n考点总结：操作 APEX 集合必须调用 APEX_COLLECTION 包，禁止直接 DML 系统表。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 API 前缀 APEX_COLLECTION。\n- 在 SQL Commands 中执行 DESC APEX_COLLECTION，浏览所有可用过程，加深印象。"
+  },
+  {
+    "question": "### Question 79\nWhich statement is true about using SQL Commands?",
+    "selections": {
+      "A": "In SQL Commands, you can view queries saved in Query Builder.",
+      "B": "You can search and filter database objects.",
+      "C": "You can unload data from the database.",
+      "D": "You can design and prototype data models by using a markdown-like shorthand syntax."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Query Builder 保存的查询需在 Query Builder 内查看。\n- B 错误：搜索对象属于 Object Browser 功能。\n- C 正确：SQL Commands 支持 `SELECT … UNLOAD` / `SPOOL` 等方式导出数据。\n- D 错误：Quick SQL 才是原型语法工具。\n\n考点总结：SQL Commands 的核心是“执行与导出”，而非建模或对象浏览。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“unload data”→直接选 C。\n- 在 SQL Commands 中执行 `SELECT * FROM emp UNLOAD FORMAT CSV`，体验导出功能。"
+  },
+  {
+    "question": "### Question 80\nWhich search type in Search Configurations provides linguistic and fuzzy search capabilities?",
+    "selections": {
+      "A": "Standard",
+      "B": "Oracle Text",
+      "C": "List"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Standard 仅做精确匹配。\n- B 正确：Oracle Text 支持同义词、拼写容错、语言分析等高级搜索。\n- C 错误：List 用于预定义值列表过滤。\n\n考点总结：需要模糊、语言感知搜索 → 选 Oracle Text。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Oracle Text = 模糊/语言搜索”。\n- 在 Search Configuration → Type 下拉框，查看三种模式的官方描述。"
+  },
+  {
+    "question": "### Question 81\nWhich two statements are true about the use of a Remote Server in the context of REST Data Sources?",
+    "selections": {
+      "A": "The remote server determines the base URL of the REST Data Source.",
+      "B": "A single REST Data Source can use multiple remote servers.",
+      "C": "Multiple REST Data Sources can reference a single remote server.",
+      "D": "The remote server should mandatorily be an APEX instance."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n- A 正确：Remote Server 保存协议、主机、端口等，REST Data Source 在其基础上拼接资源路径，因此决定 base URL。\n- B 错误：一个 REST Data Source 只能绑定一个 Remote Server。\n- C 正确：多个 REST Data Source 可共享同一 Remote Server，实现统一出口管理。\n- D 错误：Remote Server 可以是任何提供 REST 接口的系统，不限于 APEX。\n\n考点总结：Remote Server = 统一出口配置；一对多关系：一个 Server → 多个 REST 源。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到 Remote Server 就联想“base URL + 一对多共享”。\n- 在 Shared Components → Remote Servers → 查看被多少个 REST Data Sources 引用，验证一对多。"
+  },
+  {
+    "question": "### Question 82\nWhich two outcomes do you achieve by performing the 'Compare Changes' task in a working copy?",
+    "selections": {
+      "A": "Compare changes across Working Copies created from a Main application.",
+      "B": "Compare changes between different pages in the same application.",
+      "C": "Compare Working Copy changes with the Main application.",
+      "D": "Compare changes between different regions in the same application."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n- A 正确：支持跨多个 Working Copy 的差异对比。\n- B 错误：Compare Changes 不针对单应用内的页面差异。\n- C 正确：核心功能是把当前 Working Copy 与 Main 应用做差异比对。\n- D 错误：粒度为应用/工作副本，而非区域级。\n\n考点总结：Compare Changes = Working Copy ↔ Main，或 Working Copy ↔ Working Copy。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Working Copy vs Main”以及“Working Copy vs Working Copy”两种比对场景。\n- 在 Team Development → Working Copy → Compare Changes 中实际操作，加深理解。"
+  },
+  {
+    "question": "### Question 83\nWhich statement is true about creating and using pages in an APEX application?",
+    "selections": {
+      "A": "You can copy a page only from the current application.",
+      "B": "A user cannot interact with a nonmodal dialog and content on the page.",
+      "C": "Modal and nonmodal dialog pages are supported only if the current application theme contains at least one page template of type Dialog Page."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：跨应用复制页面已被官方支持。\n- B 错误：非模态对话框允许用户同时与父页面交互。\n- C 正确：若主题缺少 Dialog Page 模板，则无法创建/使用对话框。\n\n考点总结：对话框功能依赖主题的 Dialog Page 模板存在。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键词“theme contains Dialog Page template”→选 C。\n- 在 Theme → Templates → Type 过滤 Dialog Page，确认模板存在后对话框功能才可用。"
+  },
+  {
+    "question": "### Question 84\nWhich two statements are true about a Progressive Web Application (PWA)?",
+    "selections": {
+      "A": "Enabling the PWA functionality in your APEX app adds a new navigation bar entry named Install App to your app.",
+      "B": "You can create a PWA only when creating a new application with the Create Application Wizard.",
+      "C": "To use the PWA feature, the Friendly URLs attribute in the Application Definition > Properties section must be turned off.",
+      "D": "PWA features will be rendered even if the application is served in an unsecured environment.",
+      "E": "Enabling the PWA functionality optimizes page loading speed on a mobile device."
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析与考点总结\n- A 正确：启用 PWA 后，导航栏自动出现“Install App”入口。\n- B 错误：现有应用也可在 Shared Components → PWA 中随时开启。\n- C 错误：PWA 要求 Friendly URLs 必须开启。\n- D 错误：PWA 核心功能（Service Worker、HTTPS 要求）在 HTTP 环境下会被浏览器禁用。\n- E 正确：Service Worker 缓存策略显著提升移动设备加载速度。\n\n考点总结：PWA 需要 HTTPS + Friendly URLs，且可随时启用；性能与安装提示是亮点。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“Install App 入口 + 性能提升”作为固定答案。\n- 在 Shared Components → Progressive Web App 勾选启用，观察导航栏变化。"
+  },
+  {
+    "question": "### Question 85\nWhich two tasks are performed by using App Builder?",
+    "selections": {
+      "A": "Generate data definition language (DDL) statements from the Oracle Data Dictionary.",
+      "B": "Create join queries by using drag-and-drop.",
+      "C": "Create and manage apps.",
+      "D": "Import previously exported apps.",
+      "E": "Create and manage database objects."
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：DDL 生成由 SQL Workshop → Object Browser 或 Utilities 完成。\n- B 错误：拖拽建联合查询是 Query Builder 功能，位于 SQL Workshop。\n- C 正确：App Builder 是创建与管理应用的核心入口。\n- D 正确：App Builder 支持导入导出应用。\n- E 错误：数据库对象管理属于 SQL Workshop。\n\n考点总结：App Builder 聚焦“应用生命周期”，不涉及底层数据库对象。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“App Builder = 创建/管理/导入应用”。\n- 在主页点击 App Builder → Import，体验一键导入功能。"
+  },
+  {
+    "question": "### Question 86\nWhere do you create a Workflow in an APEX application?",
+    "selections": {
+      "A": "Shared Components",
+      "B": "Dynamic Actions",
+      "C": "Workspace Utilities"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- Workflow 作为跨页/跨会话的业务流程，必须在 Shared Components 中统一创建与管理。\n\n考点总结：Shared Components 是存放工作流、授权、模板等共享资源的唯一位置。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“Shared Components”当成任何跨页对象的默认入口。\n- 在 App Builder → Shared Components → Workflows 验证创建入口。"
+  },
+  {
+    "question": "### Question 87\nExamine this code entered in Quick SQL:\nemp_salary name vc 255,salary num,commison_yn/check TRUE,FALSE\nWhich statement is true about the commission_yn column?",
+    "selections": {
+      "A": "It will restrict acceptable values to TRUE or FALSE.",
+      "B": "It will default to FALSE.",
+      "C": "It will default to TRUE.",
+      "D": "It will restrict acceptable values to Y or N."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- `/check TRUE,FALSE` 语法会在列上生成检查约束，限制取值范围仅为 TRUE 或 FALSE。\n- 无 `default` 关键字，因此不会自动设定默认值。\n\n考点总结：Quick SQL 的 `/check` 直接映射到 `CHECK (col IN (...))` 约束。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住 `/check 值1,值2` → 生成 CHECK 约束。\n- 在 Quick SQL 中实时预览 DDL，查看 CHECK 约束细节。"
+  },
+  {
+    "question": "### Question 88\nWhich two statements are true about an end user customizing an interactive report?",
+    "selections": {
+      "A": "A flashback query can be executed.",
+      "B": "Multiple charts can be created from the Actions menu.",
+      "C": "Standard Oracle functions cannot be added to columns.",
+      "D": "Mathematical computations can be added to columns."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Flashback 需 DBA 权限，普通用户无法通过 IR 界面触发。\n- B 正确：Actions → Chart 可创建并保存多张图表视图。\n- C 错误：用户可通过 Compute Column 调用 Oracle 函数。\n- D 正确：Compute Column 支持加减乘除、聚合等数学计算。\n\n考点总结：IR 用户可通过 Compute 列、Chart、Filter 等实现高度自定义。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Chart + Compute”组合。\n- 在运行时打开 Interactive Report → Actions → Compute Column，体验数学表达式。"
+  },
+  {
+    "question": "### Question 89\nWhich feature of Oracle APEX helps search engines understand the page's topic and is used by other sites to create previews?",
+    "selections": {
+      "A": "Description",
+      "B": "Meta Tags",
+      "C": "Screenshots",
+      "D": "Share"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- Meta Tags（如 `<meta name=\"description\" …>`）被搜索引擎与社交平台抓取，用于摘要与预览。\n- Description 只是 Meta Tags 中的一项，故 B 更全面。\n\n考点总结：SEO/分享预览 依赖页面级 Meta Tags。",
+    "suggestion": "### 应试技巧与学习建议\n- 在 Page Designer → Attributes → SEO → Meta Tags 区域查看可添加项。\n- 使用浏览器 F12 检查 `<head>` 中生成的 meta 信息，验证效果。"
+  },
+  {
+    "question": "### Question 90\nWhat is the Unified Task List in the Approvals component?",
+    "selections": {
+      "A": "A page type in the Create Page Wizard that is used to create a summary of tasks that functions like an inbox.",
+      "B": "A page type in the Create Page Wizard that is used to create a task filter.",
+      "C": "A page type in the Create Page Wizard that is used to create a task view."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- Unified Task List 是一个开箱即用的“收件箱”页面模板，聚合所有待办任务。\n- B、C 描述过于片面，实际页面已内建过滤与视图切换。\n\n考点总结：Unified Task List = 一站式任务收件箱页面。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键词“summary … like an inbox”→直接选 A。\n- 在 Create Page Wizard → Approvals → Unified Task List 预览页面布局。"
+  },
+  {
+    "question": "### Question 91\nYou add Access Control feature pages to your application. Which two actions can an Administrator perform by using the Administration page?",
+    "selections": {
+      "A": "Create Authorization schemes.",
+      "B": "Assign roles to users.",
+      "C": "Add Users.",
+      "D": "Create new application roles."
+    },
+    "answers": ["B", "C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Authorization Schemes 需在 Shared Components 中创建，不在 Access Control Administration 页面。\n- B 正确：管理员可在 Administration 页面给用户分配已有角色。\n- C 正确：可直接在该页面新增用户并同步到 ACL 表。\n- D 错误：新增角色需进入 Access Control → Roles 管理，而非 Administration 页面。\n\n考点总结：Access Control Administration 页面核心功能=“加用户+分角色”。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住口诀：Administration 页面只做“用户与角色分配”。\n- 在运行时访问 `/acl_admin` 页面，亲自体验按钮可见范围。"
+  },
+  {
+    "question": "### Question 92\nWhich step is mandatory to make an existing Oracle APEX application a Progressive Web App (PWA)?",
+    "selections": {
+      "A": "Add custom JavaScript to support offline functionality.",
+      "B": "Verify that Friendly URLs are turned on in the Application Definition.",
+      "C": "Enable RESTful Web Services in the application."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：APEX 自动生成 Service Worker 与缓存逻辑，无需手写 JS。\n- B 正确：PWA 要求启用 Friendly URLs，否则浏览器无法注册 Service Worker。\n- C 错误：RESTful 服务与 PWA 无直接关联。\n\n考点总结：Friendly URLs = PWA 的硬性前置条件。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“mandatory step”+“PWA”→立即选 Friendly URLs。\n- 在 App Builder → Application Definition → Properties 确认复选框状态。"
+  },
+  {
+    "question": "### Question 93\nWhich type of code can be generated by using Query Builder mode in the APEX Assistant?",
+    "selections": {
+      "A": "JavaScript",
+      "B": "SQL",
+      "C": "CSS"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- Query Builder 模式通过拖拽表和列生成的是 **SQL 查询语句**。\n\n考点总结：Query Builder = SQL 生成器。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住关键词“Query Builder”→SQL，排除前端代码选项。"
+  },
+  {
+    "question": "### Question 94\nWhich Action is used to open an AI chat assistant by using a Dynamic Action?",
+    "selections": {
+      "A": "Open Generative AI",
+      "B": "Generate Text with AI",
+      "C": "Show AI Assistant"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- “Show AI Assistant” 是官方提供的动态动作，用于弹出聊天面板。\n\n考点总结：Show AI Assistant = 打开聊天框。",
+    "suggestion": "### 应试技巧与学习建议\n- 在 Dynamic Action → Create → Show AI Assistant，查看官方命名。"
+  },
+  {
+    "question": "### Question 95\nYou created a custom theme for an application. Which solution guarantees that any changes to the master theme are reflected in the copied theme?",
+    "selections": {
+      "A": "Copying the changes made in the master theme to the copied theme",
+      "B": "Refreshing the templates",
+      "C": "Subscribing the copied theme to the master theme and refreshing the theme",
+      "D": "Verifying the theme subscription"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- 只有“订阅+刷新”才能自动同步主主题变更。\n\n考点总结：主题订阅机制 = 自动继承变更。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Subscribe + Refresh”组合即可秒杀。"
+  },
+  {
+    "question": "### Question 96\nWhen a user updates an employee record in this interactive grid, which operation (HTTP Method) defined in the REST Data Source is utilized to update a record in the EMP table on the remote Oracle Database?",
+    "selections": {
+      "A": "GET",
+      "B": "PUT",
+      "C": "POST"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- REST 规范中，更新操作用 **PUT**。\n\n考点总结：CRUD → GET/POST/PUT/DELETE。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“更新 = PUT”即可。"
+  },
+  {
+    "question": "### Question 97\nWhich two statements are true about creating and using an interactive report?",
+    "selections": {
+      "A": "You cannot restrict users from saving private reports by using the Authorization Scheme.",
+      "B": "You can specify an Authorization Scheme at the column level.",
+      "C": "You cannot customize the Search Button Label.",
+      "D": "You cannot include Form Page when creating an interactive report page using the Create Page Wizard."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：可通过 Authorization Scheme 控制保存私人报表权限。\n- B 正确：IR 支持列级授权。\n- C 错误：Search Button Label 可在属性中自定义。\n- D 正确：向导创建 IR 页时不会同时生成 Form 页。\n\n考点总结：列级授权 & 向导限制为常考点。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“列级授权 + 无 Form”组合。"
+  },
+  {
+    "question": "### Question 98\nWhich two statements are true about creating and customizing Smart Filters pages?",
+    "selections": {
+      "A": "The suggestion chip count is displayed only for filters that support counts, such as LOV-based filter types.",
+      "B": "If you create a Smart Filters page based on a table, the filters are auto-discovered by using the Data Dictionary Cache.",
+      "C": "The search results report can be displayed as an interactive grid.",
+      "D": "The search results report can be displayed as an interactive report."
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n- A 正确：计数芯片仅对 LOV 类型生效。\n- B 正确：基于表时利用数据字典自动建议过滤字段。\n- C、D 错误：结果区域默认 Classic Report，不支持直接切换为 IG/IR。\n\n考点总结：Smart Filters = 自动发现 + Classic Report + LOV 计数。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“LOV 计数 + 自动发现”即可。"
+  },
+  {
+    "question": "### Question 99\nTo understand how your existing Employee Benefits application is being used and to identify areas for improvement, you want to determine the most active users, the most used pages, and the performance of pages.\n\nHow is this achieved from the Application Home page?",
+    "selections": {
+      "A": "Click Create Page. In the Create Page Wizard, select the Master Detail page type.",
+      "B": "Click Create Page. In the Create Page Wizard, select the Email Reporting feature type.",
+      "C": "From the Tasks list, click the Add Feature Page button. Then select the Feedback feature type.",
+      "D": "Click Create Page. In the Create Page Wizard, select the Activity Reporting feature type."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- Activity Reporting 页面模板集中展示用户活跃度、页面访问量及性能数据。\n\n考点总结：Activity Reporting = 内置应用洞察仪表盘。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“most active users / page performance”→立即选 Activity Reporting。"
+  }
+]
