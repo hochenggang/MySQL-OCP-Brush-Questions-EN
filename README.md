@@ -9,6 +9,7 @@
 | AI Vector - 184            | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/184.html)  | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-184.html)  |
 | OCI Data Science - 1110    | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/1110.html) | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-1110.html) |
 | APEX Cloud Developer - 771 | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/771.html)  | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-771.html)  |
+| OCI Generative AI - 1127   | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/1127.html) | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-1127.html) |
 
 ## 背景
 
