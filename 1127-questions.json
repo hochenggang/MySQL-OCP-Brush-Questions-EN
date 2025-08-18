@@ -98,38 +98,26 @@
   {
     "question": "### Question 9\nWhich statement best describes the role of encoder and decoder models in natural language processing?",
     "selections": {
-      "A": "Encoder models and decoder models both convert sequences of words into vector representations.",
-      "B": "Encoder models convert sequences of words into vector representations, while decoder models generate text from these vector representations.",
-      "C": "Encoder models generate text from vector representations, while decoder models convert sequences of words into vector representations.",
-      "D": "Encoder models and decoder models both generate text without using vector representations."
+      "A": "Encoder models and decoder models both convert sequences of words into vector representations without generating new text.",
+      "B": "Encoder models take a sequence of words and predict the next word in the sequence, whereas decoder models convert a sequence of words into a numerical representation.",
+      "C": "Encoder models convert a sequence of words into a vector representation, and decoder models take this vector representation to generate a sequence of words.",
+      "D": "Encoder models are used only for numerical calculations, whereas decoder models are used to interpret the calculated numerical values back into text."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：描述了两者都只是将词序列转换为向量表示，忽略了 decoder 的生成功能。\n- B 错误：颠倒了 encoder 和 decoder 的核心功能。\n- C 正确：准确描述了 encoder 将输入转换为向量表示，decoder 再基于向量生成输出文本的流程。\n- D 错误：过于片面，只强调了数值计算与文本解释，未涵盖模型的整体作用。\n\n考点总结：\n在自然语言处理中，encoder-decoder 架构是生成任务（如翻译、文本摘要）的核心。Encoder 将输入文本编码为语义向量，Decoder 则解码该向量生成目标文本。",
+    "suggestion": "### 应试技巧与学习建议\n- 理解 encoder 和 decoder 的分工：前者负责编码，后者负责生成。\n- 熟悉典型应用场景如机器翻译、文本生成。\n- 注意区分其他选项中对功能的错误描述，如颠倒角色或忽略生成能力。"
+  },
+  {
+    "question": "### Question 10\nWhat is the purpose of memory in the LangChain framework?",
+    "selections": {
+      "A": "To retrieve user input and provide real-time output only",
+      "B": "To store various types of data and provide algorithms for summarizing past interactions",
+      "C": "To perform complex calculations unrelated to user interaction",
+      "D": "To act as a static database for storing permanent records"
     },
     "answers": ["B"],
-    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：解码器模型的主要功能是生成文本，而不是将词序列转换为向量。\n- B 正确：编码器将词序列转换为向量表示，解码器从这些向量表示生成文本。\n- C 错误：编码器负责转换，解码器负责生成。\n- D 错误：两者都使用向量表示。\n\n考点总结：\n在自然语言处理中，编码器模型将词序列转换为向量表示，而解码器模型则从这些向量表示生成文本，通常用于序列到序列的任务（如机器翻译、文本摘要）。",
-    "suggestion": "### 应试技巧与学习建议\n- 熟记编码器和解码器的基本功能：编码器负责转换，解码器负责生成。\n- 理解两者在序列到序列任务中的协同作用，如机器翻译和文本摘要。\n- 区分编码器和解码器与其他 NLP 模型组件（如嵌入层、注意力机制）的关系。"
-  },
-  {
-    "question": "### Question 10\nWhat is the key advantage of using the LangChain Expression Language (LCEL) for composing chains in LangChain?",
-    "selections": {
-      "A": "It provides a more efficient way to write traditional Python code.",
-      "B": "It allows for the creation of chains without using any LLMs.",
-      "C": "It simplifies the composition of complex chains using a declarative syntax.",
-      "D": "It enables the automatic translation of chains into multiple programming languages."
-    },
-    "answers": ["C"],
-    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：LCEL 的优势不在于替代传统 Python 代码，而在于简化链的组合。\n- B 错误：LCEL 用于组合链，通常涉及 LLM 的使用。\n- C 正确：LCEL 使用声明式语法简化复杂链的组合。\n- D 错误：LCEL 与自动翻译无关。\n\n考点总结：\nLangChain 表达式语言（LCEL）提供了一种声明式语法，使复杂链的组合更加简单直观，特别是通过管道等符号高效连接提示、LLM 和其他组件。",
-    "suggestion": "### 应试技巧与学习建议\n- 理解 LCEL 的声明式特性及其在组合复杂链中的优势。\n- 掌握 LCEL 的典型语法和用法，如管道符号的使用。\n- 区分 LCEL 与其他 LangChain 方法的区别，特别是与传统 Python 类的比较。"
-  },
-  {
-    "question": "### Question 10\nWhat is the key advantage of using the LangChain Expression Language (LCEL) for composing chains in LangChain?",
-    "selections": {
-      "A": "It provides a more efficient way to write traditional Python code.",
-      "B": "It allows for the creation of chains without using any LLMs.",
-      "C": "It simplifies the composition of complex chains using a declarative syntax.",
-      "D": "It enables the automatic translation of chains into multiple programming languages."
-    },
-    "answers": ["C"],
-    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：LCEL 的优势不在于替代传统 Python 代码，而在于简化链的组合。\n- B 错误：LCEL 用于组合链，通常涉及 LLM 的使用。\n- C 正确：LCEL 使用声明式语法简化复杂链的组合。\n- D 错误：LCEL 与自动翻译无关。\n\n考点总结：\nLangChain 表达式语言（LCEL）提供了一种声明式语法，使复杂链的组合更加简单直观，特别是通过管道等符号高效连接提示、LLM 和其他组件。",
-    "suggestion": "### 应试技巧与学习建议\n- 理解 LCEL 的声明式特性及其在组合复杂链中的优势。\n- 掌握 LCEL 的典型语法和用法，如管道符号的使用。\n- 区分 LCEL 与其他 LangChain 方法的区别，特别是与传统 Python 类的比较。"
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：LangChain内存不仅限于用户输入输出的简单处理。\n- B 正确：内存用于存储数据并提供总结或回忆历史交互的机制。\n- C 错误：计算复杂性不是内存的核心功能，而是围绕交互上下文展开。\n- D 错误：内存不是静态数据库，而是动态存储交互上下文。\n\n考点总结：\nLangChain框架中的内存主要负责存储上下文数据（如聊天历史）并支持总结或回忆，以实现连贯的对话。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住LangChain内存的两大核心点：存储上下文和提供历史交互总结。\n- 理解内存的作用不限于简单的I/O处理，而是上下文感知的关键。\n- 区分其他选项，如静态数据库或脱离用户交互的计算都不符合内存的主要用途。"
   },
   {
     "question": "### Question 11\nHow does the temperature setting in a decoding algorithm influence the probability distribution over the vocabulary?",
@@ -504,16 +492,16 @@
     "suggestion": "### 应试技巧与学习建议\n- 理解停止序列的作用：控制文本生成的终止点。\n- 掌握停止序列与令牌限制的关系。\n- 区分停止序列在句子和段落级别的不同应用场景。"
   },
   {
-    "question": "### Question 42\nGiven the following prompts used with a Large Language Model, classify each as employing the Chain-of-Thought, Least-to-Most, or Step-Back prompting technique:",
+    "question": "### Question 42\nGiven the following prompts used with a Large Language Model, classify each as employing the Chain-of-Thought, Least-to-Most, or Step-Back prompting technique:\n\nPrompt 1: \"Calculate the total number of wheels needed for 3 cars. Cars have 4 wheels each. Then, use the total number of wheels to determine how many sets of wheels we can buy with $200 if one set (4 wheels) costs $50.\"\n\nPrompt 2: \"Solve a complex math problem by first identifying the formula needed, and then solve a simpler version of the problem before tackling the full question.\"\n\nPrompt 3: \"To understand the impact of greenhouse gases on climate change, let's start by defining what greenhouse gases are. Next, we'll explore how they trap heat in the Earth's atmosphere.\"",
     "selections": {
-      "A": "Prompt 1: 'Calculate the total number of wheels needed for 3 cars. Cars have 4 wheels each. Then, use the total number of wheels to determine how many sets of wheels we can buy with $200 if one set (4 wheels) costs $50.'",
-      "B": "Prompt 2: 'Solve a complex math problem by first identifying the formula needed, and then solve a simpler version of the problem before tackling the full question.'",
-      "C": "Prompt 3: 'To understand the impact of greenhouse gases on climate change, let’s start by defining what greenhouse gases are. Next, we’ll explore how they trap heat in the Earth’s atmosphere.'",
-      "D": "Options:\nA. 1: Step-Back, 2: Chain-of-Thought, 3: Least-to-Most\nB. 1: Least-to-Most, 2: Chain-of-Thought, 3: Step-Back\nC. 1: Chain-of-Thought, 2: Step-Back, 3: Least-to-Most\nD. 1: Chain-of-Thought, 2: Least-to-Most, 3: Step-Back"
+      "A": "1: Step-Back, 2: Chain-of-Thought, 3: Least-to-Most",
+      "B": "1: Least-to-Most, 2: Chain-of-Thought, 3: Step-Back",
+      "C": "1: Chain-of-Thought, 2: Step-Back, 3: Least-to-Most",
+      "D": "1: Chain-of-Thought, 2: Least-to-Most, 3: Step-Back"
     },
     "answers": ["C"],
-    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Prompt 1 使用的是 Chain-of-Thought，而非 Step-Back。\n- B 错误：Prompt 2 使用的是 Step-Back，而非 Least-to-Most。\n- C 正确：Prompt 1 是 Chain-of-Thought，Prompt 2 是 Step-Back，Prompt 3 是 Least-to-Most。\n- D 错误：Prompt 3 是 Least-to-Most，而非 Step-Back。\n\n考点总结：\nChain-of-Thought 提示通过逐步分解问题引导模型思考；Step-Back 提示通过先解决简单问题再解决复杂问题引导模型；Least-to-Most 提示通过从基础概念逐步扩展引导模型理解复杂主题。",
-    "suggestion": "### 应试技巧与学习建议\n- 理解三种提示技术的核心区别：逐步分解（Chain-of-Thought）、先简单后复杂（Step-Back）、从基础到扩展（Least-to-Most）。\n- 掌握如何根据提示的结构和逻辑判断其所属类别。\n- 区分提示技术在解决不同类型问题时的应用场景。"
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Prompt 1 展示了中间步骤，属于 Chain-of-Thought 而非 Step-Back。\n- B 错误：Prompt 2 先解决简单问题再解决复杂问题，属于 Step-Back 而非 Least-to-Most。\n- C 正确：Prompt 1 是 Chain-of-Thought，Prompt 2 是 Step-Back，Prompt 3 是 Least-to-Most。\n- D 错误：Prompt 3 属于 Least-to-Most 而非 Step-Back。\n\n考点总结：\n三种提示技术的核心区别：\n- Chain-of-Thought：展示中间推理步骤。\n- Step-Back：先解决简单问题再逐步解决复杂问题。\n- Least-to-Most：从基础概念开始逐步深入分析。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉每种提示技术的特点，通过示例加深理解。\n- 注意区分 Step-Back 和 Least-to-Most：前者是简化问题后再处理完整问题，后者是从基础逐步扩展。\n- 牢记 Chain-of-Thought 的关键是展示中间推理过程，而非直接得出结果。"
   },
   {
     "question": "### Question 43\nWhich statement is true about string prompt templates and their capability regarding variables?",
