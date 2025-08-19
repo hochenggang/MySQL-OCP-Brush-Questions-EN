@@ -2,17 +2,14 @@
 
 ## 开始使用
 
-[点我打开（DBA - 908-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/)
-
-[点我打开（Developer - 909-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/909.html)
-
-[点我打开（AI Vector - 184-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/184.html)
-
-[点我打开（908 - 单页打印版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single.html)
-
-[点我打开（909 - 单页打印版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-909.html)
-
-[点我打开（AI Vector - 184-刷题版）](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-184.html)
+| 题库名称                   | 刷题版                                                                           | 单页打印版                                                                              |
+| -------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| DBA - 908                  | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/)          | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single.html)      |
+| Developer - 909            | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/909.html)  | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-909.html)  |
+| AI Vector - 184            | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/184.html)  | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-184.html)  |
+| OCI Data Science - 1110    | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/1110.html) | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-1110.html) |
+| APEX Cloud Developer - 771 | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/771.html)  | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-771.html)  |
+| OCI Generative AI - 1127   | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/1127.html) | [点我打开](https://hochenggang.github.io/MySQL-OCP-Brush-Questions-EN/single-1127.html) |
 
 ## 背景
 

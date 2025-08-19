@@ -1,0 +1,1705 @@
+[
+  {
+    "question": "### Question 1\nWhich statement about dynamic groups is true?",
+    "selections": {
+      "A": "They define what Data Science principals, such as users and resources, have access to in OCI.",
+      "B": "They are individual users that are grouped in OCI by administrators and granted access to Data Science resources within compartments.",
+      "C": "They have matching rules, where is replaced by the identifier of the compartment created for Data Science.",
+      "D": "They are a logical grouping of resources that can be accessed only by certain groups that have received administrator permission."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：动态组本身并不定义权限，而是通过匹配规则动态收集资源，权限由策略(Policy)赋予。\n- B 错误：这是用户组(User Group)的描述，动态组并非手动添加用户，而是自动根据规则包含相关资源。\n- C 正确：准确描述了动态组的本质——通过匹配规则（如包含特定compartment-id）自动收录资源作为成员。\n- D 错误：描述的是普通资源分组/compartment，而非动态组的核心特性（动态匹配规则）。\n\n考点总结:\n动态组(Dynamic Group)是OCI中一种自动分组机制，通过规则自动将满足条件的资源归入组内，常用于无人工交互的服务身份认证，需搭配IAM策略使用。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记动态组的核心是“自动匹配规则”，而非手动添加用户或定义权限。\n- 区分动态组与用户组(User Group)的本质区别：动态组由资源自动归类，用户组由具体用户/账号手动加入。\n- 理解动态组与IAM策略的配套使用关系：动态组负责资源归类，IAM策略负责授权。"
+  },
+  {
+    "question": "### Question 2\nWhich statement about resource principals is true?",
+    "selections": {
+      "A": "A resource principal is a feature of IAM that enables resources to be authorized principal actors.",
+      "B": "When you authenticate using a resource principal, you need to create and manage credentials to access OCI resources.",
+      "C": "A resource principal is not a secure way to authenticate to resources, compared to the OCI configuration and API key approach.",
+      "D": "The Data Science service does not provide authentication via a notebook session's or job run’s resource principal to access other OCI resources."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：资源主体(Resource Principal)是IAM的功能，允许云资源自身具备身份并访问其他资源。\n- B 错误：使用资源主体认证时，凭证由系统自动分配和轮换，无需手动管理。\n- C 错误：资源主体是高度安全的认证机制，通常比API密钥更安全。\n- D 错误：Data Science服务明确支持通过notebook/job的资源主体访问其他OCI资源。\n\n考点总结:\n资源主体(Resource Principal)是OCI IAM特性，允许云资源(如notebook、作业)作为主体自动认证访问其他服务，无需手动管理凭证，适合自动化流程。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记资源主体的定义：资源自身作为认证主体，无需人工凭证。\n- 对比资源主体与API密钥方式：前者更安全、自动化，后者需手动管理密钥。\n- 理解Data Science服务中资源主体的典型应用：notebook会话或作业无需额外配置即可访问对象存储等服务。"
+  },
+  {
+    "question": "### Question 3\nWhich allows the sharing and loading back of ML models into a Notebook session?",
+    "selections": {
+      "A": "Model taxonomy",
+      "B": "Model provenance",
+      "C": "Model deployment",
+      "D": "Model catalog"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：模型分类(Model taxonomy)指分类系统，与共享/加载模型无关。\n- B 错误：模型溯源(Model provenance)用于追溯模型历史，不具备共享和加载功能。\n- C 错误：模型部署(Model deployment)是将模型上线提供服务，与Notebook间共享无关。\n- D 正确：模型目录(Model catalog)用于集中存储、共享和重用模型，支持跨Notebook加载。\n\n考点总结:\n模型目录(Model catalog)是OCI数据科学平台的核心功能，支持团队协作和模型复用，允许用户上传模型并在任意Notebook会话重新加载。",
+    "suggestion": "### 应试技巧与学习建议\n- 明确区分模型目录(存储共享)与模型部署(上线服务)的功能差异。\n- 记住模型目录的适用场景：团队协作、跨会话复用、模型版本管理。\n- 其他选项如分类、溯源仅涉及模型信息管理，不具备共享功能。"
+  },
+  {
+    "question": "### Question 4\nWhich OCI Data Science interaction method can function without the need of scripting?",
+    "selections": {
+      "A": "Language SDKs",
+      "B": "REST API",
+      "C": "CLI",
+      "D": "OCI Console"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：语言SDK需要编写代码调用API。\n- B 错误：REST API需发HTTP请求，需脚本或代码实现。\n- C 错误：CLI虽无需代码，但仍需命令行指令。\n- D 正确：OCI Console是Web可视化界面，通过点击操作完成管理，无需任何脚本。\n\n考点总结:\nOCI Console是面向所有用户的Web管理门户，无需编程背景即可完成数据科学资源管理，适合无开发基础或入门用户。",
+    "suggestion": "### 应试技巧与学习建议\n- 优先记住OCI Console的零脚本特性，适合日常管理。\n- 其他选项(SDK/API/CLI)需编程基础，适合自动化需求。\n- 实际项目中，日常资源操作建议优先使用Console。"
+  },
+  {
+    "question": "### Question 5\nWhat does the Data Science Service template in Oracle Resource Manager (ORM) NOT automatically create?",
+    "selections": {
+      "A": "Dynamic groups",
+      "B": "Individual Data Science users",
+      "C": "Policies for a basic use case",
+      "D": "Required user groups"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：ORM模板会自动创建动态组。\n- B 正确：模板不会自动创建具体用户账号，需管理员手动添加。\n- C 错误：模板会生成基本用例所需的策略。\n- D 错误：必需的用户组会被自动创建。\n\n考点总结:\nOracle Resource Manager(ORM)的Data Science模板可自动配置用户组、动态组和策略，但不会创建具体用户账号，需后续手动添加。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记ORM模板自动化的范围：组、策略、动态组，但不包括具体用户。\n- 理解手动创建用户的必要性：因涉及实际人员账号，需管理员按需分配。"
+  },
+  {
+    "question": "### Question 6\nWhich feature of Oracle Cloud Infrastructure Data Science provides an interactive coding environment for building and training machine learning models?",
+    "selections": {
+      "A": "Projects",
+      "B": "Model catalog",
+      "C": "Notebook session",
+      "D": "Jobs"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：项目(Projects)是管理容器，不提供交互式编程环境。\n- B 错误：模型目录用于存储模型，无代码开发功能。\n- C 正确：Notebook session提供JupyterLab交互式环境，支持模型构建和训练。\n- D 错误：作业(Jobs)用于批量任务，无交互界面。\n\n考点总结:\nNotebook session是OCI Data Science的核心开发入口，基于JupyterLab，适合交互式数据探索和模型开发。",
+    "suggestion": "### 应试技巧与学习建议\n- 明确Notebook session的交互式特性，区别于批处理作业。\n- 记住Projects用于归档，Model catalog用于模型管理，Jobs用于自动化。"
+  },
+  {
+    "question": "### Question 7\nWhat is feature engineering in machine learning used for?",
+    "selections": {
+      "A": "To help understand the data set features",
+      "B": "To transform existing features into new ones",
+      "C": "To interpret ML models",
+      "D": "To perform parameter tuning"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：理解特征属于探索性分析，非特征工程核心。\n- B 正确：特征工程核心是对原始特征进行转换、组合，生成更有效的新特征。\n- C 错误：解释模型属于可解释性范畴。\n- D 错误：参数调优是模型训练环节。\n\n考点总结:\n特征工程是ML流程关键步骤，通过数据预处理、特征转换等手段提升模型性能，需与模型解释、调优区分。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记特征工程的定义：加工原始数据为模型友好的特征。\n- 区分特征工程与模型解释、调优的不同目标。"
+  },
+  {
+    "question": "### Question 8\nWhat happens when a notebook session is deactivated?",
+    "selections": {
+      "A": "The underlying compute instance stops.",
+      "B": "The block volume attached to the Notebook session is permanently deleted.",
+      "C": "Compute cost increases due to frequent deactivation.",
+      "D": "The data on the boot volume is not preserved."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：停用会话会停止底层计算实例，但保留资源。\n- B 错误：数据卷不会被删除。\n- C 错误：停用反而节省费用。\n- D 错误：数据会持久化保存。\n\n考点总结:\n停用Notebook会停止计算实例以节省费用，但数据和配置保留，只有明确删除才会丢失数据。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住停用=停止实例，删除=销毁资源。\n- 理解停用对费用的影响：仅存储计费，计算费用停止。"
+  },
+  {
+    "question": "### Question 9\nWhich is a unique feature of the published Conda environment?",
+    "selections": {
+      "A": "It provides a comprehensive environment to solve business use cases.",
+      "B": "It allows you to save the Conda environment to an Object Storage bucket.",
+      "C": "It provides availability on Notebook session reactivation.",
+      "D": "It allows you to save the Conda environment in a block volume."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：全面性非“已发布”环境独有。\n- B 正确：已发布环境的独特功能是将环境保存到对象存储桶，支持共享和迁移。\n- C 错误：重新激活可用性是标准功能。\n- D 错误：块存储非Conda环境专用。\n\n考点总结:\n已发布Conda环境可打包存储到对象存储，实现团队共享和跨会话复用，区别于标准或自定义环境。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记已发布环境的对象存储特性，用于共享和持久化。\n- 区分三种环境类型：官方、已发布、已安装。"
+  },
+  {
+    "question": "### Question 10\nWhich model has an open source, open model format that allows you to run machine learning models on different platforms?",
+    "selections": {
+      "A": "PySpark",
+      "B": "TensorFlow",
+      "C": "ONNX",
+      "D": "PyTorch"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：PySpark是大数据处理框架。\n- B 错误：TensorFlow是框架，非开放模型格式。\n- C 正确：ONNX是开源、跨平台的模型交换格式。\n- D 错误：PyTorch是框架，可导出ONNX但本身非格式。\n\n考点总结:\nONNX(Open Neural Network Exchange)是专为跨平台部署设计的开放模型格式，支持多种框架互操作。",
+    "suggestion": "### 应试技巧与学习建议\n- 明确ONNX的定位：跨框架、跨平台模型交换。\n- 记住PyTorch/TensorFlow可导出ONNX，但本身非开放格式。"
+  },
+  {
+    "question": "### Question 11\nWhat is a conda environment?",
+    "selections": {
+      "A": "An environment deployment system on Oracle AI",
+      "B": "A collection of kernels",
+      "C": "A system that manages package independencies",
+      "D": "An open source package and environment management system"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Conda 并非 Oracle AI 专属，而是跨平台通用工具。\n- B 错误：Conda 环境包含包与依赖，而非仅内核集合。\n- C 错误：表述不准确，应为“管理包依赖并隔离环境”。\n- D 正确：Conda 是开源的包与环境管理系统，支持多语言、多版本隔离。\n\n考点总结：\nConda 的核心价值在于通过虚拟环境隔离项目依赖，避免冲突，是数据科学和机器学习开发的基础工具。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 Conda 的两大关键词：开源、跨平台。\n- 区分 Conda 与 pip：前者同时管理包和环境，后者仅管理包。"
+  },
+  {
+    "question": "### Question 12\nWhich activity of managing a conda environment requires the conda environment to be activated in your terminal?",
+    "selections": {
+      "A": "Cloning a Conda environment",
+      "B": "Installing a Conda environment",
+      "C": "Publishing a Conda environment",
+      "D": "Modifying a Conda environment"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n- A 错误：克隆只需指定源与目标名称，无需激活。\n- B 错误：创建新环境可在 base 环境完成，无需激活。\n- C 错误：发布依赖配置文件，通常无需激活。\n- D 正确：安装/卸载包、更新版本等修改操作必须激活目标环境。\n\n考点总结：\n激活（conda activate）确保后续命令作用于指定环境，是日常维护的关键步骤。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住口诀：创建、克隆、发布不激活；增删改查先激活。"
+  },
+  {
+    "question": "### Question 13\nWhat is an accurate description of Git?",
+    "selections": {
+      "A": "Git is a centralized version control system that allows data scientists and developers to track copious amounts of data.",
+      "B": "Git is a distributed version control system that allows you to track changes made to a set of files.",
+      "C": "Git is a centralized version control system that allows you to revert to previous versions of files as needed.",
+      "D": "Git is a distributed version control system that protects teams from simultaneous repo contributions and merge requests."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A、C 错误：Git 是分布式（DVCS），非集中式。\n- B 正确：精准概括了 Git 的分布式本质与版本追踪功能。\n- D 错误：无法“保护”冲突，仍需人工解决。\n\n考点总结：\nGit 的分布式特性让每位开发者拥有完整仓库历史，支持离线工作与多人协作。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 DVCS 三要点：本地完整仓库、离线可用、去中心化。"
+  },
+  {
+    "question": "### Question 14\nWhich CLI command allows a customized Conda environment to be shared with co-workers?",
+    "selections": {
+      "A": "odsc conda install",
+      "B": "odsc conda publish",
+      "C": "odsc conda modify",
+      "D": "odsc conda clone"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：install 仅本地安装包或环境。\n- B 正确：publish 将环境打包推送至共享仓库（如对象存储）。\n- C 错误：modify 用于本地环境调整。\n- D 错误：clone 仅复制环境到本地。\n\n考点总结：\n`odsc conda publish` 是实现团队协作和环境复用的关键命令。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住口诀：共享靠 publish，复制靠 clone，本地靠 install/modify。"
+  },
+  {
+    "question": "### Question 15\nWhere are OCI secrets stored?",
+    "selections": {
+      "A": "Autonomous Data Warehouse",
+      "B": "OCI Vault",
+      "C": "Oracle Databases",
+      "D": "OCI Object Storage"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A、C、D 均非专为机密设计，存在泄露风险。\n- B 正确：OCI Vault 提供加密、访问控制、审计，是官方推荐存储敏感信息的托管服务。\n\n考点总结：\nVault 支持密钥轮换、版本控制、HSM 隔离，满足合规与审计需求。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 Vault 的三大关键词：加密、访问控制、审计。"
+  },
+  {
+    "question": "### Question 16\nWhich step is a part of AutoML pipeline?",
+    "selections": {
+      "A": "Model Saved to Model Catalog",
+      "B": "Feature Extraction",
+      "C": "Feature Selection",
+      "D": "Model Deployment"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n- A 错误：保存至模型目录属于模型管理阶段。\n- B 错误：特征提取属于数据预处理，非 AutoML 特有。\n- C 正确：特征选择是 AutoML 自动优化模型的核心步骤。\n- D 错误：部署属于模型生命周期后期。\n\n考点总结：\nAutoML 通过算法选择、特征选择、超参调优等自动化步骤提升模型性能。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住 AutoML 四步曲：算法选择→适应性采样→特征选择→模型调优。"
+  },
+  {
+    "question": "### Question 18\nYou are working for a bank. You are required to analyze customer accounts' access data and flag any irregular access attempts. Which OCI Data Science operator are you most likely to use?",
+    "selections": {
+      "A": "Forecasting",
+      "B": "Anomaly",
+      "C": "PII"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：Forecasting 用于时间序列预测，非异常检测。\n- B 正确：Anomaly 操作符专用于识别异常行为，如异常登录。\n- C 错误：PII 用于识别和保护个人身份信息。\n\n考点总结：\n异常检测在金融风控、运维监控等场景广泛应用，能自动发现偏离常态的行为模式。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记场景关键词：异常、离群、欺诈 → 对应 Anomaly。"
+  },
+  {
+    "question": "### Question 19\nWhich function represents the difference between the predictive value and the target value?",
+    "selections": {
+      "A": "Optimizer function",
+      "B": "Cost function",
+      "C": "Update function",
+      "D": "Fit function"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：优化器负责最小化成本函数。\n- B 正确：成本函数（损失函数）量化预测误差。\n- C 错误：更新函数用于参数调整。\n- D 错误：fit 指训练过程本身。\n\n考点总结：\n损失函数是模型训练的“指南针”，常见形式包括 MSE、交叉熵等。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住口诀：误差量化靠损失，参数更新靠优化。"
+  },
+  {
+    "question": "### Question 20\nWhich stage in the machine learning life cycle helps identify imbalances present in data?",
+    "selections": {
+      "A": "Data Modeling",
+      "B": "Data Exploration",
+      "C": "Data Access",
+      "D": "Data Monitoring"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n- A 错误：建模阶段关注算法与训练。\n- B 正确：探索阶段通过统计和可视化发现类别不平衡、异常值等。\n- C 错误：访问阶段仅负责数据获取。\n- D 错误：监控阶段在部署后关注模型漂移。\n\n考点总结：\n数据探索是理解数据分布、发现问题的首要步骤，直接影响后续特征工程与模型选择。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住探索阶段三件套：统计摘要、可视化、分布检测。"
+  },
+  {
+    "question": "### Question 21\nWhich activity is NOT a part of the machine learning life cycle?",
+    "selections": {
+      "A": "Modeling",
+      "B": "Database Management",
+      "C": "Data Access",
+      "D": "Model Deployment"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：建模（Modeling）是机器学习生命周期中的核心阶段，涉及创建和训练模型。\n- B 正确：数据库管理（Database Management）主要涉及数据存储和数据库系统的维护，与机器学习直接相关的生命周期阶段无关。\n- C 错误：数据访问（Data Access）涉及获取和准备数据以供分析，是机器学习的一个重要环节。\n- D 错误：模型部署（Model Deployment）是将训练好的模型应用于生产环境的步骤，是机器学习生命周期的后期阶段。\n\n考点总结:\n机器学习生命周期包含数据访问、数据探索和准备、建模、验证、模型部署以及监控/刷新/退役等阶段。数据库管理虽然与数据有关，但其主要处理数据的长期存储和完整性维护，不在机器学习生命周期的任务内。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记机器学习生命周期的完整流程：数据获取→数据准备→建模→验证→部署→监控。\n- 区分数据管理与机器学习任务：数据库管理属于数据基础设施，不属于ML生命周期。\n- 考试中注意“NOT”类反向提问，先排除明显属于ML生命周期的选项。"
+  },
+  {
+    "question": "### Question 22\nWhat do you use the score.py file for?",
+    "selections": {
+      "A": "Defining the scaling strategy",
+      "B": "Executing the inference logic code",
+      "C": "Configuring the deployment infrastructure",
+      "D": "Defining the required Conda environments"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：扩展策略通常定义在部署配置（如YAML文件）中，score.py不负责扩展策略。\n- B 正确：score.py的核心功能就是加载模型并处理预测逻辑（处理输入数据并返回结果）。\n- C 错误：部署基础设施的配置通常在部署脚本或YAML文件中完成，非score.py职责。\n- D 错误：Conda环境的定义一般放在environment.yml或AML中的Environment类中管理。\n\n考点总结:\nscore.py是模型部署的关键文件，包含模型加载和推理逻辑，必须确保其正确实现。runtime.yml用于指定运行环境，requirements.txt补充依赖，而score.py专注于推理功能。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住score.py的三大作用：加载模型、预处理输入、返回预测结果。\n- 区分部署相关文件：score.py（逻辑）、runtime.yml（环境）、requirements.txt（依赖）。\n- 考试中遇到“文件用途”类题目，优先排除与基础设施或环境配置相关的选项。"
+  },
+  {
+    "question": "### Question 23\nAs a data scientist, you require a pipeline to train ML models. When can a pipeline run be initiated?",
+    "selections": {
+      "A": "During the pipeline run state",
+      "B": "After it is created",
+      "C": "After the Active state",
+      "D": "Before the Active state"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：流水线只有进入运行状态时才真正“开始运行”，但“发起运行”动作必须先于运行状态。\n- B 错误：流水线创建完成后还需要进入Active状态，中间还有激活等步骤。\n- C 正确：流水线生命周期包括Create、Active、Run和Delete四个阶段，必须在Active状态后才能启动Run。\n- D 错误：Active状态之前仅处于Create阶段，无法发起运行操作。\n\n考点总结:\nOCI Data Science Pipelines的标准流程要求流水线先进入Active状态，才能触发运行。状态管理是考试高频考点，需牢记各阶段顺序。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住流水线四阶段顺序：Create→Active→Run→Delete。\n- 题目问“何时能启动运行”，答案一定是“Active之后”。\n- 警惕“创建后即可运行”这类干扰项，实际需等待激活。"
+  },
+  {
+    "question": "### Question 24\nWhich statement is true about machine learning models?",
+    "selections": {
+      "A": "Static predictions become increasingly accurate over time.",
+      "B": "A high-quality model will not need to be retrained as new information is received.",
+      "C": "Data models are more static and generally require fewer updates than software code.",
+      "D": "Model performance degrades over time due to changes in data."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：静态模型不会自动变准，数据分布变化反而可能降低准确性。\n- B 错误：即使高质量模型，也会因数据漂移需要重新训练。\n- C 错误：数据模型需频繁更新以应对数据变化，比传统软件维护更频繁。\n- D 正确：数据分布变化（数据漂移）会导致模型性能随时间下降，需定期重训练。\n\n考点总结:\n模型漂移（Model Drift）是实际部署中的核心挑战，必须通过持续监控和重训练解决。考试中凡提到“模型无需更新”的选项均为错误。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“模型会过时”原则：数据变→模型变。\n- 关注数据漂移关键词：分布变化、性能下降、定期重训练。\n- 排除绝对化表述如“永远不需要更新”或“自动变准”。"
+  },
+  {
+    "question": "### Question 25\nYou want to change the autoscaling configuration for an existing model deployment in an Active state. Which statement is true?",
+    "selections": {
+      "A": "Infrastructure-related aspects can't be modified, regardless of state.",
+      "B": "Non-infrastructure-related aspects can't be modified for an active deployment.",
+      "C": "You can modify autoscaling and other configs simultaneously regardless of state.",
+      "D": "You must disable the deployment to update autoscaling and other configs."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：基础设施可修改，但需状态适配（如Inactive）。\n- B 错误：非基础设施（如名称/描述）可在Active状态修改。\n- C 错误：Active状态下，扩缩容策略需单独修改，不能批量更改。\n- D 正确：必须先将部署设为Inactive，才能批量更新扩缩容策略及其他配置。\n\n考点总结:\n模型部署状态管理严格：Active时仅能改非关键配置，关键变更需先禁用。此设计保障线上稳定性，考试中常作为干扰项出现。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记“禁用才能改关键配置”规则，尤其是扩缩容和实例规格。\n- 区分可改内容：Active时可改标签/描述，禁用后才能改资源规格。\n- 遇到“同时修改”类选项，优先验证是否需要禁用状态。"
+  },
+  {
+    "question": "### Question 26\nWhich statement is true about logs for Oracle Cloud Infrastructure Jobs?",
+    "selections": {
+      "A": "Integrating with Logging is mandatory.",
+      "B": "Logs are auto-deleted when the job is deleted.",
+      "C": "All stdout/stderr are stored when auto-log creation is enabled.",
+      "D": "Each job run outputs to a single shared log."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：日志集成是推荐但非强制。\n- B 错误：日志生命周期独立于作业，需手动删除。\n- C 正确：启用自动日志后，stdout/stderr会自动捕获到日志服务。\n- D 错误：每次运行通常有独立日志，便于分别追踪。\n\n考点总结:\nOCI Jobs的日志设计强调灵活性与持久性，自动捕获输出是核心功能，但生命周期需用户管理。考试中注意“强制”和“自动删除”类绝对表述多为错误。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住日志两大特点：自动捕获输出（stdout/stderr）、生命周期独立。\n- 排除“强制集成”或“自动删除”选项。\n- 实践中建议为每个Job Run创建独立日志组，便于调试。"
+  },
+  {
+    "question": "### Question 27\nIn OCI Monitoring, triggering a PagerDuty notification is an example of what?",
+    "selections": {
+      "A": "Action",
+      "B": "Event",
+      "C": "Rule",
+      "D": "Function"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：Action是事件触发后的响应动作，如发送PagerDuty通知。\n- B 错误：Event是状态变化本身，不是响应行为。\n- C 错误：Rule定义触发条件，不直接执行动作。\n- D 错误：Function是可编程代码块，不特指通知。\n\n考点总结:\nOCI监控流程：Event→Rule→Action。Action是实际执行的操作（如通知、调用API），考试中需区分四者角色。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住监控三件套：Event（触发）、Rule（条件）、Action（响应）。\n- 通知类题目优先选“Action”，排除“Event/Rule/Function”。\n- 理解PagerDuty是Action的具体实现案例。"
+  },
+  {
+    "question": "### Question 28\nWhy would you use a mini-batch when processing a job in Data Science Jobs?",
+    "selections": {
+      "A": "To run distributed models simultaneously.",
+      "B": "To process data frequently.",
+      "C": "To avoid processing data quickly.",
+      "D": "To handle very small total data."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：mini-batch用于单模型分批处理，非分布式并行。\n- B 正确：小批量允许更高频次处理数据，适应流式或增量场景。\n- C 错误：mini-batch反而能提升处理效率，而非避免快速处理。\n- D 错误：数据量小可直接用全量batch，无需mini-batch。\n\n考点总结:\nmini-batch的核心优势是平衡效率与频次，适合需要定期更新的场景（如欺诈检测）。考试中需区分其与分布式批处理的差异。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住mini-batch关键词：高频、增量、平衡资源。\n- 排除“分布式”或“小数据”干扰项。\n- 实际应用：金融风控、实时推荐等场景优先mini-batch。"
+  },
+  {
+    "question": "### Question 29\nWhich statement is true about OCI Data Science Jobs?",
+    "selections": {
+      "A": "You must manage your own infrastructure.",
+      "B": "You must use a single Shell/Python artifact.",
+      "C": "Jobs provisions infrastructure on demand.",
+      "D": "Jobs has fixed standard tasks."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：Jobs是serverless服务，自动管理基础设施。\n- B 错误：支持多种工件类型（ZIP、Python、Bash等），非单一限制。\n- C 正确：按需自动创建/销毁计算资源，用户无需干预。\n- D 错误：任务可高度自定义，非固定模板。\n\n考点总结:\nOCI Jobs的核心价值是serverless弹性，考试中“自动管理”是高频正确表述。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住Jobs三大特点：serverless、按需计费、全托管。\n- 排除“必须自建”或“固定模板”类选项。\n- 实践中可结合CI/CD实现自动化调度。"
+  },
+  {
+    "question": "### Question 30\nWhich step is unique to MLOps, as opposed to DevOps?",
+    "selections": {
+      "A": "Continuous Delivery",
+      "B": "Continuous Training",
+      "C": "Continuous Integration",
+      "D": "Continuous Deployment"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/C/D均为DevOps和MLOps共有实践。\n- B正确：持续训练是MLOps特有，需定期重训练模型以应对数据变化。\n\n考点总结:\nMLOps在DevOps基础上增加了模型相关流程（训练、验证、监控），持续训练是核心差异点。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住MLOps比DevOps多两步：Continuous Training + Model Validation。\n- 考试中“独有”类题目直接锁定“Training”。\n- 理解数据驱动特性是MLOps的关键。"
+  },
+  {
+    "question": "### Question 31\nWhich OCI service provides a scalable environment for Apache Spark applications?",
+    "selections": {
+      "A": "Data Science",
+      "B": "Anomaly Detection",
+      "C": "Data Labeling",
+      "D": "Data Flow"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：用于ML建模，非Spark专用。\n- B：提供异常检测API，不支持自定义Spark作业。\n- C：用于数据标注，与Spark无关。\n- D正确：Data Flow是serverless Spark平台，支持大规模ETL和ML。\n\n考点总结:\nData Flow是OCI上Spark的托管服务，考试中“serverless Spark”必关联Data Flow。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住Data Flow=Serverless Spark，支持PySpark/Scala/MLlib。\n- 排除其他AI服务（Anomaly Detection、Data Labeling）的干扰。"
+  },
+  {
+    "question": "### Question 32\nYou are a researcher who needs large datasets. Which OCI service would you use?",
+    "selections": {
+      "A": "ADW",
+      "B": "Oracle Open Data",
+      "C": "OCI Data Science",
+      "D": "Oracle Databases"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/D：企业数据仓库/数据库，非公开数据集。\n- B正确：Oracle Open Data提供免费开放数据集，适合科研。\n- C：ML平台，不直接提供数据。\n\n考点总结:\nOracle Open Data是OCI上唯一提供权威公开数据集的服务，科研场景首选。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“researcher”+“large datasets”直接选Open Data。\n- 区分数据存储（ADW/DB）与数据资源（Open Data）。"
+  },
+  {
+    "question": "### Question 33\nWhich types of data are used for Data Labeling?",
+    "selections": {
+      "A": "Graphic, text, document",
+      "B": "Image, text, document",
+      "C": "Text, audio, video",
+      "D": "Image, audio, document"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- B正确：OCI Data Labeling支持图像、文本、文档三类数据标注。\n- 其他选项含音频/视频/graphics，非当前主流支持类型。\n\n考点总结:\n数据标注的核心支持类型是图像、文本、文档，考试中注意排除非主流类型干扰。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住三类标准：Image/Text/Document。\n- 音频/视频为干扰项，OCI当前支持有限。"
+  },
+  {
+    "question": "### Question 34\nWhat is the ML library in Apache Spark called?",
+    "selections": {
+      "A": "GraphX",
+      "B": "Structured Streaming",
+      "C": "HadoopML",
+      "D": "MLlib"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：图计算库。\n- B：流处理模块。\n- C：不存在此库。\n- D正确：MLlib是Spark官方ML库，支持分布式算法。\n\n考点总结:\nMLlib是Spark生态的核心ML组件，考试中Spark+ML必关联MLlib。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住MLlib=Spark ML，排除其他组件（GraphX/Streaming）。\n- 理解其支持分类/回归/聚类等分布式算法。"
+  },
+  {
+    "question": "### Question 35\nWhich Oracle Cloud Infrastructure (OCI) Data Science policy is invalid?",
+    "selections": {
+      "A": "Allow group DataScienceGroup to use virtual-network-family in compartment DataScience",
+      "B": "Allow group DataScienceGroup to use data-science-model-sessions in compartment DataScience",
+      "C": "Allow dynamic-group DataScienceDynamicGroup to manage data-science-projects in compartment DataScience",
+      "D": "Allow dynamic-group DataScienceDynamicGroup to manage data-science-family in compartment DataScience"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：正确的策略语法，允许组管理虚拟网络资源。\n- B正确：无效策略，因为 data-science-model-sessions 不是有效的 OCI 资源类型。正确的资源类型应为 data-science-family 或更具体的如 data-science-notebook-session-family。\n- C：允许动态组管理数据科学项目，语法有效。\n- D：允许动态组管理所有数据科学资源，语法有效。\n\n考点总结:\n- OCI 策略的资源类型必须使用官方文档支持的类型（如 data-science-family）。\n- 使用不存在或拼写错误的资源类型会导致策略无效。\n- 用户组（group）和动态组（dynamic-group）的授权对象不同，分别对应人工账号和云实例自动化身份。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 OCI 官方支持的数据科学资源类型（如 data-science-family）。\n- 注意区分静态组（group）和动态组（dynamic-group）的使用场景。\n- 检查策略语法时，重点关注资源类型是否合法（如是否存在 data-science-model-sessions 这样的自定义拼写）。\n- 记住 data-science-family 是推荐的通配资源类型，适用于管理数据科学所有资源。"
+  },
+  {
+    "question": "### Question 36\nWhich is NOT a valid OCI Data Science notebook session approach?",
+    "selections": {
+      "A": "Ensure you don’t execute long-running Python processes in a notebook cell. Run the process directly in the terminal and use Python logging to get updates on the progress of your job.",
+      "B": "Avoid having multiple users in the same notebook session due to the possibility of resource contention and write conflicts.",
+      "C": "While connecting to data in OCI Object Storage from your notebook session, the best practice is to make a local copy on the device and then upload it to your notebook session block volume.",
+      "D": "Authenticate using your notebook session's resource principal to access other OCI resources. Resource principals provide a more secure way to authenticate to resources compared to the OCI configuration and API key approach."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：合理。长时任务建议在终端独立运行。\n- B：合理。多人共用容易冲突。\n- C正确：这不是推荐实践。OCI 推荐直接通过 SDK/API 访问对象存储，而非本地中转。\n- D：合理。资源主体是推荐的安全方式。\n\n考点总结:\n- OCI 推荐 notebook 直接用 SDK/API 连接对象存储。\n- 长时间任务避免在 notebook 单元执行。\n- 多用户避免共享同一 session。\n- 资源主体认证优于 API 密钥。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住：OCI notebook 直接通过 SDK 访问对象存储是标准方式，无需本地设备中转。\n- 注意：长时任务应在终端运行，防止 notebook 卡死。\n- 区分资源主体认证与传统 API 密钥方式的优劣。\n- 多用户共用 session 的风险点包括资源抢占和写入冲突。"
+  },
+  {
+    "question": "### Question 37\nYou are working as a data scientist for a healthcare company. You have analyzed a series of neurophysiological data on OCI Data Science and have developed a convolutional neural network (CNN) classification model. It predicts the source of seizures in drug-resistant epileptic patients.\n\nYou created a model artifact with all the necessary files. When you deployed the model, it failed to run because you did not point to the correct conda environment in the model artifact.\n\nWhere would you provide instructions to use the correct conda environment?",
+    "selections": {
+      "A": "score.py",
+      "B": "runtime.yaml",
+      "C": "requirements.txt",
+      "D": "model_artifact_validate.py"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：score.py 是模型推理主程序，不处理环境配置。\n- B正确：runtime.yaml 是 OCI Data Science 指定 Conda 环境的唯一配置文件。\n- C：requirements.txt 仅列出 pip 依赖包。\n- D：model_artifact_validate.py 通常是验证脚本，不处理部署环境配置。\n\n考点总结:\n- runtime.yaml 是模型部署时指定 Conda 环境的唯一入口。\n- requirements.txt 补充 pip 安装包。\n- 错误环境配置导致部署失败。\n- Conda 环境必须提前注册到 OCI。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住：OCI Data Science 部署时，Conda 环境必须在 runtime.yaml 配置。\n- 区分 runtime.yaml 和 requirements.txt 的用途。\n- 验证模型部署失败时，优先检查 runtime.yaml 的环境配置项。\n- 预先在 OCI 注册 Conda 环境，避免部署时找不到环境。"
+  },
+  {
+    "question": "### Question 38\nYou have an image classification model in the model catalog which is deployed as an HTTP endpoint using model deployments. Your tenancy administrator is seeing increased demands and has asked you to increase the load balancing bandwidth from the default of 10 Mbps.\n\nYou are provided with the following information:\n\nPayload size in KB: 1024\nEstimated requests per second: 120 requests/second\nBuffer percentage: 20%\n\nWhat is the optimal load balancing bandwidth to redeploy your model?",
+    "selections": {
+      "A": "452 Mbps",
+      "B": "52 Mbps",
+      "C": "7052 Mbps",
+      "D": "1152 Mbps"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：452 Mbps 明显低于计算值，无法支撑负载。\n- B：52 Mbps 严重低估，仅适合极小流量。\n- C：7052 Mbps 远超需求，造成资源浪费。\n- D正确：根据公式计算得出 1152 Mbps，符合带宽需求。\n\n考点总结:\n- 带宽计算公式：带宽(Mbps) = (Payload(KB) × requests/second × 8 / 1024) × (1 + buffer%)\n- 本题计算：(1024 × 120 × 8 / 1024) × 1.2 = 1152 Mbps\n- 缓冲带宽用于应对突发流量和网络波动。\n- 单位换算：1 KB = 1024 Bytes，1 Mbps = 1,000,000 bits/second。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记带宽计算公式，注意单位换算（KB → Bytes → bits）。\n- 理解缓冲百分比的作用，通常取 1.2 倍安全系数。\n- 在选项中，优先选择接近计算值的选项，避免极端值。\n- 遇到类似问题，先代入公式验证每个选项是否符合计算逻辑。"
+  },
+  {
+    "question": "### Question 39\nYou want to create an anomaly detection model using the OCI Anomaly Detection service that avoids as many false alarms as possible. False Alarm Probability (FAP) indicates model performance.\n\nHow would you set the value of False Alarm Probability?",
+    "selections": {
+      "A": "High",
+      "B": "Low",
+      "C": "Zero",
+      "D": "Use a function"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：高误报概率会导致大量误报，不符合题目要求。\n- B正确：低误报概率可减少误报，符合需求。\n- C：零误报理论上不可行，实际中会导致模型失效或漏报率过高。\n- D：使用函数不具体，无法有效控制误报概率。\n\n考点总结:\n- False Alarm Probability (FAP) 是模型误判正常样本为异常的概率。\n- 降低 FAP 值可减少误报，但需平衡漏报风险。\n- 实际业务中，FAP 应设置为可接受的最低水平，而不是绝对零值。\n- 异常检测的目标之一是降低误报，尤其在关键领域（如金融、工业监控）。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 FAP 与误报的正相关关系：FAP 越低，误报越少。\n- 理解零误报的不可行性，避免选择极端选项。\n- 在实际场景中，优先选择“低”而不是绝对值，结合业务容忍度调整。\n- 遇到类似问题时，优先排除理论不可行选项（如零值）。"
+  },
+  {
+    "question": "### Question 40\nA team wants to use CPU utilization as a metric to trigger autoscaling.\n\nWhich type of autoscaling policy should they configure?",
+    "selections": {
+      "A": "Manual scaling",
+      "B": "Custom scaling metric",
+      "C": "Predefined metric",
+      "D": "Load balancer scaling"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：手动扩展无法自动响应 CPU 利用率变化，不符合自动扩展需求。\n- B：自定义指标适用于业务特定场景，而 CPU 利用率是标准系统指标。\n- C正确：预定义指标策略支持 CPU 利用率等系统内置监控指标。\n- D：负载均衡扩展基于流量或连接数，与直接使用 CPU 利用率无关。\n\n考点总结:\n- 自动扩展策略分为预定义指标、自定义指标、手动扩展等类型。\n- 预定义指标包括 CPU 利用率、内存利用率等标准监控数据。\n- 自定义指标用于特殊业务逻辑，不适用于通用资源监控。\n- 预定义指标是触发基于系统性能自动扩展的首选方式。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记 CPU 利用率属于系统预定义指标，优先选择“预定义指标”选项。\n- 区分预定义指标与自定义指标的适用场景。\n- 排除明显不符合自动化的选项（如手动扩展）。\n- 遇到涉及标准资源监控（CPU、内存）的问题，直接联想到预定义指标策略。"
+  },
+  {
+    "question": "### Question 41\nYou are a data scientist using Oracle AutoML to evaluate a multiclass classification model. Which two prevailing metrics should you use?",
+    "selections": {
+      "A": "Recall",
+      "B": "R-squared",
+      "C": "Explained variance score",
+      "D": "F1 score",
+      "E": "Mean squared error"
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：Recall 在多分类任务中衡量模型找回所有正例的能力。\n- B 错误：R-squared 用于回归模型，不适用于分类任务。\n- C 错误：Explained variance score 同样用于回归评估。\n- D 正确：F1 score 综合精准率与召回率，是多分类常用指标。\n- E 错误：Mean squared error 用于回归，不适用于分类。\n\n考点总结:\n多分类模型评估应优先使用 Recall 和 F1 score，避免误用回归指标。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记分类任务核心指标：Recall、F1 Score。\n- 区分回归指标（R²、MSE）与分类指标，考试中勿混淆。"
+  },
+  {
+    "question": "### Question 42\nA company runs a job in OCI Data Science Jobs and wants infrastructure deprovisioned immediately after completion to avoid costs. What happens when the job ends?",
+    "selections": {
+      "A": "The compute shape is reset to default.",
+      "B": "The job artifact is deleted.",
+      "C": "The infrastructure remains active for 30 days.",
+      "D": "The infrastructure is automatically deprovisioned."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：计算规格不会重置为默认。\n- B 错误：作业产物保留，不会被自动删除。\n- C 错误：基础设施不会保持激活30天。\n- D 正确：OCI Data Science Jobs 默认在作业结束后自动释放资源，避免额外费用。\n\n考点总结:\n自动释放资源是 OCI Jobs 的核心优势，确保成本优化。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住 Jobs 的“serverless”特性：自动释放资源。\n- 考试中遇到“持续计费”类选项直接排除。"
+  },
+  {
+    "question": "### Question 43\nA data scientist needs to securely access an external database from a notebook session. What is the best way to store credentials?",
+    "selections": {
+      "A": "Hardcode the credentials in the Jupyter Notebook.",
+      "B": "Share the credentials via email with team members.",
+      "C": "Save the credentials in OCI Vault and retrieve them programmatically when needed.",
+      "D": "Store the credentials in a plaintext configuration file."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：硬编码易导致泄露，不符合安全最佳实践。\n- B 错误：邮件传播不安全，无法管控权限。\n- C 正确：OCI Vault 提供集中、安全的凭证管理，支持程序化访问。\n- D 错误：明文文件易被误传或泄露。\n\n考点总结:\n凭证管理应使用 Vault 等安全服务，避免明文存储。",
+    "suggestion": "### 应试技巧与学习建议\n- 遇到“安全存储”类题目直接锁定 Vault。\n- 排除所有明文或邮件类选项。"
+  },
+  {
+    "question": "### Question 44\nWhich resource types are included in the default matching rules of the Data Science Service template?",
+    "selections": {
+      "A": "datasciencenetwork, datasciencedatabase, datasciencebackup",
+      "B": "datascienceanalytics, datasciencemonitoring, datasciencebatchjob",
+      "C": "datascienceobjectstorage, datasciencecomputeinstance, datasciencemodeltraining",
+      "D": "datasciencemodeldeployment, datasciencenotebooksession, datasciencejobrun"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/B/C 错误：所列资源并非 Data Science Service 模板默认匹配的核心类型。\n- D 正确：模板默认匹配模型部署、笔记本会话和作业运行三类资源。\n\n考点总结:\n模板自动创建动态组规则，聚焦核心数据科学资源。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住模板三大核心资源：modeldeployment、notebooksession、jobrun。\n- 其他选项多为干扰项，涉及非核心资源。"
+  },
+  {
+    "question": "### Question 45\nA data scientist is using an AI model to predict fraudulent transactions. A financial regulator asks why a specific transaction was flagged as fraud.\n\nWhich technique should the data scientist use?",
+    "selections": {
+      "A": "Feature Permutation Importance",
+      "B": "What-If Explanation",
+      "C": "Local Explanation",
+      "D": "Global Explanation"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：特征排列重要性关注整个数据集的全局特征贡献，不适用于单条记录解释。\n- B：What-If 解释用于敏感性分析，但不直接解释具体决策。\n- C正确：局部解释（如 LIME、SHAP）针对单个实例决策提供原因，满足监管要求。\n- D：全局解释描述模型整体行为，无法针对具体交易给出原因。\n\n考点总结:\n- 局部解释（Local Explanation）用于单个实例决策解释，常见于金融监管场景。\n- 全局解释（Global Explanation）描述模型整体规律，适合模型开发阶段。\n- 特征排列重要性评估全局特征重要性，不适用于特定样本。\n- What-If 分析适合假设场景测试，但不直接用于因果解释。\n- AI 合规性要求可追溯、可信的单实例解释，局部解释是首选技术。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：金融监管等合规场景下，解释具体决策需用局部解释技术（如 LIME、SHAP）。\n- 区分局部解释与全局解释的适用场景：局部针对单实例，全局针对整体模型。\n- 排除特征排列重要性选项，因其关注整体而非具体样本。\n- What-If 解释更适合模型调试而非合规解释。\n- 遇到解释单个预测的问题，优先选择与 LIME、SHAP 相关的局部解释选项。"
+  },
+  {
+    "question": "### Question 46\nWhat is the primary advantage of using Conda environments in Data Science?",
+    "selections": {
+      "A": "They help in compressing datasets for storage efficiency.",
+      "B": "They enable isolated software configurations for different projects.",
+      "C": "They provide faster GPU processing speeds.",
+      "D": "They replace the need for cloud storage in machine learning projects."
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：Conda 环境不负责数据压缩。\n- B：正确答案。Conda 的核心作用是创建隔离环境，避免依赖冲突。\n- C：GPU 性能与 Conda 无关。\n- D：Conda 与环境管理相关，不涉及存储替代。\n\n考点总结：\nConda 是开源包与环境管理工具，支持多语言依赖隔离，是数据科学多项目协作的关键技术。",
+    "suggestion": "牢记 Conda 的核心功能：环境隔离与依赖管理，而非性能优化或存储替代。"
+  },
+  {
+    "question": "### Question 47\nWhich two statements are true about Oracle Cloud Infrastructure (OCI) Open Data Service?",
+    "selections": {
+      "A": "Subscribers can pay and log into Open Data to view curated data sets that are otherwise not available to the public.",
+      "B": "Open Data is a dataset repository made for the people that create, use, and manipulate datasets.",
+      "C": "Open Data includes text and image data repositories for AI and ML. Audio and video formats are not available.",
+      "D": "Each dataset in Open Data consists of code and tooling usage examples for consumption and reproducibility.",
+      "E": "A primary goal of Open Data is for users to contribute to the data repositories in order to expand the content offered."
+    },
+    "answers": ["B", "D"],
+    "summary": "选项分析：\n- A：Open Data 免费开放，无需付费。\n- B：正确。平台面向数据创建者与使用者。\n- C：错误。支持多格式，不限文本/图像。\n- D：正确。数据集含代码示例，便于复现。\n- E：社区贡献非主要目标。\n\n考点总结：\nOracle Open Data 提供权威开放数据集，含示例代码，支持科研、AI/ML 应用。",
+    "suggestion": "记住 Open Data 的两大特点：免费开放、配套代码示例。"
+  },
+  {
+    "question": "### Question 48\nYou have trained a binary classifier for a loan application and saved this model into the model catalog. A colleague wants to examine the model, and you need to share the model with your colleague.\nFrom the model catalog, which model artifacts can be shared?",
+    "selections": {
+      "A": "Models and metrics only",
+      "B": "Metadata, hyperparameters, and metrics only",
+      "C": "Models, model metadata, hyperparameters, and metrics"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A：遗漏元数据与超参数。\n- B：缺少模型本身。\n- C：正确。共享需包含所有关键工件。\n\n考点总结：\n模型目录支持完整共享（模型+元数据+超参数+指标），确保协作与复现。",
+    "suggestion": "共享模型时需完整打包，避免遗漏重要工件。"
+  },
+  {
+    "question": "### Question 49\nWhat is the primary goal of the loss function in model training?",
+    "selections": {
+      "A": "To maximize the likelihood of data points fitting the model",
+      "B": "To compare predicted values with true target values and quantify their difference",
+      "C": "To determine the best algorithm for training the model",
+      "D": "To update the model parameters to optimize performance"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：关联最大似然，非损失函数直接目标。\n- B：正确。损失函数量化预测与真实差异。\n- C：算法选择与损失函数无关。\n- D：参数更新依赖损失值，但非损失函数直接功能。\n\n考点总结：\n损失函数是训练优化的核心度量，用于计算误差并指导参数调整。",
+    "suggestion": "明确损失函数的作用：误差量化，而非算法选择或参数更新。"
+  },
+  {
+    "question": "### Question 50\nYou have custom data and want to customize an off-the-shelf LLM and deploy it quickly. How can AI Quick Actions help?",
+    "selections": {
+      "A": "To pretrain the LLM",
+      "B": "To deploy the off-the-shelf model",
+      "C": "To fine-tune the model and deploy"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A：预训练需大量资源，非 Quick Actions 功能。\n- B：直接部署无法满足定制需求。\n- C：正确。Quick Actions 支持快速微调并部署。\n\n考点总结：\nAI Quick Actions 通过微调预训练模型并自动化部署，实现快速定制。",
+    "suggestion": "记住 Quick Actions 的核心：微调+部署，而非预训练或单纯部署。"
+  },
+  {
+    "question": "### Question 51\nA company wants to integrate an LLM into its customer support chatbot using OCI. What is the fastest way to deploy and test the model?",
+    "selections": {
+      "A": "Training a custom model from scratch using OCI AutoML",
+      "B": "Using AI Quick Actions to quickly deploy a pretrained LLM",
+      "C": "Manually configuring a model deployment using OCI SDK",
+      "D": "Building a deep learning model in Jupyter Notebook"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：从零训练耗时耗力，非最快方案。\n- B：正确。AI Quick Actions 可直接部署预训练 LLM，速度最快。\n- C：手动配置步骤多，耗时较长。\n- D：Jupyter 中自建模型需开发调试，周期更长。\n\n考点总结：\nAI Quick Actions 提供一键式预训练 LLM 部署，适用于快速集成场景。",
+    "suggestion": "熟悉 AI Quick Actions 的“快速部署”定位，避免混淆预训练与自建模型流程。"
+  },
+  {
+    "question": "### Question 52\nWhat is the difference between a job and a job run in OCI Data Science Jobs?",
+    "selections": {
+      "A": "A job is a single execution, while a job run is a template.",
+      "B": "A job is a template, while a job run is a single execution of that template.",
+      "C": "A job is used for model training, while a job run is used for batch inference.",
+      "D": "A job is immutable, while a job run can be modified."
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：描述颠倒。\n- B：正确。Job 是配置模板，Job Run 是单次执行。\n- C：功能划分错误，二者无固定用途区分。\n- D：不可变性与执行阶段无关。\n\n考点总结：\nJob 定义任务模板（artifact+资源配置），Job Run 是其实例化执行，支持多次运行。",
+    "suggestion": "记住 Job/Job Run 的“模板 vs 实例”关系，避免用途混淆。"
+  },
+  {
+    "question": "### Question 53\nWhat triggers the automation of the MLOps pipeline?",
+    "selections": {
+      "A": "Manual intervention by data scientists",
+      "B": "Changes in data, monitoring events, or calendar intervals",
+      "C": "Random system updates",
+      "D": "User feedback"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：人工干预非自动化触发。\n- B：正确。数据漂移、监控告警、定时任务均为自动触发源。\n- C/D：系统更新和用户反馈无直接触发作用。\n\n考点总结：\nMLOps 自动化由数据变化、监控事件或定时器驱动，确保持续训练与部署。",
+    "suggestion": "掌握 MLOps 的三大自动触发条件：数据变动、监控事件、定时任务。"
+  },
+  {
+    "question": "### Question 54\nA data scientist is running a long-term experiment in an OCI notebook session. They need to save results even if they deactivate the session to reduce costs. What should they do?",
+    "selections": {
+      "A": "Save results only in the boot volume, as it is retained indefinitely.",
+      "B": "Keep the session active indefinitely to prevent data loss.",
+      "C": "Use default networking to automatically back up results to OCI Object Storage.",
+      "D": "Store all results in the block storage, as it persists after deactivation."
+    },
+    "answers": ["D"],
+    "summary": "选项分析：\n- A：引导卷非永久存储，不可靠。\n- B：持续运行成本高，违背初衷。\n- C：默认网络不自动备份。\n- D：正确。块存储独立于计算生命周期，停用后数据保留。\n\n考点总结：\nOCI 块存储提供持久化存储，适合长期实验结果保存，避免计算成本浪费。",
+    "suggestion": "优先用块存储保存实验数据，理解其与实例生命周期的独立性。"
+  },
+  {
+    "question": "### Question 55\nWhat is the purpose of a dynamic group in OCI?",
+    "selections": {
+      "A": "To group individual users for easier management",
+      "B": "To manage API access for resources such as notebook sessions",
+      "C": "To define storage limits for data science resources",
+      "D": "To allocate computing resources dynamically"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：用户分组用静态组，非动态组功能。\n- B：正确。动态组通过规则匹配资源（如 notebook），赋予 API 访问权限。\n- C/D：与存储或资源分配无关。\n\n考点总结：\n动态组按规则自动收集资源（如 notebook/job），用于 IAM 策略授权，实现细粒度访问控制。",
+    "suggestion": "记住动态组的“资源级权限管理”定位，区别于用户组和资源分配。"
+  },
+  {
+    "question": "### Question 56\nA data scientist is working on a project to train a machine learning model to identify tigers in images. What is the first step they need to take before training the model?",
+    "selections": {
+      "A": "Deploy the model.",
+      "B": "Label the images with \"tiger\" or \"not tiger\".",
+      "C": "Use OCI Vision Services.",
+      "D": "Analyze customer feedback."
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：部署是训练后步骤。\n- B：正确。监督学习需先标注数据。\n- C：Vision 服务用于应用，非训练前提。\n- D：与模型训练无关。\n\n考点总结：\n数据标注是监督学习的基础，确保模型有带标签的训练数据。",
+    "suggestion": "牢记监督学习流程：数据标注 → 训练 → 部署，避免颠倒顺序。"
+  },
+  {
+    "question": "### Question 57\nA healthcare company needs to redact personal details from patient records before sharing them. Which operator is best suited?",
+    "selections": {
+      "A": "Forecasting Operator",
+      "B": "Anomaly Detection Operator",
+      "C": "PII Detection Operator",
+      "D": "Clustering Operator"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B/D：与隐私信息处理无关。\n- C：正确。PII 检测器专用于识别并脱敏敏感信息。\n\n考点总结：\nPII Operator 提供实体识别与脱敏功能，适用于医疗等敏感数据共享场景。",
+    "suggestion": "遇到隐私数据处理场景，优先联想 PII Operator 的识别与脱敏能力。"
+  },
+  {
+    "question": "### Question 58\nWhile working with Git on Oracle Cloud Infrastructure (OCI) Data Science, you notice that two of the operations are taking more time than the others due to your slow internet speed. Which two operations would experience the delay?",
+    "selections": {
+      "A": "Pushing changes to a remote repository",
+      "B": "Moving changes into the staging area for the next commit",
+      "C": "Making a commit that is taking a snapshot of the local repository for the next push",
+      "D": "Updating the local repo to match the content from a remote repository",
+      "E": "Converting an existing local project folder to Git repository"
+    },
+    "answers": ["A", "D"],
+    "summary": "选项分析：\n- A/D：推送与拉取需网络传输，易受网速影响。\n- B/C/E：本地操作，无网络依赖。\n\n考点总结：\nGit 中涉及远程交互的操作（push/pull）对网络敏感，本地操作不受网速限制。",
+    "suggestion": "区分 Git 的本地与远程操作，网速问题主要影响 push/pull。"
+  },
+  {
+    "question": "### Question 59\nHow can a team ensure that data processing occurs before model training in a pipeline?",
+    "selections": {
+      "A": "By increasing the block volume size",
+      "B": "By setting dependencies between steps",
+      "C": "By using the same programming language for all steps",
+      "D": "By overriding the default configuration"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A/C/D：与步骤顺序无关。\n- B：正确。通过依赖关系明确先处理数据再训练。\n\n考点总结：\nOCI Pipeline 支持通过依赖（dependencies）控制步骤执行顺序，实现串并行混合工作流。",
+    "suggestion": "掌握依赖设置是控制流水线顺序的核心手段。"
+  },
+  {
+    "question": "### Question 60\nWhich statement is true regarding autoscaling configuration for an existing model deployment in an Active state in Oracle Data Science?",
+    "selections": {
+      "A": "You can modify the Autoscaling Scaling Policy fields and other configurations simultaneously.",
+      "B": "You must disable the model deployment to update the Autoscaling Scaling Policy fields.",
+      "C": "Changes to the Autoscaling Scaling Policy fields must occur one field at a time, without simultaneous changes to other configurations.",
+      "D": "Only non-infrastructure-related aspects can be modified for an active model deployment."
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A：活动状态下不支持批量修改。\n- B：无需禁用，可单独调整策略字段。\n- C：正确。需逐个字段修改，避免影响服务稳定性。\n- D：基础设施字段也可调整，但需分步。\n\n考点总结：\nOCI 模型部署在 Active 状态下，扩缩容策略需逐字段调整，确保服务连续性。",
+    "suggestion": "记住 Active 状态下修改策略的“分步”原则，避免一次性批量操作。"
+  },
+  {
+    "question": "### Question 61\nArrange the following points in the correct Git Repository workflow order.\n1. Install, configure, and authenticate Git.\n2. Configure SSH keys for the Git repository.\n3. Create a local and remote Git repository.\n4. Commit files to the local Git repo.\n5. Push the commit to the remote Git repo.",
+    "selections": {
+      "A": "1, 2, 3, 4, 5",
+      "B": "2, 3, 1, 4, 5",
+      "C": "3, 5, 1, 2, 4",
+      "D": "4, 2, 3, 1, 5"
+    },
+    "answers": ["A"],
+    "summary": "选项分析：\n- A：正确顺序。先安装 Git → 配置 SSH → 创建仓库 → 本地提交 → 推送到远程。\n- B-D：顺序混乱，如未安装 Git 就配置 SSH 或先推送后创建仓库均不合理。\n\n考点总结：\nGit 标准工作流：环境准备 → 安全认证 → 仓库初始化 → 本地版本控制 → 远程同步。",
+    "suggestion": "熟记 Git 五步流程，避免跳过环境准备或 SSH 配置步骤。"
+  },
+  {
+    "question": "### Question 62\nOnce you deploy the LLM using AI Quick Actions, how can you invoke your model?",
+    "selections": {
+      "A": "Through API",
+      "B": "Through CLI",
+      "C": "Through API and CLI",
+      "D": "Through only CLI"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B/D：仅部分途径，不全面。\n- C：正确。部署后同时支持 REST API 和 CLI 调用，灵活适配场景。\n\n考点总结：\nAI Quick Actions 提供双通道调用（API+CLI），便于集成与调试。",
+    "suggestion": "记住部署后可通过 API（HTTP 请求）和 CLI（命令行）两种方式调用模型。"
+  },
+  {
+    "question": "### Question 63\nYou have been given a collection of digital files required for a business audit. They consist of several different formats that you would like to annotate using Oracle Cloud Infrastructure (OCI) Data Labeling.\nWhich THREE file types can you annotate with OCI Data Labeling?",
+    "selections": {
+      "A": "Images of computer server racks",
+      "B": "A type-written document that details an annual budget",
+      "C": "A collection of purchase orders for office supplies",
+      "D": "Video footage of a conversation in a conference room",
+      "E": "An audio recording of a phone conversation"
+    },
+    "answers": ["A", "B", "C"],
+    "summary": "选项分析：\n- A/B/C：图像、文本文档、结构化文档均可标注。\n- D/E：视频和音频暂不支持。\n\n考点总结：\nOCI Data Labeling 支持图像、文本、文档三类数据，覆盖常见 AI/ML 标注需求。",
+    "suggestion": "限定记忆：图像+文本+文档是 OCI 标注三大支持类型。"
+  },
+  {
+    "question": "### Question 64\nAs a data scientist for a hardware company, you have been asked to predict the revenue demand for the upcoming quarter. You develop a time series forecasting model to analyze the data.\nWhat is the correct sequence to predict quarterly revenue with a time-series model?",
+    "selections": {
+      "A": "Prepare model, verify, save, deploy, predict.",
+      "B": "Prepare model, deploy, verify, save, predict.",
+      "C": "Verify, prepare model, deploy, save.",
+      "D": "Predict, deploy, save, verify, prepare model."
+    },
+    "answers": ["A"],
+    "summary": "选项分析：\n- A：正确顺序，遵循数据科学 MLOps 流程。\n- B-D：部署在验证之前或缺少关键步骤，均不合理。\n\n考点总结：\n时间序列预测标准流程：准备→验证→保存→部署→预测，确保模型可靠上线。",
+    "suggestion": "牢记五字口诀：备-验-存-部-测，避免顺序颠倒。"
+  },
+  {
+    "question": "### Question 65\nWhat happens when a model deployment in OCI Data Science is deactivated?",
+    "selections": {
+      "A": "The deployed model is permanently deleted, and predictions are no longer possible.",
+      "B": "The model deployment metadata is erased along with the model artifacts.",
+      "C": "The model's HTTP endpoint becomes unavailable, but metadata is preserved.",
+      "D": "The model remains active but stops accepting new inference requests."
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B：停用不会删除模型或元数据。\n- C：正确。端点关闭，资源与元数据保留，可重新激活。\n- D：停用后模型不保持活跃。\n\n考点总结：\nDeactivate 仅关闭服务入口，保留全部资产，方便后续重启或审计。",
+    "suggestion": "区分“停用”与“删除”：停用保留资产，删除彻底移除。"
+  },
+  {
+    "question": "### Question 66\nA user wants to fetch data from an Autonomous Database in OCI without using a database wallet. What must they do?",
+    "selections": {
+      "A": "Provide the hostname and port number in the connection_parameters dictionary.",
+      "B": "Use ads.read_sql without any additional parameters.",
+      "C": "Enable API authentication in the database console.",
+      "D": "Use an HTTP request to retrieve database records."
+    },
+    "answers": ["A"],
+    "summary": "选项分析：\n- A：正确。无钱包连接需在参数字典中显式指定主机/端口。\n- B：缺少必要连接信息。\n- C/D：非标准做法。\n\n考点总结：\n无钱包连接需手动提供 HOST/PORT/SERVICE_NAME 等参数，确保 TLS 连接成功。",
+    "suggestion": "记住无钱包三要素：host、port、service_name，缺一不可。"
+  },
+  {
+    "question": "### Question 67\nWhich type of data is NOT available in Oracle Open Data?",
+    "selections": {
+      "A": "Geospatial data from satellite systems",
+      "B": "Protein sequences and genomic data",
+      "C": "Financial transaction data",
+      "D": "Annotated text files"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B/D：公开科研常用数据，均可在 Open Data 获取。\n- C：金融交易涉及隐私，不会出现在公开数据集中。\n\n考点总结：\nOracle Open Data 聚焦非敏感、科研友好数据，金融交易类隐私数据被排除。",
+    "suggestion": "牢记隐私与合规红线：金融交易、个人可识别信息不会出现在公开数据集。"
+  },
+  {
+    "question": "### Question 68\nWhich statement best describes Oracle Cloud Infrastructure Data Science Jobs?",
+    "selections": {
+      "A": "Jobs lets you define and run repeatable tasks on fully-managed infrastructure.",
+      "B": "Jobs lets you define and run repeatable tasks on customer-managed infrastructure.",
+      "C": "Jobs lets you define and run all Oracle Cloud DevOps workloads.",
+      "D": "Jobs lets you define and run repeatable tasks on fully-managed, third-party cloud infrastructure."
+    },
+    "answers": ["A"],
+    "summary": "选项分析：\n- A：正确。OCI Data Science Jobs 在 Oracle 托管基础设施上运行。\n- B：客户无需管理底层资源。\n- C：覆盖范围过大，非所有 DevOps 负载。\n- D：非第三方云，属 Oracle 自有。\n\n考点总结：\nData Science Jobs 提供 Serverless 体验，用户仅需定义任务，平台自动管理资源。",
+    "suggestion": "抓住关键词：fully-managed、repeatable tasks、serverless。"
+  },
+  {
+    "question": "### Question 69\nYou are a data scientist using Oracle AutoML to produce a model and you are evaluating the score metric for the model.\nWhich two prevailing metrics would you use for evaluating the multiclass classification model?",
+    "selections": {
+      "A": "R-squared",
+      "B": "Mean squared error",
+      "C": "Recall",
+      "D": "F1 score",
+      "E": "Explained variance score"
+    },
+    "answers": ["C", "D"],
+    "summary": "选项分析：\n- A/B/E：均用于回归评估。\n- C/D：分类核心指标，Recall 衡量查全率，F1 综合精度与召回。\n\n考点总结：\n多类分类常用 Recall 和 F1-score，回归才用 R²/MSE/Explained Variance。",
+    "suggestion": "建立“分类-Recall/F1，回归-R²/MSE”快速对应关系。"
+  },
+  {
+    "question": "### Question 70\nA company has trained a machine learning model and wants to fine-tune it by experimenting with hyperparameter values based on prior experience.\nWhat approach should they take?",
+    "selections": {
+      "A": "Use the built-in perfunctory search strategy.",
+      "B": "Apply the detailed search space for broader tuning.",
+      "C": "Define a custom search space with specific hyperparameter values.",
+      "D": "Skip hyperparameter tuning altogether."
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A：perfunctory 策略过于粗略。\n- B：详细搜索资源消耗大。\n- C：正确。利用先验经验定制搜索空间，高效精准。\n- D：跳过调优不利性能提升。\n\n考点总结：\n基于经验的自定义搜索空间可在计算成本与效果间取得平衡，是微调首选。",
+    "suggestion": "记住“经验驱动 + 自定义搜索”是高效超参调优的核心策略。"
+  },
+  {
+    "question": "### Question 71\nWhich correlation method is used to measure the relationship between two categorical variables in ADS?",
+    "selections": {
+      "A": "Pearson correlation coefficient",
+      "B": "Spearman correlation coefficient",
+      "C": "Cramer's V method",
+      "D": "Chi-square test"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A：Pearson 用于连续变量线性关系。\n- B：Spearman 用于连续/有序变量单调关系。\n- C：正确。Cramer's V 基于卡方，专门度量分类变量关联强度。\n- D：Chi-square 仅检验独立性，不提供相关强度。\n\n考点总结：\nCramer's V 值域 0-1，越接近 1 表示分类变量关联越强，是 ADS 中评估类别相关性的首选。",
+    "suggestion": "牢记“分类 ↔ Cramer's V，连续 ↔ Pearson/Spearman”的快速对应。"
+  },
+  {
+    "question": "### Question 72\nA data scientist wants to develop a PySpark application iteratively using a sample of their dataset. Which environment is recommended?",
+    "selections": {
+      "A": "OCI Compute",
+      "B": "OCI Data Science notebook session",
+      "C": "OCI Object Storage",
+      "D": "OCI Virtual Cloud Network"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：Compute 需自行管理环境，迭代效率低。\n- B：正确。Notebook 会话内置 JupyterLab，支持交互式 PySpark 开发。\n- C：对象存储仅用于数据存放。\n- D：VCN 提供网络隔离，非开发环境。\n\n考点总结：\nOCI Data Science Notebook 提供托管 Spark 内核，适合快速迭代与可视化调试。",
+    "suggestion": "选择 Notebook 会话作为 PySpark 交互开发的首选环境。"
+  },
+  {
+    "question": "### Question 73\nA data scientist updates an IAM policy to grant their notebook session access to an Object Storage bucket. However, the notebook still cannot access the bucket.\n What is the likely reason?",
+    "selections": {
+      "A": "The IAM policy is incorrect.",
+      "B": "The resource principal token is still cached.",
+      "C": "The user needs to restart the entire OCI environment.",
+      "D": "Object Storage does not support access from notebooks."
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：政策已更新，通常无误。\n- B：正确。令牌缓存 15 分钟，需等待或手动刷新。\n- C/D：不必要且错误。\n\n考点总结：\n资源主体令牌缓存导致权限生效延迟，是常见 404/403 根因。",
+    "suggestion": "遇到权限已设却仍拒绝访问，先考虑令牌缓存时间。"
+  },
+  {
+    "question": "### Question 74\nA team wants to create a sophisticated autoscaling query combining multiple metrics with logical operators. Which option should they use?",
+    "selections": {
+      "A": "Predefined metrics",
+      "B": "Custom scaling metric with NQL expressions",
+      "C": "Cooldown periods",
+      "D": "Load balancer scaling"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：预置指标无法组合逻辑。\n- B：正确。NQL（Numeric Query Language）支持复杂布尔表达式。\n- C：冷却期仅限制频率，与查询无关。\n- D：负载均衡不处理多指标逻辑。\n\n考点总结：\nNQL 类似 SQL，可 AND/OR 多指标，满足高级自动扩缩需求。",
+    "suggestion": "记住“复杂逻辑 → NQL 表达式”这一对应关系。"
+  },
+  {
+    "question": "### Question 75\nWhat is the primary reason for performing feature scaling in machine learning?",
+    "selections": {
+      "A": "To make the dataset smaller for faster computation",
+      "B": "To bring features onto the same scale",
+      "C": "To convert categorical data into numerical form",
+      "D": "To automatically detect missing values and fill them with mean or median"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：缩放不改变数据量。\n- B：正确。消除量纲差异，提升算法收敛与精度。\n- C：属编码任务。\n- D：属缺失值处理。\n\n考点总结：\n特征缩放核心：统一尺度，使梯度下降等优化算法更高效稳定。",
+    "suggestion": "建立“特征缩放=统一尺度”的单一关键词记忆。"
+  },
+  {
+    "question": "### Question 77\nA bike sharing platform has collected user commute data for the past three years. For increasing the profitability and making useful inferences, a machine learning model needs to be built from the accumulated data.\nWhich option has the correct order of the required machine learning tasks for building a model?",
+    "selections": {
+      "A": "Data Access, Data Exploration, Feature Engineering, Feature Exploration, Modeling",
+      "B": "Data Access, Data Exploration, Feature Exploration, Feature Engineering, Modeling",
+      "C": "Data Access, Feature Exploration, Data Exploration, Feature Engineering, Modeling",
+      "D": "Data Access, Feature Exploration, Feature Engineering, Data Exploration, Modeling"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- B：正确顺序。先探索整体数据，再深入特征，最后工程化与建模。\n- A/C/D：特征探索不应早于数据全局探索或晚于工程化。\n\n考点总结：\n标准流程：获取→全局探索→特征洞察→特征构造→建模，避免顺序颠倒。",
+    "suggestion": "口诀：获取→看全貌→挖特征→造特征→建模，对应选项 B。"
+  },
+  {
+    "question": "### Question 78\nWhich statement is incorrect regarding the benefits of autoscaling for model deployment in Oracle Data Science?",
+    "selections": {
+      "A": "Autoscaling dynamically adjusts compute resources based on real-time demand.",
+      "B": "By using autoscaling, the cost of deployment remains constant irrespective of resource utilization.",
+      "C": "Autoscaling with load balancers enhances availability by rerouting traffic on failure.",
+      "D": "Users can set customizable triggers using MQL expressions."
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A/C/D：均为 autoscaling 真实优势。\n- B：错误。成本随资源用量弹性变化，不可能固定。\n\n考点总结：\nAutoscaling 核心价值：弹性、成本随用随付，而非固定费用。",
+    "suggestion": "记住“固定成本”是 autoscaling 的绝对误区。"
+  },
+  {
+    "question": "### Question 79\nYou are running a pipeline in OCI Data Science Service and want to override some of the pipeline's default settings. Which statement is true about overriding pipeline defaults?",
+    "selections": {
+      "A": "Pipeline defaults cannot be overridden once created.",
+      "B": "Pipeline defaults can be overridden only during creation.",
+      "C": "Pipeline defaults can be overridden before starting the pipeline execution.",
+      "D": "Pipeline defaults can be overridden only by an administrator."
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B：限制过严，与实际不符。\n- C：正确。执行前（Run 前）可修改参数、资源等默认设置。\n- D：普通用户亦可覆盖。\n\n考点总结：\nOCI Pipeline 支持运行前动态调整配置，无需重建或管理员介入。",
+    "suggestion": "牢记“执行前”是修改默认值的黄金时间窗口。"
+  },
+  {
+    "question": "### Question 80\nWhat model parameter value are you most likely to use if you are not sure of your selection while configuring the Forecasting operator?",
+    "selections": {
+      "A": "arima",
+      "B": "prophet",
+      "C": "auto",
+      "D": "autots"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B：特定算法需领域知识。\n- C：正确。auto 让系统自动在多种模型中选择最优。\n- D：autots 非主流选项。\n\n考点总结：\nOracle Forecasting Operator 的 auto 模式适合不确定场景，自动模型选择兼顾效果与效率。",
+    "suggestion": "不确定时一律选 auto，避免手动试错。"
+  },
+  {
+    "question": "### Question 81\nWhat model parameter value are you most likely to use if you are not sure of your selection while configuring the Forecasting operator?",
+    "selections": {
+      "A": "arima",
+      "B": "prophet",
+      "C": "auto",
+      "D": "autots"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B：ARIMA 与 Prophet 为特定算法，需业务先验。\n- C：正确。auto 让系统自动在多模型间择优，降低选择风险。\n- D：AutoTS 非 Oracle 官方推荐参数。\n\n考点总结：\nForecasting Operator 的 auto 参数适合未知场景，自动算法选择兼顾准确与效率。",
+    "suggestion": "记忆口诀：不确定选 auto，系统自动挑最优。"
+  },
+  {
+    "question": "### Question 82\nYou are a data scientist working on census dataset. You have decided to use Oracle AutoML Pipeline for automating your machine learning task and want to ensure that two of the features (\"Age\" and \"Education\") are part of the final model that the AutoML creates.\nTo ensure these features are not dropped during the feature selection phase, what would be the best way to define the min_features argument in your code?",
+    "selections": {
+      "A": "0 < min_features <= 2",
+      "B": "min_features = ['Age', 'Education']",
+      "C": "0 < min_features <= 0.9",
+      "D": "min_features = 'Age' && min_features = 'Education'"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A/C：数值/比例无法锁定具体特征。\n- B：正确。列表形式显式保留指定特征。\n- D：语法错误且逻辑不符。\n\n考点总结：\nOracle AutoML 的 min_features 支持列表指定保留特征，防止在特征选择阶段被丢弃。",
+    "suggestion": "使用列表精确保护关键特征，避免数值或字符串误用。"
+  },
+  {
+    "question": "### Question 83\nWhich is NOT a supported encryption algorithm in OCI Vault?",
+    "selections": {
+      "A": "AES (Advanced Encryption Standard)",
+      "B": "RSA (Rivest-Shamir-Adleman)",
+      "C": "ECDSA (Elliptic Curve Digital Signature Algorithm)",
+      "D": "SHA-256 (Secure Hash Algorithm 256-bit)"
+    },
+    "answers": ["D"],
+    "summary": "选项分析：\n- A/B/C：均为 OCI Vault 支持的加密/签名算法。\n- D：SHA-256 是哈希算法，用于完整性校验而非加密，不在 Vault 加密算法列表。\n\n考点总结：\nVault 支持对称（AES）、非对称（RSA/ECDSA）加密与签名；哈希算法仅做完整性验证。",
+    "suggestion": "区分“加密算法”与“哈希算法”，后者不用于数据加密。"
+  },
+  {
+    "question": "### Question 84\nWhat is the final step after running the Oracle Resource Manager stack for Data Science configuration?",
+    "selections": {
+      "A": "Deleting the default compartment",
+      "B": "Modifying the Terraform script in GitHub",
+      "C": "Adding users to the automatically created user group",
+      "D": "Creating an additional stack for security configuration"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B：删除或修改 stack 非必要。\n- C：正确。将用户加入自动生成的组，授予数据科学资源访问权限。\n- D：安全配置通常已内嵌，无需额外 stack。\n\n考点总结：\nORM 模板完成后，需手动把团队成员加入用户组，完成权限闭环。",
+    "suggestion": "记住模板输出后的“加人进群”是最后一步。"
+  },
+  {
+    "question": "### Question 85\nYou want to create a user group for a team of external data science consultants. The consultants should only have the ability to view data science resource details but not the ability to create, delete, or update data science resources.\nWhat verb should you write in the policy?",
+    "selections": {
+      "A": "Read",
+      "B": "Use",
+      "C": "Inspect",
+      "D": "Manage"
+    },
+    "answers": ["A"],
+    "summary": "选项分析：\n- A：正确。Read 仅允许查看资源详情。\n- B：Use 可执行操作，权限过大。\n- C：Inspect 含义模糊，非标准最小权限。\n- D：Manage 包含增删改，不符要求。\n\n考点总结：\nOCI IAM 动词粒度：Read < Use < Manage，按最小权限原则配置。",
+    "suggestion": "外部只读场景一律选 Read，避免过度授权。"
+  },
+  {
+    "question": "### Question 86\nA team of data scientists is working on multiple machine learning models for fraud detection. They want to collaborate in a structured manner.\nWhat option is available to create a Data Science Project in OCI?",
+    "selections": {
+      "A": "Can be created only through the OCI Console UI",
+      "B": "Can be created only through the ADS SDK",
+      "C": "Can be created through either the OCI Console UI or the ADS SDK",
+      "D": "Can be created using a command-line interface (CLI) only"
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A/B：仅支持单一方式，过于绝对。\n- C：正确。控制台图形化与 ADS SDK 代码化均可创建项目。\n- D：CLI 并非唯一途径。\n\n考点总结：\nOCI 提供多通道创建项目，满足不同用户习惯与自动化需求。",
+    "suggestion": "牢记“双通道”：UI 适合手动，SDK 适合自动化。"
+  },
+  {
+    "question": "### Question 87\nYou have just started as a data scientist at a healthcare company. You have been asked to analyze and improve a deep neural network model that was built based on the electrocardiogram records of patients. There are no details about the model framework that was built.\nWhat would be the best way to find more details about the machine learning models inside model catalog?",
+    "selections": {
+      "A": "Refer to the code inside the model.",
+      "B": "Check for metadata tags.",
+      "C": "Check for Model Taxonomy details.",
+      "D": "Check for Provenance details."
+    },
+    "answers": ["C"],
+    "summary": "选项分析：\n- A：需权限且耗时。\n- B：标签信息有限。\n- C：正确。Model Taxonomy 系统化描述框架、超参、任务类型。\n- D：Provenance 仅追踪来源，不含框架细节。\n\n考点总结：\nModel Taxonomy 是快速了解模型架构、任务、框架的权威入口。",
+    "suggestion": "遇到未知模型，先看 Taxonomy，再看代码。"
+  },
+  {
+    "question": "### Question 88\nA data scientist is working on a fraud detection model. They need to store the trained model so that it can be versioned, tracked, and later deployed without modification.\nWhich feature should they use?",
+    "selections": {
+      "A": "Model Deployment",
+      "B": "Model Catalog",
+      "C": "Model Explainability",
+      "D": "Hyperparameter Tuning"
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：仅用于上线，无版本管理。\n- B：正确。Catalog 提供版本控制、元数据、一键部署。\n- C/D：解释与调优不解决存储与版本问题。\n\n考点总结：\nModel Catalog 是模型资产的单一可信源，贯穿注册、版本、共享、部署全生命周期。",
+    "suggestion": "记住“存+管+部”三位一体：Catalog 一次搞定。"
+  },
+  {
+    "question": "### Question 89\nA company is running a job in OCI Data Science Jobs and wants to ensure that the infrastructure is deprovisioned immediately after the job completes to avoid unnecessary costs.What happens when the job ends?\n",
+    "selections": {
+      "A": "The infrastructure remains active for 30 days.",
+      "B": "The infrastructure is automatically deprovisioned.",
+      "C": "The job artifact is deleted.",
+      "D": "The compute shape is reset to default."
+    },
+    "answers": ["B"],
+    "summary": "选项分析：\n- A：持续计费与节省成本目标冲突。\n- B：正确。Job 完成后资源自动回收，避免额外费用。\n- C/D：工件保留，形状无需重置。\n\n考点总结：\nOCI Jobs 采用 Serverless 模式：按需启停，按秒计费，任务结束即释放。",
+    "suggestion": "记住“Job 完→资源放”的 Serverless 特性，避免长期占用。"
+  },
+  {
+    "question": "### Question 90\nWhat is the key difference between PDP (Partial Dependence Plot) and ICE (Individual Conditional Expectation) in ADS?",
+    "selections": {
+      "A": "PDP provides feature-level insights, while ICE provides sample-level insights.",
+      "B": "PDP works only for categorical features, while ICE works only for continuous features.",
+      "C": "PDP is a supervised learning technique, while ICE is used for unsupervised learning.",
+      "D": "PDP is used for classification, while ICE is only used for regression."
+    },
+    "answers": ["A"],
+    "summary": "选项分析：\n- A：正确。PDP 全局平均效应，ICE 展示单样本变化曲线。\n- B/C/D：功能/任务限制描述均错误。\n\n考点总结：\nPDP 全局视图 vs ICE 个体视图，二者互补提升模型可解释性。",
+    "suggestion": "用一句“全局 PDP，个体 ICE”快速区分。"
+  },
+  {
+    "question": "### Question 91\nWhere are the training job outputs stored after fine-tuning is completed?",
+    "selections": {
+      "A": "In the local storage of the training instance",
+      "B": "In an OCI Object Storage bucket",
+      "C": "Directly in the OCI Model Catalog",
+      "D": "In a temporary cache that is cleared after job completion"
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：训练实例的本地存储仅用于作业执行期间，数据通常不会长久保留。实例终止后数据即丢失，不符合持久化需求。\n- B：正确。微调完成后，训练输出（模型权重、日志、指标）会被自动上传到 OCI Object Storage 指定桶，确保长期保留、跨区域访问和后续生命周期管理。\n- C：OCI Model Catalog 用于保存经过验证的模型工件（如 .pkl、ONNX 文件）及其元数据，而非原始训练日志或检查点。\n- D：临时缓存（如本地 /tmp）会在作业结束后被系统清理，无法长期保存训练结果。\n\n考点总结：\nOCI 数据科学作业默认将训练输出持久化到 Object Storage，用户无需手动配置，即可实现数据冗余、版本控制和跨服务共享。",
+    "suggestion": "记住“训练输出 → Object Storage”这一默认路径，避免因本地存储丢失导致数据损失。"
+  },
+  {
+    "question": "### Question 92\nWhen deploying an RAG application to OCI Data Science, what is the correct sequence of steps you would need to follow?",
+    "selections": {
+      "A": "Load documents. Split documents. Embed documents. Create vector database from documents. Create retriever.",
+      "B": "Load documents. Embed documents. Split documents. Create vector database from documents. Create retriever.",
+      "C": "Split documents. Load documents. Embed documents. Create retriever. Create vector database from documents.",
+      "D": "Embed documents. Load documents. Split documents. Create vector database from documents. Create retriever."
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确顺序。先加载原始文档，再分割成 chunk，接着 embedding，随后建立向量数据库，最后创建检索器。\n- B：在“加载”后立即“嵌入”会导致对整篇长文档进行 embedding，效果差且 token 浪费。\n- C：先分割再加载会导致无法处理跨 chunk 的上下文，且逻辑颠倒。\n- D：先嵌入会导致文档尚未分割，嵌入向量长度过长，检索精度下降。\n\n考点总结：\nRAG 管线五步：Load → Split → Embed → Vector DB → Retriever，确保语义粒度合适、检索高效。",
+    "suggestion": "用“Load-Split-Embed-DB-Retriever”口诀记忆，顺序不可颠倒。"
+  },
+  {
+    "question": "### Question 93\nWhen deploying an RAG application to OCI Data Science, what is the correct sequence of steps you would need to follow?",
+    "selections": {
+      "A": "Load documents. Split documents. Embed documents. Create vector database from documents. Create retriever. Create chain. Create model. Prepare model artifacts. Verify model. Save model. Deploy model.",
+      "B": "Load documents. Embed documents. Split documents. Create vector database from documents. Create retriever. Create chain. Create model. Prepare model artifacts. Verify model. Save model. Deploy model.",
+      "C": "Split documents. Load documents. Embed documents. Create retriever. Create vector database from documents. Create chain. Create model. Prepare model artifacts. Verify model. Save model. Deploy model.",
+      "D": "Embed documents. Load documents. Split documents. Create vector database from documents. Create retriever. Create chain. Create model. Prepare model artifacts. Verify model. Save model. Deploy model."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n- A 正确：完整且顺序正确的 RAG 部署流程，包括加载、切分、向量化、建库、检索器、链、建模、打包、验证、保存、部署共 11 步。\n- B 错误：在“加载”后立即“嵌入”会导致对长文档整体向量化，效果差。\n- C 错误：先切分再加载逻辑颠倒，无法正确处理跨 chunk 上下文。\n- D 错误：先嵌入再加载会导致嵌入向量长度过长，检索精度下降。\n\n考点总结：\nRAG（Retrieval-Augmented Generation）部署标准顺序：\n1. Load documents\n2. Split documents\n3. Embed documents\n4. Create vector database from documents\n5. Create retriever\n6. Create chain\n7. Create model\n8. Prepare model artifacts\n9. Verify model\n10. Save model\n11. Deploy model\n确保每一步依赖前一步输出，顺序不可颠倒。",
+    "suggestion": "牢记“Load-Split-Embed-VectorDB-Retriever-Chain-Model-Artifacts-Verify-Save-Deploy”11 步口诀，部署时按序执行即可。"
+  },
+  {
+    "question": "### Question 94\nWhich two statements are true about Oracle Cloud Infrastructure (OCI) Open Data Service?",
+    "selections": {
+      "A": "Subscribers can pay and log into Open Data to view curated data sets that are otherwise not available to the public.",
+      "B": "Open Data is a dataset repository made for the people that create, use, and manipulate datasets.",
+      "C": "Open Data includes text and image data repositories for AI and ML. Audio and video formats are not available.",
+      "D": "Each dataset in Open Data consists of code and tooling usage examples for consumption and reproducibility.",
+      "E": "A primary goal of Open Data is for users to contribute to the data repositories in order to expand the content offered."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：不正确。开放数据服务强调开放性，数据集通常对公众开放，无需订阅。\n- B正确：正确描述开放数据作为数据集存储库的用途和受众。\n- C：不正确。开放数据支持多种数据格式，包括音频和视频。\n- D正确：每个数据集包含代码和工具示例，便于使用和复制。\n- E：不正确。用户贡献是可能的，但并非主要目标。\n\n考点总结:\n- OCI Open Data Service 是面向开发人员和数据科学家的存储库，支持多种数据类型和格式。\n- 开放性是核心原则，数据通常无需订阅即可访问。\n- 代码和工具示例是数据集的重要组成部分，帮助用户快速上手。\n- 社区贡献虽然被鼓励，但并非主要设计目标。\n- 主要目标是提供可消费和可复制的数据集，支持数据科学项目。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：OCI Open Data Service 强调数据的开放性和可访问性，无需付费订阅。\n- 区分数据类型支持的范围：开放数据不仅局限于文本和图像，还包括音频和视频。\n- 理解代码和工具示例的重要性：这是数据集的关键组成部分，帮助用户快速理解和使用数据。\n- 对于社区贡献选项，要判断是否为主要目标，通常主要目标是提供高质量的可消费数据。\n- 遇到类似的多选题，注意题目要求选择两条正确答案，避免只选一个或选多个。"
+  },
+  {
+    "question": "### Question 95\nYou want to write a Python script to create a collection of different projects for your data science team. Which Oracle Cloud Infrastructure (OCI) Data Science interface would you use?",
+    "selections": {
+      "A": "The OCI Software Development Kit (SDK)",
+      "B": "OCI Console",
+      "C": "Command line interface (CLI)",
+      "D": "Mobile App"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A正确：OCI SDK 提供 API 和库，支持通过 Python 脚本进行自动化。\n- B：不正确。OCI 控制台适合手动配置，不适合编写和运行脚本。\n- C：不正确。CLI 可用于脚本化任务，但不如 SDK 集成性强，尤其对于 Python 脚本。\n- D：不正确。移动应用不支持 Python 脚本编写和执行。\n\n考点总结:\n- OCI SDK 是编程接口工具包，支持多种编程语言（如 Python）与 OCI 服务交互。\n- Python 脚本结合 SDK 可实现项目自动化创建，提高效率，减少错误。\n- OCI Console 适合手动管理资源，而非脚本自动化。\n- CLI 更适合命令行任务，集成性不如 SDK。\n- 移动应用不适用于数据科学项目创建场景。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：自动化任务（如脚本创建项目）需使用支持编程的接口，优先选择 SDK。\n- 区分 SDK 与 CLI：CLI 更适合简单命令行任务，SDK 提供更灵活的编程能力。\n- 理解不同界面的适用场景：控制台用于手动操作，SDK 和 CLI 用于自动化。\n- 移动应用通常不适用于复杂的数据科学任务。\n- 遇到类似问题时，优先考虑 SDK 用于 Python 脚本开发和集成。"
+  },
+  {
+    "question": "### Question 96\nYou need to build a machine learning workflow that has sequential and parallel steps. You have decided to use the Oracle Cloud Infrastructure (OCI) Data Science Pipeline feature. How is Directed Acyclic Graph (DAG) having sequential and parallel steps built using Pipeline?",
+    "selections": {
+      "A": "Using Pipeline Designer",
+      "B": "By running a Pipeline",
+      "C": "Using dependencies",
+      "D": "Using environmental variables"
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。Pipeline Designer 提供拖拽式图形界面，可直接构建含串并行步骤的 DAG。\n- B：运行仅执行已设计好的 DAG，不负责创建拓扑。\n- C：依赖只是 DAG 的一部分属性，并非构建工具本身。\n- D：环境变量用于运行时配置，与 DAG 结构设计无关。\n\n考点总结：\nPipeline Designer 是官方可视化 DAG 构建器，支持零代码编排复杂工作流。",
+    "suggestion": "看到“设计 DAG”就选 Pipeline Designer，无需手写 YAML。"
+  },
+  {
+    "question": "### Question 97\nYou are using a git repository that is stored on GitHub to track your notebooks. You are working with another data scientist on the same project but in different notebook sessions. Which two statements are true?",
+    "selections": {
+      "A": "To share your work, you commit it and push it to GitHub. Your coworker can then pull your changes into their notebook session.",
+      "B": "It is a best practice that you and your coworker should work in the same branch because you are working on the same project.",
+      "C": "Once you have staged your changes, you run git commit to save a snapshot of your code.",
+      "D": "Only one of you has to clone the GitHub repo as you can share it.",
+      "E": "You do not have to clone the GitHub repo as you can commit directly from the notebook session to GitHub."
+    },
+    "answers": ["A", "C"],
+    "summary": "选项逐项解释：\n- A：符合 Git 分布式协作流程——推送后对方拉取。\n- B：官方最佳实践建议使用功能分支而非同分支，以减少冲突。\n- C：标准 Git 操作：stage → commit → push。\n- D/E：每人需独立克隆仓库，无法共享工作副本或直接无克隆提交。\n\n考点总结：\n多人协作遵循“克隆→分支→提交→推送→合并”标准 Git 流。",
+    "suggestion": "记住“每人一克隆，分支再合并”，避免共享工作目录误区。"
+  },
+  {
+    "question": "### Question 98\nAs a data scientist, you are tasked with creating a model training job that is expected to take different hyperparameter values on every run. What is the most efficient way to set those parameters with Oracle Data Science Jobs?",
+    "selections": {
+      "A": "Create a new job every time you need to run your code and pass the parameters as environment variables.",
+      "B": "Create your code to expect different parameters as command line arguments, and create a new job every time you run the code.",
+      "C": "Create a new job by setting the required parameters in your code, and create a new job for every code change.",
+      "D": "Create your code to expect different parameters either as environment variables or as command line arguments, which are set on every job run with different values."
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A/B/C：均需频繁新建 Job，浪费资源与时间。\n- D：正确。通过参数注入复用同一 Job 模板，既节省启动开销又灵活适配不同超参数。\n\n考点总结：\nOCI Jobs 支持运行时参数化（env/args），实现“一次定义，多次复用”。",
+    "suggestion": "优先参数化 Job，避免“一参一建”的低效做法。"
+  },
+  {
+    "question": "### Question 99\n、You have a complex Python code project that could benefit from using Data Science Jobs as it is a repeatable machine learning model training task. The project contains many subfolders and classes. What is the best way to run this project as a Job?",
+    "selections": {
+      "A": "Rewrite your code so that it is a single executable Python or Bash/Shell script file.",
+      "B": "ZIP the entire code project folder, upload it as a Job artifact on job creation, and set JOB_RUN_ENTRYPOINT to point to the main executable file.",
+      "C": "ZIP the entire code project folder and upload it as a Job artifact on job creation. Jobs identifies the main executable file automatically.",
+      "D": "ZIP the entire code project folder and upload it as a Job artifact. Jobs automatically identifies the __main__ top level where the code is run."
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：重写破坏项目结构，可维护性差。\n- B：正确。官方推荐做法：打包 ZIP + 显式 ENTRYPOINT，兼容复杂目录。\n- C/D：自动检测不可靠，易因缺少入口声明导致启动失败。\n\n考点总结：\n复杂项目通过 ZIP + ENTRYPOINT 方式提交，保留目录结构且可控启动。",
+    "suggestion": "养成“打包+ENTRYPOINT”习惯，确保复杂项目顺利运行。"
+  },
+  {
+    "question": "### Question 100\nYou are setting up a fine-tuning job for a pre-trained model on Oracle Data Science. You obtain the pre-trained model from HuggingFace, define the training job using the ADS Python API, and specify the OCI bucket. The training script includes downloading the model and dataset. Which of the following steps will be handled automatically by the ADS during the job run?",
+    "selections": {
+      "A": "Setting up the conda environment and installing additional dependencies",
+      "B": "Specifying the replica and shape of instances required for the training job",
+      "C": "Saving the outputs to OCI Object Storage once the training finishes",
+      "D": "Fetching the source code from GitHub and checking out the specific commit"
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。ADS 自动根据 runtime.yaml/requirements.txt 创建 conda 环境并安装依赖。\n- B：需在作业定义中手动指定实例规格。\n- C：需脚本显式调用 save_model 或 upload 到桶。\n- D：需在训练脚本内自行 git clone/checkout。\n\n考点总结：\nADS 负责环境抽象与依赖管理，用户专注算法与数据。",
+    "suggestion": "依赖与环境交给 ADS，人力专注模型与数据逻辑。"
+  },
+  {
+    "question": "### Question 101\nYou have received machine learning model training code, without clear information about the optimal shape to run the training. How would you proceed to identify the optimal compute shape for your model training that provides a balanced cost and processing time?",
+    "selections": {
+      "A": "Start with a random compute shape and monitor the utilization metrics and time required to finish the model training. Perform model training optimizations and performance tests in advance to identify the right compute shape before running the model training as a job.",
+      "B": "Start with a smaller shape and monitor the Job Run metrics and time required to complete the model training. If the compute shape is not fully utilized, tune the model parameters, and re-run the job. Repeat the process until the shape resources are fully utilized.",
+      "C": "Start with the strongest compute shape Job's support and monitor the Job Run metrics and time required to complete the model training. Tune the model so that it utilizes as much compute resources as possible, even at an increased cost.",
+      "D": "Start with a smaller shape and monitor the utilization metrics and time required to complete the model training. If the compute shape is fully utilized, change to compute that has more resources and re-run the job. Repeat this process until the processing time does not improve."
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：随机起步易导致不可预测结果，且提前优化增加复杂度。\n- B：仅调模型参数不直接解决资源瓶颈。\n- C：直接最强规格可能带来高昂费用。\n- D：官方推荐——小规格起步→监控→逐级扩容→收益收敛，确保成本与性能平衡。\n\n考点总结：\n逐步扩容策略是未知场景下寻找最优 cost-performance 的黄金路径。",
+    "suggestion": "记住口诀：小起步→监控→逐级升→收益收敛。"
+  },
+  {
+    "question": "### Question 102\nYou realize that your model deployment is about to reach its utilization limit. What would you do to avoid the issue before requests start to fail?",
+    "selections": {
+      "A": "Update the deployment to add more instances.",
+      "B": "Reduce the load balancer bandwidth limit so that fewer requests come in.",
+      "C": "Update the deployment to use a larger virtual machine (more CPUs/memory).",
+      "D": "Delete the deployment.",
+      "E": "Update the deployment to use fewer instances."
+    },
+    "answers": ["A", "C"],
+    "summary": "选项逐项解释：\n- A：水平扩容，直接增加并发处理能力。\n- B：限流降低用户体验，非根本解决。\n- C：垂直扩容，提升单机算力。\n- D：删除导致服务中断。\n- E：减少实例会加剧过载。\n\n考点总结：\n水平或垂直扩容是应对高负载的首选手段，限流/删实例均为反面做法。",
+    "suggestion": "利用率告警→先加实例或升规格，再考虑限流。"
+  },
+  {
+    "question": "### Question 103\nWhich approach does Oracle AutoML use to avoid the cold start problem?",
+    "selections": {
+      "A": "Randomized hyperparameter tuning to generate diverse models",
+      "B": "Exhaustive grid search to evaluate every possible model configuration",
+      "C": "Genetic evolutionary algorithms to evolve new models dynamically",
+      "D": "Meta-learning to predict algorithm performance on unseen data sets"
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：随机搜索无法解决冷启动。\n- B：穷举搜索耗时巨大。\n- C：遗传算法侧重架构优化。\n- D：正确。Meta-learning 利用历史任务性能快速预测新数据集最优算法。\n\n考点总结：\nMeta-learning = 利用先验知识跳过冷启动，是 AutoML 的核心加速器。",
+    "suggestion": "关键词：冷启动→meta-learning，秒选D。"
+  },
+  {
+    "question": "### Question 104\nYou want to use ADSTuner to tune the hyperparameters of a supported model you recently trained. You have just started your search and want to reduce the computational cost as well as access the quality of the model class that you are using. What is the most appropriate search space strategy to choose?",
+    "selections": {
+      "A": "ADSTuner doesn't need a search space to tune the hyperparameters.",
+      "B": "Perfunctory",
+      "C": "Pass a dictionary that defines a search space.",
+      "D": "Detailed"
+    },
+    "answers": ["C"],
+    "summary": "选项逐项解释：\n- A：ADSTuner 必须提供搜索空间。\n- B：Perfunctory 过于粗略，可能遗漏好参数。\n- C：正确。字典定义空间可精准控制范围，减少无效搜索。\n- D：Detailed 初期成本高。\n\n考点总结：\n字典搜索空间是平衡精度与成本的最佳起点。",
+    "suggestion": "初期调参=字典空间，避免全空间或粗略搜索。"
+  },
+  {
+    "question": "### Question 105\nUsing Oracle AutoML, you are tuning hyperparameters on a supported model class and have specified a time budget. AutoML terminates computation once the time budget is exhausted. What would you expect AutoML to return in case the time budget is exhausted before hyperparameter tuning is completed?",
+    "selections": {
+      "A": "A random hyperparameter configuration is returned.",
+      "B": "The last generated hyperparameter configuration is returned.",
+      "C": "The current best-known hyperparameter configuration is returned.",
+      "D": "A hyperparameter configuration with a minimum learning rate is returned."
+    },
+    "answers": ["C"],
+    "summary": "选项逐项解释：\n- A：随机配置无保证。\n- B：最后配置未必最优。\n- C：正确。AutoML 随时记录当前最佳，确保时间限制内给出最优解。\n- D：与学习率无关。\n\n考点总结：\n时间预算机制：中断即返最佳，保证资源利用率。",
+    "suggestion": "时间到→当前最佳，无需担心空手而归。"
+  },
+  {
+    "question": "### Question 106\nYou are creating an Oracle Cloud Infrastructure (OCI) Data Science job that will run on a recurring basis in a production environment. This job will pick up sensitive data from an Object Storage bucket, train a model, and save it to the model catalog. How would you design the authentication mechanism for the job?",
+    "selections": {
+      "A": "Package your personal OCI config file and keys in the job artifact.",
+      "B": "Store your personal OCI config file and keys in the Vault, and access the Vault through the job run resource principal.",
+      "C": "Create a pre-authenticated request (PAR) for the Object Storage bucket, and use that in the job code.",
+      "D": "Use the resource principal of the job run as the signer in the job code, ensuring there is a dynamic group for this job run with appropriate access to Object Storage and the model catalog."
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：将个人凭证打包进工件极易泄露，违反安全最佳实践。\n- B：仍需个人密钥，管理复杂且权限粒度粗。\n- C：PAR 权限过宽且易过期，不适合定期任务。\n- D：正确。使用 Job Run 的 Resource Principal + 动态组 IAM 策略，实现无密钥、细粒度、自动轮换的云端身份认证。\n\n考点总结：\nResource Principal + 动态组 = 生产级无密钥安全方案，自动继承权限，无需人工凭证。",
+    "suggestion": "生产任务一律用“Resource Principal + 动态组”，杜绝硬编码密钥。"
+  },
+  {
+    "question": "### Question 107\nYou have created a Data Science project in a compartment called Development and shared it with a group of collaborators. You now need to move the project to a different compartment called Production after completing the current development iteration. Which statement is correct?",
+    "selections": {
+      "A": "You cannot move a project to a different compartment after it has been created.",
+      "B": "Moving a project to a different compartment requires deleting all its associated notebook sessions and models first.",
+      "C": "You can move a project to a different compartment without affecting its associated notebook sessions and models.",
+      "D": "Moving a project to a different compartment also moves its associated notebook sessions and models to the new compartment."
+    },
+    "answers": ["C"],
+    "summary": "选项逐项解释：\n- A：错误。OCI 支持项目跨区移动。\n- B：错误。无需删除任何关联资源。\n- C：正确。项目迁移仅改变逻辑归属，底层 notebook、模型等资源保持原位，权限需同步调整 IAM 策略。\n- D：错误。关联资源不会自动跟随项目迁移，需手动重新绑定权限。\n\n考点总结：\n项目跨区迁移只改逻辑容器，资源实体与网络位置不变，权限策略需人工更新。",
+    "suggestion": "迁移项目后记得检查 IAM 策略作用域，确保新 compartment 权限一致。"
+  },
+  {
+    "question": "### Question 108\nYou have built a machine model to predict whether a bank customer is going to default on a loan. You want to use Local Interpretable Model-Agnostic Explanations (LIME) to understand a specific prediction. What is the key idea behind LIME?",
+    "selections": {
+      "A": "Global behavior of a machine learning model may be complex, while the local behavior may be approximated with a simpler surrogate model.",
+      "B": "Global and local behaviors of machine learning models are similar.",
+      "C": "Model-agnostic techniques are more interpretable than techniques that are dependent on the types of models.",
+      "D": "Local explanation techniques are model-agnostic, while global explanation techniques are not."
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。LIME 通过在预测点邻域内训练简单可解释模型（如线性回归）来近似复杂模型的局部行为。\n- B：全局与局部往往差异巨大，尤其在非线性模型中。\n- C：虽然 LIME 是模型无关，但这不是其“核心思想”。\n- D：全局方法也可模型无关（如 SHAP Global），表述片面。\n\n考点总结：\nLIME 核心 = 局部线性近似，解释单点决策。",
+    "suggestion": "记住关键词：local surrogate model。"
+  },
+  {
+    "question": "### Question 109\nWhat detector in PII Operator should you use to obfuscate detected sensitive information?",
+    "selections": {
+      "A": "Anonymize",
+      "B": "Mask",
+      "C": "Remove"
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：Anonymize 会永久删除或替换标识符，无法还原。\n- B：正确。Mask 通过部分遮盖（如手机号中间四位变 ****）实现模糊化，保留格式且可逆。\n- C：Remove 直接删除数据，失去信息价值。\n\n考点总结：\nPII Operator 三种策略：Mask（遮盖）、Anonymize（匿名化）、Remove（删除），按业务需求选择。",
+    "suggestion": "需要“可逆遮盖”就选 Mask。"
+  },
+  {
+    "question": "### Question 110\nYou want to evaluate the relationship between feature values and target variables. You have a large number of observations having a near uniform distribution and the features are highly correlated. Which model explanation technique should you choose?",
+    "selections": {
+      "A": "Feature Dependence Explanations",
+      "B": "Local Interpretable Model-Agnostic Explanations",
+      "C": "Accumulated Local Effects",
+      "D": "Feature Permutation Importance Explanations"
+    },
+    "answers": ["C"],
+    "summary": "选项逐项解释：\n- A：未专门针对高相关场景。\n- B：LIME 关注单样本，不处理特征间交互。\n- C：正确。ALE 通过累积局部效应，避免置换重要性在特征相关时的偏差。\n- D：Permutation 在特征相关时结果不可靠。\n\n考点总结：\n高相关特征 → 用 ALE；独立特征 → Permutation；单点 → LIME。",
+    "suggestion": "看到“高相关”立即锁定 ALE。"
+  },
+  {
+    "question": "### Question 111\nWhat is the sequence of steps to use OCI Data Science Operator?",
+    "selections": {
+      "A": "Install conda. Initialize operator. Configure operator. Run operator. Check results.",
+      "B": "Configure operator. Install conda. Initialize operator. Run operator. Check results.",
+      "C": "Check results. Install conda. Initialize operator. Run operator. Check results.",
+      "D": "Initialize operator. Install conda. Check results. Configure operator. Run operator."
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确官方顺序——先装 conda 环境，再初始化、配置、运行、验证。\n- B：未装 conda 就配置会失败。\n- C：检查结果不能在最前。\n- D：顺序混乱，缺少必要依赖。\n\n考点总结：\nOperator 五步：环境→初始化→配置→运行→验证。",
+    "suggestion": "记住“5 步口诀”：装环境-初始化-配置-运行-验证。"
+  },
+  {
+    "question": "### Question 112\nYou have created a conda environment in your notebook session. This is the first time you are working with published conda environments. You have also created an Object Storage bucket with permission to manage the bucket. Which two commands are required to publish the conda environment?",
+    "selections": {
+      "A": "odsc conda publish --slug",
+      "B": "odsc conda list --override",
+      "C": "odsc conda create --file manifest.yaml",
+      "D": "odsc conda init --bucket_namespace --bucket_name",
+      "E": "conda activate /home/datascience/conda//"
+    },
+    "answers": ["A", "D"],
+    "summary": "选项逐项解释：\n- A：发布命令，需指定唯一 slug。\n- B：仅列出环境，无发布功能。\n- C：创建新环境，与发布无关。\n- D：初始化存储桶信息，确保目标桶可写。\n- E：激活环境，非发布所需。\n\n考点总结：\n发布步骤：init（桶）+ publish（slug）。",
+    "suggestion": "发布环境=先 init 桶再 publish slug。"
+  },
+  {
+    "question": "### Question 113\nA data scientist is working on a deep learning project with TensorFlow and wants to ensure the same environment can be shared with colleagues. What is the best approach?",
+    "selections": {
+      "A": "Create a new Conda environment every time a colleague needs access.",
+      "B": "Store the Conda environment as a published Conda environment in Object Storage.",
+      "C": "Copy and paste the package list into a text file for manual installation.",
+      "D": "Manually install TensorFlow on each team member’s machine."
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：重复创建浪费资源且易出错。\n- B：正确。发布到 Object Storage 后，同事可一键拉取，确保一致性。\n- C：手动列表易遗漏版本或依赖冲突。\n- D：手动安装无法保证环境一致。\n\n考点总结：\n发布型 Conda 环境 = 团队共享 + 一键复现。",
+    "suggestion": "团队共享环境首选“发布到对象存储”。"
+  },
+  {
+    "question": "### Question 114\nYou want to ensure that all stdout and stderr from your code are automatically collected and logged, without implementing additional logging in your code. How would you achieve this with Data Science Jobs?",
+    "selections": {
+      "A": "Make sure that your code is using the standard logging library and then store all the logs to Object Storage at the end of the job.",
+      "B": "You can implement custom logging in your code by using the Data Science Jobs logging service.",
+      "C": "Create your own log group and use a third-party logging service to capture job run details for log collection and storing.",
+      "D": "On job creation, enable logging and select a log group. Then, select either a log or the option to enable automatic log creation."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：需要在代码中使用特定库并手动存储日志，不符合无需额外实现的要求。\n- B：涉及自定义代码实现，违背了无需额外编码的初衷。\n- C：增加复杂性且依赖外部服务。\n- D正确：在作业创建时启用内建的日志记录功能，无需修改代码即可自动收集和记录日志。\n\n考点总结:\n- 云环境中自动化日志管理的重要性，减少人工介入并保持标准化。\n- 数据科学作业支持在创建阶段启用日志功能，提升开发效率。\n- 利用内建机制自动记录日志，无需更改代码，优化工作流程的有效途径。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：Data Science Jobs 提供内建日志记录功能，无需修改代码即可自动收集 stdout 和 stderr。\n- 区分其他选项，特别是涉及手动存储日志或自定义日志实现的选项。\n- 注意题目强调“无需额外编码”，选择最符合这一要求的选项。\n- 理解启用日志组和自动日志创建选项的具体作用，这是考试中的常见考点。"
+  },
+  {
+    "question": "### Question 115\nYou want to build a multistep machine learning workflow by using the Oracle Cloud Infrastructure (OCI) Data Science Pipeline feature. How would you configure the conda environment to run a pipeline step?",
+    "selections": {
+      "A": "Use command-line variables.",
+      "B": "Configure a block volume.",
+      "C": "Use environmental variables.",
+      "D": "Configure a compute shape."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：命令行变量主要用于执行时传递参数，不直接用于环境配置。\n- B：块存储卷用于存储数据，与环境设置不直接相关。\n- C正确：环境变量是配置 Conda 环境的灵活方式，适合多步骤工作流。\n- D：计算形状配置与硬件资源相关，而非环境配置选项。\n\n考点总结:\n- 环境变量在 Unix/Linux 系统中用于传递环境配置信息。\n- Conda 环境可以通过环境变量灵活设置，适合多步骤机器学习工作流。\n- OCI 数据科学管道支持通过环境变量指定各步骤的 Conda 环境，提升自动化和资源效率。\n- 区分环境配置与资源配置（如计算形状）的不同用途。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：在 OCI 数据科学管道中，使用环境变量配置 Conda 环境是标准做法。\n- 排除与环境配置无关的选项，如块存储卷和计算形状。\n- 理解命令行变量与环境变量的区别：前者用于传递执行参数，后者用于配置运行环境。\n- 遇到管道配置问题时，优先考虑环境变量作为 Conda 环境设置的方式。\n- 注意考试中可能混淆的术语，如“环境变量”与“命令行变量”。"
+  },
+  {
+    "question": "### Question 116\nYou are attempting to save a model from a notebook session to the model catalog by using the Accelerated Data Science (ADS) SDK, with resource principal as the authentication signer, and you get a 404 authentication error. Which two should you look for to ensure permissions are set up correctly?",
+    "selections": {
+      "A": "The policy for your user group grants manage permissions for the model catalog in this compartment.",
+      "B": "The networking configuration allows access to Oracle Cloud Infrastructure services through a Service Gateway.",
+      "C": "The policy for a dynamic group grants manage permissions for the model catalog in this compartment.",
+      "D": "A dynamic group with matching rules and permissions for the notebook sessions in this compartment.",
+      "E": "The model artifact is saved to the block volume of the notebook session."
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：用户组的管理权限设置与资源主体认证关联度不高。\n- B：网络配置并不直接影响认证问题。\n- C正确：动态组的策略在此分区中授予模型目录管理权限，确保资源主体认证可操作的访问控制。\n- D正确：动态组需有匹配规则和访问权限，允许授予Notebook会话中的操作权限。\n- E：模型工件保存位置与认证权限问题不直接相关。\n\n考点总结:\n- 资源主体是一种身份验证机制，用于确定权限并与Oracle资源交互。\n- 动态组包含根据条件匹配的实体的集合，可以设置策略以授权这些实体对资源的访问。\n- 确保有合适的匹配规则和权限赋予，以正确设置模型目录管理权限。\n- 策略和授权在Oracle Cloud环境设置中，为用户或用户组分配了适当的权限，以执行对资源的管理和访问。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：资源主体认证依赖动态组的策略和匹配规则，因此需要同时检查动态组的权限和规则。\n- 区分用户组和动态组的权限设置，资源主体认证通常与动态组相关。\n- 理解404认证错误可能与权限配置有关，而不仅仅是网络问题。\n- 注意选项中涉及动态组和匹配规则的选项，这是考试中的常见考点。"
+  },
+  {
+    "question": "### Question 117\nYou want to install a list of Python packages on your data science notebook session while creating the instance. Which option will allow you to do the same?",
+    "selections": {
+      "A": "Using runtime configuration",
+      "B": "Using storage mounts",
+      "C": "Invoking public endpoint"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A正确：使用运行时配置，允许在实例启动时自动安装指定的Python包列表。\n- B：使用存储挂载用于挂载文件系统，不直接关联软件包安装任务。\n- C：调用公共端点并不涉及实例创建时包管理相关功能。\n\n考点总结:\n- 运行时配置提供了定义环境初始化行为的方式，如通过启动脚本安装依赖软件包。\n- 自动化安装确保工作环境的准备就绪，是数据科学平台的重要功能。\n- 存储挂载和调用端点是实例使用中的辅助功能，而非环境初始化工具。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：运行时配置是实现实例创建时自动安装软件包的主要方式。\n- 排除与环境初始化无关的选项，如存储挂载和调用公共端点。\n- 理解运行时配置的作用，包括启动脚本和依赖包安装。\n- 遇到类似问题时，优先考虑运行时配置选项。"
+  },
+  {
+    "question": "### Question 118\nOnce the LangChain application is deployed to OCI Data Science, what are two ways to invoke it as an endpoint?",
+    "selections": {
+      "A": "Use .predict method or Use CLI",
+      "B": "Use CLI or Use .invoke()",
+      "C": "Use .invoke() method or Use .predict method"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：包含 .predict 方法和 CLI，但缺少 .invoke() 方法。\n- B：包含 CLI 和 .invoke()，但缺少 .predict 方法。\n- C正确：包含 .invoke() 方法和 .predict 方法，这两种方法均适用于调用已部署的应用。\n\n考点总结:\n- .predict 方法常用于机器学习模型接口，给出输入数据后产生输出预测值。\n- .invoke 方法通常在应用部署后，用来通过编程接口直接执行和获取结果。\n- OCI Data Science 支持多种调用方式，确保数据传递正确。\n- 应用部署后，调用模式需匹配已部署服务的接口规范。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：LangChain 应用部署后，.invoke() 和 .predict 是两种常见的编程调用方式。\n- 区分 CLI 调用和编程接口调用，根据问题需求选择合适的选项。\n- 注意考试中可能混淆的术语，如 CLI 与编程方法的区别。\n- 遇到调用方式问题时，优先选择包含编程接口选项的答案。"
+  },
+  {
+    "question": "### Question 119\nA data scientist is analyzing customer churn data and wants to visualize the relationship between monthly charges (a continuous variable) and churn status (a categorical variable).\nWhich visualization would be most appropriate?What is the best visualization that ADS will likely generate?",
+    "selections": {
+      "A": "A violin plot",
+      "B": "A scatterplot",
+      "C": "A histogram",
+      "D": "A line chart"
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。小提琴图展示连续变量在分类变量下的分布与密度。\n- B：散点图适用于两连续变量。\n- C：直方图只显示单一分布。\n- D：折线图用于时间序列。\n\n考点总结：\n连续 vs 分类 → 小提琴/箱线图。",
+    "suggestion": "连续-分类关系首选小提琴图。"
+  },
+  {
+    "question": "### Question 120\nYou have just received a new data set from a colleague. You want to quickly find out summary information about the data set, such as the types of features, the total number of observations, and distributions of the data.\nWhich Accelerated Data Science (ADS) SDK method from the ADSDataset class would you use?",
+    "selections": {
+      "A": "show_in_notebook()",
+      "B": "compute()",
+      "C": "to_xgb()",
+      "D": "show_corr()"
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。show_in_notebook() 一键显示数据概览、类型、分布。\n- B：compute() 执行延迟计算。\n- C：转 XGBoost 格式。\n- D：仅显示相关性。\n\n考点总结：\nshow_in_notebook() 为快速数据探索利器。",
+    "suggestion": "拿到数据先 show_in_notebook()，十秒出概览。"
+  },
+  {
+    "question": "### Question 121\nAs a data scientist, you are working on a movie recommendation application where you have a very large movie dataset. Which Oracle Cloud Infrastructure (OCI) services should you use to develop interactive Spark applications and deploy Spark workloads?",
+    "selections": {
+      "A": "Data Science and Vault",
+      "B": "Data Integration and Vault",
+      "C": "Analytics Cloud and Data Flow",
+      "D": "Data Flow and Data Science"
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：Vault 只用于密钥管理，不参与 Spark 计算。\n- B：Data Integration 侧重数据管道，不直接提供 Spark 交互环境。\n- C：Analytics Cloud 主要做 BI 可视化，不是 Spark 作业托管平台。\n- D：正确。Data Flow 提供无服务器 Spark 运行环境，Data Science 提供 JupyterLab 交互式开发，两者结合即可完成大规模 Spark 应用的开发与部署。\n\n考点总结：\nData Flow（Serverless Spark）+ Data Science（JupyterLab）= 大数据交互开发 + 弹性作业执行。",
+    "suggestion": "记住“Data Flow 跑作业，Data Science 写代码”的组合拳。"
+  },
+  {
+    "question": "### Question 122\nYou are working as a data scientist for a healthcare company. They decide to analyze the data to find patterns in a large volume of electronic medical records. You are asked to build a PySpark solution to analyze these records in a JupyterLab notebook.\nWhat is the order of recommended steps to develop a PySpark application in Oracle Cloud Infrastructure (OCI) Data Science?",
+    "selections": {
+      "A": "Install a Spark conda environment. Configure core-site.xml. Launch a notebook session. Create a Data Flow application with ADS SDK. Develop your PySpark application.",
+      "B": "Launch a notebook session. Install a PySpark conda environment. Configure core-site.xml. Develop your PySpark application.",
+      "C": "Launch a notebook session. Configure core-site.xml. Install a PySpark conda environment. Develop your PySpark application. Create a Data Flow application with ADS SDK.",
+      "D": "Configure core-site.xml. Install a PySpark conda environment. Create a Data Flow application with ADS SDK. Develop your PySpark application. Launch a notebook session."
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：先装环境再启笔记本，顺序颠倒；Data Flow 创建应在开发完成后。\n- B：正确。官方推荐：先启动 notebook → 在会话内安装 PySpark 环境 → 配置连接 → 开发代码。\n- C：先配置 core-site 再装环境易因缺包失败。\n- D：完全颠倒，所有步骤应在已启动的 notebook 内完成。\n\n考点总结：\nOCI Data Science Notebook 内一站式完成环境、配置、开发，无需提前外部操作。",
+    "suggestion": "口诀：先开 notebook，后装环境，再写代码。"
+  },
+  {
+    "question": "### Question 123\nYou loaded data into Oracle Cloud Infrastructure (OCI) Data Science. To transform the data, you want to use the Accelerated Data Science (ADS) SDK. When you applied the get_recommendations() tool to the ADSDataset object, it showed you user-detected issues with all the recommended changes to apply to the dataset.\nWhich option should you use to apply all the recommended transformations at once?",
+    "selections": {
+      "A": "auto_transform()",
+      "B": "fit_transform()",
+      "C": "visualize_transforms()",
+      "D": "get_transformed_dataset()"
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。auto_transform() 会根据 get_recommendations() 的输出一次性执行所有建议的数据清洗与特征工程。\n- B：fit_transform() 需手动指定转换器，不自动执行推荐列表。\n- C：仅可视化转换效果，不实际执行。\n- D：用于获取已转换数据，前提必须先执行转换。\n\n考点总结：\n一键批量应用推荐变换 = auto_transform()。",
+    "suggestion": "记住“ADS 一键批处理 = auto_transform()”。"
+  },
+  {
+    "question": "### Question 124\nAfter you have created and opened a notebook session, you want to use the Accelerated Data Science (ADS) SDK to access your data and get started with an exploratory data analysis.\nFrom which two places can you access or install the ADS SDK?",
+    "selections": {
+      "A": "Conda environments in Oracle Cloud Infrastructure (OCI) Data Science",
+      "B": "Oracle Autonomous Data Warehouse",
+      "C": "Oracle Machine Learning (OML)",
+      "D": "Oracle Big Data Service",
+      "E": "Python Package Index (PyPi)"
+    },
+    "answers": ["A", "E"],
+    "summary": "选项逐项解释：\n- A：正确。OCI Data Science 预置了含 ADS 的 conda 环境，可直接激活使用。\n- B：数据仓库用于查询，不提供 ADS 安装。\n- C：OML 是数据库内机器学习，与 ADS SDK 安装无关。\n- D：Big Data Service 是 Hadoop/Spark 集群，不直接装 ADS。\n- E：正确。任何支持 pip 的环境均可通过 PyPi pip install oracle-ads 获取最新 SDK。\n\n考点总结：\n获取 ADS 的两条路径：预置 conda 或 PyPi pip 安装。",
+    "suggestion": "优先在 notebook 内 conda activate pre-ads-env，或 pip install oracle-ads。"
+  },
+  {
+    "question": "### Question 125\nYou are a data scientist with a set of text and image files that need annotation, and you want to use Oracle Cloud Infrastructure (OCI) Data Labeling.\nWhich of the following THREE annotation classes are supported by the tool?",
+    "selections": {
+      "A": "Semantic Segmentation",
+      "B": "Object Detection",
+      "C": "Classification (single/multi-label)",
+      "D": "Named Entity Extraction",
+      "E": "Key-Point and Landmark",
+      "F": "Polygonal Segmentation"
+    },
+    "answers": ["B", "C", "D"],
+    "summary": "选项逐项解释：\n- A：语义分割当前不支持。\n- B：正确。图像中画框检测目标。\n- C：正确。整张图或文本打单/多标签。\n- D：正确。文本中高亮实体并分类。\n- E：关键点标注暂不支持。\n- F：多边形分割暂不支持。\n\n考点总结：\nOCI Data Labeling 现支持：Object Detection、Classification、Named Entity Extraction。",
+    "suggestion": "记住“图检测、图分类、文实体”三大现成类型。"
+  },
+  {
+    "question": "### Question 126\nYou are a data scientist and have a large number of legal documents that needs to be classified. You decided to use OCI Data Labeling service to get your data labeled.\nWhat are the annotation classes available for annotating documents data using OCI Data Labeling service?",
+    "selections": {
+      "A": "Single, Multiple, Key Value",
+      "B": "Single, Multiple, Entity Extraction",
+      "C": "Single, Multiple, Object Detection"
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：Key Value 多用于结构化表格/票据，不适用于长文本法律文档。\n- B：正确。文档支持单/多标签整体分类，以及实体提取标注人名、地点、条款等。\n- C：Object Detection 用于图像，不适用文本文档。\n\n考点总结：\n文本文档标注 = 分类 + 实体提取。",
+    "suggestion": "法律文档直接选“单/多标签 + 实体提取”。"
+  },
+  {
+    "question": "### Question 127\nFor your next data science project, you need access to public geospatial images.\nWhich Oracle Cloud service provides free access to those images?",
+    "selections": {
+      "A": "Oracle Big Data Service",
+      "B": "Oracle Cloud Infrastructure Data Science",
+      "C": "Oracle Analytics Cloud",
+      "D": "Oracle Open Data"
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：大数据服务用于处理海量数据，不提供公开影像。\n- B：Data Science 用于建模，不托管公开影像。\n- C：Analytics Cloud 做 BI 可视化，不直接提供影像。\n- D：正确。Oracle Open Data 收录 NASA、USGS 等公开地理空间影像，免费下载。\n\n考点总结：\nOracle Open Data = 免费公开地理空间影像仓库。",
+    "suggestion": "需要卫星/航拍影像就上 opendata.oraclecloud.com。"
+  },
+  {
+    "question": "### Question 128\nYou are a data scientist leveraging Oracle Cloud Infrastructure (OCI) Data Science to create a model and need some additional Python libraries for processing genome sequencing data.\nWhich of the following THREE statements are correct with respect to installing additional Python libraries to process the data?",
+    "selections": {
+      "A": "You can install any open-source package available on a publicly accessible Python Package Index (PyPI) repository.",
+      "B": "OCI Data Science allows root privileges in notebook sessions.",
+      "C": "You cannot install a library that's not preinstalled in the provided image.",
+      "D": "You can only install libraries using yum and pip as a normal user.",
+      "E": "You can install private or custom libraries from your own internal repositories."
+    },
+    "answers": ["A", "D", "E"],
+    "summary": "选项逐项解释：\n- A：正确。pip install 可拉取 PyPI 任意开源包。\n- B：错误。Notebook 会话默认无 root，只能普通用户安装。\n- C：错误。用户可自由安装镜像外库，不受限制。\n- D：正确。无 root 时可通过 pip --user 或 yum --user 安装。\n- E：正确。通过私有 PyPI 或 wheel 文件安装内部库。\n\n考点总结：\nOCI Notebook = 无 root + 可装 PyPI/私有包 + 支持自定义源。",
+    "suggestion": "无 root 也能装包：pip install --user pkg 或上传 wheel。"
+  },
+  {
+    "question": "### Question 129\nYou need to make sure that the model you have deployed using AI Quick Actions is responding with suitable responses.\nHow can AI Quick Actions help here?",
+    "selections": {
+      "A": "By fine-tuning the model",
+      "B": "By evaluating the model",
+      "C": "By deploying the model"
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：微调是优化手段，非确认响应质量。\n- B：正确。AI Quick Actions 提供内置评估指标和样本测试，快速验证模型回答是否合理。\n- C：部署只是上线步骤，不保证质量。\n\n考点总结：\nAI Quick Actions 评估功能 = 一键检测模型回答有效性。",
+    "suggestion": "上线后先用 Quick Actions 评估，再全量发布。"
+  },
+  {
+    "question": "### Question 130\nSelect two reasons why it is important to rotate encryption keys when using Oracle Cloud Infrastructure (OCI) Vault to store credentials or other secrets.",
+    "selections": {
+      "A": "Key rotation allows you to encrypt no more than five keys at a time.",
+      "B": "Periodically rotating keys limits the amount of data encrypted by one key version.",
+      "C": "Key rotation reduces risk if a key is ever compromised.",
+      "D": "Periodically rotating keys make it easier to reuse keys.",
+      "E": "Key rotation improves encryption efficiency."
+    },
+    "answers": ["B", "C"],
+    "summary": "选项逐项解释：\n- A：与数量限制无关。\n- B：正确。减少单密钥加密数据量，降低泄露影响面。\n- C：正确。定期轮换可快速作废泄露密钥。\n- D：轮换反而降低重用概率。\n- E：效率提升不是主要目的。\n\n考点总结：\n密钥轮换 = 限数据面 + 降泄露风险。",
+    "suggestion": "记住“限数据量 + 降风险”两大理由。"
+  },
+  {
+    "question": "### Question 131\nAs a data scientist, you have stored sensitive data in a database. You need to protect this data by using a master encryption algorithm, which uses symmetric keys.\nWhich master encryption algorithm would you choose in the Oracle Cloud Infrastructure (OCI) Vault service?",
+    "selections": {
+      "A": "Elliptical Curve Cryptography Digital Signature Algorithm",
+      "B": "Triple Data Encryption Standard Algorithm",
+      "C": "Rivest-Shamir-Adleman Keys",
+      "D": "Advanced Encryption Standard Keys"
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：椭圆曲线数字签名算法属于非对称签名，不用于对称加密。\n- B：3DES 已逐渐被 AES 取代，安全性和性能均不及 AES。\n- C：RSA 属于非对称加密，与对称密钥需求不符。\n- D：正确。AES 是当前最广泛采用的对称加密标准，强度高、性能好，适用于大数据量加密。\n\n考点总结：\nOCI Vault 中对称主密钥首选 AES，兼顾安全与效率。",
+    "suggestion": "对称加密需求→直接锁定 AES。"
+  },
+  {
+    "question": "### Question 132\nYou are a data scientist working for a manufacturing company. You have developed a forecasting model to predict the sales demand in the upcoming months. You created a model artifact that contained custom logic requiring third-party libraries.\nWhen you deployed the model it failed to run because you did not include all the third party dependencies in the model artifact.\nWhat file should be modified to include the missing libraries?",
+    "selections": {
+      "A": "requirements.txt",
+      "B": "score.py",
+      "C": "runtime.yaml",
+      "D": "model_artifact_validate.py"
+    },
+    "answers": ["A"],
+    "summary": "选项逐项解释：\n- A：正确。requirements.txt 列出 Python 依赖包，部署时会自动安装缺失库。\n- B：score.py 仅含推理逻辑，不负责依赖声明。\n- C：runtime.yaml 定义运行环境，不直接管理 pip 包。\n- D：validate.py 用于测试脚本，与依赖无关。\n\n考点总结：\n缺失 Python 依赖→在 requirements.txt 补充即可。",
+    "suggestion": "缺包就改 requirements.txt，无需动其他文件。"
+  },
+  {
+    "question": "### Question 133\nYou are a data scientist working for a utilities company. You have developed an algorithm that detects anomalies from a utility reader in the grid. The size of the model artifact is about 2 GB, and you are trying to store it in the model catalog.\nWhich three interfaces could you use to save the model artifact into the model catalog?",
+    "selections": {
+      "A": "Git CLI",
+      "B": "Console",
+      "C": "OCI Python SDK",
+      "D": "Oracle Cloud Infrastructure (OCI) Command Line Interface (CLI)",
+      "E": "Accelerated Data Science (ADS) Software Development Kit (SDK)",
+      "F": "Data Science Continuous Integration (ODSC) CLI"
+    },
+    "answers": ["B", "C", "D"],
+    "summary": "选项逐项解释：\n- A：Git CLI 用于版本控制，不直接上传模型文件。\n- B：正确。控制台 GUI 可直接拖拽上传大文件。\n- C：正确。Python SDK 支持脚本化上传。\n- D：正确。CLI 支持 oci data-science model create-artifact。\n- E：ADS SDK 侧重开发，不直接用于大文件上传。\n- F：ODSC CLI 用于 CI/CD 流程，非直接上传工具。\n\n考点总结：\n控制台、Python SDK、CLI 是官方支持的三大上传通道。",
+    "suggestion": "大模型上传=控制台拖拽 / Python / CLI 三选一。"
+  },
+  {
+    "question": "### Question 134\nYou train a model to predict housing prices for your city. Which two metrics from the Accelerated Data Science (ADS) ADSEvaluator class can you use to evaluate the regression model?",
+    "selections": {
+      "A": "Weighted Recall",
+      "B": "Explained Variance Score",
+      "C": "Weighted Precision",
+      "D": "Mean Absolute Error",
+      "E": "F-1 Score"
+    },
+    "answers": ["B", "D"],
+    "summary": "选项逐项解释：\n- A/C/E：均为分类指标，不适用于回归。\n- B：正确。解释方差衡量模型对目标方差的解释能力。\n- D：正确。MAE 直接反映预测值与真实值的平均绝对差距。\n\n考点总结：\n回归评估：MAE、MSE、RMSE、Explained Variance、R²。",
+    "suggestion": "回归问题→优先 MAE 和 Explained Variance。"
+  },
+  {
+    "question": "### Question 135\nAs a data scientist, you create models for cancer prediction based on mammographic images. The correct identification is very crucial in this case. After evaluating two models, you arrive at the following confusion matrix:\nModel 1: Test accuracy is 80% and recall is 70%.\n Model 2: Test accuracy is 75% and recall is 85%.\nWhich model would you prefer and why?",
+    "selections": {
+      "A": "Model 2, because recall is high.",
+      "B": "Model 1, because the test accuracy is high.",
+      "C": "Model 2, because recall has more impact on predictions in this use case.",
+      "D": "Model 1, because recall has lesser impact on predictions in this use case."
+    },
+    "answers": ["C"],
+    "summary": "选项逐项解释：\n- A：虽召回高，但未说明场景重要性。\n- B：准确率高但召回低，易漏诊癌症。\n- C：正确。医疗场景漏诊代价极高，高召回优先。\n- D：与医疗需求相反。\n\n考点总结：\n医学诊断：召回率优先，避免漏诊。",
+    "suggestion": "医疗场景牢记“高召回>高准确率”。"
+  },
+  {
+    "question": "### Question 136\nWhat is the purpose of continuous training in MLOps?",
+    "selections": {
+      "A": "To manually update software systems",
+      "B": "To eliminate the need for data validation",
+      "C": "To replace DevOps practices",
+      "D": "To retrain machine learning models for redeployment"
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：手动更新与自动化相悖。\n- B：数据验证仍是必要环节。\n- C：MLOps 扩展而非取代 DevOps。\n- D：正确。持续训练随数据漂移自动重训并重部署模型。\n\n考点总结：\n持续训练 = 自动重训 + 自动部署，保持模型性能。",
+    "suggestion": "记住“持续训练=重训+重部署”。"
+  },
+  {
+    "question": "### Question 137\nYou are a data scientist trying to load data into your notebook session. You understand that Accelerated Data Science (ADS) SDK supports loading various data formats.\nWhich of the following THREE are ADS supported data formats?",
+    "selections": {
+      "A": "Pandas DataFrame",
+      "B": "DOCX",
+      "C": "JSON",
+      "D": "Raw Images",
+      "E": "XML"
+    },
+    "answers": ["A", "C", "D"],
+    "summary": "选项逐项解释：\n- A：正确。ADS 可直接读取并返回 Pandas DataFrame，便于后续分析。\n- B：DOCX 文档格式主要用于文字处理，非 ADS 重点支持的数据源。\n- C：正确。JSON 作为半结构化数据，ADS 自动解析为 DataFrame 或字典。\n- D：正确。原始图像（JPG/PNG 等）可通过 ADS 图像模块加载，用于 CV 任务。\n- E：XML 虽可解析，但非 ADS 官方优先列出的三类核心格式。\n\n考点总结：\nADS 核心支持 Pandas DataFrame、JSON、Raw Images，覆盖结构化、半结构化及图像场景。",
+    "suggestion": "记住“ADS 三宝：DataFrame / JSON / Images”。"
+  },
+  {
+    "question": "### Question 138\nDuring a job run, you receive an error message that no space is left on your disk device. To solve the problem, you must increase the size of the job storage.\nWhat would be the most efficient way to do this with Data Science Jobs?",
+    "selections": {
+      "A": "On the job run, set the environment variable that helps increase the size of the storage.",
+      "B": "Edit the job, change the size of the storage of your job, and start a new job run.",
+      "C": "Create a new job with increased storage size and then run the job.",
+      "D": "Your code is using too much disk space. Refactor the code to identify the problem."
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：环境变量无法动态扩容存储。\n- B：正确。直接编辑现有作业并增加存储后重新运行，无需重建全部配置。\n- C：新建作业会丢失原配置与日志，效率低。\n- D：重构代码耗时，无法立即解决存储瓶颈。\n\n考点总结：\n“编辑-扩容-重跑”三步法，最快解决存储不足。",
+    "suggestion": "遇到磁盘满→编辑作业→调大存储→重新运行。"
+  },
+  {
+    "question": "### Question 139\nWhile reviewing your data, you discover that your data set has a class imbalance. You are aware that the Accelerated Data Science (ADS) SDK provides multiple built-in automatic transformation tools for data set transformation.\nWhich would be the right tool to correct any imbalance between the classes?",
+    "selections": {
+      "A": "auto_transform()",
+      "B": "suggest_recommendations()",
+      "C": "visualize_transforms()",
+      "D": "sample()"
+    },
+    "answers": ["D"],
+    "summary": "选项逐项解释：\n- A：批量通用变换，不专门针对类别平衡。\n- B：仅给出建议，不执行操作。\n- C：仅可视化，无实际变换。\n- D：正确。sample() 支持过采样/欠采样，直接调整类别分布。\n\n考点总结：\n类别不平衡→sample() 调比例。",
+    "suggestion": "不平衡→ADS sample()。"
+  },
+  {
+    "question": "### Question 140\nAs a data scientist, you are working on a global health data set that has data from more than 50 countries. You want to encode three features such as 'countries', 'race' and 'body organ' as categories.\nWhich option would you use to encode the categorical feature?",
+    "selections": {
+      "A": "DataFrameLabelEncoder()",
+      "B": "OneHotEncoder()",
+      "C": "show_in_notebook()",
+      "D": "auto_transform()"
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：无此官方类名。\n- B：正确。OneHotEncoder 将每个类别变成独立二进制列，适合高基数无序特征。\n- C：仅用于可视化数据，不编码。\n- D：泛指自动变换，非具体编码器。\n\n考点总结：\n无序高基数类别 → OneHotEncoder。",
+    "suggestion": "高基数类别→OneHot，一步到位。"
+  },
+  {
+    "question": "### Question 141\nA team notices that their autoscaling system is making too many scaling adjustments in a short time frame, causing instability.\nWhat feature can help mitigate this issue?",
+    "selections": {
+      "A": "Static resource allocation",
+      "B": "Cooldown periods",
+      "C": "Custom NQL expressions",
+      "D": "Load balancer"
+    },
+    "answers": ["B"],
+    "summary": "选项逐项解释：\n- A：静态分配无法弹性伸缩。\n- B：正确。冷却期在每次扩容后静默一段时间，避免抖动。\n- C：NQL 用于指标查询，不直接限制频率。\n- D：负载均衡分配流量，不控制伸缩节奏。\n\n考点总结：\n冷却期 = 防抖动神器。",
+    "suggestion": "频繁伸缩→加冷却期。"
+  },
+  {
+    "question": "### Question 142\nYou are deploying a machine learning model on Oracle Data Science and decide to use metric-based autoscaling to manage resources efficiently. You set the autoscaling policy to trigger when CPU utilization exceeds 70% for five consecutive monitoring intervals.\n\nThe cool-down period is set to 10 minutes. During peak usage, the CPU utilization hits 75% for six consecutive intervals, triggering the autoscaling event.\n\nWhat will happen immediately after the autoscaling event is triggered?",
+    "selections": {
+      "A": "The system will immediately trigger another autoscaling event if CPU utilization exceeds 70%.",
+      "B": "The model deployment will return to its original size after the cool-down period.",
+      "C": "The cool-down period will prevent any performance metrics from being evaluated.",
+      "D": "The cool-down period will begin, and no further autoscaling events will be triggered for 10 minutes."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A：冷却期开始后，即使利用率高于触发点，也不会立即触发新的扩展事件。\n- B：冷却期与资源回缩无关，模型部署不会因冷却期自动恢复到原始大小。\n- C：性能指标评估仍会进行，冷却期只影响扩展事件的频率。\n- D正确：冷却期开始后，系统将在10分钟内阻止进一步扩展的触发，避免频繁调整对系统稳定性的影响。\n\n考点总结:\n- 自动扩展策略基于资源使用指标（如CPU利用率）自动调整资源分配。\n- 冷却期设置防止过于频繁的扩展操作导致系统抖动和不稳定。\n- 合理设置触发条件和冷却期可优化系统性能，降低稳定性风险。\n- 冷却期不影响性能指标的评估，仅限制扩展事件的触发频率。",
+    "suggestion": "### 应试技巧与学习建议\n- 牢记：冷却期的主要作用是防止频繁的扩展操作，确保系统稳定。\n- 区分冷却期与资源回缩的关系，冷却期结束后不会自动恢复到原始大小。\n- 理解冷却期不影响性能指标评估，仅限制扩展事件的触发。\n- 遇到自动扩展问题时，优先考虑选项中提到冷却期对扩展事件触发频率的影响。\n- 注意题目中的关键词“立即发生什么”，通常与冷却期的开始相关。"
+  },
+  {
+    "question": "### Question 143\nWhich step is part of the AutoML pipeline?",
+    "selections": {
+      "A": "Model Saved to Model Catalog",
+      "B": "Feature Extraction",
+      "C": "Feature Selection",
+      "D": "Model Training"
+    },
+    "answers": ["C"],
+    "summary": "选项逐项解释：\n- A：保存模型属于 MLOps 后续，非 AutoML 核心。\n- B：特征提取多在预处理阶段完成。\n- C：正确。特征选择是 AutoML 内置步骤，用于自动筛选重要特征。\n\n考点总结：\nAutoML 四步：算法选择→采样→特征选择→调参。",
+    "suggestion": "记住 AutoML 四步，排除外围步骤。"
+  }
+]
