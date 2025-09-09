@@ -1498,5 +1498,329 @@
     "answers": ["C"],
     "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：PromptTemplate 可以零变量、单变量或任意多变量；示例中两个变量仅为演示。\n- B 错误：列表可放任意数量变量，代码示例已出现两个。\n- C 正确：input_variables 列表可为空、单元素或多元素，模板静态时即可零变量。\n- D 错误：模板核心能力就是变量替换，不能使用变量则失去意义。\n\n考点总结:\nPromptTemplate 的 input_variables 是列表而非固定数量，支持从 0 到 N 的完全灵活配置，体现 LangChain 对动态提示的抽象设计。",
     "suggestion": "### 应试技巧与学习建议\n- 记住 input_variables=[] 也是合法写法，遇到“必须≥2”类选项直接排除。\n- 把 PromptTemplate 想成 Python str.format 的封装，变量数量与模板占位符一致即可。\n- 动手写三段代码：无变量、单变量、多变量，运行验证模板渲染结果。"
+  },
+  {
+    "question": "### Question 126\nWhich is a key advantage of using T-Few over Vanilla fine-tuning in the OCI Generative AI service?",
+    "selections": {
+      "A": "Reduced model complexity",
+      "B": "Enhanced generalization to unseen data",
+      "C": "Increased model interpretability",
+      "D": "Faster training time and lower cost"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：T-Few 不改变模型参数量，仅冻结大部分权重，模型复杂度未降低。\n- B 错误：泛化能力取决于数据与正则，T-Few 主要优势是效率而非本质提升泛化。\n- C 错误：可解释性与微调方法无关，T-Few 并未提供额外解释机制。\n- D 正确：T-Few 只更新少量适配器权重，训练快、显存省、费用低，是其核心卖点。\n\n考点总结:\nT-Few 属于参数高效微调（PEFT），通过“冻结+小模块”策略显著降低计算成本，同时保持性能，是 OCI 推荐的经济型微调方案。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“T-Few”与“快/省”绑定：训练快、显存省、花钱少。\n- 区分 PEFT 与 Vanilla：后者全量更新，慢且贵；前者少量更新，快且省。\n- 记住 OCI 官方文档关键词：faster、lower cost、minimum 2 units，即可秒选。"
+  },
+  {
+    "question": "### Question 127\nWhat does a higher number assigned to a token signify in the \"Show Likelihoods\" feature of the language model token generation?",
+    "selections": {
+      "A": "The token is less likely to follow the current token.",
+      "B": "The token is more likely to follow the current token.",
+      "C": "The token is unrelated to the current token and will not be used.",
+      "D": "The token will be the only one considered in the next generation step."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：数值越高概率越大，而非越小。\n- B 正确：likelihood 即概率值，越高表示模型认为该 token 越应该出现。\n- C 错误：低概率 token 仍可能被采样，尤其 temperature > 0 时。\n- D 错误：仅当 temperature=0 且 greedy 解码时才唯一考虑最高概率 token。\n\n考点总结:\nShow Likelihoods 展示的是模型对下一 token 的归一化概率分布，数值大=高概率，用于调试生成策略与采样行为。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 likelihood 直接等同于 probability，数值大=更可能。\n- 结合 temperature 理解：高 temp 降低高概率优势，低 temp 放大高概率。\n- 在 OCI Playground 打开 Show Likelihoods，观察不同 token 的 probability 分布，直观感受数值含义。"
+  },
+  {
+    "question": "### Question 128\nWhat do embeddings in Large Language Models (LLMs) represent?",
+    "selections": {
+      "A": "The color and size of the font in textual data",
+      "B": "The frequency of each word or pixel in the data",
+      "C": "The semantic content of data in high-dimensional vectors",
+      "D": "The grammatical structure of sentences in the data"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：嵌入与视觉样式无关，仅表征语义。\n- B 错误：频率统计是 TF-IDF 等旧方法，嵌入超越词频。\n- C 正确：嵌入把文本/图像等映射到高维空间，距离近=语义近。\n- D 错误：语法信息被隐式编码，但嵌入核心目的是语义而非句法。\n\n考点总结:\n嵌入是 LLM 的“语义坐标”，使计算机可通过向量运算完成搜索、聚类、分类等任务，是 RAG、推荐、分类等下游能力的基石。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“embedding = semantic coordinates”口诀，秒排与视觉、频率、语法相关选项。\n- 用 OCI Embedding API 实测同义词向量距离，直观感受语义相近。\n- 区分 word2vec（静态）与 BERT/Llama 上下文嵌入（动态），面试可加分。"
+  },
+  {
+    "question": "### Question 129\nWhich is a key characteristic of the annotation process used in T-Few fine-tuning?",
+    "selections": {
+      "A": "T-Few fine-tuning uses annotated data to adjust a fraction of model weights.",
+      "B": "T-Few fine-tuning requires manual annotation of input-output pairs.",
+      "C": "T-Few fine-tuning involves updating the weights of all layers in the model.",
+      "D": "T-Few fine-tuning relies on unsupervised learning techniques for annotation."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：T-Few 用有标注数据只更新少量适配器权重，是 PEFT 核心特征。\n- B 错误：手动标注是微调通用要求，并非 T-Few 独有特点。\n- C 错误：更新全部权重是 Vanilla fine-tuning，T-Few 仅更新小部分。\n- D 错误：T-Few 属于监督学习，需要标签，而非无监督。\n\n考点总结:\nT-Few 的标注过程仍依赖人工标签，但其“只调部分权重”才是区别于全量微调的关键，需理解“监督+参数高效”双重属性。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“标注+只调部分权重”绑定作为 T-Few 关键词，排除“全层更新”或“无监督”选项。\n- 与 LoRA、AdaLoRA 类比记忆：都是监督+小模块更新。\n- 面试追问时，可补充“适配器插入位置+冻结梯度”细节，体现深度理解。"
+  },
+  {
+    "question": "### Question 130\nWhich is NOT a typical use case for LangSmith Evaluators?",
+    "selections": {
+      "A": "Measuring coherence of generated text",
+      "B": "Aligning code readability",
+      "C": "Evaluating factual accuracy of outputs",
+      "D": "Detecting bias or toxicity"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 典型：LangSmith 内置 coherence evaluator 或用 LLM-as-judge 衡量连贯性。\n- B 非典型：代码可读性属于静态代码分析领域，LangSmith 关注 LLM 输出质量而非源码风格。\n- C 典型：faithfulness、groundedness evaluator 专门核查事实准确性。\n- D 典型：toxicity/bias evaluator 是 LLM 安全评估标准功能。\n\n考点总结:\nLangSmith Evaluators 聚焦 LLM 输出质量（正确、安全、连贯、相关），不涉足传统软件工程指标如代码可读性。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“代码可读性”视为软件工程范畴，遇到即排除。\n- 记住“CFBT”四典型用例：Correctness、Faithfulness、Bias、Toxicity。\n- 在文档中搜索 evaluator 列表，截图保存，考前快速过目。"
+  },
+  {
+    "question": "### Question 131\nWhat is the purpose of Retrieval Augmented Generation (RAG) in text generation?",
+    "selections": {
+      "A": "To generate text based only on the model's internal knowledge without external data",
+      "B": "To generate text using extra information obtained from an external data source",
+      "C": "To store text in an external database without using it for generation",
+      "D": "To retrieve text from an external source and present it without any modifications"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：RAG 恰恰打破仅依赖内部知识的限制，主动引入外部数据。\n- B 正确：RAG 通过检索外部知识库，把实时、领域相关信息注入提示，再生成答案。\n- C 错误：RAG 不仅存储，更关键的是“用”检索结果来增强生成。\n- D 错误：RAG 会对检索文本进行总结、融合与改写，而非原样呈现。\n\n考点总结:\nRAG=Retrieval+Augmentation+Generation，核心目的是解决 LLM 知识静态、幻觉两大痛点，实现“可查资料再答题”。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 RAG 三步口诀化：Retrieve→Augment→Generate，秒选“用外部信息生成”选项。\n- 与 Fine-tuning 对比记忆：RAG 动态更新、无需重训；Fine-tuning 静态嵌入参数。\n- 动手搭一个最小 RAG（OCI Document 存储 + Embedding + Cohere Generate），体验完整链路。"
+  },
+  {
+    "question": "### Question 132\nHow does the integration of a vector database into Retrieval-Augmented Generation (RAG)-based Large Language Models (LLMs) fundamentally alter their responses?",
+    "selections": {
+      "A": "It transforms their architecture from a neural network to a traditional database system.",
+      "B": "It shifts the basis of their responses from pretrained internal knowledge to real-time data retrieval.",
+      "C": "It enables them to bypass the need for pretraining on large text corpora.",
+      "D": "It limits their ability to understand and generate natural language."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：LLM 仍是神经网络，向量数据库只是外接知识库，架构未变。\n- B 正确：响应基础从“静态预训练权重”转向“实时检索到的外部数据”。\n- C 错误：预训练仍是必须的，RAG 仅补充知识，不替代语言建模阶段。\n- D 错误：RAG 增强事实性与时效，反而提升语言理解和生成质量。\n\n考点总结:\n向量数据库让 LLM 从“记忆答题”变为“开卷考试”，根本改变知识来源，但保留生成能力。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“shift basis from internal to real-time”直接对应 B 选项，考场秒选。\n- 用“开卷考试”类比 RAG，面试时一句话讲清价值：减少幻觉、增加时效。\n- 注意区分“架构不变”与“知识来源变”，避免误选 A。"
+  },
+  {
+    "question": "### Question 133\nHow does the structure of vector databases differ from traditional relational databases?",
+    "selections": {
+      "A": "A vector database stores data in a linear or tabular format.",
+      "B": "It is not optimized for high-dimensional spaces.",
+      "C": "It is based on distances and similarities in a vector space.",
+      "D": "It uses simple row-based data storage"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：线性/表格是关系型特征，向量库存高维向量而非行列表格。\n- B 错误：向量库专门优化高维空间，关系型在此表现差。\n- C 正确：核心查询语义是“找最邻近向量”，即距离/相似度计算。\n- D 错误：简单行存储是关系型特点；向量库需额外维护近似索引（HNSW/IVF）。\n\n考点总结:\n向量数据库=高维向量+相似度搜索+近似索引，查询语言是“距离”，与 SQL 的精确匹配本质不同。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“Distance & Similarity”关键词，秒选 C。\n- 对比记忆：关系型=Exact+SQL；向量库=Approximate+Distance。\n- 在 OCI 控制台分别创建 ATP 与 OpenSearch 向量集合，体验查询语句差异。"
+  },
+  {
+    "question": "### Question 134\nWhich is NOT a category of pretrained foundational models available in the OCI Generative AI service?",
+    "selections": {
+      "A": "Summarization models",
+      "B": "Generation models",
+      "C": "Translation models",
+      "D": "Embedding models"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 曾提供但已退役，现用 Chat 模型替代，故当前不算独立类别。\n- B 存在：Chat 模型即 Generation 的一种，官方仍归为此类。\n- C 正确选项：OCI Generative AI 无独立翻译模型，翻译由 AI Language 服务负责。\n- D 存在：Cohere Embed 系列明确列出。\n\n考点总结:\nOCI 把“翻译”划到 AI Language 服务，Generative AI 板块不含独立翻译模型；注意服务边界。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“Translation→AI Language”绑定记忆，考场立即排除。\n- 记住现可用 Chat 模型完成翻译任务，但服务目录里无 Translation 类别。\n- 浏览 OCI Console 的“AI Services”菜单截图，区分 Generative AI vs AI Language 图标。"
+  },
+  {
+    "question": "### Question 135\nGiven the following prompts used with a Large Language Model, classify each as employing the Chain-of-Thought, Least-to-Most, or Step-Back prompting technique:",
+    "selections": {
+      "A": "1: Step-Back, 2: Chain-of-Thought, 3: Least-to-Most",
+      "B": "1: Least-to-Most, 2: Chain-of-Thought, 3: Step-Back",
+      "C": "1: Chain-of-Thought, 2: Step-Back, 3: Least-to-Most",
+      "D": "1: Chain-of-Thought, 2: Least-to-Most, 3: Step-Back"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n提示-技术匹配:\n- 提示1：分步计算轮子→钱，有序推理，属 Chain-of-Thought。\n- 提示2：先找公式+简化问题再攻原题，属 Step-Back。\n- 提示3：先定义概念→再讲机制，由浅入深，属 Least-to-Most。\n\n考点总结:\nCoT=顺序推理；Step-Back=退到抽象/简化；Least-to-Most=阶梯递进。抓住“推理顺序”“简化”“递进”关键词即可快速分类。",
+    "suggestion": "### 应试技巧与学习建议\n- 用“推理-退阶-递进”三字经对应三种提示，考场 10 秒完成归类。\n- 在 LangChain 文档搜索三种提示的官方示例，复制到笔记，随时复习。\n- 自己写三句不同提示，让同事猜类别，强化肌肉记忆。"
+  },
+  {
+    "question": "### Question 136\nWhich statement is true about string prompt templates and their capability regarding variables?",
+    "selections": {
+      "A": "They can only support a single variable at a time.",
+      "B": "They are unable to use any variables.",
+      "C": "They support any number of variables, including the possibility of having none.",
+      "D": "They require a minimum of two variables to function properly."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：模板可同时出现多个 `{}` 占位符，例如 `{name}` 与 `{city}`。\n- B 错误：字符串模板核心能力就是变量替换，无法使用变量则失去意义。\n- C 正确：input_variables 列表可为空、单元素或多元素，零变量时模板退化为静态字符串。\n- D 错误：最低变量数为零，一个变量同样可正常工作。\n\n考点总结:\nLangChain 字符串模板本质是对 Python str.format 的封装，占位符数量任意，支持 0～N 变量，体现最大灵活性。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“0-N 原则”，遇到“仅 1 个”“至少 2 个”直接排除。\n- 手写三行代码验证：\n  ```python\n  PromptTemplate(template=\"Hi\")           # 0\n  PromptTemplate(template=\"Hi {name}\")    # 1\n  PromptTemplate(template=\"Hi {n} {c}\")   # N\n  ```\n- 与 f-string 对比学习，加深对占位符语法的理解。"
+  },
+  {
+    "question": "### Question 137\nHow are documents usually evaluated in the simplest form of keyword-based search?",
+    "selections": {
+      "A": "By the complexity of language used in the documents",
+      "B": "Based on the number of images and videos contained in the documents",
+      "C": "Based on the presence and frequency of the user-provided keywords",
+      "D": "According to the length of the documents"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：语言复杂度与关键词匹配无关，属于高级 NLP 评估指标。\n- B 错误：多媒体数量影响多媒体检索，而非纯关键词搜索。\n- C 正确：最简单关键词搜索只看“有无关键词”及其词频（TF），出现越多越相关。\n- D 错误：长度不是基本排序依据，短文档高频词往往得分更高。\n\n考点总结:\n关键词搜索核心=倒排索引+TF 排序；语义搜索才用向量距离。先有无，再比多，是最简模型。",
+    "suggestion": "### 应试技巧与学习建议\n- 把“presence + frequency”关键词化，秒选 C。\n- 用 Excel 演示 TF 计算：同一关键词在两篇文档的出现次数，手动排序，理解评分逻辑。\n- 与 TF-IDF 递进学习：IDF 解决常见词权重过高问题，考场可加分阐述。"
+  },
+  {
+    "question": "### Question 138\nWhat do prompt templates use for templating in language model applications?",
+    "selections": {
+      "A": "Python's list comprehension syntax",
+      "B": "Python's str.format syntax",
+      "C": "Python's lambda functions",
+      "D": "Python's class and object structures"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：列表推导用于生成列表，与字符串格式化无关。\n- B 正确：LangChain 模板采用 `{}` 占位符，底层调用 str.format 或等价逻辑。\n- C 错误：lambda 是匿名函数，与模板语法无关。\n- D 错误：类与对象用于构建 PromptTemplate 类本身，而非模板语法。\n\n考点总结:\nPromptTemplate 的占位符语法即 Python 标准字符串格式化，理解 `{}` 即可快速编写与调试模板。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到 `{}` 就联想 str.format / f-string，排除非字符串语法选项。\n- 在 IDE 中对比：\n  ```python\n  \"Hello {name}\".format(name=\"Alice\")  # 等价于 PromptTemplate\n  ```\n- 记住旧版 `%` 格式化不被 LangChain 采用，避免混淆。"
+  },
+  {
+    "question": "### Question 139\nWhich LangChain component is responsible for generating the linguistic output in a chatbot system?",
+    "selections": {
+      "A": "Document Loaders",
+      "B": "Vector Stores",
+      "C": "LangChain Application",
+      "D": "LLMs"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：Document Loaders 只负责读取外部文件，不参与生成。\n- B 错误：Vector Stores 提供语义检索，不生成自然语言。\n- C 错误：LangChain Application 是宏观框架，生成任务由内部 LLM 组件完成。\n- D 正确：LLM 组件封装各厂商模型，执行 token-by-token 生成，是语言输出源头。\n\n考点总结:\n在 LangChain 架构里，LLMs 模块是“生成大脑”，其余组件只做数据准备与上下文管理。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住口诀“生成=LLM”，其余带 Loader/Store 字样的全排除。\n- 画一条 RAG 链路：Loader → Retriever → LLM → Output，明确各自职责。\n- 面试追问时，可补充“ChatModel”是 LLM 的子类，用于多轮对话。"
+  },
+  {
+    "question": "### Question 140\nHow are chains traditionally created in LangChain?",
+    "selections": {
+      "A": "By using machine learning algorithms",
+      "B": "Declaratively, with no coding required",
+      "C": "Using Python classes, such as LLMChain and others",
+      "D": "Exclusively through third-party software integrations"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：创建链是软件工程任务，非直接调用 ML 算法。\n- B 错误：声明式零代码是 LCEL 新理念，传统需手写 Python 类。\n- C 正确：v0.1.0 之前通过 LLMChain、SequentialChain 等类命令式拼装。\n- D 错误：第三方集成只是扩展手段，核心创建方式是原生 Python 类。\n\n考点总结:\n传统链=Python 类实例化；现代链=LCEL 管道符。区分“传统”与“现代”即可秒答。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“traditionally”立即选 Python 类，排除管道符或零代码描述。\n- 手写对比：\n  传统\n  chain = LLMChain(llm=llm, prompt=prompt)\n  # 现代\n  chain = prompt | llm\n- 记住 LLMChain、SequentialChain、RouterChain 三大传统类名称，面试可列举。"
+  },
+  {
+    "question": "### Question 141\nWhat does \"k-shot prompting\" refer to when using Large Language Models for task-specific applications?",
+    "selections": {
+      "A": "Providing the exact k words in the prompt to guide the model's response",
+      "B": "Explicitly providing k examples of the intended task in the prompt to guide the model’s output",
+      "C": "The process of training the model on k different tasks simultaneously to improve its versatility",
+      "D": "Limiting the model to only k possible outcomes or answers for a given task"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：k 指示例数量，而非单词个数。\n- B 正确：k-shot 即在提示中放入 k 个输入-输出示例，让模型上下文学习。\n- C 错误：同时训练 k 任务是多任务学习，与提示技术无关。\n- D 错误：限制输出空间是 top-k 采样策略，与 k-shot 提示无关。\n\n考点总结:\nk-shot 属上下文学习（In-Context Learning），k=0/1/ Few 分别对应零、单、少样本提示；示例越多，模型越懂任务格式。",
+    "suggestion": "### 应试技巧与学习建议\n- 把 k-shot 记成“k 个例子”，看到“examples”直接选。\n- 用表格对比：\n  | k=0 | zero-shot | 无示例 |\n  | k=1 | one-shot  | 1 示例 |\n  | k>1 | few-shot  | k 示例 |\n- 在 OCI Playground 手动增删示例，观察输出格式变化，强化认知。"
+  },
+  {
+    "question": "### Question 142\nYou create a fine-tuning dedicated AI cluster to customize a foundational model with your custom training data. How many unit hours are required for fine-tuning if the cluster is active for 10 hours?",
+    "selections": {
+      "A": "25 unit hours",
+      "B": "40 unit hours",
+      "C": "20 unit hours",
+      "D": "30 unit hours"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A/B/D 均不符合最低承诺计算；易混淆 1 单元或错误倍数。\n- C 正确：OCI 微调最少 2 单元 × 10 小时 = 20 单元小时。\n\n考点总结:\n短时任务同样受“2 单元最低”约束，公式=max(2, 实际单元) × 小时；牢记底线即可秒算。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“fine-tuning”先写“×2”再乘小时，形成条件反射。\n- 与 Q121 对比：10 天 vs 10 小时，天数先转小时再乘单元，防止单位陷阱。\n- 把“2-unit minimum”写在错题本首页，考前 30 秒过一遍。"
+  },
+  {
+    "question": "### Question 143\nWhat does the Ranker do in a text generation system?",
+    "selections": {
+      "A": "It generates the final text based on the user's query.",
+      "B": "It sources information from databases to use in text generation.",
+      "C": "It evaluates and prioritizes the information retrieved by the Retriever.",
+      "D": "It interacts with the user to understand the query better."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：最终文本由 Generator（LLM）生成。\n- B 错误：拉取数据是 Retriever 的职责。\n- C 正确：Ranker 对 Retriever 返回的初筛文档重新打分排序，取 Top-N 供生成。\n- D 错误：用户交互由前端或 Agent 完成。\n\n考点总结:\nRAG 链路：Retriever→Ranker→Generator；Ranker 负责“二次精选”，提升上下文质量。",
+    "suggestion": "### 应试技巧与学习建议\n- 用“二次精选”关键词记忆，秒选 C。\n- 画三角图：Retriever（海选）→Ranker（精选）→Generator（成文），位置一目了然。\n- 了解 Cross-Encoder、ColBERT 等常见 Ranker 模型，面试可深入。"
+  },
+  {
+    "question": "### Question 144\nGiven the following code block:\nhistory = StreamlitChatMessageHistory(key=\"chat_messages\")\nmemory = ConversationBufferMemory(chat_memory=history)\nWhich statement is NOT true about StreamlitChatMessageHistory?",
+    "selections": {
+      "A": "StreamlitChatMessageHistory will store messages in Streamlit session state at the specified key.",
+      "B": "A given StreamlitChatMessageHistory will NOT be persisted.",
+      "C": "A given StreamlitChatMessageHistory will not be shared across user sessions.",
+      "D": "StreamlitChatMessageHistory can be used in any type of LLM application"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确：该类底层就是 st.session_state[key] 存取消息。\n- B 正确：浏览器关闭会话即清空，无持久化。\n- C 正确：session_state 按浏览器标签隔离，不跨用户。\n- D 错误：依赖 Streamlit 框架，无法在 Flask、FastAPI 等环境使用。\n\n考点总结:\nStreamlitChatMessageHistory 是“会话级、非持久、框架绑定”内存实现，换框架需改用 SQLChatMessageHistory 或 FileChatMessageHistory。",
+    "suggestion": "### 应试技巧与学习建议\n- 看到“any type”立即警觉，带“Streamlit”字样即框架绑定，排除 D。\n- 把“会话-非持久-不共享”三词连记，快速判断 A/B/C 正确性。\n- 在 FastAPI 与 Streamlit 各写一次内存实现，体验差异，加深理解。"
+  },
+  {
+    "question": "### Question 145\nHow do Dot Product and Cosine Distance differ in their application to comparing text embeddings in natural language processing?",
+    "selections": {
+      "A": "Dot Product assesses the overall similarity in content, whereas Cosine Distance measures topical relevance.",
+      "B": "Dot Product is used for semantic analysis, whereas Cosine Distance is used for syntactic comparisons.",
+      "C": "Dot Product measures the magnitude and direction of vectors, whereas Cosine Distance focuses on the orientation regardless of magnitude.",
+      "D": "Dot Product calculates the literal overlap of words, whereas Cosine Distance evaluates the stylistic similarity."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：两者均可测语义，区别在是否受模长影响，而非“内容 vs 主题”。\n- B 错误：Cosine 也用于语义，非句法专用。\n- C 正确：Dot Product=‖A‖‖B‖cosθ，含模长；Cosine Distance=1−cosθ，仅看方向。\n- D 错误：二者均基于向量，不做字面词重叠或文体分析。\n\n考点总结:\n归一化后 Dot Product 与 Cosine Similarity 数值相同；未归一化时，Dot Product 受长度影响更大，选型需考虑模长是否含信息。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住公式“Dot 含模长，Cosine 消模长”，秒选 C。\n- 用 numpy 实测：\n  dot = a @ b\n  cos = dot / (norm(a) * norm(b))\n  观察归一化前后差异。\n- 面试追问场景选择：推荐系统用 Cosine，TF 权重用 Dot，展示深度理解。"
+  },
+  {
+    "question": "### Question 146\nWhat is the purpose of Retrievers in LangChain?",
+    "selections": {
+      "A": "To train Large Language Models",
+      "B": "To retrieve relevant information from knowledge bases",
+      "C": "To break down complex tasks into smaller steps",
+      "D": "To combine multiple components into a single pipeline"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：训练 LLM 是预训练阶段，LangChain Retriever 只负责查询已有知识。\n- B 正确：Retriever 的核心职责是从向量库、文本文件等知识源中取出相关文档。\n- C 错误：任务分解由 Agent 或 Chain-of-Thought 提示完成。\n- D 错误：组装流水线的是 Chain 或 LCEL，而非 Retriever。\n\n考点总结:\nRetriever=RAG 的“查询引擎”，输出相关文档，为下游生成提供上下文。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“retrieve relevant info”直接对应 B，考场秒选。\n- 画 RAG 简图：User→Retriever→Ranker→Generator，牢记 Retriever 位置与输入输出。\n- 动手换不同 Retriever（VectorStoreRetriever / MultiQueryRetriever）测试召回数量，体验职责边界。"
+  },
+  {
+    "question": "### Question 147\nWhat is the function of the Generator in a text generation system?",
+    "selections": {
+      "A": "To collect user queries and convert them into database search terms",
+      "B": "To rank the information based on its relevance to the user's query",
+      "C": "To generate human-like text using the information retrieved and ranked, along with the user's original query",
+      "D": "To store the generated responses for future use"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：查询转换由 Retriever 或 Query Transformer 完成。\n- B 错误：排序是 Ranker 的职责。\n- C 正确：Generator（即 LLM）把用户问句+精选文档合成自然语言答案。\n- D 错误：存储由 Memory 或数据库负责。\n\n考点总结:\nGenerator 是 RAG 链路最后一步，负责“读文档→写答案”，其输出质量受提示与上下文窗口双重影响。",
+    "suggestion": "### 应试技巧与学习建议\n- 记住“生成=Generator”一对一映射，秒选 C。\n- 在 OCI 控制台观察 Generate 端点的输入参数：prompt（含上下文）（含上下文）→ generated_text，直观理解功能。\n- 面试追问时，可谈温度、top-p 对 Generator 的影响，展示深度。"
+  },
+  {
+    "question": "### Question 148\nWhat does the RAG Sequence model do in the context of generating a response?",
+    "selections": {
+      "A": "It retrieves a single relevant document for the entire input query and generates a response based on that alone.",
+      "B": "For each input query, it retrieves a set of relevant documents and considers them together to generate a cohesive response.",
+      "C": "It retrieves relevant documents only for the initial part of the query and ignores the rest.",
+      "D": "It modifies the input query before retrieving relevant documents to ensure a diverse response."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：单文档易信息不足，RAG 标准做法是取一组文档。\n- B 正确：RAG Sequence 先检索多个文档，再一次性送入 LLM 生成统一回答。\n- C 错误：检索阶段使用完整查询向量，不会截断。\n- D 错误：查询改写是 MultiQueryRetriever 等扩展功能，非 RAG Sequence 核心定义。\n\n考点总结:\nRAG Sequence=“一次检索+一次生成”，区别于 RAG Token 的逐 token 检索方案。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“set of documents… together”对应 B，考场秒选。\n- 用箭头图表示：Query → [D1,D2,…,Dk] → LLM → Answer，帮助记忆流程。\n- 了解 RAG Token 与 Sequence 差异，面试可加分：前者每步检索，后者一次性。"
+  },
+  {
+    "question": "### Question 149\nWhat is LangChain?",
+    "selections": {
+      "A": "A JavaScript library for natural language processing",
+      "B": "A Python library for building applications with Large Language Models",
+      "C": "A Java library for text summarization",
+      "D": "A Ruby library for text generation"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 片面：虽有 JS/TS 版本，但主生态和最全功能在 Python。\n- B 正确：官方定义即“Python 框架，用于构建 LLM 应用”。\n- C/D 错误：与 Java、Ruby 无关，且不限于单任务（如摘要）。\n\n考点总结:\nLangChain=Python 首位的 LLM 编排框架，核心卖点是链、代理、内存、检索等模块化组合。",
+    "suggestion": "### 应试技巧与学习建议\n- 看见“Python + LLM applications”直接选 B，其余语言陷阱即刻排除。\n- 把官网标语截图当桌面，反复强化记忆。\n- 动手 pip install langchain 并跑通官方 Quickstart，建立框架体感。"
+  },
+  {
+    "question": "### Question 150\nWhat is the primary purpose of LangSmith Tracing?",
+    "selections": {
+      "A": "To generate test cases for language models",
+      "B": "To analyze the reasoning process of language models",
+      "C": "To debug issues in language model outputs",
+      "D": "To monitor the performance of language models"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：生成测试用例是 Evaluator 或人工工作，Tracing 只记录已发生运行。\n- B 错误：分析推理是副产品，主要目标是定位错误根源。\n- C 正确：Trace 可视化每步输入输出，帮助开发者快速找到失败节点。\n- D 错误：监控是聚合 Trace 数据后的上层功能，非 Tracing 本身首要目的。\n\n考点总结:\nLangSmith Tracing=LLM 应用的“调试器”，核心用户故事：输出错误→查看 Trace→定位到具体组件（Retriever/LLM/Prompt）。",
+    "suggestion": "### 应试技巧与学习建议\n- 关键词“debug issues”直接对应 C，考场秒选。\n- 实际踩坑一次：让 Retriever 返回空结果，通过 Trace 发现 query 被错误改写，体验调试价值。\n- 了解 Trace 树状结构：Run → Child Runs，面试可谈如何剪枝或采样减少存储。"
+  },
+  {
+    "question": "### Question 151\nWhich is NOT a built-in memory type in LangChain?",
+    "selections": {
+      "A": "ConversationImageMemory",
+      "B": "ConversationBufferMemory",
+      "C": "ConversationSummaryMemory",
+      "D": "ConversationTokenBufferMemory"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 正确选项：LangChain 官方无 ConversationImageMemory，多模态输入通常由 Document Loader 或 Multimodal Embeddings 处理。\n- B/C/D 均为官方内置内存类型，分别对应缓冲、摘要、token 限窗三种策略。\n\n考点总结:\nLangChain 内置内存均围绕“文本历史”设计，图片存储不在内存模块范畴；记住真实列表可秒排除虚构类型。",
+    "suggestion": "### 应试技巧与学习建议\n- 把官方内存文档截图存手机，考前 1 分钟滑一遍即可。\n- 开发时按场景速查：\n  需持久→SQLChatMessageHistory；\n  需省 token→ConversationSummaryMemory；\n  需简单→ConversationBufferMemory。"
+  },
+  {
+    "question": "### Question 152\nAn AI development company is working on an AI-assisted chatbot for an online retail company. The goal is to answer policy questions and retain chat history within a session. Which model type is best?",
+    "selections": {
+      "A": "A keyword search-based AI",
+      "B": "An LLM enhanced with Retrieval-Augmented Generation (RAG)",
+      "C": "An LLM dedicated to generating text without external data integration",
+      "D": "A pre-trained LLM model from Cohere or OpenAI"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析:\n- A 错误：关键词搜索无语义理解，且无法保留对话上下文。\n- B 正确：RAG 可实时检索最新政策文档，结合内存保留会话历史，精准答且防幻觉。\n- C 错误：无外部数据，政策更新或私有条款无法覆盖，易 hallucination。\n- D 不完整：仅预训练模型仍缺领域知识，需 RAG 或微调才能满足业务需求。\n\n考点总结:\n“政策问答+会话记忆”=RAG+内存，是电商客服标准解法；预训练模型需再加工。",
+    "suggestion": "### 应试技巧与学习建议\n- 见“policy + chat history”立刻联想 RAG，秒选 B。\n- 用最小可行 Demo 验证：PDF 政策→OCI Document Store→Embedding→Llama2 Chat+Memory，半小时跑通，加深体感。\n- 面试可补充：用 RAG 减少幻觉、用 ConversationTokenBufferMemory 控制成本，双杀考官。"
   }
 ]
