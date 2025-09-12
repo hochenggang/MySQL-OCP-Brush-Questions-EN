@@ -1855,8 +1855,8 @@
       "B": "Enable Development schema for use with ORDS RESTful Data Services.",
       "C": "In the Remote Application Deployment wizard, under Deployment Overrides, turn on the Overwrite Existing Application option."
     },
-    "answers": ["C"],
-    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不正确：添加升级脚本到开发环境中的应用定义不是必需的步骤。\n- B 不正确：为 ORDS RESTful Data Services 启用开发模式不是必需的步骤。\n- C 正确：在远程应用程序部署向导中，必须在部署覆盖中启用“覆盖现有应用程序”选项，以确保应用程序可以成功部署并保留应用程序 ID。\n\n考点总结：\n了解如何使用一键远程应用程序部署功能，特别是在测试环境中部署应用程序时的必需步骤。",
+    "answers": ["B", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不正确：添加升级脚本到开发环境中的应用定义不是必需的步骤。\n- B 正确：启用开发模式以使用 ORDS RESTful 数据服务是必需的步骤。\n- C 正确：在远程应用程序部署向导中，启用覆盖现有应用程序选项是必需的步骤，以确保应用程序 ID 得以保留并允许未来的覆盖。\n\n考点总结：\n了解一键远程应用程序部署的关键步骤，特别是在确保应用程序 ID 保留和启用覆盖选项方面。",
     "suggestion": "### 应试技巧与学习建议\n- 熟悉应用程序部署流程，特别是一键远程部署的步骤和选项。\n- 理解在不同环境中部署应用程序时需要考虑的因素，如保留应用程序 ID 和启用覆盖选项。\n- 在实际操作中练习部署应用程序，以提高对部署流程的理解和技能。"
   }
 ]
