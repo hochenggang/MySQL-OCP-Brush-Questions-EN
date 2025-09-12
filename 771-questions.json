@@ -1157,5 +1157,706 @@
     "answers": ["D"],
     "summary": "### 选项分析与考点总结\n- Activity Reporting 页面模板集中展示用户活跃度、页面访问量及性能数据。\n\n考点总结：Activity Reporting = 内置应用洞察仪表盘。",
     "suggestion": "### 应试技巧与学习建议\n- 看到“most active users / page performance”→立即选 Activity Reporting。"
+  },
+  {
+    "question": "### Question 100\nThe Create Application Wizard created an application, which enabled the Access Control feature.\n\nWhich two components are created when enabling the Access Control feature?",
+    "selections": {
+      "A": "The configuration page to set access level of authenticated users",
+      "B": "The administrative page region with links to Access Control feature",
+      "C": "The configuration page to set roles of workspace users",
+      "D": "The configuration page to enable administrators to select the default theme",
+      "E": "The configuration page to enable end users to select various theme styles"
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：创建用于设置已验证用户访问级别的配置页面。\n- B 正确：创建包含访问控制功能链接的行政页面区域。\n- C 错误：创建用于设置工作区用户角色的配置页面并不是启用访问控制功能时创建的组件。\n- D 错误：创建用于使管理员选择默认主题的配置页面与访问控制功能无关。\n- E 错误：创建用于使最终用户选择各种主题样式的配置页面与访问控制功能无关。\n\n考点总结：\n访问控制功能主要涉及对用户访问权限的管理，包括设置访问级别和提供管理链接。",
+    "suggestion": "### 应试技巧与学习建议\n- 理解访问控制功能的核心组件及其作用。\n- 熟悉创建应用程序时启用访问控制功能会生成哪些配置页面。\n- 注意区分访问控制功能与其他功能（如主题设置）的不同。"
+  },
+  {
+    "question": "### Question 101\nWhich are two of the region types that can be created on top of a REST Data Source?",
+    "selections": {
+      "A": "Static Content",
+      "B": "List",
+      "C": "Region Display Selector",
+      "D": "Chart",
+      "E": "Interactive Grid"
+    },
+    "answers": ["D", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Static Content 不是用于展示 REST 数据源的区域类型。\n- B 错误：List 区域类型不能直接创建在 REST 数据源之上。\n- C 错误：Region Display Selector 不是用于展示 REST 数据源的区域类型。\n- D 正确：Chart 区域类型可以创建在 REST 数据源之上，用于展示数据的图表形式。\n- E 正确：Interactive Grid 区域类型可以创建在 REST 数据源之上，用于展示和交互数据表格。\n\n考点总结：\n了解哪些区域类型支持直接使用 REST 数据源，以及它们各自的用途和特点。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉不同区域类型及其适用场景，特别是与 REST 数据源的兼容性。\n- 理解 REST 数据源的特点，以及如何通过不同的区域类型来展示和交互数据。\n- 实践中尝试使用不同的区域类型来处理 REST 数据源，加深理解。"
+  },
+  {
+    "question": "### Question 102\nThe Employees Interactive Grid Actions menu lacks an option to download the report as PDF.\n\nA developer wants to:\n- Utilize native printing capability\n- Provide the PDF download option for the Employees Interactive Grid\n\nWhich two steps are mandatory to do this?",
+    "selections": {
+      "A": "Edit the Interactive Grid attributes and turn on the Download option for Enable Users To.",
+      "B": "Edit the Interactive Grid Download attribute and select the Administration Rights option for Authorization.",
+      "C": "Configure print settings at the instance level and select the Native Printing option for Print Server.",
+      "D": "Configure print settings at the instance level and select the None option for Print Server.",
+      "E": "Edit application properties and select the Native Printing option for Print Server Type."
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：编辑 Interactive Grid 属性并开启下载选项，允许用户下载 PDF。\n- B 错误：选择 Administration Rights 授权选项与提供 PDF 下载功能无关。\n- C 错误：在实例级别配置打印设置并选择 Native Printing 选项，但此选项不适用于提供 PDF 下载。\n- D 错误：选择 None 选项不会提供任何打印或下载功能。\n- E 正确：编辑应用程序属性并选择 Native Printing 选项，以利用原生打印能力。\n\n考点总结：\n为了提供 PDF 下载选项并利用原生打印能力，需要正确配置 Interactive Grid 的下载属性和应用程序的打印服务器类型。",
+    "suggestion": "### 应试技巧与学习建议\n- 理解 Interactive Grid 的下载功能及其配置方法。\n- 熟悉应用程序属性中打印服务器类型的配置及其影响。\n- 实践中尝试配置不同的打印和下载选项，以加深对这些功能的理解。"
+  },
+  {
+    "question": "### Question 103\nWhich two statements are true about authentication schemes?",
+    "selections": {
+      "A": "Open Door Credentials authentication utilizes database schema accounts to authenticate users.",
+      "B": "When running custom authentication, APEX attempts to prevent inadvertent access to a stale session state.",
+      "C": "Social Sign-In authentication requires that a database user exist in the local database.",
+      "D": "Two-factor authentication can be implemented in an APEX app."
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Open Door Credentials 认证不使用数据库模式账户进行用户认证。\n- B 正确：运行自定义认证时，APEX 尝试防止意外访问过时的会话状态。\n- C 错误：社交登录认证不要求数据库用户必须存在于本地数据库中。\n- D 正确：可以在 APEX 应用程序中实现双因素认证。\n\n考点总结：\n了解不同认证方案的特点和要求，特别是它们在 APEX 应用程序中的实现方式和限制。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 APEX 中各种认证方案的工作原理和配置方法。\n- 理解双因素认证的重要性及其在提高应用程序安全性方面的作用。\n- 实践中尝试配置和测试不同的认证方案，以加深对它们行为的理解。"
+  },
+  {
+    "question": "### Question 104\nWhich two statements are true about Global pages in APEX applications?",
+    "selections": {
+      "A": "The Oracle APEX engine renders all components you add to a Global page on every page within your application.",
+      "B": "Global page numbers are always assigned to Page 0 and cannot be changed.",
+      "C": "Global pages cannot be run directly from Page Designer.",
+      "D": "Developers can create multiple Global pages for each user interface."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：Oracle APEX 引擎会在应用程序的每个页面上渲染你添加到全局页面的所有组件。\n- B 错误：全局页面编号不总是分配给页面 0，它们可以被更改。\n- C 正确：全局页面不能直接从页面设计器运行。\n- D 错误：开发人员不能为每个用户界面创建多个全局页面。\n\n考点总结：\n了解全局页面在 APEX 应用程序中的行为和限制，以及它们如何影响应用程序的页面渲染。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉全局页面的特性和它们的使用场景。\n- 理解全局页面与普通页面的不同之处，以及如何正确地在 APEX 中使用它们。\n- 实践中尝试创建和配置全局页面，以加深对它们功能的理解。"
+  },
+  {
+    "question": "### Question 105\nIn an application, an authorization scheme named Administration Rights is applied which hides a component from unauthorized users.\n\nWhich step ensures that the component is visible but read-only to unauthorized users?",
+    "selections": {
+      "A": "Use Expression as the Read Only condition type. As the PL/SQL expression, use not APEX_AUTHORIZATION.IS_AUTHORIZED('Administration Rights')",
+      "B": "Use Expression as the Read Only condition type. As the PL/SQL expression, use APEX_AUTHORIZATION.IS_NOT_AUTHORIZED('Administration Rights')",
+      "C": "Use Expression as the Read Only condition type. As the PL/SQL expression, use APEX_AUTHORIZATION.IS_AUTHORIZED('Administration Rights')"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：使用表达式作为只读条件类型，并使用 not APEX_AUTHORIZATION.IS_AUTHORIZED('Administration Rights') 作为 PL/SQL 表达式，确保未授权用户可以查看但无法编辑组件。\n- B 错误：使用 IS_NOT_AUTHORIZED 会导致组件对所有用户都是只读的，无论他们是否有权限。\n- C 错误：使用 IS_AUTHORIZED 会导致只有授权用户可以查看组件，这与题目要求相反。\n\n考点总结：\n了解如何在 APEX 中使用授权方案来控制组件的可见性和可编辑性。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 APEX 中的授权方案和条件表达式的使用方法。\n- 理解如何通过 PL/SQL 表达式控制组件的访问权限。\n- 实践中尝试不同的授权方案配置，以加深对权限控制的理解。"
+  },
+  {
+    "question": "### Question 106\nYou must include a JavaScript file required by your plugin.\n\nWhich two options enable the plugin to be reused by other applications?",
+    "selections": {
+      "A": "Call the APEX_JAVASCRIPT.add_onload_code routine in the plugin Render Procedure/Function Name PL/SQL code.",
+      "B": "Call the APEX_JAVASCRIPT.add_library routine Before Header in an application-level PL/SQL process.",
+      "C": "Call the APEX_JAVASCRIPT.add_library routine in the plugin Render Procedure/Function Name PL/SQL code.",
+      "D": "Enter the file URL in the JavaScript File URLs section at application level.",
+      "E": "Enter the file URL in the plugin File URLs to Load - Javascript section."
+    },
+    "answers": ["C", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：在插件的渲染过程中调用 add_onload_code 例程并不能使插件在其他应用程序中重用。\n- B 错误：在应用程序级别的 PL/SQL 过程中调用 add_library 例程可能会影响整个应用程序，而不是仅在插件中使用。\n- C 正确：在插件的渲染过程中调用 add_library 例程可以确保 JavaScript 文件仅在插件中加载。\n- D 错误：在应用程序级别添加文件 URL 可能会导致文件被所有页面加载，而不是仅在需要的插件中。\n- E 正确：在插件的 File URLs to Load - Javascript 部分输入文件 URL 可以确保文件仅在插件中加载。\n\n考点总结：\n了解如何在 APEX 插件中正确加载和使用 JavaScript 文件，以便插件可以在其他应用程序中重用。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 APEX 插件中 JavaScript 文件的加载方法。\n- 理解如何在插件中使用 APEX_JAVASCRIPT.add_library 例程。\n- 实践中尝试在不同场景下加载 JavaScript 文件，以加深对文件加载机制的理解。"
+  },
+  {
+    "question": "### Question 107\nYou must free up resources, such as storage space, in your instance.\n\nWhich action you should apply to automatically accomplish this task?",
+    "selections": {
+      "A": "Drop inactive workspaces from Oracle APEX.",
+      "B": "Configure workspace purge settings in Oracle APEX Administration Services.",
+      "C": "Delete inactive or outdated applications.",
+      "D": "Identify inactive workspaces, remove the resources associated with each inactive workspace, and drop the inactive workspaces from Oracle APEX."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：删除不活动的 workspace 可能会导致数据丢失，不是自动完成此任务的最佳方法。\n- B 正确：配置 workspace 清理设置可以自动清理不活动或过期的应用程序，释放资源。\n- C 错误：删除不活动或过时的应用程序可以释放资源，但需要手动操作，不是自动方法。\n- D 错误：识别不活动 workspace 并手动删除相关资源和 workspace 需要手动操作，不是自动方法。\n\n考点总结：\n了解如何配置 APEX 管理服务以自动清理资源，包括不活动 workspace 和应用程序。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 Oracle APEX 管理服务中的 workspace 清理设置。\n- 理解如何配置这些设置以自动释放资源。\n- 实践中尝试配置和使用这些设置，以加深对资源管理的理解。"
+  },
+  {
+    "question": "### Question 108\nExamine this code:\n```javascript\nfunction ( pOptions) {\n  pOptions.firstDay = 1;\n}\n```\nYou add this code to the JavaScript Initialization Code attribute of a Calendar Region and reload the calendar.\n\nWhat does this change do?",
+    "selections": {
+      "A": "It guarantees that the first day on the calendar is the 1st of the current month.",
+      "B": "It guarantees that the first day of the current week is highlighted.",
+      "C": "It guarantees that the first day on the calendar week is Sunday.",
+      "D": "It guarantees that the first day on the calendar week is Monday."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：代码并未指定日历的第一个日期是当前月份的第一天。\n- B 错误：代码没有涉及当前周的第一天高亮显示。\n- C 错误：在许多日历系统中，一周的第一天是周日，但代码中 `pOptions.firstDay = 1;` 将第一天设置为周一。\n- D 正确：代码将日历组件的第一个日子设置为一周的第一天，即周一。\n\n考点总结：\n了解 JavaScript 初始化代码如何影响日历组件的行为，特别是如何设置周的第一天。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 JavaScript 在初始化日历组件时对各种选项的控制方法。\n- 理解日历组件的配置选项，如 `firstDay` 的作用。\n- 实践中尝试不同的初始化代码设置，观察它们如何影响日历显示。"
+  },
+  {
+    "question": "### Question 109\nWhich statement is true about implementing an authorization scheme?",
+    "selections": {
+      "A": "An authorization scheme is evaluated either once for each application session, or once for each page view.",
+      "B": "You cannot specify an authorization scheme for a button.",
+      "C": "An authorization scheme cannot be attached to an entire application."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：授权方案可以在每个应用会话中评估一次，或者在每次页面视图中评估一次。\n- B 错误：可以为按钮指定授权方案。\n- C 错误：授权方案可以附加到整个应用程序。\n\n考点总结：\n理解授权方案的评估时机和它们在不同组件（如按钮或整个应用程序）上的应用能力。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉授权方案的工作机制和它们在不同场景下的应用。\n- 理解如何为不同的用户界面元素配置授权方案。\n- 实践中尝试配置授权方案，以加深对其行为的理解。"
+  },
+  {
+    "question": "### Question 110\nWhich two statements are true about Page Computations?",
+    "selections": {
+      "A": "You can assign a value to multiple page items in a single computation.",
+      "B": "It is used to assign a value to an identified page item when a page is submitted or displayed.",
+      "C": "It is used to assign a value to an application item.",
+      "D": "You can create an After Processing computation to assign a value to a page item."
+    },
+    "answers": ["B", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：单个计算不能为多个页面项分配值。\n- B 正确：页面计算用于在页面提交或显示时为特定页面项分配值。\n- C 正确：页面计算可以用于为应用程序项分配值。\n\n考点总结：\n了解页面计算的用途和它们在页面处理过程中的作用。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉页面计算的配置和使用场景。\n- 理解处理后计算与页面计算的区别和用途。\n- 实践中尝试使用页面计算来动态更新页面项的值。"
+  },
+  {
+    "question": "### Question 111\nExamine this Editable Interactive Grid on the EMP table whose screenshot was taken on initial page load.\nThe Interactive Grid Region name is IG on EMP.\nCommission is the column heading for the COMM column.\nSalary is the column heading for the SAL column.\nEmp # is the column heading for the EMPNO column.\n\nNow examine this Page Level Validation:\nCommission <= 10% of Salary.\n\nA user clicked the Save button and received this error:\nCommission should not be more than 10% of Salary (Emp # 7521)\n\nIn which two cases can this validation error occur?",
+    "selections": {
+      "A": "When a user changes either the Salary or Commission value for Emp # 7521 and clicks the Save button and Commission is greater than 10% of Salary.",
+      "B": "When a user selects the Row Selector check box for Emp # 7521 and clicks the Save button without changing the row.",
+      "C": "When a user deletes the Emp # 7521 row and clicks the Save button.",
+      "D": "When a user changes Hire Date value for Emp # 7521 and clicks the Save button."
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：当用户更改 Emp # 7521 的工资或佣金值并点击保存按钮，且佣金超过工资的 10% 时，会发生验证错误。\n- B 错误：即使用户未更改行，仅选择行选择器复选框并点击保存按钮，也不会触发验证错误。\n- C 错误：删除行不会触发佣金验证错误。\n- D 正确：更改雇佣日期不会影响佣金验证。\n\n考点总结：\n了解页面级验证如何在用户尝试保存更改时执行，以及它们如何与页面上的不同操作交互。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉页面级验证的工作原理，以及它们如何影响用户在页面上的交互。\n- 理解验证规则如何应用于页面项，以及如何根据这些规则触发错误。\n- 实践中尝试配置不同的页面级验证，以加深对验证机制的理解。"
+  },
+  {
+    "question": "### Question 112\nThe instance administrator must add themes to the theme repository.\n\nWhich pair of themes can be added?",
+    "selections": {
+      "A": "Custom Themes and Private Themes",
+      "B": "Workspace Themes and Public Themes",
+      "C": "Subscribed Themes and Custom Themes",
+      "D": "Private Themes and Custom Themes"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：自定义主题和私有主题不能同时添加。\n- B 正确：可以添加工作区主题和公共主题。\n- C 错误：订阅主题和自定义主题不能同时添加。\n- D 错误：私有主题和自定义主题不能同时添加。\n\n考点总结：\n了解主题存储库中可以添加的主题类型，以及这些主题的分类和用途。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉不同类型主题的定义和它们在主题存储库中的角色。\n- 理解如何管理主题存储库以及可以添加哪些类型的主题。\n- 实践中尝试添加不同类型的主题，以加深对主题管理的理解。"
+  },
+  {
+    "question": "### Question 113\nWhich two statements are true about Application Items and Page Items?",
+    "selections": {
+      "A": "It is possible to update an Application Item value using the $s JavaScript function.",
+      "B": "Only a few of the possible item types are supported for the Global Page items.",
+      "C": "It is possible to create a page computation for an Application Item.",
+      "D": "It is impossible to access page item values in other pages by using the $v JavaScript function."
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：使用 $s JavaScript 函数可以更新页面项的值，而不是应用程序项。\n- B 错误：许多可能的项类型都支持全局页面项。\n- C 正确：可以为应用程序项创建页面计算。\n- D 正确：使用 $v JavaScript 函数无法访问其他页面的页面项值。\n\n考点总结：\n了解应用程序项和页面项的区别，以及它们在 JavaScript 函数中的使用方式。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉应用程序项和页面项的特性及其在 JavaScript 中的使用。\n- 理解页面计算的创建和它们如何影响应用程序项和页面项。\n- 实践中尝试使用不同的 JavaScript 函数来操作项，以加深理解。"
+  },
+  {
+    "question": "### Question 114\nWhich two statements are TRUE about Quick Picks?",
+    "selections": {
+      "A": "Clicking a Quick Pick sets the value of that item.",
+      "B": "All page items support Quick Pick selection.",
+      "C": "Quick Pick options are displayed inline below the item on a page.",
+      "D": "You can select multiple values from the available options with just a click."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：点击快速选择项会设置该项的值。\n- B 错误：并非所有页面项都支持快速选择。\n- C 正确：快速选择选项显示在页面上该项的下方。\n- D 错误：通常需要多次点击或使用其他方法来选择多个值。\n\n考点总结：\n了解快速选择项的功能和它们在页面上的行为。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉快速选择项的使用方法和限制。\n- 理解如何在页面上配置和使用快速选择项。\n- 实践中尝试配置快速选择项，以加深对其功能的理解。"
+  },
+  {
+    "question": "### Question 115\nWhich two components can be created on Global pages?",
+    "selections": {
+      "A": "Regions",
+      "B": "Buttons",
+      "C": "Validations"
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：可以在全局页面上创建区域（Regions）。\n- B 正确：可以在全局页面上创建按钮（Buttons）。\n- C 错误：验证（Validations）不是可以在全局页面上创建的组件。\n\n考点总结：\n了解全局页面上可以创建哪些类型的组件，以及这些组件如何影响整个应用程序。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉全局页面的特性和可以在其上创建的组件类型。\n- 理解不同组件在全局页面上的行为和作用。\n- 实践中尝试在全局页面上创建不同的组件，以加深对全局页面功能的理解。"
+  },
+  {
+    "question": "### Question 116\nWhich two are true about the Override User Interface Level page attribute?",
+    "selections": {
+      "A": "It removes the navigation menu for the current page or allows choosing alternative alternative navigation for the current page.",
+      "B": "It provides a non-default navigation bar.",
+      "C": "It provides a non-default navigation list.",
+      "D": "It provides an alternative template for the current page."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：可以移除当前页面的导航菜单或允许为当前页面选择替代导航。\n- B 错误：不提供非默认导航栏。\n- C 正确：提供非默认导航列表。\n- D 错误：不提供当前页面的替代模板。\n\n考点总结：\n了解覆盖用户界面级别页面属性的功能，以及如何使用它来自定义页面的导航。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉页面属性及其对用户界面的影响。\n- 理解如何使用页面属性来自定义导航和界面。\n- 实践中尝试不同的页面属性设置，以加深对用户界面自定义的理解。"
+  },
+  {
+    "question": "### Question 117\nA classic report displays employees filtered by the department value stored in the :P1_DEPARTMENT item.\nYou must create a dynamic action to refresh the report when the value of :P1_DEPARTMENT changes.\nWhich two options are required for the refresh to work?",
+    "selections": {
+      "A": "The Partial Page Refresh report attribute must be disabled.",
+      "B": "The Partial Page Refresh report attribute must be enabled.",
+      "C": "The Fire on Initialization attribute must be enabled.",
+      "D": "The Event Scope attribute must be set to Dynamic.",
+      "E": ":P1_DEPARTMENT must be listed in the Page Items to Submit report attribute."
+    },
+    "answers": ["B", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：不需要禁用部分页面刷新报告属性。\n- B 正确：必须启用部分页面刷新报告属性。\n- C 错误：不需要启用初始化时触发属性。\n- D 错误：不需要将事件范围属性设置为动态。\n- E 正确：:P1_DEPARTMENT 必须列在页面项提交报告属性中。\n\n考点总结：\n了解动态操作如何与部分页面刷新和页面项提交交互，以实现报告的动态刷新。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉动态操作的配置，特别是与页面刷新相关的设置。\n- 理解部分页面刷新和页面项提交如何影响报告的显示和更新。\n- 实践中尝试配置动态操作来控制报告的刷新行为。"
+  },
+  {
+    "question": "### Question 118\nWhich two statements are true about REST Data Synchronization to a local table?",
+    "selections": {
+      "A": "If you clear synchronization settings, APEX components using the synchronization table will be reset to use the REST Service directly.",
+      "B": "To use the Replace synchronization type, the Data Profile must have a primary key defined.",
+      "C": "Data synchronization does not work if the table is not in sync with the Data Profile.",
+      "D": "When you configure data synchronization, if no synchronization step is defined, the REST Data Source will not be invoked.",
+      "E": "You can add more columns to a synchronized table."
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：清除同步设置后，使用同步表的APEX组件将直接使用REST服务。\n- B 错误：使用替换同步类型时，数据配置文件不一定需要定义主键。\n- C 错误：即使表与数据配置文件不同步，数据同步也可以工作。\n- D 错误：即使没有定义同步步骤，REST数据源也可能被调用。\n- E 正确：可以向已同步的表中添加更多列。\n\n考点总结：\n了解REST数据同步的配置和行为，特别是同步设置、数据配置文件和同步步骤的影响。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉REST数据同步的配置选项及其对APEX组件的影响。\n- 理解数据配置文件和同步步骤在REST数据同步中的作用。\n- 实践中尝试不同的同步设置和数据配置文件配置，以加深理解。"
+  },
+  {
+    "question": "### Question 119\nYou are developing a new APEX application requiring specific templates for the Interactive Report, Chart, and Cards regions.\nHow can you accomplish this requirement?",
+    "selections": {
+      "A": "Run the application, execute Theme Roller, and select a style that meets the requirements.",
+      "B": "Create a new theme from the Repository.",
+      "C": "Run the application, execute Quick Edit, and define the properties to meet the requirements.",
+      "D": "Copy an existing theme, and then modify the region templates based on the requirements."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不适用：使用主题滚动器选择样式不能满足特定区域模板的需求。\n- B 不适用：创建新主题不直接解决特定区域模板的定制问题。\n- C 不适用：快速编辑定义属性不能直接用于修改区域模板。\n- D 正确：复制现有主题并根据需求修改区域模板是实现特定模板要求的有效方法。\n\n考点总结：\n了解在APEX中如何通过复制和修改现有主题来定制特定区域的模板。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX主题和区域模板的定制方法。\n- 学习如何使用APEX的界面定制工具，如主题滚动器和快速编辑。\n- 实践中尝试复制和修改主题以满足特定的设计需求。"
+  },
+  {
+    "question": "### Question 120\nIn the Page Designer, where would you navigate to create a Dynamic Action?",
+    "selections": {
+      "A": "Dynamic Actions Tab",
+      "B": "Processing Tab",
+      "C": "Rendering Tab",
+      "D": "Property Editor"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：动态操作需要在动态操作标签页中创建。\n- B 错误：处理标签页用于处理逻辑，不用于创建动态操作。\n- C 错误：渲染标签页用于定义组件的显示逻辑，不用于创建动态操作。\n- D 错误：属性编辑器用于编辑组件属性，不用于创建动态操作。\n\n考点总结：\n了解在APEX页面设计器中创建动态操作的正确位置。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX页面设计器的各个标签页及其功能。\n- 理解动态操作在页面交互中的作用及其创建方法。\n- 实践中尝试创建和管理动态操作以加深理解。"
+  },
+  {
+    "question": "### Question 121\nWhich two statements are true about Export Application options?",
+    "selections": {
+      "A": "When Export as ZIP is set to On, APEX exports the application as a ZIP archive containing separate files for each page, shared component, etc.",
+      "B": "It is possible to override the Application Owner while exporting the application.",
+      "C": "When Export Supporting Object Definitions is set to Yes, APEX automatically generates scripts for dependent DB objects that are contained in the export.",
+      "D": "It is possible to override the current Authentication Scheme while exporting an application.",
+      "E": "It is possible to exclude Alternative Reports from the application export using the Export Alternative Reports option."
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：设置为ZIP导出时，APEX会将应用程序导出为包含每个页面、共享组件等的单独文件的ZIP存档。\n- B 正确：在导出应用程序时可以覆盖应用程序所有者。\n- C 错误：导出支持对象定义为是时，APEX不会自动生成依赖数据库对象的脚本。\n- D 错误：在导出应用程序时不能覆盖当前的身份验证方案。\n- E 错误：使用导出替代报告选项不能从应用程序导出中排除替代报告。\n\n考点总结：\n了解APEX应用程序导出选项的功能和限制。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX应用程序导出的不同选项及其影响。\n- 理解应用程序导出过程中的各种设置和选项。\n- 实践中尝试不同的导出选项以加深理解。"
+  },
+  {
+    "question": "### Question 122\nYou must integrate with a REST data source written in Python that provides paginated data.\nWhich REST Data Source supports pagination?",
+    "selections": {
+      "A": "REST Data Source plug-ins",
+      "B": "Oracle REST Data Services",
+      "C": "Oracle Software as a Service (saas) Cloud Application REST Service",
+      "D": "Simple HTTP"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：REST数据源插件支持分页。\n- B 不适用：Oracle REST数据服务不直接支持分页。\n- C 不适用：Oracle SaaS Cloud Application REST服务不直接支持分页。\n- D 不适用：简单HTTP不支持分页。\n\n考点总结：\n了解不同REST数据源插件的功能，特别是分页支持。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉各种REST数据源插件的功能和限制。\n- 理解分页在REST API中的重要性及其实现方式。\n- 实践中尝试使用支持分页的REST数据源插件。"
+  },
+  {
+    "question": "### Question 123\nAn Interactive Report has the LINK COLUMN value under LINK set to Link To Custom Target.\nThe pencil icon must be selectively displayed or hidden based on the value of any of the other columns. Which action does this?",
+    "selections": {
+      "A": "Use the AUTHORIZATION SCHEME and set a custom scheme based on a column value.",
+      "B": "Modify the SQL QUERY under SOURCE to hide or display the link based on a column value.",
+      "C": "Set an expression in CONDITION TYPE based on a column value.",
+      "D": "Use the LINK ATTRIBUTES field to set a custom CSS based on a column value."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不适用：授权方案不用于控制图标的显示。\n- B 不适用：修改SQL查询不直接控制图标的显示。\n- C 错误：条件类型表达式不适用于控制图标的显示。\n- D 正确：使用LINK ATTRIBUTES字段可以基于列值设置自定义CSS，从而控制图标的显示。\n\n考点总结：\n了解如何使用LINK ATTRIBUTES字段来控制交互式报告中图标的显示。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉交互式报告中LINK ATTRIBUTES字段的使用。\n- 理解如何通过CSS控制元素的显示和隐藏。\n- 实践中尝试使用LINK ATTRIBUTES字段来实现条件显示。"
+  },
+  {
+    "question": "### Question 124\nWhich two statements are true about exporting an application?",
+    "selections": {
+      "A": "Original IDs cannot be preserved in an application export.",
+      "B": "Private Reports can be exported.",
+      "C": "The Automations are included by default.",
+      "D": "Report Subscriptions are not transferable to other workspaces.",
+      "E": "Developer Comments cannot be included in an application export."
+    },
+    "answers": ["B", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：原始ID可以在应用程序导出中保留。\n- B 正确：私有报告可以导出。\n- C 正确：自动化默认包含在导出中。\n- D 错误：报告订阅可以转移到其他工作区。\n- E 错误：开发人员注释可以包含在应用程序导出中。\n\n考点总结：\n了解APEX应用程序导出的不同选项及其影响。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX应用程序导出的不同选项及其行为。\n- 理解应用程序导出过程中的各种设置和选项。\n- 实践中尝试不同的导出选项以加深理解。"
+  },
+  {
+    "question": "### Question 125\nA region type is defined as a SQL Query.\nWhich syntax references the session state value of a page item in the SQL Query?",
+    "selections": {
+      "A": ":PAGE_ITEM",
+      "B": "&PAGE_ITEM",
+      "C": "#PAGE_ITEM#",
+      "D": ":V('PAGE_ITEM')"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：使用 :PAGE_ITEM 语法引用页面项的会话状态值。\n- B 不适用：&PAGE_ITEM 通常用于URL或链接参数中。\n- C 不适用：#PAGE_ITEM# 通常用于PL/SQL块中。\n- D 不适用：:V('PAGE_ITEM') 不是APEX中的标准语法。\n\n考点总结：\n了解在SQL查询中引用页面项的正确语法。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX中不同上下文中引用页面项的语法。\n- 理解SQL查询中如何正确使用绑定变量。\n- 实践中尝试在SQL查询中引用页面项。"
+  },
+  {
+    "question": "### Question 126\nYour team developed an app for the HR department and must deploy it to the Test environment.\nThere are no applications available in the Test environment.\nYou must use One-click Remote Application Deployment and ensure that the application deployed to the Test environment preserves the application ID, and is enabled for future overwrites.\nWhich two steps are mandatory to perform successful application deployment?",
+    "selections": {
+      "A": "Enable Test schema for use with ORDS RESTful Data Services.",
+      "B": " UpgradeAdd Scripts to the application definition in the Development environment.",
+      "C": "In the Remote Application Deployment wizard, under Deployment Overrides, specify a new application ID for the application on the target system.",
+      "D": "In the Remote Application Deployment wizard, under Deployment Overrides, turn on the Overwrite Existing Application option."
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：需要启用测试模式以使用ORDS RESTful数据服务。\n- B 不适用：添加升级脚本不是部署应用的必要步骤。\n- C 错误：不应指定新应用ID，应用ID应保留。\n- D 正确：需要启用覆盖现有应用的选项。\n\n考点总结：\n了解远程应用部署的必要步骤和设置。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉远程应用部署的流程和设置。\n- 理解如何保留应用ID并启用未来覆盖。\n- 实践中尝试远程应用部署以加深理解。"
+  },
+  {
+    "question": "### Question 127\nYou have created a form for an employee to enter project details such as name, address, city, and phone number. The field \"City\" is created as a Dynamic LOV on your page.\nWhich SQL statement should be used to fetch the values of cities for the LOV?",
+    "selections": {
+      "A": "select city as d from location;",
+      "B": "select city, city from location;",
+      "C": "select distinct city as d, city as r from location;",
+      "D": ":V('PAGE_ITEM')"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不正确：没有为返回值指定别名。\n- B 不正确：重复的列名。\n- C 正确：使用 distinct 确保城市名称唯一，并正确指定了显示（d）和返回（r）别名。\n- D 不适用：:V('PAGE_ITEM') 用于在PL/SQL中获取页面项的值，不用于SQL查询。\n\n考点总结：\n了解如何为动态列表框（LOV）编写正确的SQL查询，特别是如何使用别名。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX中动态列表框的SQL查询编写方法。\n- 理解SQL查询中别名的使用。\n- 实践中尝试编写用于动态列表框的SQL查询。"
+  },
+  {
+    "question": "### Question 128\nWhich statement is true about session state management in Oracle APEX?",
+    "selections": {
+      "A": "A user cannot run multiple instances of an application simultaneously in different browser programs.",
+      "B": "APEX Sessions are logically and physically distinct from Oracle database sessions that are used to service page requests.",
+      "C": "Multiple number of sessions cannot exist in the database at the same time."
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：用户可以在不同的浏览器程序中同时运行多个应用程序实例。\n- B 正确：APEX会话在逻辑和物理上都与用于服务页面请求的Oracle数据库会话不同。\n- C 错误：数据库中可以同时存在多个会话。\n\n考点总结：\n了解APEX会话与Oracle数据库会话的区别。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX会话管理的基本概念。\n- 理解APEX会话与数据库会话的关系。\n- 实践中观察和分析APEX会话的行为。"
+  },
+  {
+    "question": "### Question 129\nHow many custom component attributes can be specified for an APEX plug-in of type Region?",
+    "selections": {
+      "A": "25",
+      "B": "15",
+      "C": "100",
+      "D": "Unlimited",
+      "E": "50"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：APEX插件区域类型可以指定25个自定义组件属性。\n- B 不正确：数量少于正确答案。\n- C 不正确：数量过多。\n- D 不正确：有限制。\n- E 不正确：数量不正确。\n\n考点总结：\n了解APEX插件区域类型可以指定的自定义组件属性数量。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX插件开发的限制和能力。\n- 理解自定义组件属性在APEX插件中的作用。\n- 实践中尝试创建和管理APEX插件。"
+  },
+  {
+    "question": "### Question 130\nWhich clause must be used to generate a hierarchical query for the Tree component?",
+    "selections": {
+      "A": "GROUP BY clause",
+      "B": "START WITH clause",
+      "C": "START WITH ... GROUP BY clause",
+      "D": "START WITH ... CONNECT BY clause"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n选项\n分析：\n- A 不正确：GROUP BY子句不用于生成层次查询。\n- B 不完整：START WITH子句需要与CONNECT BY一起使用。\n- C 不正确：START WITH和GROUP BY不能一起使用。\n- D 正确：START WITH ... CONNECT BY子句用于生成层次查询。\n\n考点总结：\n了解生成层次查询的正确SQL子句。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉层次查询的SQL语法。\n- 理解START WITH和CONNECT BY子句的使用。\n- 实践中尝试编写层次查询。"
+  },
+  {
+    "question": "### Question 131\nExamine this code:\n```javascript\nfunction( pOptions) {\n  pOptions.minTime = \"07:00:00\";\n  pOptions.maxTime = \"18:00:00\";\n  return pOptions;\n}\n```\nWhat is the result of applying the code in the Initialization JavaScript Code attribute for your Calendar component where the Show Time attribute is enabled and the Day View is selected by an end user?",
+    "selections": {
+      "A": "Hiding slots before 07:00:00 and slots after 18:00:00",
+      "B": "Disabling slots before 07:00:00 and enabling slots after 18:00:00",
+      "C": "Showing slots before 07:00:00 and slots after 18:00:00",
+      "D": "Disabling slots after 07:00:00 and slots before 18:00:00"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：代码设置了日历组件的时间范围，隐藏了07:00之前和18:00之后的时间段。\n- B 错误：代码没有启用或禁用时间段，而是隐藏了它们。\n- C 错误：代码没有显示07:00之前和18:00之后的时间段。\n- D 错误：代码没有禁用07:00之后和18:00之前的时间段。\n\n考点总结：\n了解如何在Calendar组件中使用初始化JavaScript代码来设置时间范围。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX中Calendar组件的初始化JavaScript代码的使用。\n- 理解如何通过代码控制日历组件的显示和隐藏。\n- 实践中尝试使用初始化JavaScript代码来设置日历组件的时间范围。"
+  },
+  {
+    "question": "### Question 132\nA faceted search page was created based on the EMP table.\nExamine the exhibit and view the Department and Commission facets on the left side of the page.\nThe item names for these facets are P1_DEPARTMENT and P1_COMMISSION, respectively.\nThe Commission facet must be shown only when the Department facet value is SALES.\nWhich option will do this in Page Designer?",
+    "selections": {
+      "A": "Create a Dynamic Action on page load and set a True action to hide the P1_COMMISSION item when P1_DEPARTMENT = SALES.",
+      "B": "Create a Dynamic Action on change of the P1_DEPARTMENT facet with Client-side condition as Item = Value and enter the item as P1_DEPARTMENT and value as SALES. Then create a TRUE action to hide the P1_COMMISSION facet.",
+      "C": "In the P1_COMMISSION facet, select the Server-side Condition Type as Item = Value and enter the item as P1_DEPARTMENT and value as SALES.",
+      "D": "In the P1_COMMISSION facet, under the Depending On attribute, select P1_DEPARTMENT and specify type as equal to and value as SALES."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：创建动态动作隐藏P1_COMMISSION项目不符合要求。\n- B 错误：创建动态动作隐藏P1_COMMISSION项目不符合要求。\n- C 不适用：服务器端条件不适用于此场景。\n- D 正确：在P1_COMMISSION小部件中设置Depending On属性，选择P1_DEPARTMENT并指定类型为等于SALES。\n\n考点总结：\n了解如何在Page Designer中设置小部件的Depending On属性以控制显示条件。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉Page Designer中小部件的Depending On属性的使用。\n- 理解如何通过Depending On属性控制小部件的显示和隐藏。\n- 实践中尝试设置Depending On属性来控制小部件的显示条件。"
+  },
+  {
+    "question": "### Question 133\nWhich two are purposes of the APEX_UTIL.PREPARE_URL function in APEX?",
+    "selections": {
+      "A": "To return a URL that can be used for more than one APEX application",
+      "B": "To return an APEX navigation URL with the session ID component replaced with zero (0) if the zero session ID feature is in use and other criteria are met",
+      "C": "To return an email safe URL",
+      "D": "To return an APEX navigation URL with the Session State Protection checksum argument (&cs=) if one is required"
+    },
+    "answers": ["B", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不正确：APEX_UTIL.PREPARE_URL函数不用于生成多个APEX应用可用的URL。\n- B 正确：该函数可以返回一个会话ID替换为0的APEX导航URL，如果零会话ID功能正在使用且满足其他条件。\n- C 不正确：该函数不用于生成电子邮件安全的URL。\n- D 正确：该函数可以返回一个包含会话状态保护校验和参数（&cs=）的APEX导航URL，如果需要的话。\n\n考点总结：\n了解APEX_UTIL.PREPARE_URL函数的用途，特别是关于会话ID和会话状态保护的处理。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX_UTIL.PREPARE_URL函数的功能和用途。\n- 理解如何使用该函数来处理URL中的会话ID和会话状态保护。\n- 实践中尝试使用APEX_UTIL.PREPARE_URL函数来生成URL。"
+  },
+  {
+    "question": "### Question 134\nWhich are two methods for selectively disabling Link Column icons?",
+    "selections": {
+      "A": "Tweaking the Link Icon definition dynamically based on a derived column value",
+      "B": "Specifying a Condition Type on a given column",
+      "C": "Using an Authorization Scheme",
+      "D": "Modifying the Source Definition, such as, Local Database, REST Enabled SQL or REST Source to include one or more derived columns"
+    },
+    "answers": ["A", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：可以通过动态调整链接图标的定义来基于派生列值禁用链接图标。\n- B 错误：指定条件类型通常不用于禁用链接图标。\n- C 不适用：使用授权方案不适用于禁用链接图标。\n- D 正确：可以通过修改源定义来包括一个或多个派生列，从而选择性地禁用链接图标。\n\n考点总结：\n了解如何选择性地禁用链接列图标，特别是通过动态定义和修改源定义的方法。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉如何通过动态定义和修改源定义来控制链接图标的显示。\n- 理解不同方法对链接图标显示的影响。\n- 实践中尝试不同的方法来选择性地禁用链接图标。"
+  },
+  {
+    "question": "### Question 135\nYou created a Frequently Asked Questions (FAQ) page in an app.\nEveryone who can access the app must be able to view the FAQ page.\nWhich page-level Authorization scheme and Authentication options meet this requirement?",
+    "selections": {
+      "A": "Authorization Scheme: Must Not be Public User; Authentication: Page Requires Authentication",
+      "B": "Authorization Scheme: {Not Contribution Rights}; Authentication: Page is Public",
+      "C": "Authorization Scheme: {Not Reader Rights}; Authentication: Page is Public"
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确 ：必须不是公共用户的授权方案和页面需要身份验证的选项确保所有有权访问应用程序的人都能查看FAQ页面。\n- B 错误：不符合要求的授权方案和公共页面身份验证选项。\n- C 错误：不符合要求的授权方案和公共页面身份验证选项。\n\n考点总结：\n了解如何设置页面级授权方案和身份验证选项以满足特定的访问需求。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉APEX中页面级授权方案和身份验证选项的设置。\n- 理解不同设置对页面访问权限的影响。\n- 实践中尝试设置不同的授权方案和身份验证选项。"
+  },
+  {
+    "question": "### Question 136\nIn which two scenarios can the One-Click Remote Application Deployment option be used?",
+    "selections": {
+      "A": "Deploying an app from one workspace to another in the same APEX 20.1 instance",
+      "B": "Deploying an app from a workspace in your local APEX 19.1 instance to a workspace in a remote APEX 20.1 instance",
+      "C": "Deploying an app from one workspace to another in the same APEX 19.1 instance",
+      "D": "Deploying an app from a workspace in your local APEX 20.1 instance to a workspace in a remote APEX 19.1 instance",
+      "E": "Deploying an app from a workspace in your local APEX 20.1 instance to a workspace in a remote APEX 20.1 instance"
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：可以在同一个 APEX 20.1 实例的不同工作空间之间部署应用程序。\n- B 错误：不能从本地 APEX 19.1 实例的工作空间部署到远程 APEX 20.1 实例的工作空间。\n- C 错误：不能在同一个 APEX 19.1 实例的不同工作空间之间使用一键远程应用程序部署选项。\n- D 错误：不能从本地 APEX 20.1 实例的工作空间部署到远程 APEX 19.1 实例的工作空间。\n- E 正确：可以从本地 APEX 20.1 实例的工作空间部署到远程 APEX 20.1 实例的工作空间。\n\n考点总结：\n了解一键远程应用程序部署选项的使用场景，特别是不同版本和实例之间的兼容性。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉不同版本 APEX 实例之间的兼容性和部署限制。\n- 理解一键远程应用程序部署选项的具体使用场景。\n- 在实际操作中练习不同版本和实例之间的应用程序部署。"
+  },
+  {
+    "question": "### Question 137\nAn application includes a report and form on the PRODUCTS table.\nThe form page includes a page item P5_PRODUCTID, which is hidden.\n\nExamine these new requirements:\n- Users must not be able to update P5_PRODUCTID.\n- Users should always be able to see the value.\n\nNow examine these changes made to address the new requirements:\n- The item type has been changed to Number Field.\n- Label PRODUCTID has been entered.\n- The value required has been set to Yes.\n\nHow can the new requirements be met?",
+    "selections": {
+      "A": "Add a read-only attribute to the P5_PRODUCTID item when \"Item is Not Null\".",
+      "B": "Add a computation to set the new P5_PRODUCTID back to the value of the old P5_PRODUCTID item.",
+      "C": "Add a validation that checks if the old P5_PRODUCTID is the same as the new P5_PRODUCTID item."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：通过设置为只读属性，用户将无法更新 P5_PRODUCTID，但仍能看到其值。\n- B 错误：添加计算来设置新 P5_PRODUCTID 为旧 P5_PRODUCTID 的值并不能防止用户更新。\n- C 错误：添加验证来检查旧 P5_PRODUCTID 是否与新 P5_PRODUCTID 相同并不能阻止用户更新。\n\n考点总结：\n了解如何通过设置只读属性来防止用户更新页面项，同时确保用户可以看到其值。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉如何通过设置页面项属性来控制用户对数据的访问和修改。\n- 理解只读属性的作用及其在不同场景下的应用。\n- 在实际操作中练习设置页面项的只读属性以满足特定的业务需求。"
+  },
+  {
+    "question": "### Question 138\nAn application has two authentication schemes:\n1. OPEN (Open Door Credentials), which is the current scheme\n2. APEX_ACC (Application Express Accounts)\n\nUsers must be permitted to switch authentication schemes dynamically to APEX_ACC (Application Express Accounts).\n\nWhich two steps must be implemented?",
+    "selections": {
+      "A": "The page must be submitted with request: APEX_AUTHENTICATION=APPLICATION_EXPRESS_ACCOUNTS.",
+      "B": "The OPEN authentication scheme must have the Switch in Session attribute enabled.",
+      "C": "The page must be submitted with request: APEX_AUTHENTICATION=APEX_ACC.",
+      "D": "The APEX_ACC authentication scheme must have the Switch in Session attribute enabled."
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：请求参数应为 APEX_AUTHENTICATION=APEX_ACC，而不是 APPLICATION_EXPRESS_ACCOUNTS。\n- B 错误：应启用 APEX_ACC 认证方案的会话切换属性，而不是 OPEN 认证方案。\n- C 正确：页面必须通过请求 APEX_AUTHENTICATION=APEX_ACC 提交。\n- D 正确：APEX_ACC 认证方案必须启用会话切换属性。\n\n考点总结：\n了解如何动态切换认证方案，特别是通过请求参数和会话切换属性来实现。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 APEX 中不同认证方案的配置和切换方法。\n- 理解会话切换属性的作用及其在不同认证方案中的应用。\n- 在实际操作中练习配置认证方案和启用会话切换属性。"
+  },
+  {
+    "question": "### Question 139\nFor which two events does a page item's session state get updated without further steps?",
+    "selections": {
+      "A": "On page submit",
+      "B": "When dynamic action with page items to submit are specified",
+      "C": "On a button click",
+      "D": "When pressing the Enter key"
+    },
+    "answers": ["A", "B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：页面提交时，页面项的会话状态会自动更新。\n- B 正确：当指定了要提交的页面项的动态操作时，会话状态也会更新。\n- C 错误：按钮点击通常需要额外的配置来更新会话状态。\n- D 错误：按下 Enter 键的行为类似于按钮点击，通常也需要额外配置。\n\n考点总结：\n了解在哪些情况下页面项的会话状态会自动更新，以及哪些情况下需要额外的配置。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉页面项会话状态更新的自动机制。\n- 理解动态操作和页面提交如何影响会话状态。\n- 在实际操作中练习配置页面项和动态操作以控制会话状态的更新。"
+  },
+  {
+    "question": "### Question 140\nA faceted search report has just been created and you must sort the report on a specific column.\nHow would you sort the report in a declarative way?",
+    "selections": {
+      "A": "By entering the ORDER BY clause in the SQL Query for the report",
+      "B": "By running the application, navigating to Actions > Columns, setting the order as required, and then saving the report",
+      "C": "By moving the column in the columns of the Classic Report",
+      "D": "By navigating to that column and selecting the sort sequence for it"
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：在 SQL 查询中使用 ORDER BY 子句是程序化的方法，不是声明式的方法。\n- B 正确：通过应用程序界面设置列的顺序是一种声明式的方法。\n- C 错误：在经典报告中移动列不是设置排序的正确方法。\n- D 正确：通过导航到特定列并选择排序顺序是一种声明式的方法。\n\n考点总结：\n了解如何在不编写代码的情况下，通过应用程序界面设置报告的排序。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉使用应用程序界面进行报告排序的方法。\n- 理解声明式和程序式方法的区别。\n- 在实际操作中练习使用界面工具进行报告排序。"
+  },
+  {
+    "question": "### Question 141\nYou have created an appraisal app that includes a form with Rating and Bonus page items.\nRating must be populated before users select a percentage value for Bonus.\n\nHow can you achieve this?",
+    "selections": {
+      "A": "By creating a plug-in for the Bonus item",
+      "B": "By adding a validation on the Rating item",
+      "C": "By creating a dynamic action on the Rating item",
+      "D": "By adding a server-side condition on the Bonus item",
+      "E": "By creating a dynamic action on the Bonus item"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：创建插件通常用于更复杂的功能，而不是简单的依赖关系。\n- B 错误：添加验证可以确保数据完整性，但不能控制页面项的显示顺序。\n- C 正确：通过在 Rating 项上创建动态操作，可以在用户输入 Rating 后显示 Bonus 项。\n- D 错误：服务器端条件通常用于控制访问权限或数据处理，而不是页面项的显示。\n- E 错误：在 Bonus 项上创建动态操作不能确保 Rating 项先被填充。\n\n考点总结：\n了解如何使用动态操作来控制页面项的显示和用户交互流程。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉动态操作的配置和使用，特别是在控制页面项显示和用户输入顺序方面。\n- 理解不同类型操作（如插件、验证、动态操作）的用途和适用场景。\n- 在实际操作中练习使用动态操作来控制页面项的显示和用户交互。"
+  },
+  {
+    "question": "### Question 142\nIn which two cases can you use Dynamic Actions?",
+    "selections": {
+      "A": "Refresh a report region when the user selects a value from a dropdown list.",
+      "B": "Submit the values of username and password in order to log in to an application.",
+      "C": "Disable a button when the value of a particular page item changes.",
+      "D": "Send an email to the user when a form is submitted."
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：可以使用动态操作来刷新报告区域，当用户从下拉列表中选择一个值时。\n- B 错误：提交用户名和密码通常不通过动态操作完成，而是通过表单提交。\n- C 正确：可以使用动态操作来禁用按钮，当特定页面项的值发生变化时。\n- D 错误：发送电子邮件通常通过服务器端处理完成，而不是动态操作。\n\n考点总结：\n了解动态操作的典型用途，包括界面交互和页面项状态管理。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉动态操作的配置和应用场景。\n- 理解动态操作与其他类型操作（如表单提交、服务器端处理）的区别。\n- 在实际操作中练习使用动态操作来管理用户界面和交互。"
+  },
+  {
+    "question": "### Question 143\nAn application includes these features:\n1. An Employees interactive report region on a page\n2. Two page items: P6_JOB and P6_DEPTNO\n3. P6_JOB is a select list type to display Job list of values.\n4. P6_DEPTNO is a select list type to display Department list of values.\n\nWhen the Job or Department select list values are changed, the report must be refreshed to display newly scoped employees.\n\nWhich step must be performed to implement this functionality?",
+    "selections": {
+      "A": "Create a dynamic action on P6_JOB and P6_DEPTNO that uses the Show action to refresh and display the value of P6_JOB and P6_DEPTNO items.",
+      "B": "Create a P6_RESET button and then create a dynamic action firing when the Reset button is clicked and use the Set Value native action to trigger the refresh of the Employees interactive report region.",
+      "C": "Create a P6_RESET button and then create a dynamic action firing when the Reset button is clicked and use the Refresh native action to trigger the refresh of the Employees interactive report region.",
+      "D": "Create a dynamic action on P6_JOB and P6_DEPTNO that uses the Refresh native action to trigger the refresh of the Employees interactive report region."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：显示动作（Show）不适用于刷新报告区域。\n- B 错误：设置值动作（Set Value）不适用于刷新报告区域。\n- C 错误：虽然刷新动作（Refresh）可以用于刷新报告区域，但不需要创建重置按钮。\n- D 正确：在 P6_JOB 和 P6_DEPTNO 上创建动态操作，并使用刷新动作（Refresh）来触发员工交互式报告区域的刷新。\n\n考点总结：\n了解如何使用动态操作和本地动作来刷新报告区域，以响应页面项的变化。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉动态操作和本地动作的配置，特别是刷新动作的使用。\n- 理解如何根据页面项的变化动态刷新报告区域。\n- 在实际操作中练习配置动态操作来控制报告区域的刷新行为。"
+  },
+  {
+    "question": "### Question 144\nBy default, which interactive grid report type can be created by an end user?",
+    "selections": {
+      "A": "Alternative report",
+      "B": "Primary report",
+      "C": "Private report",
+      "D": "Public report"
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：不存在这种报告类型。\n- B 错误：通常由开发人员创建，而不是最终用户。\n- C 正确：最终用户可以创建私有报告。\n- D 错误：公共报告通常需要特定的权限和设置。\n\n考点总结：\n了解最终用户在创建交互式网格报告时的默认权限和能力。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉不同类型报告的创建权限和使用场景。\n- 理解最终用户和开发人员在报告创建中的作用和限制。\n- 在实际操作中练习创建和管理不同类型的报告。"
+  },
+  {
+    "question": "### Question 145\nYou must include a data classification message for a download file of an interactive report.\nThere is text inside the Supplemental Text download attribute.\n\nWhich two statements are true?",
+    "selections": {
+      "A": "It invalidates the CSV file format.",
+      "B": "It is included only for PDF and RTF download formats.",
+      "C": "It is included only for PDF, XLSX, and CSV download formats.",
+      "D": "It appears at the bottom of the downloaded files.",
+      "E": "It appears at the top of the downloaded files."
+    },
+    "answers": ["A", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：补充文本会使得 CSV 文件格式无效。\n- B 错误：补充文本不仅适用于 PDF 和 RTF 格式。\n- C 错误：补充文本不仅适用于 PDF, XLSX 和 CSV 格式。\n- D 错误：补充文本出现在下载文件的顶部，而不是底部。\n- E 正确：补充文本出现在下载文件的顶部。\n\n考点总结：\n了解补充文本下载属性对不同文件格式的影响及其在文件中的位置。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉补充文本下载属性的使用及其对文件格式的影响。\n- 理解不同文件格式的处理方式和限制。\n- 在实际操作中练习设置补充文本及其在文件中的位置。"
+  },
+  {
+    "question": "### Question 146\nWhich statement is true about creating and using REST Data Sources?",
+    "selections": {
+      "A": "APEX supports pagination for Oracle Cloud Infrastructure (OCI) REST Service REST data source types.",
+      "B": "Web Credentials are stored at the application level.",
+      "C": "A Remote Server with multiple REST Data Sources can not be reused.",
+      "D": "Credentials set at the Remote Server level supersede credentials stored at the REST Data Source level."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：APEX 支持 Oracle Cloud Infrastructure (OCI) REST 服务的分页。\n- B 错误：Web 凭据通常存储在 REST 数据源级别，而不是应用程序级别。\n- C 错误：具有多个 REST 数据源的远程服务器可以重用。\n- D 错误：远程服务器级别的凭据不会覆盖 REST 数据源级别的凭据。\n\n考点总结：\n了解创建和使用 REST 数据源时的凭据存储和分页支持。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 REST 数据源的配置和使用，特别是凭据管理和分页支持。\n- 理解不同级别（如应用程序级别和数据源级别）的凭据存储和优先级。\n- 在实际操作中练习配置和管理 REST 数据源。"
+  },
+  {
+    "question": "### Question 147\nExamine these statements:\n```sql\ncreate table dept (\n    id number generated by default on null as identity\n        constraint dept_id_pk primary key,\n    name varchar2(255 char) not null,\n    age number\n);\n\ncreate table emp (\n    id number generated by default on null as identity\n        constraint emp_id_pk primary key,\n    dept_id number\n        constraint emp_dept_id_fk\n            references dept on delete cascade,\n    name varchar2(255 char) not null,\n    email varchar2(255 char)\n        constraint emp_email_unq unique,\n    position varchar2(8 char) constraint emp_position_ck\n        check (position in ('MANAGER', 'CLERK', 'ENGINEER'))\n);\n```\n\nWhich Quick SQL code can generate these statements?",
+    "selections": {
+      "A": "dept\nname /nn\nage num\nemp\nname /nn\nemail /unique\nposition /values Manager, Clerk, Engineer",
+      "B": "dept\nname /nn\nage num\nemp\nname /nn\nemail /unique\nposition /check Manager, Clerk, Engineer",
+      "C": "dept\nid /pk\nname /nn\nage num\nemp\nid /pk\ndept_id /fk dept\nname /nn\nemail /unique\nposition /check Manager, Clerk, Engineer",
+      "D": "dept\nname /pk\nage num\nemp\nname /nn\nemail /unique\nposition /check Manager, Clerk, Engineer"
+    },
+    "answers": ["B"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：position 列使用了错误的约束类型，应使用 check 而不是 values。\n- B 正确：正确地包含了所有字段及其约束条件。\n- C 错误：虽然包含了主键和外键，但 Quick SQL 代码不需要显式定义主键和外键。\n- D 错误：dept 表中的 name 字段不应定义为主键。\n\n考点总结：\n了解如何使用 Quick SQL 代码生成包含字段及其约束条件的表结构。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 Quick SQL 代码的语法和功能，特别是如何定义字段及其约束条件。\n- 在实际操作中练习使用 Quick SQL 代码来生成数据库表结构。"
+  },
+  {
+    "question": "### Question 148\nClicking the Show Chart icon for a particular facet of the Employees Search faceted search page, displays a chart in a pop-up dialog.\n\nIn page designer, you then update and save the faceted search region attributes as exhibited here:\n\nWhich is true about the faceted search page display when viewing the page?",
+    "selections": {
+      "A": "When a user clicks Show Chart for multiple facets, the corresponding chart for each facet is displayed in dashboard mode but the search results region is not displayed.",
+      "B": "When a user clicks Show Chart for a particular facet, only the chart is displayed but the search results region is not displayed.",
+      "C": "When a user clicks Show Chart for multiple facets, the corresponding chart for each facet is displayed in dashboard mode and the search results region is displayed.",
+      "D": "A user can toggle between pop-up dialog and dashboard modes."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：当用户为多个方面点击显示图表时，搜索结果区域仍然显示。\n- B 错误：当用户为特定方面点击显示图表时，搜索结果区域仍然显示。\n- C 正确：当用户为多个方面点击显示图表时，每个方面的相应图表以仪表板模式显示，并且搜索结果区域显示。\n- D 错误：用户不能在弹出对话框和仪表板模式之间切换。\n\n考点总结：\n了解在查看页面时，点击显示图表图标对页面显示的影响。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉页面设计中不同组件的行为和交互方式。\n- 理解仪表板模式和弹出对话框模式的区别。\n- 在实际操作中练习配置和使用页面设计中的各种组件。"
+  },
+  {
+    "question": "### Question 149\nWhich statement is true about managing session state values?",
+    "selections": {
+      "A": "Session state cannot be set using computations.",
+      "B": "Cache can be cleared for a specific item but not for an entire page.",
+      "C": "Session state cannot be set using bind variables.",
+      "D": "Session state for a page item can be written into persistent session state in storage or just into memory."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：会话状态可以使用计算来设置。\n- B 错误：缓存可以为特定项目或整个页面清除。\n- C 错误：会话状态可以使用绑定变量来设置。\n- D 正确：页面项的会话状态可以写入持久性会话状态存储或仅写入内存。\n\n考点总结：\n了解会话状态值的管理方式，包括如何设置和存储会话状态。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉会话状态的设置和存储方法。\n- 理解不同方法对会话状态的影响。\n- 在实际操作中练习管理会话状态值。"
+  },
+  {
+    "question": "### Question 150\nYou must implement authorization rights across an interactive grid.\n\nWhich three interactive grid actions can be restricted by using an Authorization attribute?",
+    "selections": {
+      "A": "Deleting records",
+      "B": "Saving a public report",
+      "C": "Customizing the toolbar",
+      "D": "Saving a primary report",
+      "E": "Downloading the report"
+    },
+    "answers": ["A", "B", "E"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：删除记录是一个可以被授权属性限制的操作。\n- B 正确：保存公共报告也可以通过授权属性进行限制，以控制谁可以保存报告。\n- C 错误：自定义工具栏通常不涉及授权限制。\n- D 错误：保存主报告通常不需要授权限制。\n- E 正确：下载报告是一个可以被授权属性限制的操作，以控制谁可以下载报告。\n\n考点总结：\n了解哪些操作可以通过授权属性进行限制，特别是涉及到数据修改和敏感数据访问的操作。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉不同操作的授权需求，特别是那些涉及到数据修改和访问的操作。\n- 理解授权属性在不同场景下的应用，特别是在数据安全和访问控制方面。\n- 在实际操作中练习设置授权属性以确保数据安全和合规性。"
+  },
+  {
+    "question": "### Question 151\nWhich two callback procedures or functions apply to APEX plug-ins?",
+    "selections": {
+      "A": "Render",
+      "B": "JavaScript",
+      "C": "AJAX",
+      "D": "Keyboard",
+      "E": "Data"
+    },
+    "answers": ["A", "C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：Render 是适用于 APEX 插件的回调过程之一，用于定义插件的显示方式。\n- B 错误：JavaScript 通常不是作为回调过程或函数直接应用于 APEX 插件。\n- C 正确：AJAX 是适用于 APEX 插件的回调过程之一，用于处理异步数据交互。\n- D 错误：Keyboard 通常不适用于 APEX 插件的回调过程。\n- E 错误：Data 通常不作为回调过程或函数直接应用于 APEX 插件。\n\n考点总结：\n了解 APEX 插件中常用的回调过程和函数，特别是 Render 和 AJAX，这些在定义插件行为和交互时非常重要。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 APEX 插件的回调过程和函数，特别是 Render 和 AJAX 的应用场景。\n- 理解这些回调过程在插件开发中的作用和重要性。\n- 在实际操作中练习使用这些回调过程来开发和定制 APEX 插件。"
+  },
+  {
+    "question": "### Question 152\nIn Page Designer, you enable the Show attribute for the Icon View of an Interactive Grid and then select Image in URL for the Icon Type attribute while disabling the Custom attribute.\n\nWhich statement is true?",
+    "selections": {
+      "A": "You must select one column that contains Icon URL.",
+      "B": "You must select one column that contains Label.",
+      "C": "You must select one column that contains Icon Attributes.",
+      "D": "You must select one column that contains Icon URL and one column that contains Label."
+    },
+    "answers": ["D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：虽然需要 Icon URL，但仅选择包含 Icon URL 的列是不够的。\n- B 错误：虽然标签可能重要，但仅选择包含 Label 的列是不够的。\n- C 错误：Icon Attributes 列不是必需的。\n- D 正确：必须选择一个包含 Icon URL 的列和一个包含 Label 的列，以正确显示图标视图中的图标和标签。\n\n考点总结：\n了解在 Page Designer 中配置 Interactive Grid 的图标视图时，需要选择哪些列来显示图标和标签。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 Page Designer 中 Interactive Grid 的配置选项，特别是图标视图的设置。\n- 理解不同属性和选项在配置过程中的作用和重要性。\n- 在实际操作中练习配置 Interactive Grid 的图标视图，以确保正确显示图标和标签。"
+  },
+  {
+    "question": "### Question 153\nWhich statement is true about using Live Template Options?",
+    "selections": {
+      "A": "Using Live Template Options, you can create template option groups.",
+      "B": "Using Live Template Options, you can create a global template option.",
+      "C": "Using Live Template Options, you can alter a component's template options without refreshing the page."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：Live Template Options 不支持创建模板选项组。\n- B 错误：Live Template Options 不支持创建全局模板选项。\n- C 正确：使用 Live Template Options，可以在不刷新页面的情况下更改组件的模板选项。\n\n考点总结：\n了解 Live Template Options 的功能和限制，特别是它允许在不刷新页面的情况下更改组件的模板选项。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 Live Template Options 的功能和应用场景。\n- 理解 Live Template Options 在页面设计和开发中的优势，如提高效率和减少页面刷新。\n- 在实际操作中练习使用 Live Template Options 来优化页面设计和开发流程。"
+  },
+  {
+    "question": "### Question 154\nWhich two statements are true about creating and using REST-Enabled SQL Service References?",
+    "selections": {
+      "A": "When you export an application, by default, used REST-Enabled SQL references are not added to the export file.",
+      "B": "You can create a query on a REST-Enabled SQL Service and can join it to a local table.",
+      "C": "You can use REST-Enabled SQL references for master detail forms.",
+      "D": "REST-Enabled SQL Service references work with JSON over HTTP(S).",
+      "E": "REST-Enabled SQL Services are stored at the application level and therefore cannot be used by other applications in a workspace."
+    },
+    "answers": ["C", "D"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：默认情况下，导出应用程序时，使用的 REST-Enabled SQL 引用会被添加到导出文件中。\n- B 错误：不能直接在 REST-Enabled SQL 服务上创建查询并与本地表连接。\n- C 正确：REST-Enabled SQL 引用可以用于主详细表单。\n- D 正确：REST-Enabled SQL 服务引用通过 HTTP(S) 使用 JSON 进行工作。\n- E 错误：REST-Enabled SQL 服务可以在工作区中的其他应用程序中使用。\n\n考点总结：\n了解 REST-Enabled SQL 服务引用的功能和限制，特别是它们在主详细表单和 JSON 通信中的应用。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉 REST-Enabled SQL 服务引用的创建和使用，特别是在主详细表单和 JSON 通信中的应用。\n- 理解 REST-Enabled SQL 服务引用在不同场景下的应用和限制。\n- 在实际操作中练习使用 REST-Enabled SQL 服务引用来优化应用程序的数据访问和处理。"
+  },
+  {
+    "question": "### Question 155\nWhich statement is true about branching pages in an application?",
+    "selections": {
+      "A": "A dialog page never branches to a normal page.",
+      "B": "A branch is never conditional.",
+      "C": "A dialog page can branch to another dialog page."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 错误：对话框页面可以分支到普通页面，这取决于应用程序的设计和需求。\n- B 错误：分支可以是有条件的，基于特定条件来决定页面的流向。\n- C 正确：对话框页面可以分支到另一个对话框页面，这在需要多个对话框依次出现时是有用的。\n\n考点总结：\n了解应用程序中页面分支的基本概念和可能性，特别是对话框页面的分支行为。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉应用程序中页面分支的不同类型和条件。\n- 理解对话框页面在应用程序中的作用和它们如何与其他页面交互。\n- 在实际操作中练习设计和实现页面分支逻辑，以提高应用程序的交互性和用户体验。"
+  },
+  {
+    "question": "### Question 156\nExamine this page:\n\nPage 4: Read Only Conditions\n\nAll page items are of type Text Field.\n\nRead Only condition specified at Page level:\n\nType: PL/SQL Expression\nPL/SQL Expression: :AI_EDIT_MODE = 'N'\n\nAI_EDIT_MODE is an application item.\n\nRead Only condition specified for item P4_COMMENTS:\n\nType: Never\n\nNo other Read Only conditions are specified for any other components.\n\nWhich statement is true?",
+    "selections": {
+      "A": "P4_NAME will be displayed as read only, when the value of the AI_EDIT_MODE application item is N in session state.",
+      "B": "P4_NAME will be displayed as read only, when the value of the AI_EDIT_MODE application item is NULL in session state.",
+      "C": "P4_COMMENTS will be displayed as read only, when the value of the AI_EDIT_MODE application item is N in session state."
+    },
+    "answers": ["A"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 正确：当 AI_EDIT_MODE 应用项的值为 'N' 时，P4_NAME 将显示为只读。\n- B 错误：AI_EDIT_MODE 应用项的值为 NULL 时，P4_NAME 不会显示为只读，因为页面级别的只读条件是 AI_EDIT_MODE = 'N'。\n- C 错误：P4_COMMENTS 不会显示为只读，因为它的只读条件被指定为 'Never'。\n\n考点总结：\n了解如何根据应用项的值设置页面项的只读条件，以及如何应用这些条件来控制用户界面的行为。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉如何设置和应用只读条件，特别是在页面级别和特定项级别。\n- 理解不同类型只读条件（如 PL/SQL 表达式和 'Never'）的含义和应用场景。\n- 在实际操作中练习设置只读条件，以提高对用户界面控制的理解和技能。"
+  },
+  {
+    "question": "### Question 157\nYour team developed an app for the HR department and must deploy it to the Test environment.\n\nThere are no applications available in the Test environment.\n\nYou must use One-click Remote Application Deployment and ensure that the application deployed to the Test environment preserves the application ID, and is enabled for future overwrites.\n\nWhich two steps are mandatory to perform successful application deployment?",
+    "selections": {
+      "A": "Add Upgrade Scripts to the application definition in the Development environment.",
+      "B": "Enable Development schema for use with ORDS RESTful Data Services.",
+      "C": "In the Remote Application Deployment wizard, under Deployment Overrides, turn on the Overwrite Existing Application option."
+    },
+    "answers": ["C"],
+    "summary": "### 选项分析与考点总结\n\n选项分析：\n- A 不正确：添加升级脚本到开发环境中的应用定义不是必需的步骤。\n- B 不正确：为 ORDS RESTful Data Services 启用开发模式不是必需的步骤。\n- C 正确：在远程应用程序部署向导中，必须在部署覆盖中启用“覆盖现有应用程序”选项，以确保应用程序可以成功部署并保留应用程序 ID。\n\n考点总结：\n了解如何使用一键远程应用程序部署功能，特别是在测试环境中部署应用程序时的必需步骤。",
+    "suggestion": "### 应试技巧与学习建议\n- 熟悉应用程序部署流程，特别是一键远程部署的步骤和选项。\n- 理解在不同环境中部署应用程序时需要考虑的因素，如保留应用程序 ID 和启用覆盖选项。\n- 在实际操作中练习部署应用程序，以提高对部署流程的理解和技能。"
   }
 ]
